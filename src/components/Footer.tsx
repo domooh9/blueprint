@@ -37,7 +37,7 @@ const footerLinks = [
 
 export const Footer = () => {
   return (
-    <footer className="bg-background border-t border-primary py-8">
+    <footer className="bg-primary border-t border-black py-8">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Social Icons */}
@@ -48,10 +48,10 @@ export const Footer = () => {
               <a
                 key={social.label}
                 href={social.href}
-                className="p-2 border border-primary rounded hover:border-primary hover:text-primary transition-colors"
+                className="p-2 border border-black rounded hover:border-white hover:text-white transition-colors"
                 aria-label={social.label}
               >
-                <Icon size={18} />
+                <Icon size={18} className="text-white" />
               </a>
             );
           })}
@@ -61,13 +61,13 @@ export const Footer = () => {
         <div className="grid grid-cols-2 md:grid-cols-3 gap-6 text-center md:text-left mb-6">
           {footerLinks.map((section) => (
             <div key={section.title}>
-              <h4 className="text-sm font-semibold text-foreground mb-2">{section.title}</h4>
+              <h4 className="text-sm font-semibold text-white mb-2">{section.title}</h4>
               <ul className="space-y-1">
                 {section.links.map((link) => (
                   <li key={link.label}>
                     <a
                       href={link.href}
-                      className="text-xs text-muted-foreground hover:text-primary transition-colors"
+                      className="text-xs text-white hover:text-black transition-colors"
                       target={link.href.startsWith("http") ? "_blank" : "_self"}
                       rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
                     >
@@ -81,8 +81,8 @@ export const Footer = () => {
         </div>
 
         {/* Footer Bottom */}
-        <div className="border-t border-primary pt-4 text-center md:text-left flex flex-col md:flex-row justify-between items-center gap-2">
-          <p className="text-xs text-muted-foreground">
+        <div className="border-t border-black pt-4 text-center md:text-left flex flex-col md:flex-row justify-between items-center gap-2">
+          <p className="text-xs text-white">
             © {new Date().getFullYear()} Finserve Africa Limited. All rights reserved.
           </p>
           <div className="flex gap-4 text-xs">
@@ -90,7 +90,7 @@ export const Footer = () => {
               href="https://www.finserve.africa" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-primary transition-colors"
+              className="text-white hover:text-black transition-colors"
             >
               Privacy Policy
             </a>
@@ -98,7 +98,7 @@ export const Footer = () => {
               href="https://www.finserve.africa" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-primary transition-colors"
+              className="text-white hover:text-black transition-colors"
             >
               Terms of Service
             </a>

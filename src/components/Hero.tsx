@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import Particles from "react-tsparticles";
 import { loadFull } from "tsparticles";
+import imageb from "@/assets/imageb.png"; // Replace with your actual image file
 
 export const Hero = () => {
   const particlesInit = async (main: any) => {
@@ -9,8 +10,12 @@ export const Hero = () => {
   };
 
   return (
-    <section className="relative pt-24 md:pt-32 pb-16 md:pb-24 overflow-hidden min-h-screen">
-      
+    <section
+      className="relative pt-24 md:pt-32 pb-16 md:pb-24 overflow-hidden min-h-screen bg-cover bg-center"
+      style={{
+        backgroundImage: `url(${imageb})`,
+      }}
+    >
       {/* Particles Background */}
       <Particles
         id="tsparticles"
@@ -50,9 +55,6 @@ export const Hero = () => {
           <p className="text-lg md:text-xl text-muted-foreground mb-6 max-w-2xl mx-auto animate-slide-up">
             Leading fintech solutions provider in Kenya, delivering innovative payment gateways and financial services that drive growth across Africa.
           </p>
-
-          {/* Divider */}
-          {/* <div className="w-20 h-1 bg-primary mx-auto mb-8 rounded-full animate-fade-in"></div> */}
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-slide-up">
             <Button size="lg" className="bg-primary hover:bg-primary-hover text-primary-foreground w-full sm:w-auto group">
