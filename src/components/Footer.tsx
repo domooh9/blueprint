@@ -37,7 +37,7 @@ const footerLinks = [
 
 export const Footer = () => {
   return (
-    <footer className="bg-background border-t border-border py-8">
+    <footer className="bg-background border-t border-primary py-8">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Social Icons */}
@@ -48,7 +48,7 @@ export const Footer = () => {
               <a
                 key={social.label}
                 href={social.href}
-                className="p-2 border border-border rounded hover:border-primary hover:text-primary transition-colors"
+                className="p-2 border border-primary rounded hover:border-primary hover:text-primary transition-colors"
                 aria-label={social.label}
               >
                 <Icon size={18} />
@@ -81,7 +81,7 @@ export const Footer = () => {
         </div>
 
         {/* Footer Bottom */}
-        <div className="border-t border-border pt-4 text-center md:text-left flex flex-col md:flex-row justify-between items-center gap-2">
+        <div className="border-t border-primary pt-4 text-center md:text-left flex flex-col md:flex-row justify-between items-center gap-2">
           <p className="text-xs text-muted-foreground">
             © {new Date().getFullYear()} Finserve Africa Limited. All rights reserved.
           </p>
