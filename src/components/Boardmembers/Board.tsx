@@ -1,6 +1,16 @@
 import { Users } from "lucide-react";
 
 const boardMembersData = [
+      {
+    name: "DR. JAMES MWANGI, CBS",
+    title: "Non-Executive Director",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/James_Mwangi.jpg/500px-James_Mwangi.jpg",
+    bio: [
+      "Dr. James Mwangi holds five honorary doctorate degrees in recognition of his positive impact on Kenyan society. He is a Bachelor of Commerce graduate and a Certified Public Accountant, honored thrice with National Presidential Awards: CBS, MBS, and HSC.",
+      "Globally, he has received multiple awards, including the G8 Global Vision Award (2007), Forbes Africa Person of the Year (2012), and the Oslo Business for Peace Award (2020), described as the 'Nobel Prize for Business'.",
+      "Regionally, he has been recognized as Africa Investor CEO of the Year, African Business Leader of the Year, and African Banker of the Year multiple times. He has served in advisory roles for VISA, IFC, the Clinton Global Initiative, and was the Founding Chair of Kenya's Vision 2030."
+    ]
+  },
   {
     name: "DR. PATRICK UWIZEYE",
     title: "Non-Executive Chairman",
@@ -11,16 +21,7 @@ const boardMembersData = [
       "Dr. Uwizeye has over 28 years of experience as a business management professional in senior-level roles, including CFO and General Manager at MTN Rwanda, and Director of Finance and Administration at AACC, Nairobi. He currently leads BPU Consulting Ltd, the company he founded."
     ]
   },
-  {
-    name: "DR. JAMES MWANGI, CBS",
-    title: "Non-Executive Director",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/James_Mwangi.jpg/500px-James_Mwangi.jpg",
-    bio: [
-      "Dr. James Mwangi holds five honorary doctorate degrees in recognition of his positive impact on Kenyan society. He is a Bachelor of Commerce graduate and a Certified Public Accountant, honored thrice with National Presidential Awards: CBS, MBS, and HSC.",
-      "Globally, he has received multiple awards, including the G8 Global Vision Award (2007), Forbes Africa Person of the Year (2012), and the Oslo Business for Peace Award (2020), described as the 'Nobel Prize for Business'.",
-      "Regionally, he has been recognized as Africa Investor CEO of the Year, African Business Leader of the Year, and African Banker of the Year multiple times. He has served in advisory roles for VISA, IFC, the Clinton Global Initiative, and was the Founding Chair of Kenya's Vision 2030."
-    ]
-  },
+
   {
     name: "BRENT MALAHAY",
     title: "Non-Executive Director",
