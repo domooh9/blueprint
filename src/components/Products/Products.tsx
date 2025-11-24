@@ -1,4 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card";
+import { Check } from "lucide-react";
 import jengaApi from "@/assets/jenga-apii.png";
 import jengaPayment from "@/assets/jenga-payment.png";
 import equitelGateway from "@/assets/equitel-gatewaay.png";
@@ -31,18 +32,44 @@ export const Products = () => {
   return (
     <section id="products" className="py-16 md:py-24 bg-muted">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        
         {/* Section Header */}
-        <div className="text-center mb-12 md:mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-2">
+        <div className="text-center mb-16 md:mb-20">
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-3">
             Our Products
           </h2>
 
-          {/* BORDER BELOW TITLE */}
-          <div className="w-24 h-1 bg-primary mx-auto mb-6 rounded"></div>
+          {/* Decorative Accent */}
+          <div className="flex justify-center items-center mb-4">
+            <span className="w-24 h-1 bg-primary rounded-full"></span>
+          </div>
 
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Innovative financial technology solutions designed to accelerate your business growth
+          {/* Short Tagline */}
+          <p className="text-lg md:text-xl font-semibold text-primary mb-4">
+            Fintech solutions that drive innovation, security, and growth.
           </p>
+
+          {/* Intro Paragraph */}
+          <p className="text-muted-foreground max-w-3xl mx-auto mb-8">
+            Explore our suite of products designed to make financial transactions seamless, secure, and scalable.
+            Whether you’re integrating payments, leveraging APIs, or accessing mobile gateways, our tools empower businesses to thrive in Africa's digital economy.
+          </p>
+
+          {/* Highlight Features */}
+          <div className="flex flex-col sm:flex-row justify-center gap-6 max-w-3xl mx-auto">
+            <div className="flex items-center gap-3 bg-card p-4 rounded-xl shadow hover:shadow-lg transition-shadow">
+              <Check className="h-6 w-6 text-primary flex-shrink-0" />
+              <span className="text-foreground font-medium">Secure & Compliant</span>
+            </div>
+            <div className="flex items-center gap-3 bg-card p-4 rounded-xl shadow hover:shadow-lg transition-shadow">
+              <Check className="h-6 w-6 text-primary flex-shrink-0" />
+              <span className="text-foreground font-medium">Fast & Reliable</span>
+            </div>
+            <div className="flex items-center gap-3 bg-card p-4 rounded-xl shadow hover:shadow-lg transition-shadow">
+              <Check className="h-6 w-6 text-primary flex-shrink-0" />
+              <span className="text-foreground font-medium">Scalable Solutions</span>
+            </div>
+          </div>
         </div>
 
         {/* Products Grid */}
@@ -71,7 +98,7 @@ export const Products = () => {
                   </p>
                 </div>
 
-                {/* Cool Click to See More Button */}
+                {/* Call-to-Action Button */}
                 <div className="text-center mt-auto">
                   <a
                     href={product.link}
@@ -90,4 +117,5 @@ export const Products = () => {
     </section>
   );
 };
+
 export default Products;

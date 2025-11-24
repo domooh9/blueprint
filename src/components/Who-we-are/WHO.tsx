@@ -1,7 +1,6 @@
 import { Handshake, Shield, Lightbulb, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-
 const values = [
   {
     icon: Handshake,
@@ -29,27 +28,17 @@ const values = [
 
 const WHO = () => {
   return (
-    <section className="relative py-20 md:py-28 bg-background overflow-hidden">
-    
-
-      {/* Decorative Background with Bigger Pattern */}
-      <div className="absolute left-0 top-0 bottom-0 w-64 opacity-10 pointer-events-none">
+    <section className="relative py-24 md:py-32 bg-gradient-to-b from-background to-muted overflow-hidden">
+      
+      {/* Decorative Network Background */}
+      <div className="absolute -left-24 top-0 w-96 opacity-10 pointer-events-none">
         <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
           <defs>
-            <pattern
-              id="network"
-              x="0"
-              y="0"
-              width="150"   // increased from 100
-              height="150"  // increased from 100
-              patternUnits="userSpaceOnUse"
-            >
-              {/* Bigger circles */}
-              <circle cx="20" cy="20" r="4" fill="currentColor" className="text-muted-foreground"/>
-              <circle cx="75" cy="45" r="4" fill="currentColor" className="text-muted-foreground"/>
-              <circle cx="45" cy="90" r="4" fill="currentColor" className="text-muted-foreground"/>
-              <circle cx="105" cy="105" r="4" fill="currentColor" className="text-muted-foreground"/>
-              {/* Lines */}
+            <pattern id="network" x="0" y="0" width="150" height="150" patternUnits="userSpaceOnUse">
+              <circle cx="20" cy="20" r="4" fill="currentColor" className="text-muted-foreground" />
+              <circle cx="75" cy="45" r="4" fill="currentColor" className="text-muted-foreground" />
+              <circle cx="45" cy="90" r="4" fill="currentColor" className="text-muted-foreground" />
+              <circle cx="105" cy="105" r="4" fill="currentColor" className="text-muted-foreground" />
               <line x1="20" y1="20" x2="75" y2="45" stroke="currentColor" strokeWidth="1" className="text-muted-foreground"/>
               <line x1="75" y1="45" x2="105" y2="105" stroke="currentColor" strokeWidth="1" className="text-muted-foreground"/>
               <line x1="45" y1="90" x2="105" y2="105" stroke="currentColor" strokeWidth="1" className="text-muted-foreground"/>
@@ -61,31 +50,33 @@ const WHO = () => {
 
       <div className="container mx-auto px-6 lg:px-12 relative z-10">
         <div className="max-w-6xl mx-auto text-center">
+          
           {/* Section Header */}
-          <h2 className="text-4xl md:text-5xl font-extrabold text-primary mb-6 border-b-2 border-black inline-block pb-2">
-            Who we are
+          <h2 className="text-4xl md:text-5xl font-extrabold text-primary mb-4 border-b-2 border-black inline-block pb-2">
+            Who We Are
           </h2>
 
           {/* Intro Text */}
           <p className="text-lg md:text-xl text-muted-foreground mb-4 leading-relaxed">
-            Finserve was borne out of a deep-seated need to break down financial barriers. 
-            We address complex financial and lifestyle obstacles by employing a data & insight driven culture, 
-            building products that deliver richer customer experiences.
+            Finserve was born out of a deep desire to break financial barriers. We simplify complex financial and lifestyle challenges through data-driven insights, building products that create rich customer experiences.
           </p>
           <p className="text-lg md:text-xl text-muted-foreground mb-12 leading-relaxed">
-            We are Finserve, and we are here to build relevant, consumer-focused financial technology solutions for you and your organization.
+            Our commitment is to deliver relevant, consumer-focused fintech solutions that empower businesses and individuals across Africa.
           </p>
 
-          {/* Values Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
+          {/* Key Values Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12 mb-16">
             {values.map((value, idx) => {
               const Icon = value.icon;
               return (
                 <div
                   key={idx}
-                  className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-2xl transition-shadow duration-300 group"
+                  className="bg-white dark:bg-gray-800 rounded-2xl p-6 md:p-8 shadow-lg hover:shadow-2xl transition-shadow duration-300 group relative overflow-hidden"
                 >
-                  <div className="flex items-center gap-4 mb-4">
+                  {/* Accent Circle Animation */}
+                  <div className="absolute -top-8 -right-8 w-24 h-24 bg-primary/10 rounded-full animate-pulse-slow pointer-events-none"></div>
+
+                  <div className="flex items-center gap-4 mb-4 z-10 relative">
                     <div className="p-3 bg-primary/20 rounded-full">
                       <Icon className="w-7 h-7 text-primary" strokeWidth={1.5} />
                     </div>
@@ -93,11 +84,11 @@ const WHO = () => {
                       {value.title}
                     </h3>
                   </div>
-                  <p className="text-sm md:text-base text-muted-foreground leading-relaxed mb-3">
+                  <p className="text-sm md:text-base text-muted-foreground leading-relaxed mb-3 z-10 relative">
                     {value.description}
                   </p>
                   {value.certifications && (
-                    <p className="text-sm text-muted-foreground">
+                    <p className="text-sm text-muted-foreground z-10 relative">
                       Certifications:{" "}
                       {value.certifications.map((cert, index) => (
                         <span key={index}>
@@ -119,13 +110,29 @@ const WHO = () => {
             })}
           </div>
 
+          {/* Additional Info & Features */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+            <div className="p-6 bg-card rounded-xl shadow hover:shadow-lg transition-shadow">
+              <h4 className="text-lg font-semibold text-primary mb-2">Our Approach</h4>
+              <p className="text-muted-foreground text-sm md:text-base">
+                We combine expertise in finance and technology with agile methodologies to ensure products are innovative, compliant, and impactful. Our client-first approach ensures measurable results and satisfaction.
+              </p>
+            </div>
+            <div className="p-6 bg-card rounded-xl shadow hover:shadow-lg transition-shadow">
+              <h4 className="text-lg font-semibold text-primary mb-2">Our Reach</h4>
+              <p className="text-muted-foreground text-sm md:text-base">
+                Serving businesses and consumers across Kenya and the broader African market, our solutions drive efficiency and accessibility in financial services.
+              </p>
+            </div>
+          </div>
+
           {/* Call to Action */}
           <div className="mt-12">
             <Button
               variant="outline"
-              className="text-primary border-primary hover:bg-primary hover:text-white font-medium transition-colors"
+              className="text-primary border-primary hover:bg-primary hover:text-white font-medium transition-colors px-8 py-3"
             >
-              View Services
+              Explore Our Services
               <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
             </Button>
           </div>
