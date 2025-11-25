@@ -29,12 +29,18 @@ const values = [
 const WHO = () => {
   return (
     <section className="relative py-24 md:py-32 bg-gradient-to-b from-background to-muted overflow-hidden">
-      
       {/* Decorative Network Background */}
       <div className="absolute -left-24 top-0 w-96 opacity-10 pointer-events-none">
         <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
           <defs>
-            <pattern id="network" x="0" y="0" width="150" height="150" patternUnits="userSpaceOnUse">
+            <pattern
+              id="network"
+              x="0"
+              y="0"
+              width="150"
+              height="150"
+              patternUnits="userSpaceOnUse"
+            >
               <circle cx="20" cy="20" r="4" fill="currentColor" className="text-muted-foreground" />
               <circle cx="75" cy="45" r="4" fill="currentColor" className="text-muted-foreground" />
               <circle cx="45" cy="90" r="4" fill="currentColor" className="text-muted-foreground" />
@@ -50,18 +56,21 @@ const WHO = () => {
 
       <div className="container mx-auto px-6 lg:px-12 relative z-10">
         <div className="max-w-6xl mx-auto text-center">
-          
+
           {/* Section Header */}
-          <h2 className="text-4xl md:text-5xl font-extrabold text-primary mb-4 border-b-2 border-black inline-block pb-2">
-            Who We Are
+          <h2 className="text-4xl md:text-5xl font-extrabold text-foreground mb-6 relative inline-block">
+            Who <span className="border-b-4 border-primary pb-2 transition-all duration-300 hover:scale-x-105 inline-block">We</span> Are
           </h2>
 
           {/* Intro Text */}
-          <p className="text-lg md:text-xl text-muted-foreground mb-4 leading-relaxed">
+          <p className="text-lg md:text-xl text-muted-foreground mb-4 leading-relaxed max-w-3xl mx-auto">
             Finserve was born out of a deep desire to break financial barriers. We simplify complex financial and lifestyle challenges through data-driven insights, building products that create rich customer experiences.
           </p>
-          <p className="text-lg md:text-xl text-muted-foreground mb-12 leading-relaxed">
+          <p className="text-lg md:text-xl text-muted-foreground mb-4 leading-relaxed max-w-3xl mx-auto">
             Our commitment is to deliver relevant, consumer-focused fintech solutions that empower businesses and individuals across Africa.
+          </p>
+          <p className="text-lg md:text-xl text-muted-foreground mb-12 leading-relaxed max-w-3xl mx-auto">
+            With our solutions, businesses can access secure payment APIs, scalable gateways, and data insights that enhance financial inclusion and operational efficiency. Our mission is to empower growth through technology-driven financial services.
           </p>
 
           {/* Key Values Grid */}
@@ -71,7 +80,7 @@ const WHO = () => {
               return (
                 <div
                   key={idx}
-                  className="bg-white dark:bg-gray-800 rounded-2xl p-6 md:p-8 shadow-lg hover:shadow-2xl transition-shadow duration-300 group relative overflow-hidden"
+                  className="bg-white dark:bg-gray-800 rounded-2xl p-6 md:p-8 shadow-lg hover:shadow-2xl hover:scale-105 transition-transform transition-shadow duration-300 group relative overflow-hidden"
                 >
                   {/* Accent Circle Animation */}
                   <div className="absolute -top-8 -right-8 w-24 h-24 bg-primary/10 rounded-full animate-pulse-slow pointer-events-none"></div>

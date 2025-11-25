@@ -96,10 +96,10 @@ export const Hero: React.FC = () => {
 
         {/* small feature badges */}
         <div className="flex flex-wrap justify-center gap-3 mt-10 text-gray-200 text-sm">
-          <span className="px-3 py-1 bg-white/10 rounded-full">⚡ Fast & Secure</span>
-          <span className="px-3 py-1 bg-white/10 rounded-full">🌍 Powering Africa</span>
-          <span className="px-3 py-1 bg-white/10 rounded-full">🔐 Enterprise APIs</span>
-          <span className="px-3 py-1 bg-white/10 rounded-full">💳 Trusted</span>
+          <span className="px-3 py-1 bg-white/10 rounded-full"> Fast & Secure</span>
+          <span className="px-3 py-1 bg-white/10 rounded-full"> Powering Africa</span>
+          <span className="px-3 py-1 bg-white/10 rounded-full"> Enterprise APIs</span>
+          <span className="px-3 py-1 bg-white/10 rounded-full"> Trusted</span>
         </div>
       </div>
     </section>
