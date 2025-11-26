@@ -16,71 +16,72 @@ const faqData = [
     questions: [
       {
         question: "How do I set up an account?",
-        answer: "To set up an account, visit our registration page and fill in your business details. You'll receive a verification email within minutes. Once verified, you can log in and start using our services immediately.",
+        answer: "Tap on this link and register, https://bulksms.finserve.africa/ fill in your details, and click on sign up. We will contact you after we have received the information.",
       },
       {
         question: "Am I able to schedule an SMS?",
-        answer: "Yes, you can schedule SMS messages for future delivery. Simply select the date and time when creating your message, and our system will automatically send it at the specified time. You can schedule messages up to 30 days in advance.",
+        answer: "Yes, you can schedule SMSs.",
       },
       {
         question: "Can we send SMSs outside Kenya?",
-        answer: "Yes, our platform supports international SMS delivery to over 190 countries worldwide. International rates apply and vary by destination. Contact our sales team for specific pricing information.",
+        answer: " At the moment, you can only send SMSs locally.",
       },
       {
         question: "What is the maximum length of an SMS message that one can send on the platform?",
-        answer: "A standard SMS message can contain up to 160 characters. Messages longer than 160 characters will be sent as concatenated SMS (multiple messages), with each segment containing up to 153 characters. Our platform automatically handles message segmentation.",
+        answer: "A standard SMS message has 160 characters.",
       },
       {
         question: "Do you charge any monthly charges or start-up fees?",
-        answer: "No, we don't charge any monthly fees or start-up costs. You only pay for the SMS messages you send. Our pricing is transparent with no hidden charges, making it easy to budget for your communication needs.",
+        answer: "No, we don't charge any startup or monthly costs. There are no setup fees or ongoing maintenance costs for the account. When you are prepared to send SMSs, you will only need to top up your account.",
       },
       {
         question: "How Do I Send a message?",
-        answer: "Sending a message is simple: log into your account, navigate to the 'Send SMS' section, enter your recipient's phone number or upload a contact list, compose your message, and click 'Send'. You'll receive immediate confirmation of delivery status.",
+        answer: "You can upload your contacts using an excel file or Txt file on our platform. Once you sign up a manual will be provided to guide you.",
       },
       {
         question: "Do we offer branding/Sender ID services for SMS?",
-        answer: "Yes, we offer custom Sender ID services that allow you to brand your SMS messages with your company name or brand. This helps recipients instantly recognize your business. Sender ID registration typically takes 3-5 business days for approval.",
+        answer: "Yes, we do. A Sender ID is an alphanumeric name or numeric that appears on the recipient's device as the sender of the SMS. The maximum number of characters allowed for the Sender ID is 11 with no spaces in between. However, spaces can be filled in with either a hyphen (-) or an underscore (_).",
       },
       {
         question: "Sender ID requirements.",
-        answer: "To register a Sender ID, you need to provide: 1) Valid business registration documents, 2) A registered business name or trademark, 3) Proof of business address, and 4) A completed Sender ID application form. The Sender ID must be alphanumeric and between 3-11 characters.",
+        answer: "Requirements for a company or organization sender ID: Certificate of Registration, Certificate of Incorporation, or Trademark Certificate (whichever is applicable). A signed and stamped authorization letter addressed to the telcos on the company’s letterhead.",
+        
       },
       {
         question: "Do you provide delivery responses for the messages?",
-        answer: "Yes, we provide comprehensive delivery reports for all sent messages. You can track the status of each SMS (delivered, pending, failed) in real-time through your dashboard. Detailed reports are also available for download.",
+        answer: "Yes, delivery reports are provided: To get a comprehensive delivery report after 48hrs send an email to support@finserve.africa",
       },
       {
         question: "How do I contact Support?",
-        answer: "Our support team is available Monday to Friday, 8 AM to 6 PM. You can reach us via email at support@finserve.africa, call us at +254 766 000 200, or use the live chat feature in your account dashboard. We typically respond within 2 hours during business hours.",
+        answer: "You can reach us on +254 766 000 200, Email: support@finserve.africa",
       },
       {
         question: "How can I change my password?",
-        answer: "To change your password, log into your account, go to 'Settings' > 'Security', and click 'Change Password'. Enter your current password and your new password twice for confirmation. For security, we recommend using a strong password with a mix of letters, numbers, and symbols.",
+        answer: "On the login page, Tap on Forgot password and follow the instructions.",
       },
       {
         question: "How long does it take to get the SMS up and running?",
-        answer: "Once your account is verified, you can start sending SMS immediately. If you're registering a custom Sender ID, the approval process takes 3-5 business days. Our team will guide you through the setup to ensure you're sending messages as quickly as possible.",
+        answer: "With Good internet, it will take you about 10 minutes.",
       },
       {
         question: "Do bulk SMS expire?",
-        answer: "SMS credits purchased on our platform do not expire as long as your account remains active. However, scheduled messages that fail to send within 72 hours will be marked as expired and credits will be refunded to your account.",
+        answer: "No, SMSs do not expire.",
       },
       {
         question: "My activation code has not come through, what do I do?",
-        answer: "If you haven't received your activation code within 10 minutes, first check your spam/junk folder. If it's not there, click 'Resend activation code' on the login page. If the issue persists, contact our support team at +254 766 000 200 or support@finserve.africa.",
+        answer: "Refresh the page and try again. If the problem persists, contact us on +254 766 000 200 or send an Email to support@finserve.africa",
       },
       {
         question: "Is there a regulated period that I can send SMS?",
-        answer: "While there are no strict regulatory restrictions on SMS sending times in Kenya, we recommend following best practices: avoid sending promotional messages between 9 PM and 8 AM unless it's transactional or time-sensitive information. This helps maintain good customer relationships.",
+        answer: "Yes, according to our regulator (CA) , SMSs are only allowed between 8 AM-6 PM",
       },
       {
         question: "What is the Maximum number of customers that I can send an SMS to in a day?",
-        answer: "There is no daily sending limit on our platform. However, if you're planning to send to very large volumes (over 100,000 recipients per day), please contact our sales team to ensure optimal delivery rates and to discuss any volume-based pricing benefits.",
+        answer: "Between 8-6 pm the tool can accommodate sending 6 million SMSs.",
       },
       {
         question: "How safe is my client contact list?",
-        answer: "Your contact data is completely secure. We use bank-level encryption (256-bit SSL) to protect all data in transit and at rest. We never share, sell, or use your contact lists for any purpose other than delivering your SMS messages. Our platform is fully GDPR and data protection compliant.",
+        answer: "Your client details are completely safe with us. We ensure we are compliant with the data protection Act.",
       },
     ],
   },

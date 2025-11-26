@@ -63,15 +63,101 @@ const WHO = () => {
           </h2>
 
           {/* Intro Text */}
-          <p className="text-lg md:text-xl text-muted-foreground mb-4 leading-relaxed max-w-3xl mx-auto">
-            Finserve was born out of a deep desire to break financial barriers. We simplify complex financial and lifestyle challenges through data-driven insights, building products that create rich customer experiences.
-          </p>
-          <p className="text-lg md:text-xl text-muted-foreground mb-4 leading-relaxed max-w-3xl mx-auto">
-            Our commitment is to deliver relevant, consumer-focused fintech solutions that empower businesses and individuals across Africa.
-          </p>
-          <p className="text-lg md:text-xl text-muted-foreground mb-12 leading-relaxed max-w-3xl mx-auto">
-            With our solutions, businesses can access secure payment APIs, scalable gateways, and data insights that enhance financial inclusion and operational efficiency. Our mission is to empower growth through technology-driven financial services.
-          </p>
+                  <div className="max-w-4xl mx-auto mt-10 space-y-10 mb-16">
+
+            {/* === Our Foundation === */}
+            <div className="flex items-start gap-6">
+              <div className="text-primary">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="w-8 h-8"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M13.19 8.688 7.5 3 3 7.5l5.688 5.688M10.81 15.313 16.5 21l4.5-4.5-5.688-5.687M8.25 10.5l7.5 7.5"
+                  />
+                </svg>
+              </div>
+
+              <div className="flex-1">
+                <h3 className="text-xl font-bold text-foreground mb-1">Our Foundation</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  Finserve was born out of a deep desire to remove financial barriers.
+                  We simplify complex financial and data-driven insights, enabling rich,
+                  modern customer experiences.
+                </p>
+              </div>
+            </div>
+
+            <hr className="border-gray-300" />
+
+            {/* === Our Commitment === */}
+            <div className="flex items-start gap-6">
+              <div className="text-primary">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="w-8 h-8"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M9.75 3 8.25 5.25 3 6l3.75 3-.75 4.5L9.75 12l3 1.5L12 9l3.75-3L12 5.25 9.75 3zM18 15.75l-1.5 2.25L15 21l2.25-.75L18 18l.75 2.25L21 21l-1.5-3L21 15.75l-2.25.75L18 15.75z"
+                  />
+                </svg>
+              </div>
+
+              <div className="flex-1">
+                <h3 className="text-xl font-bold text-foreground mb-1">Our Commitment</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  Our commitment is to deliver relevant, consumer-focused fintech
+                  solutions that empower businesses across Africa.
+                </p>
+              </div>
+            </div>
+
+            <hr className="border-gray-300" />
+
+            {/* === Our Mission === */}
+            <div className="flex items-start gap-6">
+              <div className="text-primary">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="w-8 h-8"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M12 19.5V4.5m0 0L7.5 9m4.5-4.5 4.5 4.5"
+                  />
+                </svg>
+              </div>
+
+              <div className="flex-1">
+                <h3 className="text-xl font-bold text-foreground mb-1">Our Mission</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  With our solutions, businesses access secure payment APIs, scalable
+                  gateways, and deep data insights that enhance inclusion and
+                  operational efficiency. Our mission is to drive growth through
+                  technology-enabled financial services.
+                </p>
+              </div>
+            </div>
+
+          </div>
+
 
           {/* Key Values Grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12 mb-16">
