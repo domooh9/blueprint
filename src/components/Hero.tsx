@@ -1,6 +1,7 @@
 // src/components/Hero.tsx
 import React from "react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import Particles from "react-tsparticles";
 import { loadFull } from "tsparticles";
@@ -85,13 +86,21 @@ export const Hero: React.FC = () => {
         {/* CTA buttons */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
           {/* Using generic classes — if your Button accepts `size` or `variant`, it will still work */}
+                
+<Link to="/products">
           <Button className="bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-md w-full sm:w-auto">
             Learn More <ArrowRight className="ml-2 inline-block" />
           </Button>
-
-          <Button className="border border-white text-white bg-transparent px-6 py-3 rounded-md w-full sm:w-auto hover:bg-white/10">
-            Contact Us
-          </Button>
+</Link>
+         <a 
+  href="https://finserve.custhelp.com/app/home" 
+  target="_blank" 
+  rel="noopener noreferrer"
+>
+  <Button className="border border-white text-white bg-transparent px-6 py-3 rounded-md w-full sm:w-auto hover:bg-white/10">
+    Contact Us
+  </Button>
+</a>
         </div>
 
         {/* small feature badges */}

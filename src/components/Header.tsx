@@ -67,11 +67,11 @@ export const Header = () => {
         <SheetContent side="right" className="w-full bg-primary border-none p-0">
 
           {/* Top Row: Logo + Close Button */}
-          <div className="flex items-center justify-between px-6 pt-6 pb-4 border-b border-white/20 bg-gradient-to-br from-primary/5 to-primary/10">
+          <div className="flex items-center justify-between px-6 pt-6 pb-4 border-b border-white/20 bg-black">
             <img
               src={logo}
               alt="Finserve"
-              className="h-10 p-1 bg-white rounded"
+              className="h-10 p-1 bg-black rounded"
             />
 
             <button
@@ -84,7 +84,7 @@ export const Header = () => {
           </div>
 
           {/* Mobile Menu Header */}
-          <div className="px-6 py-4 border-b border-white/20 text-white text-xl font-semibold bg-gradient-to-br from-primary/5 to-primary/10">
+          <div className="px-6 py-4 border-b border-white/20 text-white text-xl font-semibold bg-black">
             Menu
           </div>
 
