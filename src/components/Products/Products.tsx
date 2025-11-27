@@ -99,140 +99,146 @@ const products = [
 export const Products = () => {
   return (
     <section id="products" className="py-16 md:py-24 bg-muted">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="text-center mb-16 md:mb-20">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-3">
-            Our Products
-          </h2>
-          <div className="flex justify-center items-center mb-4">
-            <span className="w-24 h-1 bg-primary rounded-full"></span>
-          </div>
-          <p className="text-lg md:text-xl font-semibold text-primary mb-4">
-            Fintech solutions that drive innovation, security, and growth.
-          </p>
-          <p className="text-muted-foreground max-w-3xl mx-auto mb-8">
-            Explore our suite of products designed to make financial transactions seamless, secure, and scalable. Whether you're integrating payments, leveraging APIs, or accessing mobile gateways, our tools empower businesses to thrive in Africa's digital economy.
-          </p>
-          <div className="flex flex-col sm:flex-row justify-center gap-6 max-w-3xl mx-auto">
-            <div className="flex items-center gap-3 bg-card p-4 rounded-xl shadow hover:shadow-lg transition-shadow">
-              <Check className="h-6 w-6 text-primary flex-shrink-0" />
-              <span className="text-foreground font-medium">Secure & Compliant</span>
-            </div>
-            <div className="flex items-center gap-3 bg-card p-4 rounded-xl shadow hover:shadow-lg transition-shadow">
-              <Check className="h-6 w-6 text-primary flex-shrink-0" />
-              <span className="text-foreground font-medium">Fast & Reliable</span>
-            </div>
-            <div className="flex items-center gap-3 bg-card p-4 rounded-xl shadow hover:shadow-lg transition-shadow">
-              <Check className="h-6 w-6 text-primary flex-shrink-0" />
-              <span className="text-foreground font-medium">Scalable Solutions</span>
-            </div>
-          </div>
+  <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    {/* Section Header */}
+    <div className="text-center mb-16 md:mb-20">
+      <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-3">
+        Our Products
+      </h2>
+      <div className="flex justify-center items-center mb-4">
+        <span className="w-24 h-1 bg-primary rounded-full"></span>
+      </div>
+      <p className="text-lg md:text-xl font-semibold text-primary mb-4">
+        Fintech solutions that drive innovation, security, and growth.
+      </p>
+      <p className="text-muted-foreground max-w-3xl mx-auto mb-8">
+        Explore our suite of products designed to make financial transactions seamless,
+        secure, and scalable. Whether you're integrating payments, leveraging APIs,
+        or accessing mobile gateways, our tools empower businesses to thrive in Africa's
+        digital economy.
+      </p>
+      <div className="flex flex-col sm:flex-row justify-center gap-6 max-w-3xl mx-auto">
+        <div className="flex items-center gap-3 bg-card p-4 rounded-xl shadow hover:shadow-lg transition-shadow">
+          <Check className="h-6 w-6 text-primary flex-shrink-0" />
+          <span className="text-foreground font-medium">Secure & Compliant</span>
         </div>
-
-        {/* Product Cards */}
-        <div className="space-y-16 md:space-y-24">
-          {products.map((product, index) => (
-            <Card
-              key={product.id}
-              className="group hover:shadow-xl transition-all duration-300 border-border bg-card rounded-2xl overflow-hidden"
-            >
-              <CardContent className="p-0">
-                <div className="grid lg:grid-cols-2 gap-0">
-                  {/* Content Side */}
-                  <div className="p-8 md:p-12 lg:p-16 flex flex-col justify-center order-2 lg:order-1">
-                    <div className="mb-6">
-                      <img
-                        src={product.image}
-                        alt={product.name}
-                        className="h-12 md:h-16 w-auto object-contain mb-6"
-                      />
-                      <h3 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-                        {product.tagline}
-                      </h3>
-                      <p className="text-muted-foreground text-base md:text-lg leading-relaxed">
-                        {product.description}
-                      </p>
-                    </div>
-
-                    {/* Features */}
-                    <div className="space-y-4 mb-8">
-                      {typeof product.features[0] === "string" ? (
-                        product.features.map((feature, idx) => (
-                          <div key={idx} className="flex items-start gap-3">
-                            <Check className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                            <span className="text-foreground text-sm md:text-base">{feature}</span>
-                          </div>
-                        ))
-                      ) : (
-                        <div className="space-y-6">
-                          {product.features.map((feature, idx) => (
-                            <div key={idx} className="border-l-2 border-primary pl-4">
-                              <h4 className="font-semibold text-foreground mb-2">{feature.title}</h4>
-                              <p className="text-sm text-muted-foreground mb-2">{feature.desc}</p>
-                              <p className="text-xs text-muted-foreground italic">{feature.services}</p>
-                            </div>
-                          ))}
-                        </div>
-                      )}
-                    </div>
-
-                    {/* Highlight */}
-                    {product.highlight && (
-                      <div className="mb-8 p-6 bg-primary/5 border-l-4 border-primary rounded-r">
-                        <p className="text-sm md:text-base text-foreground italic leading-relaxed">
-                          "{product.highlight}"
-                        </p>
-                      </div>
-                    )}
-
-                    {/* CTA */}
-                    <div className="text-center lg:text-left">
-                      <a
-                        href={product.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-block px-6 py-2 rounded-full bg-primary text-white font-semibold hover:bg-primary/90 shadow-md hover:shadow-lg transition-all duration-300"
-                      >
-                        {product.cta} →
-                      </a>
-                    </div>
-                  </div>
-
-                  {/* Visual Side */}
-                  <div
-                    className={`p-6 md:p-8 lg:p-10 flex items-center justify-center min-h-[300px] lg:min-h-[400px] order-1 lg:order-2 ${
-                      product.id === "equitel"
-                        ? "bg-gradient-to-br from-[#f69220] via-[#a84c0e]/70 to-[#f69220]/30"
-                        : "bg-gradient-to-br from-primary/10 via-primary/5 to-muted"
-                    }`}
-                  >
-                    <div className="relative w-full max-w-md">
-                      <div className="absolute -top-4 -right-4 w-32 h-32 rounded-lg rotate-12"
-                        style={{
-                          backgroundColor: product.id === "equitel" ? "#f69220" : "rgba(59,130,246,0.2)"
-                        }}></div>
-                      <div className="absolute -bottom-4 -left-4 w-24 h-24 rounded-lg -rotate-12"
-                        style={{
-                          backgroundColor: product.id === "equitel" ? "#a84c0e" : "rgba(59,130,246,0.1)"
-                        }}></div>
-
-                      <div className="relative bg-background/80 backdrop-blur-sm rounded-2xl p-6 md:p-8 shadow-xl">
-                        <img
-                          src={product.image}
-                          alt={product.name}
-                          className="w-full h-auto object-contain opacity-90"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
+        <div className="flex items-center gap-3 bg-card p-4 rounded-xl shadow hover:shadow-lg transition-shadow">
+          <Check className="h-6 w-6 text-primary flex-shrink-0" />
+          <span className="text-foreground font-medium">Fast & Reliable</span>
+        </div>
+        <div className="flex items-center gap-3 bg-card p-4 rounded-xl shadow hover:shadow-lg transition-shadow">
+          <Check className="h-6 w-6 text-primary flex-shrink-0" />
+          <span className="text-foreground font-medium">Scalable Solutions</span>
         </div>
       </div>
-    </section>
+    </div>
+
+    {/* Product Cards */}
+    <div className="space-y-16 md:space-y-24">
+      {products.map((product, index) => (
+        <Card
+          key={product.id}
+          className="group hover:shadow-xl transition-all duration-300 border-border bg-card rounded-2xl overflow-hidden"
+        >
+          <CardContent className="p-0">
+            <div className="grid lg:grid-cols-2 gap-0">
+              {/* Content Side */}
+              <div className="p-8 md:p-12 lg:p-16 flex flex-col justify-center order-2 lg:order-1">
+                <div className="mb-6">
+                  <img
+                    src={product.image}
+                    alt={product.name}
+                    className="h-12 md:h-16 w-auto object-contain mb-6"
+                  />
+                  <h3 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+                    {product.tagline}
+                  </h3>
+                  <p className="text-muted-foreground text-base md:text-lg leading-relaxed">
+                    {product.description}
+                  </p>
+                </div>
+
+                {/* Features */}
+                <div className="space-y-4 mb-8">
+                  {typeof product.features[0] === "string" ? (
+                    product.features.map((feature, idx) => (
+                      <div key={idx} className="flex items-start gap-3">
+                        <Check className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                        <span className="text-foreground text-sm md:text-base">
+                          {feature}
+                        </span>
+                      </div>
+                    ))
+                  ) : (
+                    <div className="space-y-6">
+                      {product.features.map((feature, idx) => (
+                        <div key={idx} className="border-l-2 border-primary pl-4">
+                          <h4 className="font-semibold text-foreground mb-2">
+                            {feature.title}
+                          </h4>
+                          <p className="text-sm text-muted-foreground mb-2">
+                            {feature.desc}
+                          </p>
+                          <p className="text-xs text-muted-foreground italic">
+                            {feature.services}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+
+                {/* Highlight */}
+                {product.highlight && (
+                  <div className="mb-8 p-6 bg-primary/5 border-l-4 border-primary rounded-r">
+                    <p className="text-sm md:text-base text-foreground italic leading-relaxed">
+                      "{product.highlight}"
+                    </p>
+                  </div>
+                )}
+
+                {/* CTA */}
+                <div className="text-center lg:text-left">
+                  <a
+                    href={product.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block px-6 py-2 rounded-full bg-primary text-white font-semibold hover:bg-primary/90 shadow-md hover:shadow-lg transition-all duration-300"
+                  >
+                    {product.cta} →
+                  </a>
+                </div>
+              </div>
+
+              {/* Visual Side — CHANGED TO PRIMARY BACKGROUND */}
+              <div
+                className="p-6 md:p-8 lg:p-10 flex items-center justify-center min-h-[300px] lg:min-h-[400px] order-1 lg:order-2 bg-primary"
+              >
+                <div className="relative w-full max-w-md">
+                  <div
+                    className="absolute -top-4 -right-4 w-32 h-32 rounded-lg rotate-12 bg-primary/70"
+                  ></div>
+                  <div
+                    className="absolute -bottom-4 -left-4 w-24 h-24 rounded-lg -rotate-12 bg-primary/50"
+                  ></div>
+
+                  <div className="relative bg-background/80 backdrop-blur-sm rounded-2xl p-6 md:p-8 shadow-xl">
+                    <img
+                      src={product.image}
+                      alt={product.name}
+                      className="w-full h-auto object-contain opacity-90"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      ))}
+    </div>
+  </div>
+</section>
+
   );
 };
 

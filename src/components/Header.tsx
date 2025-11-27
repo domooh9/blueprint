@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
-import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet";
+import { Sheet, SheetContent } from "@/components/ui/sheet";
 import logo from "@/assets/finserve-logo.png";
 
 const menuItems = [
@@ -9,18 +9,17 @@ const menuItems = [
   { label: "Who we are", href: "/who-we-are" },
   { label: "Our products", href: "/products" },
   { label: "Meet the Board", href: "/boardmembers" },
-  // { label: "What we do", href: "/whatwedo" },
   { label: "FAQ's", href: "/faq" },
   { label: "Privacy", href: "/privacy" },
+  { label: "Media Centre", href: "/media-centre" },
   { label: "Launch Livestream", href: "/livestream" },
 ];
 
 export const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const location = useLocation(); // Get current path
+  const location = useLocation();
 
   const isActive = (href: string) => {
-    // Check if the link is active (for external # links, always false)
     if (!href.startsWith("/")) return false;
     return location.pathname === href;
   };
@@ -31,41 +30,28 @@ export const Header = () => {
         <div className="flex items-center justify-between h-16 md:h-20">
 
           {/* Logo */}
-          <div className="flex-shrink-0">
-            <Link to="/">
-              <img src={logo} alt="Finserve Africa" className="h-10 md:h-12 w-auto" />
-            </Link>
-          </div>
+          <Link to="/" className="flex-shrink-0">
+            <img src={logo} alt="Finserve Africa" className="h-10 md:h-12 w-auto" />
+          </Link>
 
           {/* Desktop Menu */}
           <nav className="hidden lg:flex gap-10">
             {menuItems.map((item) => (
-              item.href.startsWith("/") ? (
-                <Link
-                  key={item.label}
-                  to={item.href}
-                  className={`
-                    group relative font-medium tracking-wide py-2
-                    transition-colors duration-300 ease-in-out
-                    hover:text-primary
-                    ${isActive(item.href) ? "text-primary" : "text-gray-900"}
-                  `}
-                >
-                  {item.label}
-                </Link>
-              ) : (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  className="group relative text-gray-900 font-medium tracking-wide py-2 transition-colors duration-300 hover:text-primary"
-                >
-                  {item.label}
-                </a>
-              )
+              <Link
+                key={item.label}
+                to={item.href}
+                className={`
+                  group relative font-medium tracking-wide py-2 transition-colors duration-300
+                  hover:text-primary
+                  ${isActive(item.href) ? "text-primary" : "text-gray-900"}
+                `}
+              >
+                {item.label}
+              </Link>
             ))}
           </nav>
 
-          {/* Mobile Hamburger */}
+          {/* Mobile Menu Button */}
           <button
             className="p-3 bg-menu-button rounded-lg lg:hidden"
             onClick={() => setMobileMenuOpen(true)}
@@ -76,45 +62,53 @@ export const Header = () => {
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Slide-In Menu */}
       <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
         <SheetContent side="right" className="w-full bg-primary border-none p-0">
-          <SheetHeader className="px-6 pt-6 pb-4 border-b border-primary-foreground/20">
-            <div className="flex items-center justify-between">
-              <SheetTitle className="text-2xl font-bold text-primary-foreground">Menu</SheetTitle>
-              <button
-                onClick={() => setMobileMenuOpen(false)}
-                className="p-2 bg-primary-hover rounded-lg"
-                aria-label="Close menu"
-              >
-                <X size={24} className="text-primary-foreground" />
-              </button>
-            </div>
-          </SheetHeader>
 
+          {/* Top Row: Logo + Close Button */}
+          <div className="flex items-center justify-between px-6 pt-6 pb-4 border-b border-white/20 bg-gradient-to-br from-primary/5 to-primary/10">
+            <img
+              src={logo}
+              alt="Finserve"
+              className="h-10 p-1 bg-white rounded"
+            />
+
+            <button
+              onClick={() => setMobileMenuOpen(false)}
+              className="p-2 bg-primary-hover rounded-lg"
+              aria-label="Close menu"
+            >
+              <X size={26} className="text-white" />
+            </button>
+          </div>
+
+          {/* Mobile Menu Header */}
+          <div className="px-6 py-4 border-b border-white/20 text-white text-xl font-semibold bg-gradient-to-br from-primary/5 to-primary/10">
+            Menu
+          </div>
+
+          {/* Mobile Nav Items */}
           <nav className="flex flex-col px-6 py-6 gap-1">
             {menuItems.map((item) => (
-              item.href.startsWith("/") ? (
-                <Link
-                  key={item.label}
-                  to={item.href}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className={`text-lg font-medium py-3 transition-colors duration-300 ${isActive(item.href) ? "text-primary" : "text-primary-foreground hover:text-white"}`}
-                >
-                  {item.label}
-                </Link>
-              ) : (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="text-lg font-medium py-3 text-primary-foreground hover:text-white transition-colors duration-300"
-                >
-                  {item.label}
-                </a>
-              )
+              <Link
+                key={item.label}
+                to={item.href}
+                onClick={() => setMobileMenuOpen(false)}
+                className={`
+                  text-lg font-medium py-3 transition-all duration-300
+                  ${
+                    isActive(item.href)
+                      ? "text-white font-semibold"
+                      : "text-primary-foreground hover:text-white"
+                  }
+                `}
+              >
+                {item.label}
+              </Link>
             ))}
           </nav>
+
         </SheetContent>
       </Sheet>
     </header>

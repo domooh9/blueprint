@@ -14,6 +14,7 @@ import BoardMembers from "./components/Boardmembers/Board";
 import Privacy from "./components/Privacy/Privacy"
 import Faq from "./components/FAQ/Faq";
 import Livestream from "./components/Livestream/Livestream";
+import Media from "./components/Media-centre/Media"
 
 const queryClient = new QueryClient();
 
@@ -33,6 +34,7 @@ const App = () => (
             <Route path="/boardmembers" element={<BoardMembers />} />
              <Route path="/privacy" element={<Privacy />} />
              <Route path="/faq" element={<Faq />} />
+             <Route path="/media-centre" element={<Media />} />
              <Route path="/livestream" element={<Livestream />} />
              
           </Route>

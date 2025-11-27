@@ -20,7 +20,7 @@ const policies = [
 
 const Privacy = () => {
   return (
-    <section className="relative min-h-screen bg-gradient-to-b from-background to-muted overflow-hidden py-24">
+    <section className="font-sans relative min-h-screen bg-gradient-to-b from-background to-muted overflow-hidden py-24">
       
       {/* Decorative Network Background */}
       <div className="absolute inset-0 opacity-10 pointer-events-none">
@@ -45,7 +45,7 @@ const Privacy = () => {
 
       <div className="container mx-auto px-6 lg:px-12 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
-          
+
           {/* Section Title */}
           <h2 className="text-5xl md:text-6xl font-extrabold text-primary mb-6 md:mb-10">
             Legal & Privacy
@@ -80,6 +80,7 @@ const Privacy = () => {
               </a>
             ))}
           </div>
+
         </div>
       </div>
     </section>
