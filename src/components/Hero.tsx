@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import Particles from "react-tsparticles";
 import { loadFull } from "tsparticles";
-import imageb from "@/assets/imageb.jpeg"; // ensure this path and filename are correct
+import imageb from "@/assets/imagedd.png"; 
 
 export const Hero: React.FC = () => {
   const particlesInit = async (main: unknown) => {

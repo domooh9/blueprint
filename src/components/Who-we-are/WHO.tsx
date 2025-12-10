@@ -1,5 +1,6 @@
 import { Handshake, Shield, Lightbulb, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import backgroundI from "@/assets/backgroundI.png"; // <-- Background image
 
 const values = [
   {
@@ -28,7 +29,10 @@ const values = [
 
 const WHO = () => {
   return (
-    <section className="relative py-24 md:py-32 bg-gradient-to-b from-background to-muted overflow-hidden">
+    <section
+      className="relative py-24 md:py-32 overflow-hidden bg-cover bg-center"
+      style={{ backgroundImage: `url(${backgroundI})` }} // <-- Set background image
+    >
       {/* Decorative Network Background */}
       <div className="absolute -left-24 top-0 w-96 opacity-10 pointer-events-none">
         <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
@@ -56,14 +60,13 @@ const WHO = () => {
 
       <div className="container mx-auto px-6 lg:px-12 relative z-10">
         <div className="max-w-6xl mx-auto text-center">
-
           {/* Section Header */}
           <h2 className="text-4xl md:text-5xl font-extrabold text-foreground mb-6 relative inline-block">
             Who <span className="border-b-4 border-primary pb-2 transition-all duration-300 hover:scale-x-105 inline-block">We</span> Are
           </h2>
 
           {/* Intro Text */}
-                  <div className="max-w-4xl mx-auto mt-10 space-y-10 mb-16">
+          <div className="max-w-4xl mx-auto mt-10 space-y-10 mb-16">
 
             {/* === Our Foundation === */}
             <div className="flex items-start gap-6">
@@ -74,7 +77,7 @@ const WHO = () => {
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
-                  strokeWidth="1.5"
+                  strokeWidth={1.5}
                 >
                   <path
                     strokeLinecap="round"
@@ -105,7 +108,7 @@ const WHO = () => {
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
-                  strokeWidth="1.5"
+                  strokeWidth={1.5}
                 >
                   <path
                     strokeLinecap="round"
@@ -135,7 +138,7 @@ const WHO = () => {
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
-                  strokeWidth="1.5"
+                  strokeWidth={1.5}
                 >
                   <path
                     strokeLinecap="round"
@@ -157,7 +160,6 @@ const WHO = () => {
             </div>
 
           </div>
-
 
           {/* Key Values Grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12 mb-16">
