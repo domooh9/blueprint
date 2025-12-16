@@ -155,10 +155,11 @@
 import { ArrowRight } from "lucide-react";
 
 import jengaApi from "@/assets/jenga-apii.png"; 
-import jengaPayment from "@/assets/jenga-payment.png";
+import jengaPayment from "@/assets/JengaPaymentii.png";
 import equitelGateway from "@/assets/equitel-gatewaay.png";
 import Iiso from "@/assets/Iiso.png";
 import imageF from "@/assets/imageF.png";
+
 
 const products = [
   {
@@ -285,7 +286,9 @@ export const Products = () => {
           })}
           
         </div>
+        
       </div>
+      
     </section>
   );
 };

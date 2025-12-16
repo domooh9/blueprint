@@ -1,241 +1,562 @@
-import { Handshake, Shield, Lightbulb, ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import backgroundI from "@/assets/backgroundI.png"; // <-- Background image
+import { Users, Shield, Lightbulb, Eye, Target, Globe } from "lucide-react";
+import whoB from "@/assets/whoB.png";
+import { motion, type Variants } from "framer-motion";
 
-const values = [
-  {
-    icon: Handshake,
-    title: "Collaboration",
-    description:
-      "We believe in collective genius and embrace collaboration across technology firms, businesses, and organizations. Collaboration is not just about speeding our growth, but driving the industry forward.",
-  },
-  {
-    icon: Shield,
-    title: "Security",
-    description:
-      "As financial technology advances, security becomes critical. We implement the highest global standards to assure our clients of robust protection.",
-    certifications: [
-      { name: "ISO 20000", link: "https://www.iso.org/standard/70636.html" },
-      { name: "ISO 27001", link: "https://www.iso.org/standard/27001" },
-    ],
-  },
-  {
-    icon: Lightbulb,
-    title: "Innovation",
-    description:
-      "We provide innovations that inspire growth by combining deep knowledge of financial systems with wide-ranging tech expertise to deliver quality solutions for businesses and organizations.",
-  },
-];
+// Animation variants
+const fadeInUp: Variants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0 }
+};
+
+const fadeInLeft: Variants = {
+  hidden: { opacity: 0, x: -60 },
+  visible: { opacity: 1, x: 0 }
+};
+
+const fadeInRight: Variants = {
+  hidden: { opacity: 0, x: 60 },
+  visible: { opacity: 1, x: 0 }
+};
+
+const scaleIn: Variants = {
+  hidden: { opacity: 0, scale: 0.8 },
+  visible: { opacity: 1, scale: 1 }
+};
+
+const staggerContainer: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+      delayChildren: 0.1
+    }
+  }
+};
+
+const staggerItem: Variants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { 
+    opacity: 1, 
+    y: 0,
+    transition: { duration: 0.5 }
+  }
+};
 
 const WHO = () => {
   return (
+    <div className="min-h-screen flex flex-col overflow-hidden">
+   
+      {/* Hero Section - About Finserve */}
     <section
-      className="relative py-24 md:py-32 overflow-hidden bg-cover bg-center"
-      style={{ backgroundImage: `url(${backgroundI})` }} // <-- Set background image
+  className="relative min-h-screen bg-cover bg-center bg-no-repeat flex items-center"
+  style={{ backgroundImage: `url(${whoB})` }}
+>
+  {/* Optional overlay for readability */}
+  <div className="absolute inset-0 "></div>
+
+  <div className="container mx-auto px-6 lg:px-12 relative z-10">
+    {/* Single-column content */}
+    <motion.div 
+      className="max-w-3xl space-y-6"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.3 }}
+      variants={staggerContainer}
     >
-      {/* Decorative Network Background */}
-      <div className="absolute -left-24 top-0 w-96 opacity-10 pointer-events-none">
-        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <pattern
-              id="network"
-              x="0"
-              y="0"
-              width="150"
-              height="150"
-              patternUnits="userSpaceOnUse"
+      <motion.p 
+        className="text-gray-700 leading-relaxed"
+        variants={fadeInLeft}
+        transition={{ duration: 0.6 }}
+      >
+        <span className="text-[#EB2240] font-semibold">Finserve Africa Ltd</span> is a wholly owned subsidiary of Equity Group Holdings Plc that specializes in developing innovative fintech solutions for individuals as well as businesses of all sizes. Incorporated in December 2008, Finserve's primary mandate was to digitize Equity Group's operations in order to provide unparalleled convenience to its customers and ecosystems.
+      </motion.p>
+
+      <motion.p 
+        className="text-gray-700 leading-relaxed"
+        variants={fadeInLeft}
+        transition={{ duration: 0.6, delay: 0.2 }}
+      >
+        Following the successful launch of its first product offering into the Market dubbed Equitel in 2014, a bold decision was made in 2018 to officially launch Finserve as an independent brand to address the complex financial and lifestyle obstacles, hampering the customer's quest for freedom, choice and control in the digital space.
+      </motion.p>
+
+      <motion.p 
+        className="text-gray-700 leading-relaxed"
+        variants={fadeInLeft}
+        transition={{ duration: 0.6, delay: 0.4 }}
+      >
+        Over the years, Finserve has since been employing a data and insight driven culture, to build products that contribute to the ease of doing business. We have worked with a wide range of clients across a variety of industries, from small startups to multinational corporations. Our focus on innovation, quality, and customer satisfaction has earned us a reputation as a trusted partner in the technology industry.
+      </motion.p>
+    </motion.div>
+  </div>
+</section>
+
+
+      {/* Why Us Section - Red Background */}
+      <section className="bg-[#EB2240] py-16 lg:py-24 overflow-hidden">
+        <div className="container mx-auto px-6 lg:px-12">
+          {/* Header */}
+          <motion.div 
+            className="mb-12"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+          >
+            <motion.h2 
+              className="text-white text-4xl lg:text-5xl font-bold mb-2"
+              variants={fadeInUp}
+              transition={{ duration: 0.6 }}
             >
-              <circle cx="20" cy="20" r="4" fill="currentColor" className="text-muted-foreground" />
-              <circle cx="75" cy="45" r="4" fill="currentColor" className="text-muted-foreground" />
-              <circle cx="45" cy="90" r="4" fill="currentColor" className="text-muted-foreground" />
-              <circle cx="105" cy="105" r="4" fill="currentColor" className="text-muted-foreground" />
-              <line x1="20" y1="20" x2="75" y2="45" stroke="currentColor" strokeWidth="1" className="text-muted-foreground"/>
-              <line x1="75" y1="45" x2="105" y2="105" stroke="currentColor" strokeWidth="1" className="text-muted-foreground"/>
-              <line x1="45" y1="90" x2="105" y2="105" stroke="currentColor" strokeWidth="1" className="text-muted-foreground"/>
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#network)" />
-        </svg>
-      </div>
+              Why Us
+              <motion.span 
+                className="block w-20 h-1 bg-white mt-3"
+                initial={{ width: 0 }}
+                whileInView={{ width: 80 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.3 }}
+              />
+            </motion.h2>
+            <motion.p 
+              className="text-white/90 mt-6 max-w-3xl leading-relaxed"
+              variants={fadeInUp}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              We inspire growth by connecting today's potential with tomorrow's innovative opportunities. We do this by offering cutting-edge solutions that enrich lives and businesses, through:
+            </motion.p>
+          </motion.div>
 
-      <div className="container mx-auto px-6 lg:px-12 relative z-10">
-        <div className="max-w-6xl mx-auto text-center">
-          {/* Section Header */}
-          <h2 className="text-4xl md:text-5xl font-extrabold text-foreground mb-6 relative inline-block">
-            Who <span className="border-b-4 border-primary pb-2 transition-all duration-300 hover:scale-x-105 inline-block">We</span> Are
-          </h2>
-
-          {/* Intro Text */}
-          <div className="max-w-4xl mx-auto mt-10 space-y-10 mb-16">
-
-            {/* === Our Foundation === */}
-            <div className="flex items-start gap-6">
-              <div className="text-primary">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="w-8 h-8"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={1.5}
+          {/* Three Pillars */}
+          <motion.div 
+            className="grid md:grid-cols-3 gap-8 lg:gap-12"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            variants={staggerContainer}
+          >
+            {/* Collaboration */}
+            <motion.div 
+              className="text-white"
+              variants={staggerItem}
+              whileHover={{ y: -8, transition: { type: "spring", stiffness: 300 } }}
+            >
+              <div className="flex items-center gap-3 mb-4">
+                <motion.div 
+                  className="w-16 h-16 rounded-full border-2 border-white/50 flex items-center justify-center"
+                  whileHover={{ scale: 1.1, rotate: 5, transition: { type: "spring", stiffness: 300 } }}
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M13.19 8.688 7.5 3 3 7.5l5.688 5.688M10.81 15.313 16.5 21l4.5-4.5-5.688-5.687M8.25 10.5l7.5 7.5"
-                  />
-                </svg>
+                  <Users className="w-8 h-8" />
+                </motion.div>
               </div>
+              <h3 className="text-2xl font-semibold mb-4">
+                Collaboration<span className="text-white">.</span>
+              </h3>
+              <p className="text-white/85 leading-relaxed text-sm">
+                We believe in collective genius and embrace the potential of collaboration across technology firms, businesses and organizations, not just as a measure of speeding up our own growth, but that of the industry.
+              </p>
+            </motion.div>
 
-              <div className="flex-1">
-                <h3 className="text-xl font-bold text-foreground mb-1">Our Foundation</h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  Finserve was born out of a deep desire to remove financial barriers.
-                  We simplify complex financial and data-driven insights, enabling rich,
-                  modern customer experiences.
-                </p>
-              </div>
-            </div>
-
-            <hr className="border-gray-300" />
-
-            {/* === Our Commitment === */}
-            <div className="flex items-start gap-6">
-              <div className="text-primary">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="w-8 h-8"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={1.5}
+            {/* Security */}
+            <motion.div 
+              className="text-white"
+              variants={staggerItem}
+              whileHover={{ y: -8, transition: { type: "spring", stiffness: 300 } }}
+            >
+              <div className="flex items-center gap-3 mb-4">
+                <motion.div 
+                  className="w-16 h-16 rounded-full border-2 border-white/50 flex items-center justify-center"
+                  whileHover={{ scale: 1.1, rotate: 5, transition: { type: "spring", stiffness: 300 } }}
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M9.75 3 8.25 5.25 3 6l3.75 3-.75 4.5L9.75 12l3 1.5L12 9l3.75-3L12 5.25 9.75 3zM18 15.75l-1.5 2.25L15 21l2.25-.75L18 18l.75 2.25L21 21l-1.5-3L21 15.75l-2.25.75L18 15.75z"
-                  />
-                </svg>
+                  <Shield className="w-8 h-8" />
+                </motion.div>
               </div>
+              <h3 className="text-2xl font-semibold mb-4">
+                Security<span className="text-white">.</span>
+              </h3>
+              <p className="text-white/85 leading-relaxed text-sm">
+                As financial technology pushes the world into the future, security becomes an even greater concern and we have greater measures in order to assure our clientele of the highest global standards of security.
+              </p>
+            </motion.div>
 
-              <div className="flex-1">
-                <h3 className="text-xl font-bold text-foreground mb-1">Our Commitment</h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  Our commitment is to deliver relevant, consumer-focused fintech
-                  solutions that empower businesses across Africa.
-                </p>
-              </div>
-            </div>
-
-            <hr className="border-gray-300" />
-
-            {/* === Our Mission === */}
-            <div className="flex items-start gap-6">
-              <div className="text-primary">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="w-8 h-8"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={1.5}
+            {/* Innovation */}
+            <motion.div 
+              className="text-white"
+              variants={staggerItem}
+              whileHover={{ y: -8, transition: { type: "spring", stiffness: 300 } }}
+            >
+              <div className="flex items-center gap-3 mb-4">
+                <motion.div 
+                  className="w-16 h-16 rounded-full border-2 border-white/50 flex items-center justify-center"
+                  whileHover={{ scale: 1.1, rotate: 5, transition: { type: "spring", stiffness: 300 } }}
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M12 19.5V4.5m0 0L7.5 9m4.5-4.5 4.5 4.5"
-                  />
-                </svg>
+                  <Lightbulb className="w-8 h-8" />
+                </motion.div>
               </div>
+              <h3 className="text-2xl font-semibold mb-4">
+                Innovation<span className="text-white">.</span>
+              </h3>
+              <p className="text-white/85 leading-relaxed text-sm">
+                We provide innovations that inspire growth by combining our deep knowledge of financial systems and wide-ranging technology experience to deliver quality solutions for businesses and organizations.
+              </p>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
 
-              <div className="flex-1">
-                <h3 className="text-xl font-bold text-foreground mb-1">Our Mission</h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  With our solutions, businesses access secure payment APIs, scalable
-                  gateways, and deep data insights that enhance inclusion and
-                  operational efficiency. Our mission is to drive growth through
-                  technology-enabled financial services.
-                </p>
-              </div>
-            </div>
+      {/* Our Philosophies Section - White Background */}
+      <section className="bg-white py-16 lg:py-24 overflow-hidden">
+        <div className="container mx-auto px-6 lg:px-12">
+          {/* Header */}
+          <motion.div 
+            className="mb-16"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+          >
+            <motion.h2 
+              className="text-4xl lg:text-5xl font-bold"
+              variants={fadeInRight}
+              transition={{ duration: 0.6 }}
+            >
+              <span className="text-[#EB2240]">Our</span>
+              <br />
+              <span className="text-gray-800">Philosophies</span>
+            </motion.h2>
+          </motion.div>
 
-          </div>
+          {/* Three Philosophies */}
+          <motion.div 
+            className="grid md:grid-cols-3 gap-8 lg:gap-16"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            variants={staggerContainer}
+          >
+            {/* Vision */}
+            <motion.div 
+              className="text-center"
+              variants={staggerItem}
+              whileHover={{ y: -8, transition: { type: "spring", stiffness: 300 } }}
+            >
+              <motion.div 
+                className="w-20 h-20 mx-auto mb-6 rounded-full bg-[#EB2240] flex items-center justify-center"
+                whileHover={{ scale: 1.15, rotate: 360 }}
+                transition={{ type: "spring", stiffness: 200, duration: 0.6 }}
+              >
+                <Eye className="w-10 h-10 text-white" />
+              </motion.div>
+              <h3 className="text-[#EB2240] text-xl font-semibold mb-4">
+                Vision<span className="text-[#EB2240]">.</span>
+              </h3>
+              <p className="text-gray-600 text-sm leading-relaxed">
+                To provide innovative solutions that inspire growth.
+              </p>
+            </motion.div>
 
-          {/* Key Values Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12 mb-16">
-            {values.map((value, idx) => {
-              const Icon = value.icon;
-              return (
-                <div
-                  key={idx}
-                  className="bg-white dark:bg-gray-800 rounded-2xl p-6 md:p-8 shadow-lg hover:shadow-2xl hover:scale-105 transition-transform transition-shadow duration-300 group relative overflow-hidden"
+            {/* Mission */}
+            <motion.div 
+              className="text-center"
+              variants={staggerItem}
+              whileHover={{ y: -8, transition: { type: "spring", stiffness: 300 } }}
+            >
+              <motion.div 
+                className="w-20 h-20 mx-auto mb-6 rounded-full bg-[#EB2240] flex items-center justify-center"
+                whileHover={{ scale: 1.15, rotate: 360 }}
+                transition={{ type: "spring", stiffness: 200, duration: 0.6 }}
+              >
+                <Target className="w-10 h-10 text-white" />
+              </motion.div>
+              <h3 className="text-[#EB2240] text-xl font-semibold mb-4">
+                Mission<span className="text-[#EB2240]">.</span>
+              </h3>
+              <p className="text-gray-600 text-sm leading-relaxed">
+                To offer cutting-edge solutions that enrich lives and businesses, through collaboration and innovation.
+              </p>
+            </motion.div>
+
+            {/* Corporate Mission */}
+            <motion.div 
+              className="text-center"
+              variants={staggerItem}
+              whileHover={{ y: -8, transition: { type: "spring", stiffness: 300 } }}
+            >
+              <motion.div 
+                className="w-20 h-20 mx-auto mb-6 rounded-full bg-[#EB2240] flex items-center justify-center"
+                whileHover={{ scale: 1.15, rotate: 360 }}
+                transition={{ type: "spring", stiffness: 200, duration: 0.6 }}
+              >
+                <Globe className="w-10 h-10 text-white" />
+              </motion.div>
+              <h3 className="text-[#EB2240] text-xl font-semibold mb-4">
+                Corporate Mission<span className="text-[#EB2240]">.</span>
+              </h3>
+              <p className="text-gray-600 text-sm leading-relaxed">
+                We exist to inspire and prosper lives and businesses by connecting today's potential with tomorrow's innovative opportunities.
+              </p>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+       <section>
+        {/* Red Header Bar */}
+        <motion.div 
+          className="bg-[#EB2240] py-6 px-6 lg:px-12 flex items-center justify-between"
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
+          <motion.h2 
+            className="text-white text-2xl lg:text-3xl font-semibold"
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            Our Core Values
+          </motion.h2>
+          <motion.div 
+            className="flex items-center gap-2"
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            whileHover={{ scale: 1.05 }}
+          >
+            <svg viewBox="0 0 24 24" className="w-6 h-6 text-white" fill="currentColor">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+            </svg>
+            <span className="text-white font-bold text-lg">Finserve</span>
+          </motion.div>
+        </motion.div>
+
+        {/* Values Grid - White Background */}
+        <div className="bg-white py-16 lg:py-24">
+          <div className="container mx-auto px-6 lg:px-12">
+            <motion.div 
+              className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 lg:gap-6"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.1 }}
+              variants={staggerContainer}
+            >
+              
+              {/* Open Minded */}
+              <motion.div 
+                className="text-center"
+                variants={scaleIn}
+                transition={{ duration: 0.5 }}
+                whileHover={{ y: -8, transition: { type: "spring", stiffness: 300 } }}
+              >
+                <motion.h3 
+                  className="text-lg font-semibold italic text-gray-800 mb-6"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.1 }}
                 >
-                  {/* Accent Circle Animation */}
-                  <div className="absolute -top-8 -right-8 w-24 h-24 bg-primary/10 rounded-full animate-pulse-slow pointer-events-none"></div>
-
-                  <div className="flex items-center gap-4 mb-4 z-10 relative">
-                    <div className="p-3 bg-primary/20 rounded-full">
-                      <Icon className="w-7 h-7 text-primary" strokeWidth={1.5} />
-                    </div>
-                    <h3 className="text-xl md:text-2xl font-bold text-primary group-hover:text-secondary transition-colors duration-300">
-                      {value.title}
-                    </h3>
+                  Open minded
+                </motion.h3>
+                <motion.div 
+                  className="w-32 h-32 lg:w-40 lg:h-40 mx-auto mb-6 rounded-full border-4 border-[#EB2240] flex items-center justify-center bg-white overflow-hidden"
+                  whileHover={{ 
+                    scale: 1.08, 
+                    borderColor: "#c91d36",
+                    boxShadow: "0 10px 40px rgba(235, 34, 64, 0.3)"
+                  }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
+                  <div className="w-24 h-24 lg:w-32 lg:h-32 rounded-full bg-gradient-to-br from-teal-100 to-teal-200 flex items-center justify-center">
+                    <svg viewBox="0 0 64 64" className="w-20 h-20 lg:w-28 lg:h-28">
+                      <circle cx="32" cy="24" r="10" fill="#4A5568"/>
+                      <path d="M22 40 Q32 50 42 40 L42 56 L22 56 Z" fill="#319795"/>
+                      <circle cx="26" cy="16" r="2" fill="#F6E05E"/>
+                      <circle cx="38" cy="16" r="2" fill="#ED64A6"/>
+                      <circle cx="32" cy="10" r="2" fill="#48BB78"/>
+                      <path d="M28 14 L24 8 M36 14 L40 8 M32 12 L32 4" stroke="#9F7AEA" strokeWidth="1"/>
+                    </svg>
                   </div>
-                  <p className="text-sm md:text-base text-muted-foreground leading-relaxed mb-3 z-10 relative">
-                    {value.description}
-                  </p>
-                  {value.certifications && (
-                    <p className="text-sm text-muted-foreground z-10 relative">
-                      Certifications:{" "}
-                      {value.certifications.map((cert, index) => (
-                        <span key={index}>
-                          <a
-                            href={cert.link}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-accent hover:underline font-medium"
-                          >
-                            {cert.name}
-                          </a>
-                          {index < value.certifications.length - 1 && ", "}
-                        </span>
-                      ))}
-                    </p>
-                  )}
-                </div>
-              );
-            })}
-          </div>
+                </motion.div>
+                <p className="text-gray-600 text-sm leading-relaxed px-2">
+                  Being open minded to possibilities. To unlearn and relearn how technology works and how our customers interact with us
+                </p>
+              </motion.div>
 
-          {/* Additional Info & Features */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-            <div className="p-6 bg-card rounded-xl shadow hover:shadow-lg transition-shadow">
-              <h4 className="text-lg font-semibold text-primary mb-2">Our Approach</h4>
-              <p className="text-muted-foreground text-sm md:text-base">
-                We combine expertise in finance and technology with agile methodologies to ensure products are innovative, compliant, and impactful. Our client-first approach ensures measurable results and satisfaction.
-              </p>
-            </div>
-            <div className="p-6 bg-card rounded-xl shadow hover:shadow-lg transition-shadow">
-              <h4 className="text-lg font-semibold text-primary mb-2">Our Reach</h4>
-              <p className="text-muted-foreground text-sm md:text-base">
-                Serving businesses and consumers across Kenya and the broader African market, our solutions drive efficiency and accessibility in financial services.
-              </p>
-            </div>
-          </div>
+              {/* Collaboration */}
+              <motion.div 
+                className="text-center"
+                variants={scaleIn}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                whileHover={{ y: -8, transition: { type: "spring", stiffness: 300 } }}
+              >
+                <motion.h3 
+                  className="text-lg font-semibold italic text-gray-800 mb-6"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.2 }}
+                >
+                  Collaboration
+                </motion.h3>
+                <motion.div 
+                  className="w-32 h-32 lg:w-40 lg:h-40 mx-auto mb-6 rounded-full border-4 border-[#EB2240] flex items-center justify-center bg-white overflow-hidden"
+                  whileHover={{ 
+                    scale: 1.08, 
+                    borderColor: "#c91d36",
+                    boxShadow: "0 10px 40px rgba(235, 34, 64, 0.3)"
+                  }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
+                  <div className="w-24 h-24 lg:w-32 lg:h-32 rounded-full bg-white flex items-center justify-center">
+                    <svg viewBox="0 0 64 64" className="w-20 h-20 lg:w-28 lg:h-28">
+                      <circle cx="32" cy="20" r="6" fill="#3B82F6"/>
+                      <circle cx="20" cy="36" r="6" fill="#10B981"/>
+                      <circle cx="44" cy="36" r="6" fill="#F59E0B"/>
+                      <circle cx="26" cy="50" r="6" fill="#EF4444"/>
+                      <circle cx="38" cy="50" r="6" fill="#8B5CF6"/>
+                      <path d="M32 26 L20 30 M32 26 L44 30 M20 42 L26 44 M44 42 L38 44 M26 44 L38 44" stroke="#374151" strokeWidth="2"/>
+                    </svg>
+                  </div>
+                </motion.div>
+                <p className="text-gray-600 text-sm leading-relaxed px-2">
+                  Being open to partnerships externally and internally believing in the collective genius of the team
+                </p>
+              </motion.div>
 
-          {/* Call to Action */}
-          <div className="mt-12">
-            <Button
-              variant="outline"
-              className="text-primary border-primary hover:bg-primary hover:text-white font-medium transition-colors px-8 py-3"
-            >
-              Explore Our Services
-              <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-            </Button>
+              {/* Agile */}
+              <motion.div 
+                className="text-center"
+                variants={scaleIn}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                whileHover={{ y: -8, transition: { type: "spring", stiffness: 300 } }}
+              >
+                <motion.h3 
+                  className="text-lg font-semibold italic text-gray-800 mb-6"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.3 }}
+                >
+                  Agile
+                </motion.h3>
+                <motion.div 
+                  className="w-32 h-32 lg:w-40 lg:h-40 mx-auto mb-6 rounded-full border-4 border-[#EB2240] flex items-center justify-center bg-white overflow-hidden"
+                  whileHover={{ 
+                    scale: 1.08, 
+                    borderColor: "#c91d36",
+                    boxShadow: "0 10px 40px rgba(235, 34, 64, 0.3)"
+                  }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
+                  <div className="w-24 h-24 lg:w-32 lg:h-32 rounded-full bg-white flex items-center justify-center">
+                    <svg viewBox="0 0 64 64" className="w-20 h-20 lg:w-28 lg:h-28">
+                      <rect x="26" y="44" width="12" height="8" fill="#4A5568"/>
+                      <rect x="18" y="52" width="28" height="4" fill="#4A5568"/>
+                      <circle cx="32" cy="30" r="8" fill="#F5D0C5"/>
+                      <path d="M24 38 Q20 42 18 52" stroke="#319795" strokeWidth="3" fill="none"/>
+                      <path d="M40 38 Q50 30 52 24" stroke="#319795" strokeWidth="3" fill="none"/>
+                      <path d="M28 46 Q26 50 24 52" stroke="#F5D0C5" strokeWidth="2"/>
+                      <path d="M36 46 Q38 50 40 52" stroke="#F5D0C5" strokeWidth="2"/>
+                    </svg>
+                  </div>
+                </motion.div>
+                <p className="text-gray-600 text-sm leading-relaxed px-2">
+                  Reducing the friction between thought and action, getting things done
+                </p>
+              </motion.div>
+
+              {/* Daring */}
+              <motion.div 
+                className="text-center"
+                variants={scaleIn}
+                transition={{ duration: 0.5, delay: 0.3 }}
+                whileHover={{ y: -8, transition: { type: "spring", stiffness: 300 } }}
+              >
+                <motion.h3 
+                  className="text-lg font-semibold italic text-gray-800 mb-6"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.4 }}
+                >
+                  Daring
+                </motion.h3>
+                <motion.div 
+                  className="w-32 h-32 lg:w-40 lg:h-40 mx-auto mb-6 rounded-full border-4 border-[#EB2240] flex items-center justify-center bg-white overflow-hidden"
+                  whileHover={{ 
+                    scale: 1.08, 
+                    borderColor: "#c91d36",
+                    boxShadow: "0 10px 40px rgba(235, 34, 64, 0.3)"
+                  }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
+                  <div className="w-24 h-24 lg:w-32 lg:h-32 rounded-full bg-white flex items-center justify-center">
+                    <svg viewBox="0 0 64 64" className="w-20 h-20 lg:w-28 lg:h-28">
+                      <circle cx="32" cy="32" r="20" fill="url(#lionGradient)"/>
+                      <defs>
+                        <radialGradient id="lionGradient">
+                          <stop offset="0%" stopColor="#F59E0B"/>
+                          <stop offset="60%" stopColor="#D97706"/>
+                          <stop offset="100%" stopColor="#92400E"/>
+                        </radialGradient>
+                      </defs>
+                      <circle cx="26" cy="28" r="3" fill="#1F2937"/>
+                      <circle cx="38" cy="28" r="3" fill="#1F2937"/>
+                      <path d="M28 36 Q32 40 36 36" stroke="#1F2937" strokeWidth="2" fill="none"/>
+                      <path d="M20 20 Q16 12 12 16 M44 20 Q48 12 52 16" stroke="#F59E0B" strokeWidth="3"/>
+                    </svg>
+                  </div>
+                </motion.div>
+                <p className="text-gray-600 text-sm leading-relaxed px-2">
+                  Appreciating that disruption is uncomfortable, especially for ourselves
+                </p>
+              </motion.div>
+
+              {/* Trust */}
+              <motion.div 
+                className="text-center"
+                variants={scaleIn}
+                transition={{ duration: 0.5, delay: 0.4 }}
+                whileHover={{ y: -8, transition: { type: "spring", stiffness: 300 } }}
+              >
+                <motion.h3 
+                  className="text-lg font-semibold italic text-gray-800 mb-6"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.5 }}
+                >
+                  Trust
+                </motion.h3>
+                <motion.div 
+                  className="w-32 h-32 lg:w-40 lg:h-40 mx-auto mb-6 rounded-full border-4 border-[#EB2240] flex items-center justify-center bg-white overflow-hidden"
+                  whileHover={{ 
+                    scale: 1.08, 
+                    borderColor: "#c91d36",
+                    boxShadow: "0 10px 40px rgba(235, 34, 64, 0.3)"
+                  }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
+                  <div className="w-24 h-24 lg:w-32 lg:h-32 rounded-full bg-white flex items-center justify-center">
+                    <svg viewBox="0 0 64 64" className="w-20 h-20 lg:w-28 lg:h-28">
+                      <path d="M16 32 Q16 20 32 16 Q48 20 48 32 Q48 48 32 56 Q16 48 16 32" fill="#EF4444"/>
+                      <path d="M8 36 Q4 32 8 28 L16 32 L8 36" fill="#D2691E"/>
+                      <path d="M56 36 Q60 32 56 28 L48 32 L56 36" fill="#D2691E"/>
+                      <path d="M12 40 L8 52 Q10 54 12 52 L16 44" fill="#D2691E"/>
+                      <path d="M52 40 L56 52 Q54 54 52 52 L48 44" fill="#D2691E"/>
+                    </svg>
+                  </div>
+                </motion.div>
+                <p className="text-gray-600 text-sm leading-relaxed px-2">
+                  Most of all appreciating that trust is the most precious gem we own and cannot compromise on
+                </p>
+              </motion.div>
+
+            </motion.div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+ 
+    </div>
   );
 };
 

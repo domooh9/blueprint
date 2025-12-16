@@ -1,4 +1,3 @@
-import { Check } from "lucide-react";
 import { motion } from "framer-motion";
 import EquitelM from "@/assets/EquitelM.png";
 import equitelGateway from "@/assets/equitel-gatewaay.png";
@@ -12,8 +11,8 @@ const Equitel = () => {
     image: EquitelM,
     link: "https://equitel.com/",
     features: [
-      { title: "• Equitel is the fulfilment of the promise Equity Group has made to its members…”We will make Life Easier" },
-      { title: "• It is a mobile phone platform that brings Equity Group’s members and Kenyans FREEDOM, CHOICE and CONTROL by combining the best of telephony and banking services." },
+      "Equitel is the fulfilment of the promise Equity Group has made to its members…“We will make Life Easier”",
+      "It is a mobile phone platform that brings Equity Group’s members and Kenyans FREEDOM, CHOICE and CONTROL by combining the best of telephony and banking services."
     ],
   };
 
@@ -38,11 +37,12 @@ const Equitel = () => {
   return (
     <section className="relative w-full bg-[#f6f7f9] overflow-hidden py-16">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 w-full">
-          {/* Left Image with orange background */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 w-full gap-6">
+
+          {/* Left Image with Orange Background */}
           <motion.div
             className="lg:col-span-4 relative flex items-end justify-center w-full"
-            style={{ backgroundColor: "#F7931E", minHeight: "300px" }}
+            style={{ backgroundColor: "#F7931E", minHeight: "300px"  }}
             whileHover={{ scale: 1.03 }}
             transition={{ type: "spring", stiffness: 100 }}
           >
@@ -68,7 +68,7 @@ const Equitel = () => {
             transition={{ type: "spring", stiffness: 120, damping: 15 }}
           >
             <motion.h3
-              className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4"
+              className="text-3xl sm:text-4xl md:text-5xl mb-4"
               style={{ color: "#9a3820" }}
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -87,23 +87,36 @@ const Equitel = () => {
               {product.description}
             </motion.p>
 
+            {/* Features without bullets */}
             <div className="space-y-4 mb-6">
-              {product.features.map((feature, idx) => (
-                <motion.div
-                  key={idx}
-                  className="border-l-2 border-current pl-4"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.5 + idx * 0.2 }}
-                  whileHover={{ scale: 1.02 }}
-                >
-                  <h4 className="font-semibold mb-1 text-lg sm:text-xl">{feature.title}</h4>
-                </motion.div>
-              ))}
+              {product.features.map((feature, idx) => {
+                const parts = feature.split(/(FREEDOM, CHOICE and CONTROL)/g);
+                return (
+                  <motion.div
+                    key={idx}
+                    className=""
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.5 + idx * 0.2 }}
+                    whileHover={{ scale: 1.02 }}
+                  >
+                    <p className="text-black text-base sm:text-lg md:text-xl leading-relaxed">
+                      {parts.map((part, i) =>
+                        part === "FREEDOM, CHOICE and CONTROL" ? (
+                          <strong key={i}>{part}</strong>
+                        ) : (
+                          <span key={i}>{part}</span>
+                        )
+                      )}
+                    </p>
+                  </motion.div>
+                );
+              })}
             </div>
 
+            {/* CTA Button with extra spacing in mobile */}
             <motion.div
-              className="text-center lg:text-left mt-4"
+              className="text-center lg:text-left mt-6 sm:mt-8"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.5 }}
@@ -118,6 +131,7 @@ const Equitel = () => {
               </a>
             </motion.div>
 
+            {/* Animated Logo */}
             <motion.div
               className="absolute bottom-4 right-4 z-30"
               animate={{ y: [0, -10, 0] }}
@@ -149,8 +163,8 @@ const Equitel = () => {
           >
             <h3 className="font-bold text-lg mb-2">NB: We conserve the environment in that:</h3>
             <ul className="space-y-2 text-xs leading-relaxed">
-              <li>• We are the only Telco in Kenya without scratch cards.</li>
-              <li>• Have now launched eSims – No more printing of plastic simcards.</li>
+              <li>We are the only Telco in Kenya without scratch cards.</li>
+              <li>Have now launched eSims – No more printing of plastic simcards.</li>
             </ul>
           </motion.div>
 

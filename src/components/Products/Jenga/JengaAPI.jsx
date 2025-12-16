@@ -1,59 +1,211 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { Check } from "lucide-react";
-import jengaApi from "@/assets/jenga-apii.png";
+import JengaAPii from "@/assets/JengaAPii.png"; // robot/computer illustration
+import jengaLogo from "@/assets/jenga-apii.png"; // Jenga Logo (header)
+import { motion } from "framer-motion";
+import { Send, Smartphone, Wallet, UserCheck, Receipt } from "lucide-react";
+
+const services = [
+  {
+    title: "Send Money APIs.",
+    icon: Send,
+    bullets: [
+      "Send to Equity Bank.",
+      "Send to Other Banks.",
+      "PesaLink.",
+      "RTGS.",
+      "SWIFT.",
+      "Send to Mobile Wallets.",
+      "M-PESA.",
+      "Airtel money.",
+    ],
+  },
+  {
+    title: "Receive Money APIs.",
+    icon: Smartphone,
+    bullets: ["Get payment status.", "Buy airtime."],
+  },
+  {
+    title: "Accounts Services APIs",
+    icon: Wallet,
+    bullets: [
+      "Balance enquiry.",
+      "Mini statement.",
+      "Full statement.",
+      "Instant Payments Notifications.",
+    ],
+  },
+  {
+    title: "Know Your Customer (KYC APIs)",
+    icon: UserCheck,
+    bullets: ["IPRS look up."],
+  },
+  {
+    title: "Biller APIs",
+    icon: Receipt,
+    bullets: ["Access to any of our over 3,800 billers.", "Look up Paybills."],
+  },
+];
 
 const JengaAPI = () => {
   const product = {
     name: "JengaAPI",
-    tagline: "Financial APIs for Africa",
-    description: "Build and scale fintech solutions with secure, unified APIs.",
-    image: jengaApi,
-    link: "https://www.jengaapi.io/",
-    features: [
-      { title: "Payments", desc: "Accept cards, bank transfers & mobile money." },
-      { title: "Accounts", desc: "Real-time balances & statements." },
-      { title: "Transfers", desc: "Automate payouts & cross-border transfers." },
-      { title: "RegTech", desc: "Instant KYC, credit scoring, AML checks." },
-    ],
-    style: "bg-gradient-to-r from-purple-500 to-pink-500 text-white",
-    cta: "See JengaAPI",
+    image: JengaAPii,
+    paragraph:
+      "Jenga API is a business-to-business fintech solution that provides a robust and flexible platform for integrating with a wide range of systems and applications. With Jenga APIs, you can streamline your development processes and create innovative solutions that meet the needs of your customers.",
   };
 
   return (
-    <Card className={`group hover:shadow-xl transition-all duration-300 border-border rounded-2xl overflow-hidden ${product.style}`}>
-      <CardContent className="p-0">
-        <div className="grid lg:grid-cols-2 gap-0">
-          <div className="p-8 md:p-12 lg:p-16 flex flex-col justify-center order-2 lg:order-1">
-            <h3 className="text-3xl md:text-4xl font-bold mb-4">{product.tagline}</h3>
-            <p className="text-sm md:text-base mb-6">{product.description}</p>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.8 }}
+    >
+      <Card
+        className="group transition-all duration-300 border-border rounded-2xl overflow-hidden w-full"
+        style={{ backgroundColor: "#f6f7f9" }}
+      >
+        <CardContent className="p-0 relative">
+          {/* Logo section */}
+          <motion.div
+            className="px-10 pt-10 pb-4"
+            initial={{ y: -20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.6 }}
+          >
+            <img
+              src={jengaLogo}
+              alt="JengaAPI Logo"
+              className="w-[180px] md:w-[220px] object-contain"
+            />
+          </motion.div>
 
-            <div className="space-y-4 mb-8">
-              {product.features.map((feature, idx) => (
-                <div key={idx} className="border-l-2 border-current pl-4">
-                  <h4 className="font-semibold mb-1">{feature.title}</h4>
-                  <p className="text-sm">{feature.desc}</p>
-                </div>
-              ))}
-            </div>
-
-            <div className="text-center lg:text-left">
-              <a
-                href={product.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block px-6 py-2 rounded-full bg-white text-black font-semibold hover:bg-white/90 shadow-md hover:shadow-lg transition-all duration-300"
+          {/* Main Blue Content Card */}
+          <motion.div
+            initial={{ scale: 0.95, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.6 }}
+          >
+            <Card
+              className="rounded-xl relative overflow-visible shadow-none"
+              style={{ margin: "20px 60px 60px 60px" }}
+            >
+              <CardContent
+                className="p-10 md:p-16 lg:p-20"
+                style={{ backgroundColor: "#4277bb" }}
               >
-                {product.cta} →
-              </a>
+                <div className="grid lg:grid-cols-2 gap-10 items-center">
+                  {/* Text */}
+                  <motion.div
+                    className="text-white text-base md:text-lg leading-relaxed"
+                    initial={{ x: -20, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    transition={{ duration: 0.6 }}
+                  >
+                    {product.paragraph}
+                  </motion.div>
+
+                  {/* Illustration */}
+                  <motion.div
+                    className="relative flex justify-center items-start"
+                    initial={{ x: 20, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    transition={{ duration: 0.6 }}
+                  >
+                    <img
+                      src={product.image}
+                      alt={product.name}
+                      className="w-[85%] lg:w-[90%] object-contain relative -top-20"
+                    />
+                  </motion.div>
+                </div>
+              </CardContent>
+            </Card>
+          </motion.div>
+
+          {/* Services Section */}
+          <div className="w-full rounded-2xl py-16">
+            <div className="w-full p-10 md:p-16 lg:p-20">
+              {/* Top line */}
+              <div className="text-left mb-10">
+  <h1 className="text-3xl md:text-4xl text-blue-600"  style={{ color: "#4277bb" }}>
+    Jenga API
+  </h1>
+  <p className="text-xl md:text-2xl text-gray-800 mt-2">
+    Service Offering
+  </p>
+</div>
+              <div className="w-full flex justify-center mb-8">
+                <div className="w-[90%] h-[2px] bg-[#1f4e79] opacity-70"></div>
+              </div>
+
+              {/* Services Grid */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10 w-full px-6">
+                {services.map((item, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8, delay: index * 0.1 }}
+                    whileHover={{ scale: 1.05 }}
+                    className="flex flex-col items-center text-center text-white"
+                  >
+                    {/* Icon Box */}
+                    <motion.div
+                      className="relative"
+                      whileHover={{ rotate: 10 }}
+                      transition={{ type: "spring", stiffness: 300 }}
+                    >
+                      <div
+                        className="bg-[#5a8fd6] w-36 h-36 flex items-center justify-center rounded-md"
+                        style={{
+                          backgroundColor: "#4277bb",
+                          height: "100px",
+                          width: "100px",
+                          display: "flex",
+                          borderRadius: "16px",
+                        }}
+                      >
+                        <item.icon size={50} strokeWidth={1.5} className="text-white" />
+                      </div>
+
+                      {/* Arrow */}
+                      <div
+                        className="w-0 h-0 border-l-[28px] border-r-[28px] border-t-[22px]
+                         border-l-transparent border-r-transparent border-t-[#5a8fd6] mx-auto"
+                      />
+                    </motion.div>
+
+                    {/* Divider */}
+                    <div className="w-full my-4">
+                      <div className="h-32 border-l mx-auto border-white/40"></div>
+                    </div>
+
+                    {/* Title */}
+                    <h3
+                      className="font-semibold text-[#4277bb] text-lg mb-3"
+                      style={{ color: "#4277bb" }}
+                    >
+                      {item.title}
+                    </h3>
+
+                    {/* Bullets */}
+                    <ul
+                      className="text-sm text-white/90 text-left space-y-1"
+                      style={{ color: "black" }}
+                    >
+                      {item.bullets.map((b, i) => (
+                        <li key={i}>– {b}</li>
+                      ))}
+                    </ul>
+                  </motion.div>
+                ))}
+              </div>
             </div>
           </div>
-
-          <div className="p-6 md:p-8 lg:p-10 flex items-center justify-center min-h-[300px] lg:min-h-[400px] order-1 lg:order-2">
-            <img src={product.image} alt={product.name} className="w-full h-auto object-contain rounded-xl shadow-lg" />
-          </div>
-        </div>
-      </CardContent>
-    </Card>
+        </CardContent>
+      </Card>
+    </motion.div>
   );
 };
 
