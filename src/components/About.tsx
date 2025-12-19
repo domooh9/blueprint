@@ -1,5 +1,5 @@
 import React from "react";
-import imageb from "@/assets/imagec.png"; // background image
+import imageC from "@/assets/imageC.png"; // background image
 import { CheckCircle2, Trophy, Activity, Building2, ShieldCheck } from "lucide-react";
 
 const values = [
@@ -15,7 +15,7 @@ export const About = () => {
       id="about"
       className="relative py-20 md:py-28 overflow-hidden bg-cover bg-no-repeat"
       style={{
-        backgroundImage: `url(${imageb})`,
+        backgroundImage: `url(${imageC})`,
         backgroundPosition: "20% center" // shift image to the left
       }}
     >
