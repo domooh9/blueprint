@@ -240,7 +240,7 @@ export const Products = () => {
                 posClass = "bottom-[5%] left-[2%] md:bottom-[10%] md:left-[5%] lg:bottom-[15%] lg:left-[8%]";
                 break;
               case "bottom-right":
-                posClass = "bottom-[5%] right-[2%] md:bottom-[10%] md:right-[5%] lg:bottom-[15%] lg:right-[8%]";
+                posClass = "bottom-[5.1%] right-[2%] md:bottom-[10%] md:right-[5%] lg:bottom-[15%] lg:right-[8%]";
                 break;
             }
 
