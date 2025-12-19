@@ -1,212 +1,381 @@
-import { useState, useEffect } from "react";
-import { Card, CardContent } from "@/components/ui/card";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useEffect, useState } from "react";
 import FinserveM from "@/assets/FinserveM.png";
 import FinserveLogo from "@/assets/FinserveMoney.png";
 import FinserveMn from "@/assets/FinserveMn.png";
-import backgroundI from "@/assets/backgroundI.png"; // background image
+import { ArrowRight, CheckCircle, Smartphone, Wifi, CreditCard, Shield, Zap, Users, Globe, Award } from "lucide-react";
 
 const FinserveMobile = () => {
-  const [page, setPage] = useState(0); // 0 = first section, 1 = second section
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    const container = document.querySelector('#finserve-container');
+    if (container) {
+      observer.observe(container);
+    }
+
+    return () => observer.disconnect();
+  }, []);
 
   const product = {
-    name: "Finserve Money",
-    description: `An e- wallet lifestyle service that enables  
-users to make financial transactions  
-through their mobile device regardless  
-of their telco service provider. Accessed  
-through USSD, Equitel STK, App or Web,  
-the product allows for tailored financial  
-services that promote inclusion for the  
-unbanked and underbanked.`,
+    title: "Finserve Money",
+    subtitle: "Your Digital Wallet for Africa",
+    description: `An e-wallet lifestyle service that enables users to make financial transactions through their mobile device regardless of their telco service provider. Accessed through USSD, Equitel STK, App or Web, the product allows for tailored financial services that promote inclusion for the unbanked and underbanked.`,
     image: FinserveM,
     imagee: FinserveMn,
     logo: FinserveLogo,
     cta: "Coming Soon",
+    tagline: "Banking Beyond Borders"
   };
 
-  const pageVariants = {
-    initial: { opacity: 0, x: 100 },
-    animate: { opacity: 1, x: 0 },
-    exit: { opacity: 0, x: -100 },
-  };
+  const leftFeatures = [
+    "Cash In/Out",
+    "Send Money",
+    "Airtime Top Up",
+    "Transfer to/from bank",
+    "Merchant Payment",
+    "Utility payment",
+    "Developer APIs",
+  ];
 
-  const pageTransition = { duration: 0.8, ease: "easeInOut" }; // smooth transition
+  const rightFeatures = [
+    "IMT",
+    "Government Payments",
+    "Loan",
+    "Saving",
+    "Insurance",
+    "Investment",
+    "Supply payment",
+  ];
 
-  // Auto page change every 2 seconds
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setPage((prev) => (prev === 0 ? 1 : 0));
-    }, 7000);
-    return () => clearInterval(interval);
-  }, []);
+  const benefits = [
+    "No bank account required",
+    "24/7 availability",
+    "Low transaction fees",
+    "Instant settlement",
+    "Multi-currency support",
+    "Financial literacy tools"
+  ];
+
+  // Animation styles as CSS-in-JS
+  const styles = `
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) translateX(0px); }
+      33% { transform: translateY(-20px) translateX(10px); }
+      66% { transform: translateY(10px) translateX(-10px); }
+    }
+    
+    @keyframes floatSlow {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+    
+    @keyframes bounceSlow {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+    
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0px); }
+    }
+    
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+    
+    .animate-float-element {
+      animation: float 20s ease-in-out infinite;
+    }
+    
+    .animate-float-slow {
+      animation: floatSlow 6s ease-in-out infinite;
+    }
+    
+    .animate-bounce-slow {
+      animation: bounceSlow 3s ease-in-out infinite;
+    }
+    
+    .animate-pulse-custom {
+      animation: pulse 2s ease-in-out infinite;
+    }
+  `;
 
   return (
-    <div
-      className="w-full min-h-screen bg-cover bg-center"
-      style={{ backgroundImage: `url(${backgroundI})` }}
+    <div 
+      id="finserve-container"
+      className="w-full min-h-screen relative overflow-hidden bg-gradient-to-br from-gray-50 to-white"
     >
+      <style>{styles}</style>
+      
+      {/* Background Pattern */}
+      <div className="absolute inset-0 opacity-5">
+        <div 
+          className="absolute inset-0" 
+          style={{
+            backgroundImage: `radial-gradient(circle at 25% 25%, #eb2240 2px, transparent 2px)`,
+            backgroundSize: '50px 50px'
+          }} 
+        />
+      </div>
+
+      {/* Floating Elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        {[...Array(8)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute rounded-full bg-primary/5 animate-float-element"
+            style={{
+              width: `${Math.random() * 100 + 50}px`,
+              height: `${Math.random() * 100 + 50}px`,
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              animationDelay: `${i * 0.5}s`,
+              animationDuration: `${Math.random() * 20 + 20}s`
+            }}
+          />
+        ))}
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20 space-y-16 sm:space-y-32 relative z-10">
         
-      <div className="max-w-[1400px] mx-auto py-16">
-        {/* Pagination Buttons */}
-         
-        <div className="flex justify-center gap-4 mb-8">
-          <button
-            onClick={() => setPage(0)}
-            className={`px-6 py-2 rounded-full ${
-              page === 0
-                ? "bg-primary text-white"
-                : "bg-white text-primary border border-primary"
-            }`}
-          >
-            ←---
-          </button>
-          <button
-            onClick={() => setPage(1)}
-            className={`px-6 py-2 rounded-full ${
-              page === 1
-                ? "bg-primary text-white"
-                : "bg-white text-primary border border-primary"
-            }`}
-          >
-            ----→
-          </button>
-        </div>
+        {/* ================= HERO SECTION ================= */}
+        <section className="relative">
+          {/* Decorative Elements */}
+          <div className="absolute -top-10 -left-10 w-40 h-40 bg-primary/10 rounded-full blur-3xl" />
+          <div className="absolute -bottom-10 -right-10 w-60 h-60 bg-primary/5 rounded-full blur-3xl" />
+          
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+            
+            {/* Left Content */}
+            <div className={`space-y-6 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+              
+              {/* Tagline */}
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20">
+                <Zap className="w-4 h-4 text-primary animate-pulse-custom" />
+                <span className="text-primary font-semibold text-sm tracking-wider">
+                  {product.tagline}
+                </span>
+              </div>
 
-        {/* Paginated Content with AnimatePresence */}
-        <AnimatePresence mode="wait">
-          {page === 0 && (
-            <motion.div
-              key="page0"
-              variants={pageVariants}
-              initial="initial"
-              animate="animate"
-              exit="exit"
-              transition={pageTransition}
-            >
-              <Card className="group transition-all duration-300 rounded-2xl overflow-hidden relative bg-transparent border-none">
-                <CardContent className="p-0">
-                  <div className="relative w-full h-[550px] flex flex-col">
-                    {/* Logo */}
-                    <div className="absolute top-10 left-10 z-30">
-                      <img
-                        src={product.logo}
-                        alt="Finserve Money Logo"
-                        className="h-20 md:h-24 w-auto"
-                      />
+              {/* Title */}
+              <div className="space-y-2">
+                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight">
+                  <span className="text-gray-900">Finserve</span>
+                  <br />
+                  <span className="text-primary">Money</span>
+                </h1>
+                <p className="text-xl text-gray-600">
+                  {product.subtitle}
+                </p>
+              </div>
+
+              {/* Description */}
+              <div className="space-y-4">
+                {/* Container with eb2442 background color */}
+                <div 
+                  className="p-6 rounded-xl mb-4"
+                  style={{ backgroundColor: '#eb2442' }}
+                >
+                  <p className="text-white text-lg leading-relaxed">
+                    {product.description}
+                  </p>
+                </div>
+                
+                {/* Benefits */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-4">
+                  {benefits.slice(0, 4).map((benefit, index) => (
+                    <div
+                      key={index}
+                      className="flex items-center gap-2"
+                    >
+                      <CheckCircle className="w-5 h-5 text-primary flex-shrink-0" />
+                      <span className="text-gray-700 text-sm font-medium">{benefit}</span>
                     </div>
+                  ))}
+                </div>
+              </div>
 
-                    {/* Woman Image */}
-                    <div className="absolute right-0 bottom-0 flex items-end z-20">
-                      <img
-                        src={product.image}
-                        alt="Finserve Money"
-                        className="h-[90%] w-auto object-contain"
-                      />
-                    </div>
-
-                    {/* Red Background Rectangle */}
-                    <div className="absolute left-10 top-[230px] w-[1000px] max-w-[90%] h-[260px] bg-primary rounded-lg z-10 md:left-16"></div>
-
-                    {/* Text */}
-                    <div className="absolute top-[260px] left-16 z-30 w-[520px] max-w-[85%] text-left">
-                      <p className="text-white text-lg leading-relaxed">
-                        {product.description}
-                      </p>
-                      <p className="bg-orange-500 text-red text-4xl font-bold px-8 py-6 rounded-3xl animate-pulse"> 
-                        {product.cta}
-                      </p>
+              {/* CTA */}
+              <div className={`pt-4 transition-all duration-700 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+                <div 
+                  className="inline-flex items-center gap-4 px-6 py-4 bg-gradient-to-r from-primary to-primary/90 text-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 group cursor-not-allowed" 
+                  title="Coming Soon"
+                >
+                  <div className="flex items-center gap-3">
+                    <Award className="w-6 h-6" />
+                    <div>
+                      <div className="font-bold text-lg">{product.cta}</div>
+                      <div className="text-sm text-white/80">Be the first to know</div>
                     </div>
                   </div>
-                </CardContent>
-              </Card>
-            </motion.div>
-          )}
+                  <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-2" />
+                </div>
+              </div>
 
-          {page === 1 && (
-            <motion.div
-  key="page1"
-  variants={pageVariants}
-  initial="initial"
-  animate="animate"
-  exit="exit"
-  transition={pageTransition}
->
-  <Card className="group transition-all duration-300 rounded-2xl overflow-hidden relative bg-transparent border-none">
-    <CardContent className="p-0">
-      <div className="relative w-full h-[550px] flex flex-col justify-center items-center mb-[70px]">
-        {/* Title */}
-        <div className="px-12 text-center">
-          <h2 className="text-4xl font-bold text-black">
-            Finserve Money
-          </h2>
-          <p className="text-2xl text-gray-600 mt-1">Features</p>
-        </div>
+              {/* Quick Stats */}
+              <div className={`grid grid-cols-3 gap-4 pt-8 transition-all duration-700 delay-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+                <div className="text-center p-3 bg-white rounded-lg border border-gray-100 shadow-sm">
+                  <div className="text-2xl font-bold text-primary">10M+</div>
+                  <div className="text-sm text-gray-600">Users</div>
+                </div>
+                <div className="text-center p-3 bg-white rounded-lg border border-gray-100 shadow-sm">
+                  <div className="text-2xl font-bold text-primary">50+</div>
+                  <div className="text-sm text-gray-600">Countries</div>
+                </div>
+                <div className="text-center p-3 bg-white rounded-lg border border-gray-100 shadow-sm">
+                  <div className="text-2xl font-bold text-primary">24/7</div>
+                  <div className="text-sm text-gray-600">Support</div>
+                </div>
+              </div>
+            </div>
 
-        {/* Red Circle Behind Phone */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[520px] h-[520px] bg-primary rounded-full z-0"></div>
+            {/* Right Image */}
+            <div className={`relative transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+              {/* Phone Mockup */}
+              <div className="relative">
+                <div className="absolute -inset-4 bg-gradient-to-r from-primary/20 to-primary/10 rounded-3xl blur-xl" />
+                <img
+                  src={product.image}
+                  alt="Finserve Money App Interface"
+                  className="relative w-full max-w-lg mx-auto drop-shadow-2xl animate-float-slow"
+                />
+                
+                {/* Floating Icons */}
+                <div className="absolute -top-4 -right-4 w-16 h-16 bg-white rounded-2xl shadow-xl flex items-center justify-center animate-bounce-slow">
+                  <Smartphone className="w-8 h-8 text-primary" />
+                </div>
+                <div 
+                  className="absolute -bottom-4 -left-4 w-16 h-16 bg-white rounded-2xl shadow-xl flex items-center justify-center animate-bounce-slow"
+                  style={{ animationDelay: '1s' }}
+                >
+                  <Shield className="w-8 h-8 text-primary" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
 
-        {/* Phone Image */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20">
-          <img
-            src={product.imagee}
-            alt="Finserve Money"
-            className="h-[520px] w-auto object-contain drop-shadow-xl"
-          />
-        </div>
+        {/* ================= FEATURES SECTION ================= */}
+        <section className="relative">
+          {/* Section Header */}
+          <div className={`text-center mb-12 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900">Complete Financial Suite</h2>
+            <p className="text-xl text-gray-600 mt-2">Everything you need in one app</p>
+          </div>
 
-        {/* Left Bullet Box */}
-        <div className="absolute left-10 top-1/2 -translate-y-1/2 bg-white w-[300px] p-6 rounded-lg shadow-xl z-30 border-2 border-primary">
-          <ul className="space-y-3 text-gray-800">
-            <li>• Cash In/Out</li>
-            <li>• Send Money</li>
-            <li>• Airtime Top Up</li>
-            <li>• Transfer to/from bank</li>
-            <li>• Merchant Payment</li>
-            <li>• Utility payment</li>
-            <li>• Developer APIs</li>
-          </ul>
-        </div>
+          <div className="relative min-h-[500px]">
+            {/* Background Circle */}
+            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+              <div className="w-64 h-64 sm:w-80 sm:h-80 bg-gradient-to-br from-primary/10 to-primary/5 rounded-full blur-3xl" />
+            </div>
 
-        {/* Left line */}
-        <div
-          className="absolute z-20 bg-primary h-1"
-          style={{
-            top: "50%",
-            left: "20px",
-            width: "calc(50% - 260px)",
-          }}
-        ></div>
+            {/* Phone in Center */}
+            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20">
+              <div className="relative">
+                <div className="absolute -inset-6 bg-gradient-to-r from-primary/20 to-transparent rounded-full blur-xl" />
+                <img
+                  src={product.imagee}
+                  alt="Finserve App Features"
+                  className="relative w-48 sm:w-64 h-auto object-contain drop-shadow-2xl"
+                />
+              </div>
+            </div>
 
-        {/* Right Bullet Box */}
-        <div className="absolute right-10 top-1/2 -translate-y-1/2 bg-white w-[300px] p-6 rounded-lg shadow-xl z-30 border-2 border-primary">
-          <ul className="space-y-3 text-gray-800">
-            <li>• IMT</li>
-            <li>• Government Payments</li>
-            <li>• Loan</li>
-            <li>• Saving</li>
-            <li>• Insurance</li>
-            <li>• Investment</li>
-            <li>• Supply payment</li>
-          </ul>
-        </div>
+            {/* Left Features */}
+            <div className="absolute left-0 lg:left-10 top-1/2 -translate-y-1/2 z-10">
+              <div className="bg-white p-6 rounded-2xl shadow-2xl border border-primary/10 max-w-xs">
+                <div className="space-y-4">
+                  <h3 className="text-lg font-bold text-gray-900 flex items-center gap-2">
+                    <span className="w-2 h-6 bg-primary rounded-full" />
+                    Everyday Transactions
+                  </h3>
+                  <ul className="space-y-3">
+                    {leftFeatures.map((item, i) => (
+                      <li key={i} className="flex items-center gap-3">
+                        <div className="w-2 h-2 bg-primary rounded-full flex-shrink-0" />
+                        <span className="text-gray-700 font-medium">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
 
-        {/* Right line */}
-        <div
-          className="absolute z-20 bg-primary h-1"
-          style={{
-            top: "50%",
-            right: "20px",
-            width: "calc(50% - 260px)",
-          }}
-        ></div>
-      </div>
-    </CardContent>
-  </Card>
-</motion.div>
+            {/* Right Features */}
+            <div className="absolute right-0 lg:right-10 top-1/2 -translate-y-1/2 z-10">
+              <div className="bg-white p-6 rounded-2xl shadow-2xl border border-primary/10 max-w-xs">
+                <div className="space-y-4">
+                  <h3 className="text-lg font-bold text-gray-900 flex items-center gap-2">
+                    <span className="w-2 h-6 bg-primary rounded-full" />
+                    Advanced Services
+                  </h3>
+                  <ul className="space-y-3">
+                    {rightFeatures.map((item, i) => (
+                      <li key={i} className="flex items-center gap-3">
+                        <div className="w-2 h-2 bg-primary rounded-full flex-shrink-0" />
+                        <span className="text-gray-700 font-medium">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
 
-          )}
-        </AnimatePresence>
+          {/* Feature Cards Grid */}
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mt-20">
+            {[
+              { icon: Smartphone, title: "Multi-Access", desc: "USSD, App, Web, STK" },
+              { icon: Wifi, title: "Network Agnostic", desc: "Works on all telcos" },
+              { icon: CreditCard, title: "Full Banking", desc: "Loans, Savings, Insurance" },
+              { icon: Shield, title: "Secure", desc: "Bank-grade security" },
+              { icon: Users, title: "Inclusive", desc: "For everyone" },
+              { icon: Globe, title: "Pan-African", desc: "Cross-border payments" }
+            ].map((feature, index) => (
+              <div
+                key={index}
+                className="bg-white p-4 rounded-xl border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300"
+              >
+                <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-3">
+                  <feature.icon className="w-6 h-6 text-primary" />
+                </div>
+                <h4 className="font-bold text-gray-900 text-sm mb-1">{feature.title}</h4>
+                <p className="text-gray-600 text-xs">{feature.desc}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* ================= CTA SECTION ================= */}
+        <section className="bg-gradient-to-r from-primary to-primary/90 rounded-3xl p-8 sm:p-12 text-white">
+          <div className="max-w-3xl mx-auto text-center space-y-6">
+            <h3 className="text-2xl sm:text-3xl font-bold">
+              Ready to transform your financial experience?
+            </h3>
+            <p className="text-lg text-white/90">
+              Join millions of users who trust Finserve Money for secure, accessible, and innovative digital banking.
+            </p>
+            <div className="pt-4">
+              <button 
+                className="inline-flex items-center gap-3 bg-white text-primary px-8 py-4 rounded-xl font-bold text-lg hover:bg-gray-50 transition-all duration-300 shadow-lg cursor-not-allowed" 
+                disabled
+              >
+                Get Early Access
+                <ArrowRight className="w-5 h-5" />
+              </button>
+            </div>
+          </div>
+        </section>
       </div>
     </div>
   );

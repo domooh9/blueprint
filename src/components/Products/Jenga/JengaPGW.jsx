@@ -64,28 +64,35 @@ const JengaPayment = () => {
       <div
         style={{
           position: "relative",
-          backgroundColor: "#C30078",
+          backgroundColor: "#f6f7f9",
           minHeight: 500,
+          display: "flex",
+          alignItems: "center",
         }}
       >
-        {/* DOT BACKGROUND */}
+        {/* LEFT VERTICAL ACCENT BAR */}
         <div
           style={{
             position: "absolute",
-            inset: 0,
-            zIndex: 1,
-            pointerEvents: "none",
+            left: 0,
+            top: 0,
+            bottom: 0,
+            width: 12,
+            backgroundColor: "#E91E8C",
           }}
-        >
-          <svg width="100%" height="100%">
-            <defs>
-              <pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse">
-                <circle cx="2" cy="2" r="1.2" fill="rgba(255,255,255,0.35)" />
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#dots)" />
-          </svg>
-        </div>
+        />
+
+        {/* RIGHT VERTICAL ACCENT BAR */}
+        <div
+          style={{
+            position: "absolute",
+            right: 0,
+            top: 0,
+            bottom: 0,
+            width: 4,
+            backgroundColor: "#2d3e50",
+          }}
+        />
 
         {/* CONTENT */}
         <div
@@ -95,42 +102,47 @@ const JengaPayment = () => {
             maxWidth: 1200,
             margin: "0 auto",
             padding: "64px 16px",
+            width: "100%",
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+            gridTemplateColumns: "1fr 1fr",
             gap: 48,
             alignItems: "center",
           }}
         >
           {/* LEFT */}
           <div>
-            <img
-              src={JengaPaymentii}
-              alt="Jenga Payment Gateway"
-              style={{ height: 40, marginBottom: 32 }}
-            />
+            {/* Logo Section with styled text */}
+            <div style={{ marginBottom: 40 }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
+                <h1 style={{ fontSize: 48, fontWeight: 700, color: "#999", margin: 0 }}>Jenga</h1>
+                <div>
+                  <p style={{ fontSize: 14, fontWeight: 600, color: "#E91E8C", margin: 0 }}>Payment</p>
+                  <p style={{ fontSize: 14, fontWeight: 600, color: "#E91E8C", margin: 0 }}>Gateway</p>
+                </div>
+              </div>
+            </div>
 
+            {/* Description Box */}
             <div
               style={{
-                backgroundColor: "rgba(158,0,96,0.85)",
-                borderRadius: 16,
+                backgroundColor: "#E91E8C",
+                borderRadius: 12,
                 padding: 32,
-                maxWidth: 480,
+                maxWidth: 520,
               }}
             >
-              <p style={{ color: "#fff", fontSize: 18, lineHeight: 1.6 }}>
-                Jenga Payment Gateway is a business-to-business financial solution that allows
-                merchants to provide their customers the ability to pay via various payments
-                channels in multi-currencies across 180+ currencies.
+              <p style={{ color: "#fff", fontSize: 10, lineHeight: 1.7, margin: 0 }}>
+                Jenga Payment Gateway is a business-to-business financial solution that allows merchants to provide their customers the ability to pay via various payments channels in multi-currencies across 180+ currencies.
               </p>
             </div>
           </div>
 
           {/* RIGHT */}
-          <div style={{ display: "flex", justifyContent: "center" }}>
+          <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
             <img
               src={JengaPGWI}
               alt="Jenga PGW Illustration"
-              style={{ width: 400, maxWidth: "100%" }}
+              style={{ width: "100%", maxWidth: 450, objectFit: "contain" }}
             />
           </div>
         </div>
@@ -143,6 +155,70 @@ const JengaPayment = () => {
             Jenga PGW
           </h2>
           <p style={{ fontSize: 20, marginBottom: 48 }}>Service Offering.</p>
+
+          {/* CONNECTING LINES */}
+          <div style={{ position: "relative", marginBottom: 80 }}>
+            <div
+              style={{
+                position: "absolute",
+                top: 0,
+                left: "10%",
+                right: "10%",
+                height: 2,
+                backgroundColor: "#C30078",
+              }}
+            />
+            <div
+              style={{
+                position: "absolute",
+                top: 0,
+                left: "10%",
+                width: 2,
+                height: 60,
+                backgroundColor: "#C30078",
+              }}
+            />
+            <div
+              style={{
+                position: "absolute",
+                top: 0,
+                left: "30%",
+                width: 2,
+                height: 60,
+                backgroundColor: "#C30078",
+              }}
+            />
+            <div
+              style={{
+                position: "absolute",
+                top: 0,
+                left: "50%",
+                width: 2,
+                height: 60,
+                backgroundColor: "#C30078",
+              }}
+            />
+            <div
+              style={{
+                position: "absolute",
+                top: 0,
+                left: "70%",
+                width: 2,
+                height: 60,
+                backgroundColor: "#C30078",
+              }}
+            />
+            <div
+              style={{
+                position: "absolute",
+                top: 0,
+                left: "90%",
+                width: 2,
+                height: 60,
+                backgroundColor: "#C30078",
+              }}
+            />
+          </div>
 
           <div
             style={{

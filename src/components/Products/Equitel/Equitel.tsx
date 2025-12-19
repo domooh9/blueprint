@@ -144,7 +144,9 @@ const Equitel = () => {
       </div>
 
       {/* Features Section */}
-      <motion.div
+    
+
+    <motion.div
         className="w-full flex justify-center py-16 px-4"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
@@ -155,7 +157,7 @@ const Equitel = () => {
 
           {/* LEFT GREEN BOX */}
           <motion.div
-            className="bg-[#1F8F2E] text-white p-4 rounded-xl shadow-md flex-shrink-0 w-full sm:w-[140px] h-auto"
+            className="bg-[#9a3820] text-white p-4 rounded-xl shadow-md flex-shrink-0 w-full sm:w-[140px] h-auto"
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}

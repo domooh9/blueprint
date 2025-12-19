@@ -61,9 +61,9 @@ const JengaAPI = () => {
       transition={{ duration: 0.8 }}
     >
       <Card
-        className="group transition-all duration-300 border-border rounded-2xl overflow-hidden w-full"
-        style={{ backgroundColor: "#f6f7f9" }}
-      >
+        className="group transition-all duration-300 border-0 rounded-2xl overflow-hidden w-full"
+  style={{ backgroundColor: "#f6f7f9" }}
+>
         <CardContent className="p-0 relative">
           {/* Logo section */}
           <motion.div
@@ -138,6 +138,70 @@ const JengaAPI = () => {
                 <div className="w-[90%] h-[2px] bg-[#1f4e79] opacity-70"></div>
               </div>
 
+              {/* CONNECTING LINES */}
+              <div style={{ position: "relative", marginBottom: 80, marginTop: 40 }}>
+                <div
+                  style={{
+                    position: "absolute",
+                    top: 0,
+                    left: "5%",
+                    right: "5%",
+                    height: 2,
+                    backgroundColor: "#4277bb",
+                  }}
+                />
+                <div
+                  style={{
+                    position: "absolute",
+                    top: 0,
+                    left: "10%",
+                    width: 2,
+                    height: 60,
+                    backgroundColor: "#4277bb",
+                  }}
+                />
+                <div
+                  style={{
+                    position: "absolute",
+                    top: 0,
+                    left: "30%",
+                    width: 2,
+                    height: 60,
+                    backgroundColor: "#4277bb",
+                  }}
+                />
+                <div
+                  style={{
+                    position: "absolute",
+                    top: 0,
+                    left: "50%",
+                    width: 2,
+                    height: 60,
+                    backgroundColor: "#4277bb",
+                  }}
+                />
+                <div
+                  style={{
+                    position: "absolute",
+                    top: 0,
+                    left: "70%",
+                    width: 2,
+                    height: 60,
+                    backgroundColor: "#4277bb",
+                  }}
+                />
+                <div
+                  style={{
+                    position: "absolute",
+                    top: 0,
+                    left: "90%",
+                    width: 2,
+                    height: 60,
+                    backgroundColor: "#4277bb",
+                  }}
+                />
+              </div>
+
               {/* Services Grid */}
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10 w-full px-6">
                 {services.map((item, index) => (
@@ -170,10 +234,17 @@ const JengaAPI = () => {
                       </div>
 
                       {/* Arrow */}
-                      <div
-                        className="w-0 h-0 border-l-[28px] border-r-[28px] border-t-[22px]
-                         border-l-transparent border-r-transparent border-t-[#5a8fd6] mx-auto"
-                      />
+                    <div
+  style={{
+    width: 0,
+    height: 0,
+    borderLeft: "28px solid transparent",
+    borderRight: "28px solid transparent",
+    borderTop: "22px solid #4277bb",
+    margin: "0 auto",
+  }}
+/>
+
                     </motion.div>
 
                     {/* Divider */}
