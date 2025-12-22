@@ -1,5 +1,5 @@
 import React from "react";
-import WhoB from "@/assets/WhoB.png"; // background image
+import WhoB from "@/assets/WhoB.png"; // CORRECT: Using WhoB.png instead of imagec.png
 import { CheckCircle2, Trophy, Activity, Building2, ShieldCheck } from "lucide-react";
 
 const values = [
@@ -15,20 +15,38 @@ export const About = () => {
       id="about"
       className="relative py-20 md:py-28 overflow-hidden bg-cover bg-no-repeat"
       style={{
-        backgroundImage: `url(${WhoB})`,
-        backgroundPosition: "20% center" // shift image to the left
+        backgroundImage: `url(${WhoB})`, // CORRECT: Using WhoB variable
+        backgroundPosition: "30% 60%", // Adjusted for better visibility
+        backgroundSize: "cover",
+        backgroundAttachment: "scroll",
+        minHeight: "100vh",
+        marginTop: "-80px",
+        paddingTop: "100px"
       }}
     >
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-black/50 z-0" />
+      {/* Gradient Overlay - Only on top to avoid darkening the entire image */}
+      <div 
+        className="absolute inset-0 z-0"
+        style={{
+          background: "linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.5) 30%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0.1) 100%)"
+        }}
+      />
+      
+      {/* Additional overlay at the very top to blend with header */}
+      <div 
+        className="absolute top-0 left-0 right-0 h-20 z-0"
+        style={{
+          background: "linear-gradient(to bottom, rgba(0,0,0,0.9), rgba(0,0,0,0.7))"
+        }}
+      />
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-12">
         <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
           {/* LEFT CONTENT */}
           <div
             className="p-10 rounded-xl border border-white/30 bg-white/10 
-            shadow-sm animate-fade-up"
+            shadow-sm animate-fade-up backdrop-blur-sm"
           >
             <h2 className="text-4xl font-bold mb-4 text-white">
               About <span className="text-primary">Finserve</span> Africa
@@ -93,6 +111,9 @@ export const About = () => {
                   transition-all 
                   text-center 
                   flex flex-col items-center
+                  backdrop-blur-sm
+                  hover:scale-105
+                  hover:bg-white/15
                 "
               >
                 <item.icon className="h-8 w-8 text-primary mb-3 opacity-90" />
