@@ -1,5 +1,4 @@
 import { Hero } from "@/components/Hero";
-import SimpleHero from "@/components/SimpleHero";
 import { Products } from "@/components/Products";
 import { About } from "@/components/About";
 import { Contact } from "@/components/Contact";

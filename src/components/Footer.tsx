@@ -153,20 +153,33 @@ export const Footer = () => {
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="border-t border-white/20">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4">
-            <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-white/70">
-              <p>© {new Date().getFullYear()} .</p>
-              <p></p>
+        {/* Bottom Bar with #595A5C background */}
+        <div className="bg-[#595A5C] py-4">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-xs">
+              {/* Copyright */}
+              <p className="text-white/70">
+                © {new Date().getFullYear()} Finserve Africa Limited. All rights reserved.
+              </p>
+              
+              {/* Links */}
               <div className="flex gap-6">
-                <a href="#" className="hover:text-white transition-colors underline">
+                <a 
+                  href="#" 
+                  className="text-white/70 hover:text-white transition-colors"
+                >
                   Privacy Policy
                 </a>
-                <a href="#" className="hover:text-white transition-colors underline">
+                <a 
+                  href="#" 
+                  className="text-white/70 hover:text-white transition-colors"
+                >
                   Cookie Policy
                 </a>
-                <a href="#" className="hover:text-white transition-colors underline">
+                <a 
+                  href="#" 
+                  className="text-white/70 hover:text-white transition-colors"
+                >
                   Terms and Conditions
                 </a>
               </div>

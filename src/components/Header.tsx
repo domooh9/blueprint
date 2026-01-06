@@ -192,7 +192,7 @@ export const Header = () => {
                         {/* Dropdown indicator */}
                         {hasDropdown && (
                           <ChevronDown className={`
-                            w-3 h-3 transition-transform duration-200
+                            w-3 h-3 transition-transform duration-200 
                             ${openDropdown === item.label ? "transform rotate-180" : ""}
                           `} />
                         )}
@@ -206,13 +206,13 @@ export const Header = () => {
                     
                     {/* Dropdown Menu */}
                     {hasDropdown && openDropdown === item.label && (
-                      <div className="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-lg border border-gray-100 overflow-hidden">
+                      <div className="absolute top-full left-0 mt-2 w-64 bg-primary rounded-lg shadow-lg border border-gray-100 overflow-hidden">
                         <div className="p-2">
                           <div className="px-3 py-2 mb-1">
                             <div className="text-xs font-semibold text-gray-500 uppercase tracking-wider">
                               {item.label}
                             </div>
-                            <div className="text-xs text-gray-400">{item.description}</div>
+                            <div className="text-xs text-white/80">{item.description}</div>
                           </div>
                           {item.dropdown?.map((subItem, index) => (
                             <Link
@@ -224,7 +224,7 @@ export const Header = () => {
                                 <div className="w-8 h-8 rounded-lg bg-gray-100 flex items-center justify-center group-hover/sub:bg-primary/10 transition-colors">
                                   <ChevronRight className="w-3 h-3 text-gray-400 group-hover/sub:text-primary transition-colors" />
                                 </div>
-                                <span className="text-sm font-medium text-gray-700 group-hover/sub:text-primary transition-colors">
+                                <span className="text-sm font-medium text-xs text-white/80 group-hover/sub:text-primary transition-colors">
                                   {subItem.label}
                                 </span>
                               </div>

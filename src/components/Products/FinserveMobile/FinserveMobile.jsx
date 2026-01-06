@@ -221,22 +221,7 @@ const FinserveMobile = () => {
                   <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-2" />
                 </div>
               </div>
-
-              {/* Quick Stats */}
-              <div className={`grid grid-cols-3 gap-4 pt-8 transition-all duration-700 delay-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-                <div className="text-center p-3 bg-white rounded-lg border border-gray-100 shadow-sm">
-                  <div className="text-2xl font-bold text-primary">10M+</div>
-                  <div className="text-sm text-gray-600">Users</div>
-                </div>
-                <div className="text-center p-3 bg-white rounded-lg border border-gray-100 shadow-sm">
-                  <div className="text-2xl font-bold text-primary">50+</div>
-                  <div className="text-sm text-gray-600">Countries</div>
-                </div>
-                <div className="text-center p-3 bg-white rounded-lg border border-gray-100 shadow-sm">
-                  <div className="text-2xl font-bold text-primary">24/7</div>
-                  <div className="text-sm text-gray-600">Support</div>
-                </div>
-              </div>
+             
             </div>
 
             {/* Right Image */}
@@ -251,15 +236,8 @@ const FinserveMobile = () => {
                 />
                 
                 {/* Floating Icons */}
-                <div className="absolute -top-4 -right-4 w-16 h-16 bg-white rounded-2xl shadow-xl flex items-center justify-center animate-bounce-slow">
-                  <Smartphone className="w-8 h-8 text-primary" />
-                </div>
-                <div 
-                  className="absolute -bottom-4 -left-4 w-16 h-16 bg-white rounded-2xl shadow-xl flex items-center justify-center animate-bounce-slow"
-                  style={{ animationDelay: '1s' }}
-                >
-                  <Shield className="w-8 h-8 text-primary" />
-                </div>
+             
+               
               </div>
             </div>
           </div>
@@ -331,51 +309,7 @@ const FinserveMobile = () => {
               </div>
             </div>
           </div>
-
-          {/* Feature Cards Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mt-20">
-            {[
-              { icon: Smartphone, title: "Multi-Access", desc: "USSD, App, Web, STK" },
-              { icon: Wifi, title: "Network Agnostic", desc: "Works on all telcos" },
-              { icon: CreditCard, title: "Full Banking", desc: "Loans, Savings, Insurance" },
-              { icon: Shield, title: "Secure", desc: "Bank-grade security" },
-              { icon: Users, title: "Inclusive", desc: "For everyone" },
-              { icon: Globe, title: "Pan-African", desc: "Cross-border payments" }
-            ].map((feature, index) => (
-              <div
-                key={index}
-                className="bg-white p-4 rounded-xl border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300"
-              >
-                <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-3">
-                  <feature.icon className="w-6 h-6 text-primary" />
-                </div>
-                <h4 className="font-bold text-gray-900 text-sm mb-1">{feature.title}</h4>
-                <p className="text-gray-600 text-xs">{feature.desc}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* ================= CTA SECTION ================= */}
-        <section className="bg-gradient-to-r from-primary to-primary/90 rounded-3xl p-8 sm:p-12 text-white">
-          <div className="max-w-3xl mx-auto text-center space-y-6">
-            <h3 className="text-2xl sm:text-3xl font-bold">
-              Ready to transform your financial experience?
-            </h3>
-            <p className="text-lg text-white/90">
-              Join millions of users who trust Finserve Money for secure, accessible, and innovative digital banking.
-            </p>
-            <div className="pt-4">
-              <button 
-                className="inline-flex items-center gap-3 bg-white text-primary px-8 py-4 rounded-xl font-bold text-lg hover:bg-gray-50 transition-all duration-300 shadow-lg cursor-not-allowed" 
-                disabled
-              >
-                Get Early Access
-                <ArrowRight className="w-5 h-5" />
-              </button>
-            </div>
-          </div>
-        </section>
+  </section>
       </div>
     </div>
   );
