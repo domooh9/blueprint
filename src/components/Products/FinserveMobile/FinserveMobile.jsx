@@ -108,6 +108,59 @@ const FinserveMobile = () => {
     .animate-pulse-custom {
       animation: pulse 2s ease-in-out infinite;
     }
+    
+    /* Mobile Responsive Styles */
+    @media (max-width: 768px) {
+      .mobile-column {
+        flex-direction: column !important;
+      }
+      
+      .mobile-image-bottom {
+        order: 2 !important;
+      }
+      
+      .mobile-content-top {
+        order: 1 !important;
+      }
+      
+      .mobile-full-width {
+        width: 100% !important;
+        max-width: 100% !important;
+      }
+      
+      .mobile-features-stack {
+        position: relative !important;
+        min-height: auto !important;
+      }
+      
+      .mobile-features-center {
+        position: relative !important;
+        left: auto !important;
+        top: auto !important;
+        transform: none !important;
+        margin: 20px auto !important;
+      }
+      
+      .mobile-features-left {
+        position: relative !important;
+        left: auto !important;
+        top: auto !important;
+        transform: none !important;
+        margin: 20px auto !important;
+        width: 100% !important;
+        max-width: 300px !important;
+      }
+      
+      .mobile-features-right {
+        position: relative !important;
+        right: auto !important;
+        top: auto !important;
+        transform: none !important;
+        margin: 20px auto !important;
+        width: 100% !important;
+        max-width: 300px !important;
+      }
+    }
   `;
 
   return (
@@ -154,10 +207,10 @@ const FinserveMobile = () => {
           <div className="absolute -top-10 -left-10 w-40 h-40 bg-primary/10 rounded-full blur-3xl" />
           <div className="absolute -bottom-10 -right-10 w-60 h-60 bg-primary/5 rounded-full blur-3xl" />
           
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+          <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 items-start mobile-column">
             
-            {/* Left Content */}
-            <div className={`space-y-6 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            {/* Left Content - Takes up space */}
+            <div className={`flex-1 space-y-6 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} mobile-content-top`}>
               
               {/* Tagline */}
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20">
@@ -224,20 +277,17 @@ const FinserveMobile = () => {
              
             </div>
 
-            {/* Right Image */}
-            <div className={`relative transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-              {/* Phone Mockup */}
-              <div className="relative">
-                <div className="absolute -inset-4 bg-gradient-to-r from-primary/20 to-primary/10 rounded-3xl blur-xl" />
-                <img
-                  src={product.image}
-                  alt="Finserve Money App Interface"
-                  className="relative w-full max-w-lg mx-auto drop-shadow-2xl animate-float-slow"
-                />
-                
-                {/* Floating Icons */}
-             
-               
+            {/* Right Image - Fixed positioning and alignment */}
+            <div className={`flex-1 relative transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} mobile-image-bottom`}>
+              <div className="sticky top-20">
+                <div className="relative w-full max-w-[500px] mx-auto lg:mx-0 mobile-full-width">
+                  <div className="absolute -inset-4 bg-gradient-to-r from-primary/20 to-primary/10 rounded-3xl blur-xl" />
+                  <img
+                    src={product.image}
+                    alt="Finserve Money App Interface"
+                    className="relative w-full h-auto object-contain drop-shadow-2xl"
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -251,14 +301,14 @@ const FinserveMobile = () => {
             <p className="text-xl text-gray-600 mt-2">Everything you need in one app</p>
           </div>
 
-          <div className="relative min-h-[500px]">
+          <div className="relative min-h-[500px] mobile-features-stack">
             {/* Background Circle */}
-            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 mobile-features-center">
               <div className="w-64 h-64 sm:w-80 sm:h-80 bg-gradient-to-br from-primary/10 to-primary/5 rounded-full blur-3xl" />
             </div>
 
             {/* Phone in Center */}
-            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20">
+            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20 mobile-features-center">
               <div className="relative">
                 <div className="absolute -inset-6 bg-gradient-to-r from-primary/20 to-transparent rounded-full blur-xl" />
                 <img
@@ -270,7 +320,7 @@ const FinserveMobile = () => {
             </div>
 
             {/* Left Features */}
-            <div className="absolute left-0 lg:left-10 top-1/2 -translate-y-1/2 z-10">
+            <div className="absolute left-0 lg:left-10 top-1/2 -translate-y-1/2 z-10 mobile-features-left">
               <div className="bg-white p-6 rounded-2xl shadow-2xl border border-primary/10 max-w-xs">
                 <div className="space-y-4">
                   <h3 className="text-lg font-bold text-gray-900 flex items-center gap-2">
@@ -290,7 +340,7 @@ const FinserveMobile = () => {
             </div>
 
             {/* Right Features */}
-            <div className="absolute right-0 lg:right-10 top-1/2 -translate-y-1/2 z-10">
+            <div className="absolute right-0 lg:right-10 top-1/2 -translate-y-1/2 z-10 mobile-features-right">
               <div className="bg-white p-6 rounded-2xl shadow-2xl border border-primary/10 max-w-xs">
                 <div className="space-y-4">
                   <h3 className="text-lg font-bold text-gray-900 flex items-center gap-2">
@@ -309,7 +359,7 @@ const FinserveMobile = () => {
               </div>
             </div>
           </div>
-  </section>
+        </section>
       </div>
     </div>
   );

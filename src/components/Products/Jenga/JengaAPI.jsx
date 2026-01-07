@@ -1,6 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
-import JengaAPii from "@/assets/JengaAPii.png"; // robot/computer illustration
-import jengaLogo from "@/assets/jenga-apii.png"; // Jenga Logo (header)
+import JengaAPii from "@/assets/JengaAPii.png";
+import jengaLogo from "@/assets/jenga-apii.png";
 import { motion } from "framer-motion";
 import { Send, Smartphone, Wallet, UserCheck, Receipt } from "lucide-react";
 
@@ -62,12 +62,12 @@ const JengaAPI = () => {
     >
       <Card
         className="group transition-all duration-300 border-0 rounded-2xl overflow-hidden w-full"
-  style={{ backgroundColor: "#f6f7f9" }}
->
+        style={{ backgroundColor: "#f6f7f9" }}
+      >
         <CardContent className="p-0 relative">
           {/* Logo section */}
           <motion.div
-            className="px-10 pt-10 pb-4"
+            className="px-6 sm:px-8 md:px-10 pt-8 md:pt-10 pb-4"
             initial={{ y: -20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.6 }}
@@ -75,7 +75,7 @@ const JengaAPI = () => {
             <img
               src={jengaLogo}
               alt="JengaAPI Logo"
-              className="w-[180px] md:w-[220px] object-contain"
+              className="w-[160px] md:w-[200px] lg:w-[220px] object-contain"
             />
           </motion.div>
 
@@ -86,27 +86,29 @@ const JengaAPI = () => {
             transition={{ duration: 0.6 }}
           >
             <Card
-              className="rounded-xl relative overflow-visible shadow-none"
-              style={{ margin: "20px 60px 60px 60px" }}
+              className="rounded-xl relative overflow-visible shadow-none mx-4 md:mx-6 lg:mx-8 xl:mx-10 2xl:mx-12"
+              style={{ margin: "20px 0 60px 0" }}
             >
               <CardContent
-                className="p-10 md:p-16 lg:p-20"
+                className="p-6 sm:p-8 md:p-10 lg:p-12 xl:p-16"
                 style={{ backgroundColor: "#4277bb" }}
               >
-                <div className="grid lg:grid-cols-2 gap-10 items-center">
-                  {/* Text */}
+                <div className="flex flex-col lg:flex-row gap-8 md:gap-10 lg:gap-12 items-start">
+                  {/* Text - Now wrapped to the left side */}
                   <motion.div
-                    className="text-white text-base md:text-lg leading-relaxed"
+                    className="text-white text-base sm:text-lg leading-relaxed lg:w-1/2"
                     initial={{ x: -20, opacity: 0 }}
                     animate={{ x: 0, opacity: 1 }}
                     transition={{ duration: 0.6 }}
                   >
-                    {product.paragraph}
+                    <div className="pr-4 md:pr-6 lg:pr-8">
+                      {product.paragraph}
+                    </div>
                   </motion.div>
 
-                  {/* Illustration */}
+                  {/* Illustration - Now on the right side */}
                   <motion.div
-                    className="relative flex justify-center items-start"
+                    className="relative flex justify-center lg:justify-end items-start lg:w-1/2"
                     initial={{ x: 20, opacity: 0 }}
                     animate={{ x: 0, opacity: 1 }}
                     transition={{ duration: 0.6 }}
@@ -114,7 +116,7 @@ const JengaAPI = () => {
                     <img
                       src={product.image}
                       alt={product.name}
-                      className="w-[85%] lg:w-[90%] object-contain relative -top-20"
+                      className="w-full max-w-[500px] object-contain"
                     />
                   </motion.div>
                 </div>
@@ -123,23 +125,35 @@ const JengaAPI = () => {
           </motion.div>
 
           {/* Services Section */}
-          <div className="w-full rounded-2xl py-16">
-            <div className="w-full p-10 md:p-16 lg:p-20">
+          <div className="w-full rounded-2xl py-12 md:py-16">
+            <div className="w-full px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 2xl:px-16 py-6 md:py-8 lg:py-10">
               {/* Top line */}
-              <div className="text-left mb-10">
-  <h1 className="text-3xl md:text-4xl text-blue-600"  style={{ color: "#4277bb" }}>
-    Jenga API
-  </h1>
-  <p className="text-xl md:text-2xl text-gray-800 mt-2">
-    Service Offering
-  </p>
-</div>
+              <div className="text-left mb-8 md:mb-10 pl-2 sm:pl-4">
+                <h1
+                  className="text-2xl sm:text-3xl md:text-4xl text-blue-600"
+                  style={{ color: "#4277bb" }}
+                >
+                  Jenga API
+                </h1>
+                <p className="text-lg sm:text-xl md:text-2xl text-gray-800 mt-2">
+                  Service Offering
+                </p>
+              </div>
               <div className="w-full flex justify-center mb-8">
-                <div className="w-[90%] h-[2px] bg-[#1f4e79] opacity-70"></div>
+                <div className="w-[90%] max-w-4xl h-[2px] bg-[#1f4e79] opacity-70"></div>
               </div>
 
               {/* CONNECTING LINES */}
-              <div style={{ position: "relative", marginBottom: 80, marginTop: 40 }}>
+              <div
+                style={{
+                  position: "relative",
+                  marginBottom: 80,
+                  marginTop: 40,
+                  maxWidth: "1200px",
+                  marginLeft: "auto",
+                  marginRight: "auto",
+                }}
+              >
                 <div
                   style={{
                     position: "absolute",
@@ -203,7 +217,7 @@ const JengaAPI = () => {
               </div>
 
               {/* Services Grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10 w-full px-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 w-full max-w-7xl mx-auto px-2 sm:px-4">
                 {services.map((item, index) => (
                   <motion.div
                     key={index}
@@ -224,37 +238,40 @@ const JengaAPI = () => {
                         className="bg-[#5a8fd6] w-36 h-36 flex items-center justify-center rounded-md"
                         style={{
                           backgroundColor: "#4277bb",
-                          height: "100px",
-                          width: "100px",
+                          height: "90px",
+                          width: "90px",
                           display: "flex",
                           borderRadius: "16px",
                         }}
                       >
-                        <item.icon size={50} strokeWidth={1.5} className="text-white" />
+                        <item.icon
+                          size={44}
+                          strokeWidth={1.5}
+                          className="text-white"
+                        />
                       </div>
 
                       {/* Arrow */}
-                    <div
-  style={{
-    width: 0,
-    height: 0,
-    borderLeft: "28px solid transparent",
-    borderRight: "28px solid transparent",
-    borderTop: "22px solid #4277bb",
-    margin: "0 auto",
-  }}
-/>
-
+                      <div
+                        style={{
+                          width: 0,
+                          height: 0,
+                          borderLeft: "22px solid transparent",
+                          borderRight: "22px solid transparent",
+                          borderTop: "18px solid #4277bb",
+                          margin: "0 auto",
+                        }}
+                      />
                     </motion.div>
 
                     {/* Divider */}
                     <div className="w-full my-4">
-                      <div className="h-32 border-l mx-auto border-white/40"></div>
+                      <div className="h-24 border-l mx-auto border-white/40"></div>
                     </div>
 
                     {/* Title */}
                     <h3
-                      className="font-semibold text-[#4277bb] text-lg mb-3"
+                      className="font-semibold text-[#4277bb] text-base sm:text-lg mb-3 px-2"
                       style={{ color: "#4277bb" }}
                     >
                       {item.title}
@@ -262,7 +279,7 @@ const JengaAPI = () => {
 
                     {/* Bullets */}
                     <ul
-                      className="text-sm text-white/90 text-left space-y-1"
+                      className="text-sm text-white/90 text-left space-y-1 px-4"
                       style={{ color: "black" }}
                     >
                       {item.bullets.map((b, i) => (

@@ -111,150 +111,153 @@ export const Header = () => {
 
   return (
     <>
-      {/* Desktop Header */}
+      {/* Desktop Header - FIXED: Added overflow-x-hidden */}
       <header className={`hidden lg:block fixed top-0 w-full z-50 transition-all duration-300 ${
         scrolled 
           ? "bg-white/95 backdrop-blur-md shadow-md py-0" 
           : "bg-white py-2"
       }`}>
-        <div className="container mx-auto px-6">
-          {/* Main Navigation */}
-          <div className="flex items-center justify-between py-3">
-            {/* Logo */}
-            <Link 
-              to="/" 
-              className="flex-shrink-0"
-            >
-              <img 
-                src={logo} 
-                alt="Finserve Africa" 
-                className="h-12 w-auto" 
-              />
-            </Link>
-
-            {/* Desktop Navigation */}
-            <nav className="flex items-center space-x-1">
-              {menuItems.map((item) => {
-                const active = isActive(item.href);
-                const hasDropdown = item.dropdown;
-                
-                return (
-                  <div 
-                    key={item.label}
-                    className="relative"
-                    data-dropdown="true"
-                    onMouseEnter={() => {
-                      setActiveHover(item.href);
-                      if (hasDropdown) setOpenDropdown(item.label);
-                    }}
-                    onMouseLeave={() => {
-                      setActiveHover(null);
-                      setTimeout(() => {
-                        if (openDropdown === item.label) setOpenDropdown(null);
-                      }, 150);
-                    }}
-                  >
-                    <Link
-                      to={item.href}
-                      className={`
-                        group relative px-4 py-3 rounded-lg transition-all duration-200 flex items-center gap-2 whitespace-nowrap
-                        ${active 
-                          ? "text-primary font-semibold" 
-                          : "text-gray-700 hover:text-primary"
-                        }
-                        ${item.feature ? "bg-primary/5" : ""}
-                      `}
-                    >
-                      {/* Icon */}
-                      <div className={`
-                        w-8 h-8 rounded-lg flex items-center justify-center transition-all duration-200
-                        ${active 
-                          ? "bg-primary text-white" 
-                          : "bg-gray-100 text-gray-600 group-hover:bg-primary/10"
-                        }
-                      `}>
-                        <item.icon className="w-4 h-4" />
-                      </div>
-                      
-                      {/* Label */}
-                      <div className="flex items-center gap-2">
-                        <span className="text-sm font-medium tracking-wide">
-                          {item.label}
-                        </span>
-                        
-                        {/* Feature badge */}
-                        {item.badge && (
-                          <span className="px-2 py-0.5 bg-primary text-white text-xs rounded-full">
-                            {item.badge}
-                          </span>
-                        )}
-                        
-                        {/* Dropdown indicator */}
-                        {hasDropdown && (
-                          <ChevronDown className={`
-                            w-3 h-3 transition-transform duration-200 
-                            ${openDropdown === item.label ? "transform rotate-180" : ""}
-                          `} />
-                        )}
-                      </div>
-                      
-                      {/* Active indicator - simple underline */}
-                      {active && (
-                        <div className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary rounded-full"></div>
-                      )}
-                    </Link>
-                    
-                    {/* Dropdown Menu */}
-                    {hasDropdown && openDropdown === item.label && (
-                      <div className="absolute top-full left-0 mt-2 w-64 bg-primary rounded-lg shadow-lg border border-gray-100 overflow-hidden">
-                        <div className="p-2">
-                          <div className="px-3 py-2 mb-1">
-                            <div className="text-xs font-semibold text-gray-500 uppercase tracking-wider">
-                              {item.label}
-                            </div>
-                            <div className="text-xs text-white/80">{item.description}</div>
-                          </div>
-                          {item.dropdown?.map((subItem, index) => (
-                            <Link
-                              key={subItem.label}
-                              to={subItem.href}
-                              className="group/sub flex items-center justify-between px-4 py-3 rounded-lg hover:bg-gray-50 transition-colors duration-200"
-                            >
-                              <div className="flex items-center gap-3">
-                                <div className="w-8 h-8 rounded-lg bg-gray-100 flex items-center justify-center group-hover/sub:bg-primary/10 transition-colors">
-                                  <ChevronRight className="w-3 h-3 text-gray-400 group-hover/sub:text-primary transition-colors" />
-                                </div>
-                                <span className="text-sm font-medium text-xs text-white/80 group-hover/sub:text-primary transition-colors">
-                                  {subItem.label}
-                                </span>
-                              </div>
-                            </Link>
-                          ))}
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                );
-              })}
-            </nav>
-
-            {/* Desktop CTA Button - Simple version */}
-            <div className="flex items-center">
-              <a 
-                href="https://finserve.custhelp.com/app/home" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="px-5 py-2.5 bg-primary text-white rounded-lg font-semibold text-sm hover:bg-primary/90 transition-colors duration-200 whitespace-nowrap"
+        {/* FIXED: Added max-w-[100vw] and overflow-x-hidden wrapper */}
+        <div className="w-full max-w-[100vw] overflow-x-hidden">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            {/* Main Navigation */}
+            <div className="flex items-center justify-between py-3">
+              {/* Logo */}
+              <Link 
+                to="/" 
+                className="flex-shrink-0"
               >
-                Support Portal
-              </a>
+                <img 
+                  src={logo} 
+                  alt="Finserve Africa" 
+                  className="h-12 w-auto" 
+                />
+              </Link>
+
+              {/* Desktop Navigation - FIXED: Added flex-wrap for smaller screens */}
+              <nav className="flex items-center flex-wrap gap-1">
+                {menuItems.map((item) => {
+                  const active = isActive(item.href);
+                  const hasDropdown = item.dropdown;
+                  
+                  return (
+                    <div 
+                      key={item.label}
+                      className="relative"
+                      data-dropdown="true"
+                      onMouseEnter={() => {
+                        setActiveHover(item.href);
+                        if (hasDropdown) setOpenDropdown(item.label);
+                      }}
+                      onMouseLeave={() => {
+                        setActiveHover(null);
+                        setTimeout(() => {
+                          if (openDropdown === item.label) setOpenDropdown(null);
+                        }, 150);
+                      }}
+                    >
+                      <Link
+                        to={item.href}
+                        className={`
+                          group relative px-3 py-2.5 rounded-lg transition-all duration-200 flex items-center gap-2 whitespace-nowrap
+                          ${active 
+                            ? "text-primary font-semibold" 
+                            : "text-gray-700 hover:text-primary"
+                          }
+                          ${item.feature ? "bg-primary/5" : ""}
+                        `}
+                      >
+                        {/* Icon */}
+                        <div className={`
+                          w-7 h-7 rounded-lg flex items-center justify-center transition-all duration-200
+                          ${active 
+                            ? "bg-primary text-white" 
+                            : "bg-gray-100 text-gray-600 group-hover:bg-primary/10"
+                          }
+                        `}>
+                          <item.icon className="w-3.5 h-3.5" />
+                        </div>
+                        
+                        {/* Label */}
+                        <div className="flex items-center gap-1.5">
+                          <span className="text-sm font-medium tracking-wide">
+                            {item.label}
+                          </span>
+                          
+                          {/* Feature badge */}
+                          {item.badge && (
+                            <span className="px-1.5 py-0.5 bg-primary text-white text-xs rounded-full">
+                              {item.badge}
+                            </span>
+                          )}
+                          
+                          {/* Dropdown indicator */}
+                          {hasDropdown && (
+                            <ChevronDown className={`
+                              w-3 h-3 transition-transform duration-200 
+                              ${openDropdown === item.label ? "transform rotate-180" : ""}
+                            `} />
+                          )}
+                        </div>
+                        
+                        {/* Active indicator - simple underline */}
+                        {active && (
+                          <div className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary rounded-full"></div>
+                        )}
+                      </Link>
+                      
+                      {/* Dropdown Menu - FIXED: Added right-0 and prevent overflow */}
+                      {hasDropdown && openDropdown === item.label && (
+                        <div className="absolute top-full left-0 mt-2 w-64 bg-primary rounded-lg shadow-lg border border-gray-100 overflow-hidden z-50">
+                          <div className="p-2">
+                            <div className="px-3 py-2 mb-1">
+                              <div className="text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                                {item.label}
+                              </div>
+                              <div className="text-xs text-white/80">{item.description}</div>
+                            </div>
+                            {item.dropdown?.map((subItem, index) => (
+                              <Link
+                                key={subItem.label}
+                                to={subItem.href}
+                                className="group/sub flex items-center justify-between px-4 py-3 rounded-lg hover:bg-gray-50 transition-colors duration-200"
+                              >
+                                <div className="flex items-center gap-3">
+                                  <div className="w-8 h-8 rounded-lg bg-gray-100 flex items-center justify-center group-hover/sub:bg-primary/10 transition-colors">
+                                    <ChevronRight className="w-3 h-3 text-gray-400 group-hover/sub:text-primary transition-colors" />
+                                  </div>
+                                  <span className="text-sm font-medium text-xs text-white/80 group-hover/sub:text-primary transition-colors">
+                                    {subItem.label}
+                                  </span>
+                                </div>
+                              </Link>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
+              </nav>
+
+              {/* Desktop CTA Button */}
+              <div className="flex items-center">
+                <a 
+                  href="https://finserve.custhelp.com/app/home" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="px-4 py-2 bg-primary text-white rounded-lg font-semibold text-sm hover:bg-primary/90 transition-colors duration-200 whitespace-nowrap"
+                >
+                  Support Portal
+                </a>
+              </div>
             </div>
           </div>
         </div>
       </header>
 
-      {/* Mobile Menu Button */}
-      <div className="lg:hidden">
+      {/* Mobile Menu Button - FIXED: Added max-w-[100vw] wrapper */}
+      <div className="lg:hidden w-full max-w-[100vw] overflow-x-hidden">
         <button
           className="fixed top-4 right-4 z-50 p-3 bg-white rounded-xl shadow-lg text-gray-700 hover:bg-gray-100 transition-all duration-200"
           onClick={() => setMobileMenuOpen(true)}
@@ -264,14 +267,14 @@ export const Header = () => {
         </button>
       </div>
 
-      {/* Mobile Slide-In Menu - FIXED VERSION */}
+      {/* Mobile Slide-In Menu - FIXED: Added overflow prevention */}
       <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
         <SheetContent 
           side="right" 
           className="w-full sm:max-w-sm bg-white border-l border-gray-100 p-0 overflow-hidden"
         >
-          {/* Top Section with Logo and Close - FIXED VISIBILITY */}
-          <div className="sticky top-0 z-10 bg-white border-b border-gray-100 shadow-sm">
+          {/* Top Section with Logo and Close */}
+          <div className="sticky top-0 z-10 bg-white border-b border-gray-100 shadow-sm w-full">
             <div className="flex items-center justify-between px-5 py-4">
               <div className="flex items-center gap-3">
                 <img src={logo} alt="Finserve" className="h-8" />
@@ -288,9 +291,9 @@ export const Header = () => {
             </div>
           </div>
 
-          {/* Mobile Navigation - FIXED VISIBILITY */}
-          <div className="px-3 py-4 overflow-y-auto h-[calc(100vh-80px)]">
-            <nav className="space-y-1">
+          {/* Mobile Navigation - FIXED: Added width constraints */}
+          <div className="px-3 py-4 overflow-y-auto h-[calc(100vh-80px)] w-full">
+            <nav className="space-y-1 w-full">
               {menuItems.map((item) => {
                 const active = isActive(item.href);
                 return (
@@ -299,7 +302,7 @@ export const Header = () => {
                     to={item.href}
                     onClick={() => setMobileMenuOpen(false)}
                     className={`
-                      flex items-center justify-between px-4 py-3.5 rounded-lg transition-all duration-200
+                      flex items-center justify-between px-4 py-3.5 rounded-lg transition-all duration-200 w-full
                       ${active 
                         ? "bg-primary/10 text-primary" 
                         : "text-gray-700 hover:bg-gray-50 hover:text-primary"
@@ -333,9 +336,9 @@ export const Header = () => {
               })}
             </nav>
 
-            {/* Mobile CTA Section - FIXED VISIBILITY */}
-            <div className="mt-8 px-4">
-              <div className="p-4 bg-gray-50 rounded-xl border border-gray-200">
+            {/* Mobile CTA Section */}
+            <div className="mt-8 px-4 w-full">
+              <div className="p-4 bg-gray-50 rounded-xl border border-gray-200 w-full">
                 <h4 className="font-semibold text-gray-900 text-sm mb-1">Customer Support</h4>
                 <p className="text-xs text-gray-600 mb-3">Available 24/7 for assistance</p>
                 <a 
@@ -349,8 +352,8 @@ export const Header = () => {
               </div>
             </div>
 
-            {/* Footer in Mobile Menu - FIXED VISIBILITY */}
-            <div className="mt-10 pt-6 border-t border-gray-200 px-4 pb-8">
+            {/* Footer in Mobile Menu */}
+            <div className="mt-10 pt-6 border-t border-gray-200 px-4 pb-8 w-full">
               <div className="text-center text-xs text-gray-500 space-y-2">
                 <p>© {new Date().getFullYear()} Finserve Africa</p>
                 <div className="flex items-center justify-center gap-4">

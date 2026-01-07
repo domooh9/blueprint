@@ -1,5 +1,4 @@
 import JengaPGWI from "@/assets/JengaPGWI.png";
-import JengaPaymentii from "@/assets/JengaPaymentii.png";
 
 const JengaPayment = () => {
   const services = [
@@ -60,6 +59,45 @@ const JengaPayment = () => {
 
   return (
     <section style={{ width: "100%", position: "relative" }}>
+      <style>
+        {`
+          @media (max-width: 768px) {
+            .mobile-stack {
+              grid-template-columns: 1fr !important;
+            }
+            .mobile-order-1 {
+              order: 1;
+            }
+            .mobile-order-2 {
+              order: 2;
+            }
+            .mobile-full-width {
+              margin-right: 0 !important;
+              width: 100% !important;
+            }
+            .mobile-center {
+              text-align: center;
+            }
+            .mobile-padding {
+              padding: 32px 16px !important;
+            }
+            .mobile-flex-col {
+              flex-direction: column !important;
+              gap: 16px !important;
+            }
+          }
+          
+          @media (max-width: 480px) {
+            .mobile-logo {
+              font-size: 36px !important;
+            }
+            .mobile-text {
+              font-size: 12px !important;
+            }
+          }
+        `}
+      </style>
+      
       {/* HERO */}
       <div
         style={{
@@ -96,6 +134,7 @@ const JengaPayment = () => {
 
         {/* CONTENT */}
         <div
+          className="mobile-stack"
           style={{
             position: "relative",
             zIndex: 10,
@@ -105,16 +144,16 @@ const JengaPayment = () => {
             width: "100%",
             display: "grid",
             gridTemplateColumns: "1fr 1fr",
-            gap: 48,
+            gap: 32,
             alignItems: "center",
           }}
         >
-          {/* LEFT */}
-          <div>
+          {/* LEFT - Paragraph content */}
+          <div className="mobile-order-1">
             {/* Logo Section with styled text */}
-            <div style={{ marginBottom: 40 }}>
-              <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
-                <h1 style={{ fontSize: 48, fontWeight: 700, color: "#999", margin: 0 }}>Jenga</h1>
+            <div style={{ marginBottom: 40 }} className="mobile-center">
+              <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16, justifyContent: { xs: "center", md: "flex-start" } }}>
+                <h1 className="mobile-logo" style={{ fontSize: 48, fontWeight: 700, color: "#999", margin: 0 }}>Jenga</h1>
                 <div>
                   <p style={{ fontSize: 14, fontWeight: 600, color: "#E91E8C", margin: 0 }}>Payment</p>
                   <p style={{ fontSize: 14, fontWeight: 600, color: "#E91E8C", margin: 0 }}>Gateway</p>
@@ -124,37 +163,42 @@ const JengaPayment = () => {
 
             {/* Description Box */}
             <div
+              className="mobile-full-width"
               style={{
                 backgroundColor: "#E91E8C",
-                borderRadius: 12,
-                padding: 32,
-                maxWidth: 520,
+                borderRadius: 0,
+                padding: "40px 32px",
+                height: "280px",
+                display: "flex",
+                alignItems: "center",
+                marginRight: "-136px",
+                boxSizing: "border-box",
               }}
             >
-              <p style={{ color: "#fff", fontSize: 10, lineHeight: 1.7, margin: 0 }}>
+              <p className="mobile-text" style={{ color: "#fff", fontSize: 14, lineHeight: 1.7, margin: 0 }}>
                 Jenga Payment Gateway is a business-to-business financial solution that allows merchants to provide their customers the ability to pay via various payments channels in multi-currencies across 180+ currencies.
               </p>
             </div>
           </div>
 
-          {/* RIGHT */}
-          <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+          {/* RIGHT - Image */}
+          <div className="mobile-order-2" style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
             <img
               src={JengaPGWI}
               alt="Jenga PGW Illustration"
-              style={{ width: "100%", maxWidth: 450, objectFit: "contain" }}
+              style={{ width: "100%", maxWidth: 500, objectFit: "contain" }}
             />
           </div>
         </div>
       </div>
 
       {/* SERVICE OFFERING */}
-      <div style={{ padding: "64px 16px" }}>
+      <div style={{ padding: "64px 16px" }} className="mobile-padding">
         <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-          <h2 style={{ fontSize: 30, fontWeight: 700, color: "#C30078", marginBottom: 8 }}>
+          <h2 style={{ fontSize: 30, fontWeight: 700, color: "#C30078", marginBottom: 8, textAlign: { xs: "center", md: "left" } }}>
             Jenga PGW
           </h2>
-          <p style={{ fontSize: 20, marginBottom: 48 }}>Service Offering.</p>
+          <p style={{ fontSize: 20, marginBottom: 48, textAlign: { xs: "center", md: "left" } }}>Service Offering.</p>
 
           {/* CONNECTING LINES */}
           <div style={{ position: "relative", marginBottom: 80 }}>

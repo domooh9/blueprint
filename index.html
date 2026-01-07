@@ -15,6 +15,37 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@Lovable" />
     <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+
+    <!-- Add these CSS rules to prevent overflow issues -->
+    <style>
+      /* Global box-sizing fix */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      /* Prevent horizontal overflow */
+      html, body {
+        max-width: 100%;
+        overflow-x: hidden;
+        width: 100%;
+      }
+
+      /* Ensure root container doesn't overflow */
+      #root {
+        width: 100%;
+        position: relative;
+      }
+
+      /* Responsive images */
+      img, video, iframe {
+        max-width: 100%;
+        height: auto;
+      }
+    </style>
   </head>
 
   <body>
