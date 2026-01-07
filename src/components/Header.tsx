@@ -208,13 +208,13 @@ export const Header = () => {
                       
                       {/* Dropdown Menu - FIXED: Added right-0 and prevent overflow */}
                       {hasDropdown && openDropdown === item.label && (
-                        <div className="absolute top-full left-0 mt-2 w-64 bg-primary rounded-lg shadow-lg border border-gray-100 overflow-hidden z-50">
+                        <div className="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-lg border border-gray-100 overflow-hidden z-50">
                           <div className="p-2">
                             <div className="px-3 py-2 mb-1">
                               <div className="text-xs font-semibold text-gray-500 uppercase tracking-wider">
                                 {item.label}
                               </div>
-                              <div className="text-xs text-white/80">{item.description}</div>
+                              <div className="text-xs text-gray-500">{item.description}</div>
                             </div>
                             {item.dropdown?.map((subItem, index) => (
                               <Link
@@ -226,7 +226,7 @@ export const Header = () => {
                                   <div className="w-8 h-8 rounded-lg bg-gray-100 flex items-center justify-center group-hover/sub:bg-primary/10 transition-colors">
                                     <ChevronRight className="w-3 h-3 text-gray-400 group-hover/sub:text-primary transition-colors" />
                                   </div>
-                                  <span className="text-sm font-medium text-xs text-white/80 group-hover/sub:text-primary transition-colors">
+                                  <span className="text-sm font-medium text-gray-700 group-hover/sub:text-primary transition-colors">
                                     {subItem.label}
                                   </span>
                                 </div>
@@ -256,10 +256,10 @@ export const Header = () => {
         </div>
       </header>
 
-      {/* Mobile Menu Button - FIXED: Added max-w-[100vw] wrapper */}
+      {/* Mobile Menu Button - UPDATED: Changed background to primary color */}
       <div className="lg:hidden w-full max-w-[100vw] overflow-x-hidden">
         <button
-          className="fixed top-4 right-4 z-50 p-3 bg-white rounded-xl shadow-lg text-gray-700 hover:bg-gray-100 transition-all duration-200"
+          className="fixed top-4 right-4 z-50 p-3 bg-primary rounded-xl shadow-lg text-white hover:bg-primary/90 transition-all duration-200"
           onClick={() => setMobileMenuOpen(true)}
           aria-label="Toggle menu"
         >
