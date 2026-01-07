@@ -12,10 +12,10 @@ const socialLinks = [
 const quickLinks = [
   { label: "Who we are", href: "#about" },
   { label: "The Board", href: "/board" },
-  { label: "Personal", href: "#" },
+  { label: "Equitel", href: "#" },
   { label: "Jenga PGW", href: "https://jengapgw.io" },
   { label: "Jenga API", href: "https://jengahq.io" },
-  { label: "Developer", href: "https://developer.jengahq.io" },
+  { label: "Finserve Mobile", href: "https://developer.jengahq.io" },
 ];
 
 const complianceLinks = [
