@@ -11,7 +11,7 @@ const Livestream = () => {
     window.open(youtubeLink, "_blank");
   };
 
-  return (
+return (
     <div className="relative py-16 md:py-24 bg-gradient-to-br from-primary/5 via-background to-primary/5 rounded-3xl overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-10">
@@ -24,12 +24,12 @@ const Livestream = () => {
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
             <Play className="w-4 h-4 text-primary" />
             <span className="text-primary font-semibold text-sm tracking-wider">
-              Live Now
+             YouTube Channel
             </span>
           </div>
           
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Join Our <span className="text-primary">Livestream</span>
+           
           </h1>
           
           <div className="flex justify-center items-center mb-6">
@@ -39,7 +39,7 @@ const Livestream = () => {
           </div>
           
           <p className="text-lg md:text-xl text-gray-600 mb-8 max-w-xl mx-auto">
-            Click the button below to open our YouTube livestream in a new tab. You can continue browsing this page while watching.
+            Click the button below to open our Launch on YouTube in a new tab. You can continue browsing this page while watching.
           </p>
           
           <Button
@@ -47,18 +47,19 @@ const Livestream = () => {
             className="bg-gradient-to-r from-primary to-primary/90 hover:from-primary hover:to-primary/80 text-white py-6 px-8 rounded-xl font-bold text-lg shadow-lg hover:shadow-xl transition-all duration-300 flex items-center gap-3 mx-auto group"
           >
             <Play className="w-6 h-6" />
-            Watch Live Stream
+            Watch Our Launch on YouTube
             <ExternalLink className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </Button>
           
           <p className="text-sm text-gray-500 mt-6">
-            Opens in a new tab • Live 24/7 • Interactive Q&A Available
+            Opens in a new tab
           </p>
         </div>
       </div>
     </div>
   );
 };
+  
 
 const mediaItems = [
   {
@@ -235,36 +236,13 @@ const Media = () => {
         </section>
 
         {/* Livestream Section */}
-        <section className="py-12 bg-white">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <Livestream />
-          </div>
-        </section>
-
+        
         {/* Main Content Section */}
         <section className="py-16 md:py-20 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             {activeTab === 'media' ? (
               <>
-                {/* Media Stats */}
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
-                  <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-2xl text-center">
-                    <div className="text-3xl font-bold text-blue-600 mb-2">8+</div>
-                    <div className="text-sm text-gray-600 font-medium">Media Resources</div>
-                  </div>
-                  <div className="bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-2xl text-center">
-                    <div className="text-3xl font-bold text-green-600 mb-2">4</div>
-                    <div className="text-sm text-gray-600 font-medium">Categories</div>
-                  </div>
-                  <div className="bg-gradient-to-br from-purple-50 to-purple-100 p-6 rounded-2xl text-center">
-                    <div className="text-3xl font-bold text-purple-600 mb-2">3</div>
-                    <div className="text-sm text-gray-600 font-medium">Years Coverage</div>
-                  </div>
-                  <div className="bg-gradient-to-br from-orange-50 to-orange-100 p-6 rounded-2xl text-center">
-                    <div className="text-3xl font-bold text-orange-600 mb-2">2</div>
-                    <div className="text-sm text-gray-600 font-medium">Awards Won</div>
-                  </div>
-                </div>
+             
 
                 {/* Media Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
@@ -448,9 +426,17 @@ const Media = () => {
                   Compliance Questions
                 </a>
               </div>
+              
             </div>
           </div>
+          <section className="py-12 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <Livestream />
+          </div>
         </section>
+
+        </section>
+        
       </main>
     </div>
   );
