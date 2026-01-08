@@ -1,5 +1,7 @@
 import { Facebook, Instagram, Linkedin, Youtube } from "lucide-react";
 import finserveLogo from "@/assets/finserve-logo.png";
+import cert2 from "@/assets/cert2.png"
+import cert1 from "@/assets/cert1.png"
 
 const socialLinks = [
   { icon: Facebook, href: "#", label: "Facebook" },
@@ -63,8 +65,16 @@ export const Footer = () => {
             
             {/* Certification badges placeholders */}
             <div className="flex justify-center gap-8 mb-8">
-              <div className="w-32 h-16 md:w-40 md:h-20 bg-gray-300/50 rounded-full" />
-              <div className="w-32 h-16 md:w-40 md:h-20 bg-gray-300/50 rounded-full" />
+              <img 
+                src={cert1} 
+                alt="Certification 1" 
+                className="w-32 h-16 md:w-40 md:h-20 object-contain rounded-lg"
+              />
+              <img 
+                src={cert2} 
+                alt="Certification 2" 
+                className="w-32 h-16 md:w-40 md:h-20 object-contain rounded-lg"
+              />
             </div>
             
             <p className="text-white/90 text-sm font-normal tracking-normal">
