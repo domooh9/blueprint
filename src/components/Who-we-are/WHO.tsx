@@ -378,7 +378,8 @@ const WHO = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            Our Core Values
+            <p className="text-primary">Our </p>
+            Core Values
           </motion.h2>
           <motion.div 
             className="flex items-center gap-2"
@@ -396,7 +397,7 @@ const WHO = () => {
         </motion.div>
 
         {/* Values Grid - White Background */}
-        <div className="bg-white py-16 lg:py-24">
+        <div className="bg-[#474747] py-16 lg:py-24">
           <div className="container mx-auto px-4 sm:px-6 lg:px-12">
             <motion.div 
               className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 lg:gap-6"
@@ -414,7 +415,7 @@ const WHO = () => {
                 whileHover={{ y: -8, transition: { type: "spring", stiffness: 300 } }}
               >
                 <motion.h3 
-                  className="text-lg font-semibold italic text-gray-800 mb-6"
+                  className="text-lg font-semibold italic text-[#EB2240] mb-6"
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
                   viewport={{ once: true }}
@@ -442,7 +443,7 @@ const WHO = () => {
                     </svg>
                   </div>
                 </motion.div>
-                <p className="text-gray-600 leading-relaxed px-2">
+                <p className="text-white leading-relaxed px-2">
                   Being open minded to possibilities. To unlearn and relearn how technology works and how our customers interact with us
                 </p>
               </motion.div>
@@ -455,7 +456,7 @@ const WHO = () => {
                 whileHover={{ y: -8, transition: { type: "spring", stiffness: 300 } }}
               >
                 <motion.h3 
-                  className="text-lg font-semibold italic text-gray-800 mb-6"
+                  className="text-lg font-semibold italic text-[#EB2240] mb-6"
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
                   viewport={{ once: true }}
@@ -483,7 +484,7 @@ const WHO = () => {
                     </svg>
                   </div>
                 </motion.div>
-                <p className="text-gray-600 leading-relaxed px-2">
+                <p className="text-white leading-relaxed px-2">
                   Being open to partnerships externally and internally believing in the collective genius of the team
                 </p>
               </motion.div>
@@ -496,7 +497,7 @@ const WHO = () => {
                 whileHover={{ y: -8, transition: { type: "spring", stiffness: 300 } }}
               >
                 <motion.h3 
-                  className="text-lg font-semibold italic text-gray-800 mb-6"
+                  className="text-lg font-semibold italic text-[#EB2240] mb-6"
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
                   viewport={{ once: true }}
@@ -525,7 +526,7 @@ const WHO = () => {
                     </svg>
                   </div>
                 </motion.div>
-                <p className="text-gray-600 leading-relaxed px-2">
+                <p className="text-white leading-relaxed px-2">
                   Reducing the friction between thought and action, getting things done
                 </p>
               </motion.div>
@@ -538,7 +539,7 @@ const WHO = () => {
                 whileHover={{ y: -8, transition: { type: "spring", stiffness: 300 } }}
               >
                 <motion.h3 
-                  className="text-lg font-semibold italic text-gray-800 mb-6"
+                  className="text-lg font-semibold italic text-[#EB2240] mb-6"
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
                   viewport={{ once: true }}
@@ -572,7 +573,7 @@ const WHO = () => {
                     </svg>
                   </div>
                 </motion.div>
-                <p className="text-gray-600 leading-relaxed px-2">
+                <p className="text-white leading-relaxed px-2">
                   Appreciating that disruption is uncomfortable, especially for ourselves
                 </p>
               </motion.div>
@@ -585,7 +586,7 @@ const WHO = () => {
                 whileHover={{ y: -8, transition: { type: "spring", stiffness: 300 } }}
               >
                 <motion.h3 
-                  className="text-lg font-semibold italic text-gray-800 mb-6"
+                  className="text-lg font-semibold italic text-[#EB2240] mb-6"
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
                   viewport={{ once: true }}
@@ -612,7 +613,7 @@ const WHO = () => {
                     </svg>
                   </div>
                 </motion.div>
-                <p className="text-gray-600 leading-relaxed px-2">
+                <p className="text-white leading-relaxed px-2">
                   Most of all appreciating that trust is the most precious gem we own and cannot compromise on
                 </p>
               </motion.div>
@@ -620,7 +621,9 @@ const WHO = () => {
             </motion.div>
           </div>
         </div>
+        
       </section>
+      
     </div>
   );
 };

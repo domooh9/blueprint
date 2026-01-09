@@ -32,12 +32,6 @@ export const Products = () => {
       {/* Section Header */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-3">
-            <span className="inline-block px-4 py-1.5 bg-red-50 text-red-600 text-sm font-medium rounded-full">
-              Our Products
-            </span>
-          </div>
-          
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-8 text-gray-900">
             Empowering Growth Through Innovation
           </h2>
@@ -54,15 +48,6 @@ export const Products = () => {
               providing powerful tools that empower ambitions beyond boundaries.
             </p>
             
-            <p
-              className={`text-gray-600 text-lg leading-relaxed transition-all duration-1000 ease-out transform delay-200 ${
-                visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
-              }`}
-            >
-              Through our comprehensive product suite—including Equitel, Jenga API, 
-              Jenga PGW, and mKey—we deliver robust solutions that drive growth. 
-              We build innovative technology so you can focus on expanding your business.
-            </p>
           </div>
         </div>
       </div>

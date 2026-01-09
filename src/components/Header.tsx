@@ -44,7 +44,7 @@ const menuItems = [
     icon: UserCheck,
     description: "Leadership team",
     feature: true,
-    badge: "New"
+    
   },
   { 
     label: "FAQ's", 
@@ -111,15 +111,14 @@ export const Header = () => {
 
   return (
     <>
-      {/* Desktop Header - FIXED: Added overflow-x-hidden */}
+      {/* Desktop Header */}
       <header className={`hidden lg:block fixed top-0 w-full z-50 transition-all duration-300 ${
         scrolled 
           ? "bg-white/95 backdrop-blur-md shadow-md py-0" 
           : "bg-white py-2"
       }`}>
-        {/* FIXED: Added max-w-[100vw] and overflow-x-hidden wrapper */}
         <div className="w-full max-w-[100vw] overflow-x-hidden">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto px-4 sm:px6 lg:px-8">
             {/* Main Navigation */}
             <div className="flex items-center justify-between py-3">
               {/* Logo */}
@@ -134,7 +133,7 @@ export const Header = () => {
                 />
               </Link>
 
-              {/* Desktop Navigation - FIXED: Added flex-wrap for smaller screens */}
+              {/* Desktop Navigation */}
               <nav className="flex items-center flex-wrap gap-1">
                 {menuItems.map((item) => {
                   const active = isActive(item.href);
@@ -161,7 +160,7 @@ export const Header = () => {
                         className={`
                           group relative px-3 py-2.5 rounded-lg transition-all duration-200 flex items-center gap-2 whitespace-nowrap
                           ${active 
-                            ? "text-primary font-semibold" 
+                            ? "text-primary font-semibold border-b-2 border-primary pb-1.5" 
                             : "text-gray-700 hover:text-primary"
                           }
                           ${item.feature ? "bg-primary/5" : ""}
@@ -184,37 +183,28 @@ export const Header = () => {
                             {item.label}
                           </span>
                           
-                          {/* Feature badge */}
-                          {item.badge && (
-                            <span className="px-1.5 py-0.5 bg-primary text-white text-xs rounded-full">
-                              {item.badge}
-                            </span>
-                          )}
+                          
                           
                           {/* Dropdown indicator */}
-                          {hasDropdown && (
-                            <ChevronDown className={`
-                              w-3 h-3 transition-transform duration-200 
-                              ${openDropdown === item.label ? "transform rotate-180" : ""}
-                            `} />
+                          {item.dropdown && (
+                            <ChevronDown className={`w-3 h-3 transition-colors ${
+                              active 
+                                ? "text-primary" 
+                                : "text-gray-400 group-hover:text-primary"
+                            }`} />
                           )}
                         </div>
-                        
-                        {/* Active indicator - simple underline */}
-                        {active && (
-                          <div className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary rounded-full"></div>
-                        )}
                       </Link>
                       
-                      {/* Dropdown Menu - FIXED: Added right-0 and prevent overflow */}
+                      {/* Dropdown Menu */}
                       {hasDropdown && openDropdown === item.label && (
-                        <div className="absolute top-full left-0 mt-2 w-64 bg-primary rounded-lg shadow-lg border border-gray-100 overflow-hidden z-50">
+                        <div className="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-lg border border-gray-100 overflow-hidden z-50">
                           <div className="p-2">
                             <div className="px-3 py-2 mb-1">
                               <div className="text-xs font-semibold text-gray-500 uppercase tracking-wider">
                                 {item.label}
                               </div>
-                              <div className="text-xs text-white/80">{item.description}</div>
+                              <div className="text-xs text-gray-600">{item.description}</div>
                             </div>
                             {item.dropdown?.map((subItem, index) => (
                               <Link
@@ -226,7 +216,7 @@ export const Header = () => {
                                   <div className="w-8 h-8 rounded-lg bg-gray-100 flex items-center justify-center group-hover/sub:bg-primary/10 transition-colors">
                                     <ChevronRight className="w-3 h-3 text-gray-400 group-hover/sub:text-primary transition-colors" />
                                   </div>
-                                  <span className="text-sm font-medium text-xs text-white/80 group-hover/sub:text-primary transition-colors">
+                                  <span className="text-sm font-medium text-gray-700 group-hover/sub:text-primary transition-colors">
                                     {subItem.label}
                                   </span>
                                 </div>
@@ -256,7 +246,7 @@ export const Header = () => {
         </div>
       </header>
 
-      {/* Mobile Menu Button - FIXED: Added max-w-[100vw] wrapper */}
+      {/* Mobile Menu Button */}
       <div className="lg:hidden w-full max-w-[100vw] overflow-x-hidden">
         <button
           className="fixed top-4 right-4 z-50 p-3 bg-white rounded-xl shadow-lg text-gray-700 hover:bg-gray-100 transition-all duration-200"
@@ -267,7 +257,7 @@ export const Header = () => {
         </button>
       </div>
 
-      {/* Mobile Slide-In Menu - FIXED: Added overflow prevention */}
+      {/* Mobile Slide-In Menu */}
       <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
         <SheetContent 
           side="right" 
@@ -291,47 +281,65 @@ export const Header = () => {
             </div>
           </div>
 
-          {/* Mobile Navigation - FIXED: Added width constraints */}
+          {/* Mobile Navigation */}
           <div className="px-3 py-4 overflow-y-auto h-[calc(100vh-80px)] w-full">
             <nav className="space-y-1 w-full">
               {menuItems.map((item) => {
                 const active = isActive(item.href);
                 return (
-                  <Link
-                    key={item.label}
-                    to={item.href}
-                    onClick={() => setMobileMenuOpen(false)}
-                    className={`
-                      flex items-center justify-between px-4 py-3.5 rounded-lg transition-all duration-200 w-full
-                      ${active 
-                        ? "bg-primary/10 text-primary" 
-                        : "text-gray-700 hover:bg-gray-50 hover:text-primary"
-                      }
-                    `}
-                  >
-                    <div className="flex items-center gap-3">
-                      <div className={`
-                        w-9 h-9 rounded-lg flex items-center justify-center transition-all duration-200
+                  <div key={item.label}>
+                    <Link
+                      to={item.href}
+                      onClick={() => setMobileMenuOpen(false)}
+                      className={`
+                        flex items-center justify-between px-4 py-3.5 rounded-lg transition-all duration-200 w-full
                         ${active 
-                          ? "bg-primary text-white" 
-                          : "bg-gray-100 text-gray-600"
+                          ? "bg-primary/10 text-primary border-l-4 border-primary" 
+                          : "text-gray-700 hover:bg-gray-50 hover:text-primary"
                         }
-                      `}>
-                        <item.icon className="w-4 h-4" />
-                      </div>
-                      <div className="text-left">
-                        <div className="font-medium text-sm">
-                          {item.label}
+                      `}
+                    >
+                      <div className="flex items-center gap-3">
+                        <div className={`
+                          w-9 h-9 rounded-lg flex items-center justify-center transition-all duration-200
+                          ${active 
+                            ? "bg-primary text-white" 
+                            : "bg-gray-100 text-gray-600"
+                          }
+                        `}>
+                          <item.icon className="w-4 h-4" />
                         </div>
-                        <div className="text-xs text-gray-500 mt-0.5">{item.description}</div>
+                        <div className="text-left">
+                          <div className="font-medium text-sm">
+                            {item.label}
+                          </div>
+                          <div className="text-xs text-gray-500 mt-0.5">{item.description}</div>
+                        </div>
                       </div>
-                    </div>
+                      
+                      <ChevronRight className={`
+                        w-4 h-4 transition-transform duration-200
+                        ${active ? "text-primary" : "text-gray-400"}
+                      `} />
+                    </Link>
                     
-                    <ChevronRight className={`
-                      w-4 h-4 transition-transform duration-200
-                      ${active ? "text-primary" : "text-gray-400"}
-                    `} />
-                  </Link>
+                    {/* Mobile Dropdown Items */}
+                    {item.dropdown && active && (
+                      <div className="ml-12 mt-1 space-y-1">
+                        {item.dropdown.map((subItem) => (
+                          <Link
+                            key={subItem.label}
+                            to={subItem.href}
+                            onClick={() => setMobileMenuOpen(false)}
+                            className="flex items-center px-3 py-2.5 text-sm text-gray-600 hover:text-primary hover:bg-gray-50 rounded-lg transition-colors"
+                          >
+                            <ChevronRight className="w-3 h-3 mr-2 text-gray-400" />
+                            {subItem.label}
+                          </Link>
+                        ))}
+                      </div>
+                    )}
+                  </div>
                 );
               })}
             </nav>
