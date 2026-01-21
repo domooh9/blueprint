@@ -1,5 +1,5 @@
 import { Users, Shield, Lightbulb, Eye, Target, Globe } from "lucide-react";
-import whoB from "@/assets/WhoBc.png";
+import whoB from "@/assets/Kevin.jpg";
 import { motion, type Variants } from "framer-motion";
 import picture34 from "@/assets/picture34.png";
 
@@ -90,7 +90,7 @@ const WHO = () => {
 
       {/* Supporting copy */}
       <motion.p
-        className="text-gray-700 leading-relaxed mb-4"
+        className="text-black-700 leading-relaxed mb-4"
         variants={fadeInLeft}
         transition={{ delay: 0.15 }}
       >
@@ -100,7 +100,7 @@ const WHO = () => {
       </motion.p>
 
       <motion.p
-        className="text-gray-700 leading-relaxed"
+        className="text-black-700 leading-relaxed"
         variants={fadeInLeft}
         transition={{ delay: 0.3 }}
       >

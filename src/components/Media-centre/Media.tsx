@@ -2,7 +2,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ExternalLink, FileText, Presentation, Newspaper, Award, Shield, Lock, MessageSquare, Download, Eye, ChevronRight, Play } from "lucide-react";
 import { useState } from "react";
-import Picturer from "@/assets/Picturer.png";
+import Picturer from "@/assets/Andreas.jpg";
 
 // Livestream Component - Now only shows in Media tab
 const Livestream = () => {
@@ -154,7 +154,14 @@ const Media = () => {
         {/* Hero Section */}
       
 <section 
-  className="relative py-16 md:py-24 overflow-hidden"
+  className="
+    relative
+    py-16
+    md:py-24
+    lg:py-32
+    overflow-hidden
+    lg:min-h-[600px]
+  "
   style={{
     backgroundImage: `url(${Picturer})`,
     backgroundSize: 'cover',
