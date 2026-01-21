@@ -1,4 +1,5 @@
 import JengaPGWI from "@/assets/JengaPGWI.png";
+import Picturer from "@/assets/Picturer.png";
 
 const JengaPayment = () => {
   const services = [
@@ -99,98 +100,116 @@ const JengaPayment = () => {
       </style>
       
       {/* HERO */}
-      <div
-        style={{
-          position: "relative",
-          backgroundColor: "#f6f7f9",
-          minHeight: 500,
-          display: "flex",
-          alignItems: "center",
-        }}
-      >
-        {/* LEFT VERTICAL ACCENT BAR */}
-        <div
-          style={{
-            position: "absolute",
-            left: 0,
-            top: 0,
-            bottom: 0,
-            width: 12,
-            backgroundColor: "#E91E8C",
-          }}
-        />
+      
 
-        {/* RIGHT VERTICAL ACCENT BAR */}
-        <div
-          style={{
-            position: "absolute",
-            right: 0,
-            top: 0,
-            bottom: 0,
-            width: 4,
-            backgroundColor: "#2d3e50",
-          }}
-        />
+<div
+  style={{
+    position: "relative",
+    backgroundColor: "#f6f7f9",
+    backgroundImage: `url(${Picturer})`,
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+    minHeight: 500,
+    display: "flex",
+    alignItems: "center",
+  }}
+>
+  {/* LEFT VERTICAL ACCENT BAR */}
+  <div
+    style={{
+      position: "absolute",
+      left: 0,
+      top: 0,
+      bottom: 0,
+      width: 12,
+      backgroundColor: "#E91E8C",
+    }}
+  />
 
-        {/* CONTENT */}
-        <div
-          className="mobile-stack"
-          style={{
-            position: "relative",
-            zIndex: 10,
-            maxWidth: 1200,
-            margin: "0 auto",
-            padding: "64px 16px",
-            width: "100%",
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            gap: 32,
-            alignItems: "center",
-          }}
-        >
-          {/* LEFT - Paragraph content */}
-          <div className="mobile-order-1">
-            {/* Logo Section with styled text */}
-            <div style={{ marginBottom: 40 }} className="mobile-center">
-              <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16, justifyContent: { xs: "center", md: "flex-start" } }}>
-                <h1 className="mobile-logo" style={{ fontSize: 48, fontWeight: 700, color: "#999", margin: 0 }}>Jenga</h1>
-                <div>
-                  <p style={{ fontSize: 14, fontWeight: 600, color: "#E91E8C", margin: 0 }}>Payment</p>
-                  <p style={{ fontSize: 14, fontWeight: 600, color: "#E91E8C", margin: 0 }}>Gateway</p>
-                </div>
-              </div>
-            </div>
+  {/* RIGHT VERTICAL ACCENT BAR */}
+  <div
+    style={{
+      position: "absolute",
+      right: 0,
+      top: 0,
+      bottom: 0,
+      width: 4,
+      backgroundColor: "#2d3e50",
+    }}
+  />
 
-            {/* Description Box */}
-            <div
-              className="mobile-full-width"
-              style={{
-                backgroundColor: "#E91E8C",
-                borderRadius: 0,
-                padding: "40px 32px",
-                height: "280px",
-                display: "flex",
-                alignItems: "center",
-                marginRight: "-136px",
-                boxSizing: "border-box",
-              }}
-            >
-              <p className="mobile-text" style={{ color: "#fff", fontSize: 14, lineHeight: 1.7, margin: 0 }}>
-                Jenga Payment Gateway is a business-to-business financial solution that allows merchants to provide their customers the ability to pay via various payments channels in multi-currencies across 180+ currencies.
-              </p>
-            </div>
-          </div>
+  {/* Optional overlay for better text readability */}
+  <div
+    style={{
+      position: "absolute",
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      backgroundColor: "rgba(246, 247, 249, 0.7)", // Semi-transparent version of original bg color
+    }}
+  />
 
-          {/* RIGHT - Image */}
-          <div className="mobile-order-2" style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
-            <img
-              src={JengaPGWI}
-              alt="Jenga PGW Illustration"
-              style={{ width: "100%", maxWidth: 500, objectFit: "contain" }}
-            />
+  {/* CONTENT */}
+  <div
+    className="mobile-stack"
+    style={{
+      position: "relative",
+      zIndex: 10,
+      maxWidth: 1200,
+      margin: "0 auto",
+      padding: "64px 16px",
+      width: "100%",
+      display: "grid",
+      gridTemplateColumns: "1fr 1fr",
+      gap: 32,
+      alignItems: "center",
+    }}
+  >
+    {/* LEFT - Paragraph content */}
+    <div className="mobile-order-1">
+      {/* Logo Section with styled text */}
+      <div style={{ marginBottom: 40 }} className="mobile-center">
+        <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16, justifyContent: { xs: "center", md: "flex-start" } }}>
+          <h1 className="mobile-logo" style={{ fontSize: 48, fontWeight: 700, color: "#999", margin: 0 }}>Jenga</h1>
+          <div>
+            <p style={{ fontSize: 14, fontWeight: 600, color: "#E91E8C", margin: 0 }}>Payment</p>
+            <p style={{ fontSize: 14, fontWeight: 600, color: "#E91E8C", margin: 0 }}>Gateway</p>
           </div>
         </div>
       </div>
+
+      {/* Description Box */}
+      <div
+        className="mobile-full-width"
+        style={{
+          backgroundColor: "#E91E8C",
+          borderRadius: 0,
+          padding: "40px 32px",
+          height: "280px",
+          display: "flex",
+          alignItems: "center",
+          marginRight: "-136px",
+          boxSizing: "border-box",
+        }}
+      >
+        <p className="mobile-text" style={{ color: "#fff", fontSize: 14, lineHeight: 1.7, margin: 0 }}>
+          Jenga Payment Gateway is a business-to-business financial solution that allows merchants to provide their customers the ability to pay via various payments channels in multi-currencies across 180+ currencies.
+        </p>
+      </div>
+    </div>
+
+    {/* RIGHT - Image */}
+    <div className="mobile-order-2" style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+      <img
+        src={JengaPGWI}
+        alt="Jenga PGW Illustration"
+        style={{ width: "100%", maxWidth: 500, objectFit: "contain" }}
+      />
+    </div>
+  </div>
+</div>
 
       {/* SERVICE OFFERING */}
       <div style={{ padding: "64px 16px" }} className="mobile-padding">

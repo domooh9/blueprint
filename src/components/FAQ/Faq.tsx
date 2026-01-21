@@ -9,6 +9,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Search, ArrowUp, Mail, Phone } from "lucide-react";
+import Picturer from "@/assets/backgroundI.png";
 
 const faqData = [
   {
@@ -179,56 +180,70 @@ export default function FAQ() {
 
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="relative py-16 md:py-20 bg-gradient-to-br from-primary/5 via-background to-secondary/5 overflow-hidden">
-          <div className="absolute inset-0 opacity-5">
-            <div className="absolute inset-0">
-              <svg className="w-full h-full" viewBox="0 0 100 100">
-                <defs>
-                  <pattern
-                    id="faq-pattern"
-                    x="0"
-                    y="0"
-                    width="20"
-                    height="20"
-                    patternUnits="userSpaceOnUse"
-                  >
-                    <circle
-                      cx="2"
-                      cy="2"
-                      r="1"
-                      fill="currentColor"
-                      className="text-primary"
-                    />
-                  </pattern>
-                </defs>
-                <rect width="100" height="100" fill="url(#faq-pattern)" />
-              </svg>
-            </div>
-          </div>
+       
 
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div className="max-w-3xl mx-auto text-center">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary mb-6">
-                Frequently Asked Questions
-              </h1>
-              <p className="text-lg md:text-xl text-muted-foreground mb-8">
-                Find answers to common questions about our products and services
-              </p>
+<section 
+    className="relative pt-28 pb-16 md:pt-32 md:pb-20 overflow-hidden"
+  style={{
+    backgroundImage: `url(${Picturer})`,
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+  }}
+>
+  {/* Dark overlay for better text readability */}
+  <div className="absolute inset-0 bg-black/50" />
+  
+  {/* Optional: Keep or remove the pattern overlay */}
+  <div className="absolute inset-0 opacity-10">
+    <div className="absolute inset-0">
+      <svg className="w-full h-full" viewBox="0 0 100 100">
+        <defs>
+          <pattern
+            id="faq-pattern"
+            x="0"
+            y="0"
+            width="20"
+            height="20"
+            patternUnits="userSpaceOnUse"
+          >
+            <circle
+              cx="2"
+              cy="2"
+              r="1"
+              fill="currentColor"
+              className="text-white"
+            />
+          </pattern>
+        </defs>
+        <rect width="100" height="100" fill="url(#faq-pattern)" />
+      </svg>
+    </div>
+  </div>
 
-              {/* Search Bar */}
-              <div className="relative max-w-2xl mx-auto">
-                <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-                <Input
-                  type="text"
-                  placeholder="Search for answers..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="pl-12 pr-4 py-6 text-base rounded-full border-2 border-border focus:border-primary transition-colors bg-background/80 backdrop-blur-sm"
-                />
-              </div>
-            </div>
-          </div>
-        </section>
+  <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div className="max-w-3xl mx-auto text-center">
+      <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary mb-6">
+        Frequently Asked Questions
+      </h1>
+      <p className="text-lg md:text-xl text-white/90 mb-8">
+        Find answers to common questions about our products and services
+      </p>
+
+      {/* Search Bar */}
+      <div className="relative max-w-2xl mx-auto">
+        <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-white/70" />
+        <Input
+          type="text"
+          placeholder="Search for answers..."
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          className="pl-12 pr-4 py-6 text-base rounded-full border-2 border-white/30 focus:border-white bg-black/40 backdrop-blur-sm text-white placeholder:text-white/60"
+        />
+      </div>
+    </div>
+  </div>
+</section>
 
         {/* FAQ Content */}
         <section className="py-12 md:py-16 lg:py-20">

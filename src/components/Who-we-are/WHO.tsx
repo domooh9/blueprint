@@ -1,5 +1,5 @@
 import { Users, Shield, Lightbulb, Eye, Target, Globe } from "lucide-react";
-import whoB from "@/assets/backgroundI.png";
+import whoB from "@/assets/WhoBc.png";
 import { motion, type Variants } from "framer-motion";
 import picture34 from "@/assets/picture34.png";
 
@@ -48,104 +48,78 @@ const WHO = () => {
   return (
     <div className="min-h-screen flex flex-col overflow-hidden">
       {/* Hero Section - About Finserve with Image */}
-      <section
-        className="relative min-h-screen bg-cover bg-center bg-no-repeat flex items-center py-16"
-        style={{ backgroundImage: `url(${whoB})` }}
+    <section
+  className="relative min-h-screen bg-cover bg-center bg-no-repeat flex items-center"
+  style={{ backgroundImage: `url(${whoB})` }}
+>
+  {/* Overlay for readability */}
+  <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/85 to-white/60 lg:from-white/90 lg:via-white/75 lg:to-transparent"></div>
+
+  <div className="container mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
+    <motion.div
+      className="max-w-3xl"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+      variants={staggerContainer}
+    >
+      {/* Eyebrow */}
+      
+
+      {/* Headline */}
+      <motion.h1
+        className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6"
+        variants={fadeInLeft}
       >
-        {/* Gradient overlay for better readability */}
-        <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/80 to-transparent lg:from-white/90 lg:via-white/70 lg:to-transparent"></div>
+        Building Africa’s Digital <br className="hidden sm:block" />
+        Financial Future
+      </motion.h1>
 
-        <div className="container mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
-          {/* Two-column layout: Text on left, Image on right */}
-          <motion.div 
-            className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-            variants={staggerContainer}
-          >
-            {/* Text Content - Left Column */}
-            <motion.div 
-              className="space-y-6"
-              variants={fadeInLeft}
-              transition={{ duration: 0.6 }}
-            >
-              <motion.div 
-                className="text-gray-800 leading-relaxed space-y-6"
-                variants={staggerContainer}
-              >
-                <motion.p 
-                  className="text-gray-800 leading-relaxed text-lg"
-                  variants={fadeInLeft}
-                  transition={{ duration: 0.6 }}
-                >
-                  <span className="text-[#EB2240] font-semibold text-xl">Finserve Africa Ltd</span> is a wholly owned subsidiary of Equity Group Holdings Plc that specializes in developing innovative fintech solutions for individuals as well as businesses of all sizes. Incorporated in December 2008, Finserve's primary mandate was to digitize Equity Group's operations in order to provide unparalleled convenience to its customers and ecosystems.
-                </motion.p>
+      {/* Lead paragraph */}
+      <motion.p
+        className="text-lg sm:text-xl text-gray-800 leading-relaxed mb-6"
+        variants={fadeInLeft}
+      >
+        <span className="text-[#EB2240] font-semibold">
+          Finserve Africa Ltd
+        </span>{" "}
+        is a wholly owned subsidiary of Equity Group Holdings Plc, specializing
+        in innovative fintech solutions for individuals and businesses across
+        Africa.
+      </motion.p>
 
-                <motion.p 
-                  className="text-gray-800 leading-relaxed"
-                  variants={fadeInLeft}
-                  transition={{ duration: 0.6, delay: 0.2 }}
-                >
-                  Following the successful launch of its first product offering into the Market dubbed Equitel in 2014, a bold decision was made in 2018 to officially launch Finserve as an independent brand to address the complex financial and lifestyle obstacles, hampering the customer's quest for freedom, choice and control in the digital space.
-                </motion.p>
+      {/* Supporting copy */}
+      <motion.p
+        className="text-gray-700 leading-relaxed mb-4"
+        variants={fadeInLeft}
+        transition={{ delay: 0.15 }}
+      >
+        Incorporated in 2008, Finserve was established to digitize Equity Group’s
+        operations and deliver unparalleled convenience, choice, and control to
+        customers within a rapidly evolving digital ecosystem.
+      </motion.p>
 
-                <motion.p 
-                  className="text-gray-800 leading-relaxed"
-                  variants={fadeInLeft}
-                  transition={{ duration: 0.6, delay: 0.4 }}
-                >
-                  Over the years, Finserve has since been employing a data and insight driven culture, to build products that contribute to the ease of doing business. We have worked with a wide range of clients across a variety of industries, from small startups to multinational corporations. Our focus on innovation, quality, and customer satisfaction has earned us a reputation as a trusted partner in the technology industry.
-                </motion.p>
-              </motion.div>
-            </motion.div>
+      <motion.p
+        className="text-gray-700 leading-relaxed"
+        variants={fadeInLeft}
+        transition={{ delay: 0.3 }}
+      >
+        Driven by data, insights, and innovation, we build scalable technology
+        solutions that simplify financial services and empower businesses of all
+        sizes—from startups to multinational corporations.
+      </motion.p>
 
-            {/* Image - Right Column */}
-            <motion.div 
-              className="relative mt-8 lg:mt-0"
-              variants={fadeInRight}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              whileHover={{ scale: 1.02 }}
-            >
-              {/* Image container with decorative elements */}
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
-                <img 
-                  src={picture34} 
-                  alt="Finserve Africa - Innovative Fintech Solutions" 
-                  className="w-full h-auto object-cover max-h-[500px]"
-                />
-                {/* Gradient overlay for better text contrast if needed */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent"></div>
-              </div>
-              
-              {/* Decorative element */}
-              <motion.div 
-                className="absolute -bottom-4 -right-4 w-24 h-24 bg-[#EB2240]/20 rounded-full blur-xl z-0"
-                animate={{ 
-                  scale: [1, 1.1, 1],
-                  opacity: [0.5, 0.8, 0.5]
-                }}
-                transition={{ 
-                  duration: 3,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-              />
-              
-              {/* Optional caption */}
-              <motion.div 
-                className="mt-4 text-center"
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.6 }}
-              >
-                <p className="text-gray-600 text-sm italic">Innovating for Africa's financial future</p>
-              </motion.div>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
+      {/* Optional CTA */}
+      <motion.div
+        className="mt-8 flex gap-4"
+        variants={fadeInLeft}
+        transition={{ delay: 0.45 }}
+      >
+      </motion.div>
+    </motion.div>
+  </div>
+</section>
+
 
       {/* Why Us Section - Red Background */}
       <section className="bg-[#EB2240] py-16 lg:py-24 overflow-hidden">
@@ -621,9 +595,7 @@ const WHO = () => {
             </motion.div>
           </div>
         </div>
-        
       </section>
-      
     </div>
   );
 };

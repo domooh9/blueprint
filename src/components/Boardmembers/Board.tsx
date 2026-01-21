@@ -1,4 +1,5 @@
 import { Users } from "lucide-react";
+import Picturer from "@/assets/Picturer.png";
 
 const boardMembersData = [
       {
@@ -51,22 +52,25 @@ export default function BoardMembers() {
     <div className="min-h-screen bg-background">
       <main className="pt-20">
         {/* Hero Section */}
-        <section className="relative py-16 md:py-20 bg-gradient-to-br from-primary/10 via-background to-background overflow-hidden">
-          <div className="container mx-auto px-6 lg:px-12 relative z-10">
-            <div className="flex items-center gap-4 mb-4">
-              <div className="p-3 bg-primary/20 rounded-lg">
-                <Users className="w-8 h-8 text-primary" />
-              </div>
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
-                <span className="text-primary">Finserve</span>{" "}
-                <span className="text-foreground">Board Members</span>
-              </h1>
-            </div>
-            <p className="text-base md:text-lg text-muted-foreground max-w-3xl">
-              Meet the visionary leaders guiding Finserve Africa towards innovation and excellence.
-            </p>
-          </div>
-        </section>
+       <section 
+  className="relative py-16 md:py-20 overflow-hidden bg-cover bg-center bg-no-repeat"
+  style={{ backgroundImage: `url(${Picturer})` }}
+>
+  {/* Lighter overlay for more visible background */}
+  <div className="absolute inset-0 bg-gradient-to-br from-black/40 via-black/30 to-black/20" />
+  
+  <div className="container mx-auto px-6 lg:px-12 relative z-10">
+    <div className="flex items-center gap-4 mb-4">
+      <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
+        <span className="text-white drop-shadow-lg">Finserve</span>{" "}
+        <span className="text-primary drop-shadow-lg">Board Members</span>
+      </h1>
+    </div>
+    <p className="text-base md:text-lg text-white/90 max-w-3xl drop-shadow">
+      Meet the visionary leaders guiding Finserve Africa towards innovation and excellence.
+    </p>
+  </div>
+</section>
 
         {/* Board Members Section */}
         <section className="py-16 md:py-20">

@@ -1,5 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card";
-import JengaAPii from "@/assets/JengaAPii.png";
+import JengaA from "@/assets/JengaA.png";
 import jengaLogo from "@/assets/jenga-apii.png";
 import { motion } from "framer-motion";
 import { Send, Smartphone, Wallet, UserCheck, Receipt } from "lucide-react";
@@ -49,7 +49,7 @@ const services = [
 const JengaAPI = () => {
   const product = {
     name: "JengaAPI",
-    image: JengaAPii,
+    image: JengaA,
     paragraph:
       "Jenga API is a business-to-business fintech solution that provides a robust and flexible platform for integrating with a wide range of systems and applications. With Jenga APIs, you can streamline your development processes and create innovative solutions that meet the needs of your customers.",
   };
@@ -93,22 +93,20 @@ const JengaAPI = () => {
                 className="p-6 sm:p-8 md:p-10 lg:p-12 xl:p-16"
                 style={{ backgroundColor: "#4277bb" }}
               >
-                <div className="flex flex-col lg:flex-row gap-8 md:gap-10 lg:gap-12 items-start">
-                  {/* Text - Now wrapped to the left side */}
+                <div className="grid lg:grid-cols-2 gap-8 md:gap-10 lg:gap-12 items-center">
+                  {/* Text */}
                   <motion.div
-                    className="text-white text-base sm:text-lg leading-relaxed lg:w-1/2"
+                    className="text-white text-base sm:text-lg leading-relaxed"
                     initial={{ x: -20, opacity: 0 }}
                     animate={{ x: 0, opacity: 1 }}
                     transition={{ duration: 0.6 }}
                   >
-                    <div className="pr-4 md:pr-6 lg:pr-8">
-                      {product.paragraph}
-                    </div>
+                    {product.paragraph}
                   </motion.div>
 
-                  {/* Illustration - Now on the right side */}
+                  {/* Illustration */}
                   <motion.div
-                    className="relative flex justify-center lg:justify-end items-start lg:w-1/2"
+                    className="relative flex justify-center items-start"
                     initial={{ x: 20, opacity: 0 }}
                     animate={{ x: 0, opacity: 1 }}
                     transition={{ duration: 0.6 }}
@@ -116,7 +114,7 @@ const JengaAPI = () => {
                     <img
                       src={product.image}
                       alt={product.name}
-                      className="w-full max-w-[500px] object-contain"
+                      className="w-[80%] sm:w-[85%] lg:w-[90%] object-contain relative -top-16 md:-top-20"
                     />
                   </motion.div>
                 </div>

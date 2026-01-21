@@ -2,8 +2,9 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ExternalLink, FileText, Presentation, Newspaper, Award, Shield, Lock, MessageSquare, Download, Eye, ChevronRight, Play } from "lucide-react";
 import { useState } from "react";
+import whoB from "@assets/whoB.png"
 
-// Livestream Component
+// Livestream Component - Now only shows in Media tab
 const Livestream = () => {
   const youtubeLink = "https://www.youtube.com/watch?v=FhRCxCFzN3g";
 
@@ -11,7 +12,7 @@ const Livestream = () => {
     window.open(youtubeLink, "_blank");
   };
 
-return (
+  return (
     <div className="relative py-16 md:py-24 bg-gradient-to-br from-primary/5 via-background to-primary/5 rounded-3xl overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-10">
@@ -24,12 +25,12 @@ return (
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
             <Play className="w-4 h-4 text-primary" />
             <span className="text-primary font-semibold text-sm tracking-wider">
-             YouTube Channel
+              YouTube Channel
             </span>
           </div>
           
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-           
+            Finserve on YouTube
           </h1>
           
           <div className="flex justify-center items-center mb-6">
@@ -39,7 +40,7 @@ return (
           </div>
           
           <p className="text-lg md:text-xl text-gray-600 mb-8 max-w-xl mx-auto">
-            Click the button below to open our Launch on YouTube in a new tab. You can continue browsing this page while watching.
+            Watch our official launch and other media content on our YouTube channel. Click the button below to open in a new tab.
           </p>
           
           <Button
@@ -59,7 +60,6 @@ return (
     </div>
   );
 };
-  
 
 const mediaItems = [
   {
@@ -227,7 +227,7 @@ const Media = () => {
                     }`}
                   >
                     <Shield className="w-4 h-4" />
-                    Legal & Privacy
+                    Click to View Legal & Privacy
                   </button>
                 </div>
               </div>
@@ -235,14 +235,15 @@ const Media = () => {
           </div>
         </section>
 
-        {/* Livestream Section */}
-        
         {/* Main Content Section */}
         <section className="py-16 md:py-20 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             {activeTab === 'media' ? (
               <>
-             
+                {/* YouTube Livestream Component - ONLY IN MEDIA TAB */}
+                <div className="mb-16">
+                  <Livestream />
+                </div>
 
                 {/* Media Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
@@ -284,10 +285,32 @@ const Media = () => {
                     );
                   })}
                 </div>
+
+                {/* Quick Download Section for Media */}
+                <div className="bg-gradient-to-r from-primary to-primary/90 rounded-3xl p-8 md:p-12 text-white mb-12">
+                  <div className="max-w-4xl mx-auto">
+                    <div className="flex flex-col md:flex-row items-center justify-between gap-8">
+                      <div className="flex-1">
+                        <h3 className="text-2xl md:text-3xl font-bold mb-4">
+                          Need Press Kit or Media Assets?
+                        </h3>
+                        <p className="text-white/90 mb-4">
+                          Get our complete media package including logos, brand guidelines, and executive bios.
+                        </p>
+                      </div>
+                      <div className="flex-shrink-0">
+                        <Button className="bg-white text-primary hover:bg-gray-100 px-8 py-6 rounded-xl font-bold text-lg shadow-lg hover:shadow-xl transition-all duration-300 flex items-center gap-3">
+                          <Download className="w-5 h-5" />
+                          Download Package
+                        </Button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </>
             ) : (
               <>
-                {/* Policies Introduction */}
+                {/* Policies Introduction - NO YOUTUBE HERE */}
                 <div className="max-w-3xl mx-auto text-center mb-12">
                   <h2 className="text-3xl font-bold text-gray-900 mb-4">
                     Protecting Your Trust, Defining Our Standards
@@ -369,74 +392,34 @@ const Media = () => {
                     </div>
                   </div>
                 </div>
-              </>
-            )}
 
-            {/* Quick Download Section */}
-            <div className="bg-gradient-to-r from-primary to-primary/90 rounded-3xl p-8 md:p-12 text-white mb-12">
-              <div className="max-w-4xl mx-auto">
-                <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-                  <div className="flex-1">
-                    <h3 className="text-2xl md:text-3xl font-bold mb-4">
-                      {activeTab === 'media' 
-                        ? 'Need Press Kit or Media Assets?' 
-                        : 'Download All Policies & Certificates'}
-                    </h3>
-                    <p className="text-white/90 mb-4">
-                      {activeTab === 'media'
-                        ? 'Get our complete media package including logos, brand guidelines, and executive bios.'
-                        : 'Access our complete compliance documentation in one convenient package.'}
-                    </p>
-                  </div>
-                  <div className="flex-shrink-0">
-                    <Button className="bg-white text-primary hover:bg-gray-100 px-8 py-6 rounded-xl font-bold text-lg shadow-lg hover:shadow-xl transition-all duration-300 flex items-center gap-3">
-                      <Download className="w-5 h-5" />
-                      Download Package
-                    </Button>
+                {/* Quick Download Section for Policies */}
+                <div className="bg-gradient-to-r from-primary to-primary/90 rounded-3xl p-8 md:p-12 text-white mb-12">
+                  <div className="max-w-4xl mx-auto">
+                    <div className="flex flex-col md:flex-row items-center justify-between gap-8">
+                      <div className="flex-1">
+                        <h3 className="text-2xl md:text-3xl font-bold mb-4">
+                          Download All Policies & Certificates
+                        </h3>
+                        <p className="text-white/90 mb-4">
+                          Access our complete compliance documentation in one convenient package.
+                        </p>
+                      </div>
+                      <div className="flex-shrink-0">
+                        <Button className="bg-white text-primary hover:bg-gray-100 px-8 py-6 rounded-xl font-bold text-lg shadow-lg hover:shadow-xl transition-all duration-300 flex items-center gap-3">
+                          <Download className="w-5 h-5" />
+                          Download Package
+                        </Button>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
+              </>
+            )}
           </div>
         </section>
 
-        {/* CTA Section */}
-        <section className="py-16 bg-gradient-to-br from-gray-50 via-white to-gray-100">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <div className="max-w-2xl mx-auto">
-              <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
-                Need More Information?
-              </h2>
-              <p className="text-gray-600 mb-8">
-                For media inquiries, policy questions, or additional resources, please contact our dedicated teams.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a
-                  href="mailto:media@finserve.africa"
-                  className="inline-flex items-center justify-center gap-2 px-8 py-3 bg-primary text-white rounded-xl font-semibold hover:bg-primary/90 shadow-lg hover:shadow-xl transition-all duration-300"
-                >
-                  <MessageSquare className="w-4 h-4" />
-                  Media Inquiries
-                </a>
-                <a
-                  href="mailto:compliance@finserve.africa"
-                  className="inline-flex items-center justify-center gap-2 px-8 py-3 border-2 border-primary text-primary bg-white rounded-xl font-semibold hover:bg-primary/5 shadow-lg hover:shadow-xl transition-all duration-300"
-                >
-                  <Shield className="w-4 h-4" />
-                  Compliance Questions
-                </a>
-              </div>
-              
-            </div>
-          </div>
-          <section className="py-12 bg-white">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <Livestream />
-          </div>
-        </section>
-
-        </section>
-        
+       
       </main>
     </div>
   );

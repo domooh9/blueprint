@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, ChevronRight, Home, Users, Package, UserCheck, HelpCircle, Globe, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronRight, ChevronDown } from "lucide-react";
 import { Sheet, SheetContent } from "@/components/ui/sheet";
 import logo from "@/assets/finserve-logo.png";
 
@@ -8,14 +8,12 @@ const menuItems = [
   { 
     label: "Home", 
     href: "/", 
-    icon: Home,
     description: "Welcome to Finserve",
     feature: false
   },
   { 
     label: "Who we are", 
     href: "/who-we-are", 
-    icon: Users,
     description: "Our story and mission",
     feature: false,
     dropdown: [
@@ -28,7 +26,6 @@ const menuItems = [
   { 
     label: "Our products", 
     href: "/products", 
-    icon: Package,
     description: "Fintech solutions",
     feature: false,
     dropdown: [
@@ -41,29 +38,23 @@ const menuItems = [
   { 
     label: "Meet the Board", 
     href: "/boardmembers", 
-    icon: UserCheck,
     description: "Leadership team",
-    feature: true,
-    
+    feature: false, // Changed from true to false to remove background
   },
   { 
     label: "FAQ's", 
     href: "/faq", 
-    icon: HelpCircle,
     description: "Common questions",
     feature: false
   },
   { 
     label: "Media Centre", 
     href: "/media-centre", 
-    icon: Globe,
     description: "News & updates",
     feature: false,
     dropdown: [
-      { label: "Press Releases", href: "/media/press" },
-      { label: "News Articles", href: "/media/news" },
-      { label: "Events", href: "/media/events" },
-      { label: "Legal Hub", href: "/media/legal" },
+      { label: "Media", href: "/media" }, // Changed to just Media
+      { label: "Legal", href: "/legal" }, // Changed to just Legal
     ]
   },
 ];
@@ -118,7 +109,7 @@ export const Header = () => {
           : "bg-white py-2"
       }`}>
         <div className="w-full max-w-[100vw] overflow-x-hidden">
-          <div className="max-w-7xl mx-auto px-4 sm:px6 lg:px-8">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             {/* Main Navigation */}
             <div className="flex items-center justify-between py-3">
               {/* Logo */}
@@ -158,32 +149,19 @@ export const Header = () => {
                       <Link
                         to={item.href}
                         className={`
-                          group relative px-3 py-2.5 rounded-lg transition-all duration-200 flex items-center gap-2 whitespace-nowrap
+                          group relative px-4 py-2.5 rounded-lg transition-all duration-200 flex items-center gap-1 whitespace-nowrap
                           ${active 
                             ? "text-primary font-semibold border-b-2 border-primary pb-1.5" 
-                            : "text-gray-700 hover:text-primary"
+                            : "text-gray-700 hover:text-primary hover:bg-gray-50"
                           }
                           ${item.feature ? "bg-primary/5" : ""}
                         `}
                       >
-                        {/* Icon */}
-                        <div className={`
-                          w-7 h-7 rounded-lg flex items-center justify-center transition-all duration-200
-                          ${active 
-                            ? "bg-primary text-white" 
-                            : "bg-gray-100 text-gray-600 group-hover:bg-primary/10"
-                          }
-                        `}>
-                          <item.icon className="w-3.5 h-3.5" />
-                        </div>
-                        
                         {/* Label */}
                         <div className="flex items-center gap-1.5">
                           <span className="text-sm font-medium tracking-wide">
                             {item.label}
                           </span>
-                          
-                          
                           
                           {/* Dropdown indicator */}
                           {item.dropdown && (
@@ -206,20 +184,18 @@ export const Header = () => {
                               </div>
                               <div className="text-xs text-gray-600">{item.description}</div>
                             </div>
-                            {item.dropdown?.map((subItem, index) => (
+                            {item.dropdown?.map((subItem) => (
                               <Link
                                 key={subItem.label}
                                 to={subItem.href}
                                 className="group/sub flex items-center justify-between px-4 py-3 rounded-lg hover:bg-gray-50 transition-colors duration-200"
                               >
                                 <div className="flex items-center gap-3">
-                                  <div className="w-8 h-8 rounded-lg bg-gray-100 flex items-center justify-center group-hover/sub:bg-primary/10 transition-colors">
-                                    <ChevronRight className="w-3 h-3 text-gray-400 group-hover/sub:text-primary transition-colors" />
-                                  </div>
                                   <span className="text-sm font-medium text-gray-700 group-hover/sub:text-primary transition-colors">
                                     {subItem.label}
                                   </span>
                                 </div>
+                                <ChevronRight className="w-3 h-3 text-gray-400 group-hover/sub:text-primary transition-colors" />
                               </Link>
                             ))}
                           </div>
@@ -300,15 +276,6 @@ export const Header = () => {
                       `}
                     >
                       <div className="flex items-center gap-3">
-                        <div className={`
-                          w-9 h-9 rounded-lg flex items-center justify-center transition-all duration-200
-                          ${active 
-                            ? "bg-primary text-white" 
-                            : "bg-gray-100 text-gray-600"
-                          }
-                        `}>
-                          <item.icon className="w-4 h-4" />
-                        </div>
                         <div className="text-left">
                           <div className="font-medium text-sm">
                             {item.label}
@@ -325,13 +292,13 @@ export const Header = () => {
                     
                     {/* Mobile Dropdown Items */}
                     {item.dropdown && active && (
-                      <div className="ml-12 mt-1 space-y-1">
+                      <div className="ml-4 mt-1 space-y-1">
                         {item.dropdown.map((subItem) => (
                           <Link
                             key={subItem.label}
                             to={subItem.href}
                             onClick={() => setMobileMenuOpen(false)}
-                            className="flex items-center px-3 py-2.5 text-sm text-gray-600 hover:text-primary hover:bg-gray-50 rounded-lg transition-colors"
+                            className="flex items-center px-6 py-2.5 text-sm text-gray-600 hover:text-primary hover:bg-gray-50 rounded-lg transition-colors"
                           >
                             <ChevronRight className="w-3 h-3 mr-2 text-gray-400" />
                             {subItem.label}

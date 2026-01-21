@@ -1,9 +1,9 @@
 import { ArrowRight } from "lucide-react";
 import jengaApi from "@/assets/jenga-apii.png"; 
-import jengaPayment from "@/assets/JengaPaymentii.png";
+import jengaPayment from "@/assets/JengaPG.png";
 import equitelGateway from "@/assets/equitel-gatewaay.png";
-import Iiso from "@/assets/Iiso.png";
-import imageF from "@/assets/imageF.png";
+import Iiso from "@/assets/PictureMm.png";
+import imageF from "@/assets/Finsav.png";
 
 const products = [
   {

@@ -1,12 +1,12 @@
 import { motion } from "framer-motion";
-import EquitelM from "@/assets/EquitelM.png";
+import EquitelM from "@/assets/Equitt.png";
 import equitelGateway from "@/assets/equitel-gatewaay.png";
 import EquitelHand from "@/assets/EquitelHand.png";
 
 const Equitel = () => {
   const product = {
     name: "Equitel",
-    tagline: "Brand Promise",
+    tagline: "Equitel",
     description: "Freedom Choice & control.",
     image: EquitelM,
     link: "https://equitel.com/",
@@ -115,31 +115,46 @@ const Equitel = () => {
             </div>
 
             {/* CTA Button with extra spacing in mobile */}
-            <motion.div
-              className="text-center lg:text-left mt-6 sm:mt-8"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.5 }}
-            >
-              <a
-                href={product.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block px-8 py-3 rounded-full bg-primary text-white font-semibold hover:bg-primary/90 shadow-md hover:shadow-lg transition-all duration-300 text-lg"
-              >
-                Explore Equitel →
-              </a>
-            </motion.div>
+         {/* CTA Button with extra spacing in mobile */}
+{/* CTA Button with extra spacing in mobile */}
+<motion.div
+  className="text-center lg:text-left mt-6 sm:mt-8"
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ delay: 1.5 }}
+>
+  <a
+    href={product.link}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="inline-block px-8 py-3 rounded-full bg-primary text-white font-semibold hover:bg-primary/90 shadow-md hover:shadow-lg transition-all duration-300 text-lg"
+  >
+    Explore Equitel →
+  </a>
+</motion.div>
 
-            {/* Animated Logo */}
-            <motion.div
-              className="absolute bottom-4 right-4 z-30"
-              animate={{ y: [0, -10, 0] }}
-              transition={{ duration: 2, repeat: Infinity, repeatType: "loop" }}
-            >
-              <img src={equitelGateway} alt="Equitel Logo" className="h-16 w-auto sm:h-20 md:h-24" />
-            </motion.div>
-          </motion.div>
+{/* Animated Logo - Desktop version (unchanged) */}
+<motion.div
+  className="absolute bottom-4 right-4 z-30 hidden lg:block"
+  animate={{ y: [0, -10, 0] }}
+  transition={{ duration: 2, repeat: Infinity, repeatType: "loop" }}
+>
+  <img src={equitelGateway} alt="Equitel Logo" className="h-16 w-auto sm:h-20 md:h-24" />
+</motion.div>
+
+{/* Animated Logo - Mobile version (appears below CTA) */}
+<motion.div
+  className="flex justify-center mt-8 lg:hidden"
+  animate={{ y: [0, -5, 0] }}
+  transition={{ duration: 2, repeat: Infinity, repeatType: "loop" }}
+>
+  <img 
+    src={equitelGateway} 
+    alt="Equitel Logo" 
+    className="h-16 w-auto sm:h-20" 
+  />
+</motion.div>
+</motion.div>
         </div>
       </div>
 
