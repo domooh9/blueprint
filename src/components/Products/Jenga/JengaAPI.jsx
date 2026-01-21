@@ -85,10 +85,15 @@ const JengaAPI = () => {
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.6 }}
           >
-            <Card
-              className="rounded-xl relative overflow-visible shadow-none mx-4 md:mx-6 lg:mx-8 xl:mx-10 2xl:mx-12"
-              style={{ margin: "20px 0 60px 0" }}
-            >
+           <Card
+  className="
+    rounded-xl relative overflow-visible shadow-none
+    mx-4 md:mx-6
+    lg:ml-24 lg:mr-0
+  "
+  style={{ marginTop: 20, marginBottom: 60 }}
+>
+
               <CardContent
                 className="p-6 sm:p-8 md:p-10 lg:p-12 xl:p-16"
                 style={{ backgroundColor: "#4277bb" }}
@@ -111,11 +116,12 @@ const JengaAPI = () => {
                     animate={{ x: 0, opacity: 1 }}
                     transition={{ duration: 0.6 }}
                   >
-                    <img
-                      src={product.image}
-                      alt={product.name}
-                      className="w-[80%] sm:w-[85%] lg:w-[90%] object-contain relative -top-16 md:-top-20"
-                    />
+                   <img
+  src={product.image}
+  alt={product.name}
+  className="relative w-[80%] sm:w-[85%] lg:w-[90%] object-contain lg:-top-20"
+/>
+
                   </motion.div>
                 </div>
               </CardContent>

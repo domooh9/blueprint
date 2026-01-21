@@ -2,7 +2,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ExternalLink, FileText, Presentation, Newspaper, Award, Shield, Lock, MessageSquare, Download, Eye, ChevronRight, Play } from "lucide-react";
 import { useState } from "react";
-import whoB from "@assets/whoB.png"
+import Picturer from "@/assets/Picturer.png";
 
 // Livestream Component - Now only shows in Media tab
 const Livestream = () => {
@@ -152,88 +152,79 @@ const Media = () => {
       
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="relative py-16 md:py-24 bg-gradient-to-br from-gray-50 via-white to-gray-100 overflow-hidden">
-          {/* Background Pattern */}
-          <div className="absolute inset-0 opacity-5">
-            <div className="absolute top-20 left-10 w-32 h-32 border-2 border-primary/20 rounded-full"></div>
-            <div className="absolute top-40 right-20 w-24 h-24 border-2 border-primary/20 rounded-full"></div>
-            <div className="absolute bottom-20 left-1/4 w-40 h-40 border-2 border-primary/20 rounded-full"></div>
-            <div className="absolute top-1/2 right-1/3 w-20 h-20 border-2 border-primary/20 rounded-full"></div>
-          </div>
+      
+<section 
+  className="relative py-16 md:py-24 overflow-hidden"
+  style={{
+    backgroundImage: `url(${Picturer})`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
+  }}
+>
+  {/* Dark overlay for better text readability */}
+  <div className="absolute inset-0 bg-black/50" />
 
-          {/* Network Pattern */}
-          <div className="absolute inset-0 opacity-10 pointer-events-none">
-            <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <pattern id="network-pattern" x="0" y="0" width="160" height="160" patternUnits="userSpaceOnUse">
-                  <circle cx="10" cy="10" r="5" fill="currentColor" className="text-primary/30" />
-                  <circle cx="60" cy="40" r="5" fill="currentColor" className="text-primary/30" />
-                  <circle cx="40" cy="80" r="5" fill="currentColor" className="text-primary/30" />
-                  <circle cx="100" cy="100" r="5" fill="currentColor" className="text-primary/30" />
-                  <circle cx="120" cy="20" r="5" fill="currentColor" className="text-primary/30" />
-                  <line x1="10" y1="10" x2="60" y2="40" stroke="currentColor" strokeWidth="1.2" className="text-primary/30" />
-                  <line x1="60" y1="40" x2="100" y2="100" stroke="currentColor" strokeWidth="1.2" className="text-primary/30" />
-                  <line x1="40" y1="80" x2="100" y2="100" stroke="currentColor" strokeWidth="1.2" className="text-primary/30" />
-                  <line x1="60" y1="40" x2="120" y2="20" stroke="currentColor" strokeWidth="1.2" className="text-primary/30" />
-                  <line x1="10" y1="10" x2="40" y2="80" stroke="currentColor" strokeWidth="1.2" className="text-primary/30" />
-                </pattern>
-              </defs>
-              <rect width="100%" height="100%" fill="url(#network-pattern)" />
-            </svg>
-          </div>
+  {/* Background Pattern - Adjusted for better visibility on dark background */}
+  <div className="absolute inset-0 opacity-10">
+    <div className="absolute top-20 left-10 w-32 h-32 border-2 border-white/40 rounded-full"></div>
+    <div className="absolute top-40 right-20 w-24 h-24 border-2 border-white/40 rounded-full"></div>
+    <div className="absolute bottom-20 left-1/4 w-40 h-40 border-2 border-white/40 rounded-full"></div>
+    <div className="absolute top-1/2 right-1/3 w-20 h-20 border-2 border-white/40 rounded-full"></div>
+  </div>
 
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div className="text-center mb-12">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
-                <span className="text-primary font-semibold text-sm tracking-wider">
-                  Resources & Compliance
-                </span>
-              </div>
-              
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4">
-                Media Centre & <span className="text-primary">Privacy </span>
-              </h1>
-              
-              <div className="flex justify-center items-center mb-6">
-                <span className="w-24 h-1 bg-primary rounded-full"></span>
-                <span className="w-3 h-3 bg-primary rounded-full mx-4"></span>
-                <span className="w-24 h-1 bg-primary rounded-full"></span>
-              </div>
-              
-              <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto mb-8">
-                Stay updated with the latest news and explore our commitment to transparency, security, and compliance
-              </p>
+  <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div className="text-center mb-12">
+      <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/20 border border-white/30 backdrop-blur-sm mb-6">
+        <span className="text-primary font-semibold text-sm tracking-wider">
+          Resources & Compliance
+        </span>
+      </div>
+      
+      <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary mb-4">
+        Media Centre  <span className="text-white/90"> & Privacy </span>
+      </h1>
+      
+      <div className="flex justify-center items-center mb-6">
+        <span className="w-24 h-1 bg-white rounded-full"></span>
+        <span className="w-3 h-3 bg-white rounded-full mx-4"></span>
+        <span className="w-24 h-1 bg-white rounded-full"></span>
+      </div>
+      
+      <p className="text-lg md:text-xl text-white/80 max-w-3xl mx-auto mb-8">
+        Stay updated with the latest news and explore our commitment to transparency, security, and compliance
+      </p>
 
-              {/* Tab Navigation */}
-              <div className="flex justify-center mb-12">
-                <div className="inline-flex rounded-xl bg-gray-100 p-1">
-                  <button
-                    onClick={() => setActiveTab('media')}
-                    className={`px-6 py-3 rounded-lg font-semibold transition-all duration-300 flex items-center gap-2 ${
-                      activeTab === 'media'
-                        ? 'bg-white text-primary shadow-md'
-                        : 'text-gray-600 hover:text-gray-900'
-                    }`}
-                  >
-                    <Newspaper className="w-4 h-4" />
-                    Media Centre
-                  </button>
-                  <button
-                    onClick={() => setActiveTab('policies')}
-                    className={`px-6 py-3 rounded-lg font-semibold transition-all duration-300 flex items-center gap-2 ${
-                      activeTab === 'policies'
-                        ? 'bg-white text-primary shadow-md'
-                        : 'text-gray-600 hover:text-gray-900'
-                    }`}
-                  >
-                    <Shield className="w-4 h-4" />
-                    Click to View Legal & Privacy
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+      {/* Tab Navigation */}
+      <div className="flex justify-center mb-12">
+        <div className="inline-flex rounded-xl bg-white/20 backdrop-blur-sm p-1">
+          <button
+            onClick={() => setActiveTab('media')}
+            className={`px-6 py-3 rounded-lg font-semibold transition-all duration-300 flex items-center gap-2 ${
+              activeTab === 'media'
+                ? 'bg-white text-primary shadow-md'
+                : 'text-white hover:text-white/90'
+            }`}
+          >
+            <Newspaper className="w-4 h-4" />
+            Media Centre
+          </button>
+          <button
+            onClick={() => setActiveTab('policies')}
+            className={`px-6 py-3 rounded-lg font-semibold transition-all duration-300 flex items-center gap-2 ${
+              activeTab === 'policies'
+                ? 'bg-white text-primary shadow-md'
+                : 'text-white hover:text-white/90'
+            }`}
+          >
+            <Shield className="w-4 h-4" />
+            Click to View Legal & Privacy
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
         {/* Main Content Section */}
         <section className="py-16 md:py-20 bg-white">
