@@ -47,15 +47,25 @@ const Equitel = () => {
             transition={{ type: "spring", stiffness: 100 }}
           >
             <motion.img
-              src={product.image}
-              alt={product.name}
-              className="absolute object-contain w-[110%] sm:w-[120%] lg:w-[130%]"
-              style={{ bottom: "-5%", right: "-10%" }}
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              whileHover={{ scale: 1.05 }}
-              transition={{ duration: 0.5 }}
-            />
+  src={product.image}
+  alt={product.name}
+  className="absolute object-contain 
+    w-[85%] max-h-[70%]
+    sm:w-[95%] sm:max-h-[75%]
+    md:w-[105%] md:max-h-[80%]
+    lg:w-[115%] lg:max-h-[85%]
+    xl:w-[125%] xl:max-h-none"
+  style={{ 
+    bottom: "0", 
+    right: "0",
+    // Adjust these for fine-tuning
+    transform: "translate(5%, 5%)"
+  }}
+  initial={{ opacity: 0, y: 50 }}
+  animate={{ opacity: 1, y: 0 }}
+  whileHover={{ scale: 1.05 }}
+  transition={{ duration: 0.5 }}
+/>
           </motion.div>
 
           {/* Right Content */}

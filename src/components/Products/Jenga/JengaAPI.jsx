@@ -76,6 +76,10 @@ const JengaAPI = () => {
               src={jengaLogo}
               alt="JengaAPI Logo"
               className="w-[160px] md:w-[200px] lg:w-[220px] object-contain"
+              onError={(e) => {
+                e.target.onerror = null;
+                e.target.src = "/assets/jenga-apii.png";
+              }}
             />
           </motion.div>
 
@@ -86,14 +90,9 @@ const JengaAPI = () => {
             transition={{ duration: 0.6 }}
           >
            <Card
-  className="
-    rounded-xl relative overflow-visible shadow-none
-    mx-4 md:mx-6
-    lg:ml-24 lg:mr-0
-  "
-  style={{ marginTop: 20, marginBottom: 60 }}
->
-
+              className="rounded-xl relative overflow-visible shadow-none mx-4 md:mx-6 lg:ml-24 lg:mr-0"
+              style={{ marginTop: 20, marginBottom: 60 }}
+            >
               <CardContent
                 className="p-6 sm:p-8 md:p-10 lg:p-12 xl:p-16"
                 style={{ backgroundColor: "#4277bb" }}
@@ -117,11 +116,14 @@ const JengaAPI = () => {
                     transition={{ duration: 0.6 }}
                   >
                    <img
-  src={product.image}
-  alt={product.name}
-  className="relative w-[80%] sm:w-[85%] lg:w-[90%] object-contain lg:-top-20"
-/>
-
+                      src={product.image}
+                      alt={product.name}
+                      className="relative w-[80%] sm:w-[85%] lg:w-[90%] object-contain lg:-top-20"
+                      onError={(e) => {
+                        e.target.onerror = null;
+                        e.target.src = "/assets/JengaA.png";
+                      }}
+                    />
                   </motion.div>
                 </div>
               </CardContent>
