@@ -62,60 +62,146 @@ const JengaAPI = () => {
     >
       <Card
         className="group transition-all duration-300 border-0 rounded-2xl overflow-hidden w-full"
-  style={{ backgroundColor: "#f6f7f9" }}
->
+        style={{ backgroundColor: "#f6f7f9" }}
+      >
         <CardContent className="p-0 relative">
           {/* Logo section */}
-         <motion.div
-  className="px-10 pt-10 pb-4 ml-12 md:ml-24 lg:ml-56 xl:ml-64 2xl:ml-72"
-  initial={{ y: -20, opacity: 0 }}
-  animate={{ y: 0, opacity: 1 }}
-  transition={{ duration: 0.6 }}
->
-  <img
-    src={jengaLogo}
-    alt="JengaAPI Logo"
-    className="w-[180px] md:w-[220px] object-contain"
-  />
-</motion.div>
+          <motion.div
+            className="px-10 pt-10 pb-4 ml-12 md:ml-24 lg:ml-56 xl:ml-64 2xl:ml-72"
+            initial={{ y: -20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.6 }}
+          >
+            <img
+              src={jengaLogo}
+              alt="JengaAPI Logo"
+              className="w-[180px] md:w-[220px] object-contain"
+            />
+          </motion.div>
 
-          {/* Main Blue Content Card */}
+          {/* Main Blue Content Card - Updated Design */}
           <motion.div
             initial={{ scale: 0.95, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.6 }}
+            className="mx-4 md:mx-8 lg:mx-16 mb-16"
           >
-            <Card
-              className="rounded-xl relative overflow-visible shadow-none"
-              style={{ margin: "20px 60px 60px 60px" }}
-            >
+            <Card className="rounded-2xl relative overflow-hidden shadow-lg border-0">
               <CardContent
-                className="p-10 md:p-16 lg:p-20"
-                style={{ backgroundColor: "#4277bb" }}
+                className="p-0 relative"
+                style={{ 
+                  background: "linear-gradient(135deg, #4277bb 0%, #5a8fd6 50%, #6ba3e0 100%)"
+                }}
               >
-                <div className="grid lg:grid-cols-2 gap-10 items-center">
-                  {/* Text */}
+                {/* Decorative elements */}
+                <div className="absolute inset-0 overflow-hidden">
+                  {/* Geometric shapes */}
+                  <div className="absolute top-10 right-10 w-20 h-20 border-2 border-white/20 rounded-lg rotate-12"></div>
+                  <div className="absolute top-32 right-32 w-12 h-12 bg-white/10 rounded-full"></div>
+                  <div className="absolute bottom-20 left-20 w-16 h-16 border-2 border-white/15 rotate-45"></div>
+                  
+                  {/* Flowing lines */}
+                  <svg className="absolute top-0 right-0 w-full h-full opacity-10" viewBox="0 0 400 300">
+                    <path
+                      d="M300,50 Q350,100 320,150 T380,200"
+                      stroke="white"
+                      strokeWidth="2"
+                      fill="none"
+                      className="animate-pulse"
+                    />
+                    <path
+                      d="M250,80 Q300,130 270,180 T330,230"
+                      stroke="white"
+                      strokeWidth="1.5"
+                      fill="none"
+                      className="animate-pulse"
+                      style={{ animationDelay: '1s' }}
+                    />
+                  </svg>
+                </div>
+
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center relative z-10 p-8 md:p-12 lg:p-16">
+                  {/* Text Content - Left Side */}
                   <motion.div
-                    className="text-white text-base md:text-lg leading-relaxed"
-                    initial={{ x: -20, opacity: 0 }}
+                    className="text-white space-y-6 order-2 lg:order-1"
+                    initial={{ x: -30, opacity: 0 }}
                     animate={{ x: 0, opacity: 1 }}
-                    transition={{ duration: 0.6 }}
+                    transition={{ duration: 0.8, delay: 0.2 }}
                   >
-                    {product.paragraph}
+                    <div className="space-y-4">
+                      <p className="text-body-large leading-relaxed font-light">
+                        Jenga API is a business-to-business fintech solution that provides a robust and flexible platform for integrating with a wide range of systems and applications.
+                      </p>
+                      <p className="text-body leading-relaxed font-light opacity-90">
+                        With Jenga APIs, you can streamline your development processes and create innovative solutions that meet the needs of your customers.
+                      </p>
+                    </div>
+
+                    {/* Feature highlights */}
+                    <div className="flex flex-wrap gap-3 mt-6">
+                      {['Robust Platform', 'Flexible Integration', 'Innovative Solutions'].map((feature, index) => (
+                        <motion.div
+                          key={feature}
+                          initial={{ scale: 0, opacity: 0 }}
+                          animate={{ scale: 1, opacity: 1 }}
+                          transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
+                          className="px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full border border-white/30"
+                        >
+                          <span className="text-caption font-medium text-white">{feature}</span>
+                        </motion.div>
+                      ))}
+                    </div>
                   </motion.div>
 
-                  {/* Illustration */}
+                  {/* Illustration with 3D robot and laptop - Right Side */}
                   <motion.div
-                    className="relative flex justify-center items-start"
-                    initial={{ x: 20, opacity: 0 }}
+                    className="relative flex justify-center items-center order-1 lg:order-2"
+                    initial={{ x: 30, opacity: 0 }}
                     animate={{ x: 0, opacity: 1 }}
-                    transition={{ duration: 0.6 }}
+                    transition={{ duration: 0.8, delay: 0.4 }}
                   >
-                    <img
-                      src={product.image}
-                      alt={product.name}
-                      className="w-[85%] lg:w-[90%] object-contain relative -top-20"
-                    />
+                    {/* Background glow effect */}
+                    <div className="absolute inset-0 bg-gradient-radial from-white/10 to-transparent rounded-full blur-2xl"></div>
+                    
+                    {/* 3D Robot and laptop illustration */}
+                    <div className="relative">
+                      {/* Floating elements around the main image */}
+                      <motion.div
+                        className="absolute -top-4 -left-4 w-8 h-8 bg-white/20 rounded-lg"
+                        animate={{ y: [-5, 5, -5] }}
+                        transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                      />
+                      <motion.div
+                        className="absolute -bottom-2 -right-2 w-6 h-6 bg-white/15 rounded-full"
+                        animate={{ y: [5, -5, 5] }}
+                        transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+                      />
+                      <motion.div
+                        className="absolute top-1/2 -right-6 w-4 h-4 border-2 border-white/25 rotate-45"
+                        animate={{ rotate: [45, 135, 45] }}
+                        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                      />
+                      
+                      {/* Main illustration */}
+                      <motion.img
+                        src={product.image}
+                        alt={product.name}
+                        className="w-full max-w-md object-contain relative z-10"
+                        animate={{ y: [-10, 10, -10] }}
+                        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                      />
+                      
+                      {/* Code/data stream effect */}
+                      <div className="absolute top-1/4 left-1/4 opacity-30">
+                        <motion.div
+                          className="text-white/40 text-xs font-mono"
+                          animate={{ opacity: [0.3, 0.7, 0.3] }}
+                          transition={{ duration: 2, repeat: Infinity }}
+                        >
+                          {'{ "api": "active" }'}
+                        </motion.div>
+                      </div>
+                    </div>
                   </motion.div>
                 </div>
               </CardContent>

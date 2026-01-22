@@ -1,5 +1,8 @@
 import { Users } from "lucide-react";
-import Picturer from "@/assets/ChatG.png";
+import { useState, useEffect } from "react";
+import Picturer from "@/assets/Kevin.jpg";
+import Andreas from "@/assets/Andreas.jpg";
+import Imageb from "@/assets/imageb.jpeg";
 
 const boardMembersData = [
       {
@@ -48,30 +51,75 @@ const boardMembersData = [
 ];
 
 export default function BoardMembers() {
+  const images = [Picturer, Andreas, Imageb];
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [fade, setFade] = useState(true);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setFade(false);
+      setTimeout(() => {
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+        setFade(true);
+      }, 500); // Half of transition duration for smooth fade
+    }, 5000); // Change image every 5 seconds
+
+    return () => clearInterval(interval);
+  }, [images.length]);
   return (
     <div className="min-h-screen bg-background">
       <main className="pt-20">
         {/* Hero Section */}
-   <section
-  className="relative py-16 md:py-28 overflow-hidden bg-cover bg-center bg-no-repeat flex flex-col justify-end"
-  style={{ backgroundImage: `url(${Picturer})` }}
->
-  {/* Lighter overlay for more visible background */}
-  <div className="absolute inset-0 bg-gradient-to-br from-black/40 via-black/30 to-black/20" />
+    <section
+      className="relative py-16 md:py-28 overflow-hidden bg-cover bg-center bg-no-repeat flex flex-col justify-end min-h-[70vh] md:min-h-[80vh]"
+    >
+      {/* Background Images with Fade Transition */}
+      <div className="absolute inset-0">
+        {images.map((image, index) => (
+          <div
+            key={index}
+            className={`absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-1000 ${
+              index === currentIndex ? "opacity-100" : "opacity-0"
+            }`}
+            style={{ backgroundImage: `url(${image})` }}
+          />
+        ))}
+      </div>
 
-  {/* Bottom-aligned content */}
-  <div className="container mx-auto px-6 lg:px-12 relative z-10 text-center">
-    <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-4">
-      <span className="text-white drop-shadow-lg">Finserve</span>{" "}
-      <span className="text-primary drop-shadow-lg">Board Members</span>
-    </h1>
+      {/* Gradient Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/30 to-black/70" />
 
-    <p className="text-base md:text-lg text-white/90 max-w-3xl mx-auto drop-shadow">
-      Meet the visionary leaders guiding Finserve Africa towards innovation and excellence.
-    </p>
-  </div>
-</section>
+      {/* Content */}
+      <div className="container mx-auto px-6 lg:px-12 relative z-10 text-center pb-8 md:pb-12">
+        <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-4">
+          <span className="text-white drop-shadow-lg">Finserve</span>{" "}
+          <span className="text-primary drop-shadow-lg">Board Members</span>
+        </h1>
 
+        <p className="text-base md:text-lg text-white/90 max-w-3xl mx-auto drop-shadow">
+          Meet the visionary leaders guiding Finserve Africa towards innovation and excellence.
+        </p>
+      </div>
+
+      {/* Navigation Dots */}
+      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-20 flex space-x-2">
+        {images.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => {
+              setCurrentIndex(index);
+              setFade(true);
+            }}
+            className={`w-2 h-2 md:w-3 md:h-3 rounded-full transition-all duration-300 ${
+              index === currentIndex
+                ? "bg-white scale-125"
+                : "bg-white/50 hover:bg-white/80"
+            }`}
+            aria-label={`Go to slide ${index + 1}`}
+          />
+        ))}
+      </div>
+    </section>
         {/* Board Members Section */}
         <section className="py-16 md:py-20">
           <div className="container mx-auto px-6 lg:px-12">
