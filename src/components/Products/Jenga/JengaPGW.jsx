@@ -168,7 +168,7 @@ const JengaPayment = () => {
     }}
   >
     {/* LEFT - Paragraph content */}
-    <div className="mobile-order-1">
+    <div className="mobile-order-1 ">
       {/* Logo Section with styled text */}
       <div style={{ marginBottom: 40 }} className="mobile-center">
         <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16, justifyContent: { xs: "center", md: "flex-start" } }}>
@@ -194,7 +194,7 @@ const JengaPayment = () => {
           boxSizing: "border-box",
         }}
       >
-        <p className="mobile-text" style={{ color: "#fff", fontSize: 14, lineHeight: 1.7, margin: 0 }}>
+        <p className="mobile-text text-body-large" style={{ color: "#fff", fontSize: 16, lineHeight: 1.7, margin: 0 }}>
           Jenga Payment Gateway is a business-to-business financial solution that allows merchants to provide their customers the ability to pay via various payments channels in multi-currencies across 180+ currencies.
         </p>
       </div>

@@ -88,7 +88,7 @@ const Equitel = () => {
             </motion.h3>
 
             <motion.p
-              className="text-base sm:text-lg md:text-xl mb-6 leading-relaxed"
+              className="text-base sm:text-lg md:text-m mb-6 leading-relaxed"
               style={{ color: "#9a3820" }}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -110,7 +110,7 @@ const Equitel = () => {
                     transition={{ delay: 0.5 + idx * 0.2 }}
                     whileHover={{ scale: 1.02 }}
                   >
-                    <p className="text-black text-base sm:text-lg md:text-xl leading-relaxed">
+                    <p className="text-black text-base sm:text-m md:text-m leading-relaxed">
                       {parts.map((part, i) =>
                         part === "FREEDOM, CHOICE and CONTROL" ? (
                           <strong key={i}>{part}</strong>

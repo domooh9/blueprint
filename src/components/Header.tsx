@@ -158,8 +158,8 @@ export const Header = () => {
                         `}
                       >
                         {/* Label */}
-                        <div className="flex items-center gap-1.5">
-                          <span className="text-sm font-medium tracking-wide">
+                        <div className="flex text-black items-center gap-1.5">
+                          <span className="text-body-small font-medium tracking-wide">
                             {item.label}
                           </span>
                           

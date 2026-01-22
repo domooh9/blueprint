@@ -128,14 +128,12 @@ const JengaAPI = () => {
                     animate={{ x: 0, opacity: 1 }}
                     transition={{ duration: 0.8, delay: 0.2 }}
                   >
-                    <div className="space-y-4">
-                      <p className="text-body-large leading-relaxed font-light">
+                    <div className="space-y-4 text-base sm:text-m md:text-m leading-relaxed">
+                      <p className="text-body-large leading-relaxed font-medium">
                         Jenga API is a business-to-business fintech solution that provides a robust and flexible platform for integrating with a wide range of systems and applications.
+                          With Jenga APIs, you can streamline your development processes and create innovative solutions that meet the needs of your customers.
                       </p>
-                      <p className="text-body leading-relaxed font-light opacity-90">
-                        With Jenga APIs, you can streamline your development processes and create innovative solutions that meet the needs of your customers.
-                      </p>
-                    </div>
+                       </div>
 
                     {/* Feature highlights */}
                     <div className="flex flex-wrap gap-3 mt-6">
