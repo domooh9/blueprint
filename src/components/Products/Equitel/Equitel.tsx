@@ -50,9 +50,9 @@ const Equitel = () => {
   src={product.image}
   alt={product.name}
   className="absolute object-contain 
-    w-[85%] max-h-[70%]
-    sm:w-[95%] sm:max-h-[75%]
-    md:w-[105%] md:max-h-[80%]
+    w-[100%] max-h-[85%]
+    sm:w-[105%] sm:max-h-[85%]
+    md:w-[110%] md:max-h-[85%]
     lg:w-[115%] lg:max-h-[85%]
     xl:w-[125%] xl:max-h-none"
   style={{ 
@@ -88,7 +88,7 @@ const Equitel = () => {
             </motion.h3>
 
             <motion.p
-              className="text-base sm:text-lg md:text-m mb-6 leading-relaxed"
+              className="text-base sm:text-lg md:text-xl mb-6 leading-relaxed"
               style={{ color: "#9a3820" }}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -110,7 +110,7 @@ const Equitel = () => {
                     transition={{ delay: 0.5 + idx * 0.2 }}
                     whileHover={{ scale: 1.02 }}
                   >
-                    <p className="text-black text-base sm:text-m md:text-m leading-relaxed">
+                    <p className="text-black text-base sm:text-lg md:text-xl leading-relaxed">
                       {parts.map((part, i) =>
                         part === "FREEDOM, CHOICE and CONTROL" ? (
                           <strong key={i}>{part}</strong>

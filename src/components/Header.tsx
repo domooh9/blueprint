@@ -15,31 +15,19 @@ const menuItems = [
     label: "Who we are", 
     href: "/who-we-are", 
     description: "Our story and mission",
-    feature: false,
-    dropdown: [
-      { label: "Our Story", href: "/story" },
-      { label: "Mission & Vision", href: "/mission" },
-      { label: "Leadership Team", href: "/leadership" },
-      { label: "Careers", href: "/careers" },
-    ]
+    feature: false
   },
   { 
     label: "Our products", 
     href: "/products", 
     description: "Fintech solutions",
-    feature: false,
-    dropdown: [
-      { label: "Jenga PGW", href: "/products/jenga" },
-      { label: "Finserve Money", href: "/products/money" },
-      { label: "Equitel", href: "/products/equitel" },
-      { label: "Banking APIs", href: "/products/api" },
-    ]
+    feature: false
   },
   { 
     label: "Meet the Board", 
     href: "/boardmembers", 
     description: "Leadership team",
-    feature: false, // Changed from true to false to remove background
+    feature: false
   },
   { 
     label: "FAQ's", 
@@ -53,8 +41,8 @@ const menuItems = [
     description: "News & updates",
     feature: false,
     dropdown: [
-      { label: "Media", href: "/media" }, // Changed to just Media
-      { label: "Legal", href: "/legal" }, // Changed to just Legal
+      { label: "Media Centre", href: "/media-centre" },
+      { label: "Legal & Privacy", href: "/privacy" },
     ]
   },
 ];
@@ -62,15 +50,13 @@ const menuItems = [
 export const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [activeHover, setActiveHover] = useState<string | null>(null);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const location = useLocation();
 
-  // Handle scroll effect with enhanced logic
+  // Handle scroll effect
   useEffect(() => {
     const handleScroll = () => {
-      const scrollY = window.scrollY;
-      setScrolled(scrollY > 10);
+      setScrolled(window.scrollY > 10);
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
@@ -82,21 +68,8 @@ export const Header = () => {
     setOpenDropdown(null);
   }, [location.pathname]);
 
-  // Close dropdown when clicking outside
-  useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
-      if (!(e.target as Element).closest('[data-dropdown]')) {
-        setOpenDropdown(null);
-      }
-    };
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
-
   const isActive = (href: string) => {
-    if (href === "/") {
-      return location.pathname === "/";
-    }
+    if (href === "/") return location.pathname === "/";
     return location.pathname.startsWith(href) && href !== "/";
   };
 
@@ -113,15 +86,8 @@ export const Header = () => {
             {/* Main Navigation */}
             <div className="flex items-center justify-between py-3">
               {/* Logo */}
-              <Link 
-                to="/" 
-                className="flex-shrink-0"
-              >
-                <img 
-                  src={logo} 
-                  alt="Finserve Africa" 
-                  className="h-12 w-auto" 
-                />
+              <Link to="/" className="flex-shrink-0">
+                <img src={logo} alt="Finserve Africa" className="h-12 w-auto" />
               </Link>
 
               {/* Desktop Navigation */}
@@ -129,75 +95,72 @@ export const Header = () => {
                 {menuItems.map((item) => {
                   const active = isActive(item.href);
                   const hasDropdown = item.dropdown;
+                  const isDropdownOpen = openDropdown === item.label;
                   
                   return (
                     <div 
                       key={item.label}
-                      className="relative"
+                      className="relative group"
                       data-dropdown="true"
-                      onMouseEnter={() => {
-                        setActiveHover(item.href);
-                        if (hasDropdown) setOpenDropdown(item.label);
-                      }}
-                      onMouseLeave={() => {
-                        setActiveHover(null);
-                        setTimeout(() => {
-                          if (openDropdown === item.label) setOpenDropdown(null);
-                        }, 150);
-                      }}
+                      onMouseEnter={() => hasDropdown && setOpenDropdown(item.label)}
+                      onMouseLeave={() => setOpenDropdown(null)}
                     >
                       <Link
                         to={item.href}
                         className={`
-                          group relative px-4 py-2.5 rounded-lg transition-all duration-200 flex items-center gap-1 whitespace-nowrap
+                          relative px-4 py-2.5 rounded-lg transition-all duration-200 flex items-center gap-1 whitespace-nowrap
                           ${active 
                             ? "text-primary font-semibold border-b-2 border-primary pb-1.5" 
                             : "text-gray-700 hover:text-primary hover:bg-gray-50"
                           }
-                          ${item.feature ? "bg-primary/5" : ""}
                         `}
                       >
-                        {/* Label */}
-                        <div className="flex text-black items-center gap-1.5">
+                        <div className="flex items-center gap-1.5">
                           <span className="text-body-small font-medium tracking-wide">
                             {item.label}
                           </span>
                           
-                          {/* Dropdown indicator */}
-                          {item.dropdown && (
-                            <ChevronDown className={`w-3 h-3 transition-colors ${
-                              active 
-                                ? "text-primary" 
-                                : "text-gray-400 group-hover:text-primary"
-                            }`} />
+                          {hasDropdown && (
+                            <ChevronDown className={`w-3 h-3 transition-transform duration-200 ${
+                              isDropdownOpen ? "rotate-180" : ""
+                            } ${active || isDropdownOpen ? "text-primary" : "text-gray-400"}`} />
                           )}
                         </div>
                       </Link>
                       
-                      {/* Dropdown Menu */}
-                      {hasDropdown && openDropdown === item.label && (
-                        <div className="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-lg border border-gray-100 overflow-hidden z-50">
-                          <div className="p-2">
-                            <div className="px-3 py-2 mb-1">
-                              <div className="text-xs font-semibold text-gray-500 uppercase tracking-wider">
-                                {item.label}
-                              </div>
-                              <div className="text-xs text-gray-600">{item.description}</div>
-                            </div>
-                            {item.dropdown?.map((subItem) => (
-                              <Link
-                                key={subItem.label}
-                                to={subItem.href}
-                                className="group/sub flex items-center justify-between px-4 py-3 rounded-lg hover:bg-gray-50 transition-colors duration-200"
-                              >
-                                <div className="flex items-center gap-3">
-                                  <span className="text-sm font-medium text-gray-700 group-hover/sub:text-primary transition-colors">
-                                    {subItem.label}
-                                  </span>
+                      {/* Dropdown Menu - Always show on hover for desktop */}
+                      {hasDropdown && isDropdownOpen && (
+                        <div 
+                          className="absolute top-full left-0 mt-0 w-64 z-50"
+                          onMouseEnter={() => setOpenDropdown(item.label)}
+                          onMouseLeave={() => setOpenDropdown(null)}
+                        >
+                          <div className="pt-2">
+                            <div className="bg-white rounded-lg shadow-lg border border-gray-100 overflow-hidden">
+                              <div className="p-2">
+                                <div className="px-3 py-2 mb-1">
+                                  <div className="text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                                    {item.label}
+                                  </div>
+                                  <div className="text-xs text-gray-600">{item.description}</div>
                                 </div>
-                                <ChevronRight className="w-3 h-3 text-gray-400 group-hover/sub:text-primary transition-colors" />
-                              </Link>
-                            ))}
+                                {item.dropdown?.map((subItem) => (
+                                  <Link
+                                    key={subItem.label}
+                                    to={subItem.href}
+                                    className="group/sub flex items-center justify-between px-4 py-3 rounded-lg hover:bg-gray-50 transition-colors duration-200"
+                                    onClick={() => setOpenDropdown(null)}
+                                  >
+                                    <div className="flex items-center gap-3">
+                                      <span className="text-sm font-medium text-gray-700 group-hover/sub:text-primary transition-colors">
+                                        {subItem.label}
+                                      </span>
+                                    </div>
+                                    <ChevronRight className="w-3 h-3 text-gray-400 group-hover/sub:text-primary transition-colors" />
+                                  </Link>
+                                ))}
+                              </div>
+                            </div>
                           </div>
                         </div>
                       )}
@@ -262,36 +225,45 @@ export const Header = () => {
             <nav className="space-y-1 w-full">
               {menuItems.map((item) => {
                 const active = isActive(item.href);
+                const hasDropdown = item.dropdown;
+                
                 return (
                   <div key={item.label}>
-                    <Link
-                      to={item.href}
-                      onClick={() => setMobileMenuOpen(false)}
-                      className={`
-                        flex items-center justify-between px-4 py-3.5 rounded-lg transition-all duration-200 w-full
-                        ${active 
-                          ? "bg-primary/10 text-primary border-l-4 border-primary" 
-                          : "text-gray-700 hover:bg-gray-50 hover:text-primary"
-                        }
-                      `}
-                    >
-                      <div className="flex items-center gap-3">
-                        <div className="text-left">
-                          <div className="font-medium text-sm">
-                            {item.label}
+                    <div className="flex items-center justify-between">
+                      <Link
+                        to={item.href}
+                        onClick={() => setMobileMenuOpen(false)}
+                        className={`
+                          flex-1 flex items-center justify-between px-4 py-3.5 rounded-lg transition-all duration-200 w-full
+                          ${active 
+                            ? "bg-primary/10 text-primary border-l-4 border-primary" 
+                            : "text-gray-700 hover:bg-gray-50 hover:text-primary"
+                          }
+                        `}
+                      >
+                        <div className="flex items-center gap-3">
+                          <div className="text-left">
+                            <div className="font-medium text-sm">
+                              {item.label}
+                            </div>
+                            <div className="text-xs text-gray-500 mt-0.5">{item.description}</div>
                           </div>
-                          <div className="text-xs text-gray-500 mt-0.5">{item.description}</div>
                         </div>
-                      </div>
+                      </Link>
                       
-                      <ChevronRight className={`
-                        w-4 h-4 transition-transform duration-200
-                        ${active ? "text-primary" : "text-gray-400"}
-                      `} />
-                    </Link>
+                      {hasDropdown && (
+                        <button
+                          onClick={() => setOpenDropdown(openDropdown === item.label ? null : item.label)}
+                          className="p-2 mr-2 rounded-lg hover:bg-gray-100"
+                        >
+                          <ChevronDown className={`w-4 h-4 transition-transform ${
+                            openDropdown === item.label ? "rotate-180" : ""
+                          }`} />
+                        </button>
+                      )}
+                    </div>
                     
-                    {/* Mobile Dropdown Items */}
-                    {item.dropdown && active && (
+                    {hasDropdown && openDropdown === item.label && (
                       <div className="ml-4 mt-1 space-y-1">
                         {item.dropdown.map((subItem) => (
                           <Link

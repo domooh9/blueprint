@@ -9,7 +9,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Search, ArrowUp, Mail, Phone } from "lucide-react";
-import Picturer from "@/assets/backgroundI.png";
+import Picturer from "@/assets/imageC.png";
 
 const faqData = [
   {

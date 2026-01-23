@@ -79,14 +79,14 @@ const JengaAPI = () => {
             />
           </motion.div>
 
-          {/* Main Blue Content Card - Updated Design */}
+          {/* Main Blue Content Card - Updated Design to touch right edge */}
           <motion.div
             initial={{ scale: 0.95, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.6 }}
-            className="mx-4 md:mx-8 lg:mx-16 mb-16"
+            className="ml-4 md:ml-8 lg:ml-16 mb-16 mr-0"
           >
-            <Card className="rounded-2xl relative overflow-hidden shadow-lg border-0">
+            <Card className="rounded-l-2xl rounded-r-none relative overflow-hidden shadow-lg border-0">
               <CardContent
                 className="p-0 relative"
                 style={{ 
@@ -128,12 +128,14 @@ const JengaAPI = () => {
                     animate={{ x: 0, opacity: 1 }}
                     transition={{ duration: 0.8, delay: 0.2 }}
                   >
-                    <div className="space-y-4 text-base sm:text-m md:text-m leading-relaxed">
-                      <p className="text-body-large leading-relaxed font-medium">
+                    <div className="space-y-4">
+                      <p className="text-body-large leading-relaxed font-light">
                         Jenga API is a business-to-business fintech solution that provides a robust and flexible platform for integrating with a wide range of systems and applications.
-                          With Jenga APIs, you can streamline your development processes and create innovative solutions that meet the needs of your customers.
                       </p>
-                       </div>
+                      <p className="text-body leading-relaxed font-light opacity-90">
+                        With Jenga APIs, you can streamline your development processes and create innovative solutions that meet the needs of your customers.
+                      </p>
+                    </div>
 
                     {/* Feature highlights */}
                     <div className="flex flex-wrap gap-3 mt-6">

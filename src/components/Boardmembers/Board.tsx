@@ -96,7 +96,7 @@ export default function BoardMembers() {
           <span className="text-primary drop-shadow-lg">Board Members</span>
         </h1>
 
-        <p className="text-base md:text-lg text-white/90 max-w-3xl mx-auto drop-shadow">
+        <p className="text-base md:text-lg text-white/90 max-w-3xl mx-auto droshadowp-">
           Meet the visionary leaders guiding Finserve Africa towards innovation and excellence.
         </p>
       </div>

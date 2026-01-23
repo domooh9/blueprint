@@ -281,11 +281,15 @@ const FinserveMobile = () => {
             <div className={`flex-1 relative transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} mobile-image-bottom`}>
               <div className="sticky top-20">
                 <div className="relative w-full max-w-[500px] mx-auto lg:mx-0 mobile-full-width">
+                  {/* Rounded background with primary color */}
+                  <div 
+                    className="absolute inset-0 rounded-3xl bg-primary"
+                  />
                   <div className="absolute -inset-4 bg-gradient-to-r from-primary/20 to-primary/10 rounded-3xl blur-xl" />
                   <img
                     src={product.image}
                     alt="Finserve Money App Interface"
-                    className="relative w-full h-auto object-contain drop-shadow-2xl"
+                    className="relative w-full h-auto object-contain drop-shadow-2xl z-10"
                   />
                 </div>
               </div>
@@ -309,12 +313,14 @@ const FinserveMobile = () => {
 
             {/* Phone in Center */}
             <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20 mobile-features-center">
-              <div className="relative">
+              <div className="relative flex justify-center items-center">
+                {/* Solid circular background with primary color - similar to Equitel */}
+                <div className="w-[280px] h-[280px] sm:w-[340px] sm:h-[340px] bg-primary rounded-full absolute animate-pulse"></div>
                 <div className="absolute -inset-6 bg-gradient-to-r from-primary/20 to-transparent rounded-full blur-xl" />
                 <img
                   src={product.imagee}
                   alt="Finserve App Features"
-                  className="relative w-48 sm:w-64 h-auto object-contain drop-shadow-2xl"
+                  className="relative z-10 w-48 sm:w-64 h-auto object-contain drop-shadow-2xl"
                 />
               </div>
             </div>
