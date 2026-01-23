@@ -2,6 +2,10 @@ import { motion } from "framer-motion";
 import EquitelM from "@/assets/Equitt.png";
 import equitelGateway from "@/assets/equitel-gatewaay.png";
 import EquitelHand from "@/assets/EquitelHand.png";
+import { ArrowRight,} from "lucide-react";
+import { Button } from "@/components/ui/button";
+
+
 
 const Equitel = () => {
   const product = {
@@ -124,24 +128,7 @@ const Equitel = () => {
               })}
             </div>
 
-            {/* CTA Button with extra spacing in mobile */}
-         {/* CTA Button with extra spacing in mobile */}
-{/* CTA Button with extra spacing in mobile */}
-<motion.div
-  className="text-center lg:text-left mt-6 sm:mt-8"
-  initial={{ opacity: 0, y: 20 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{ delay: 1.5 }}
->
-  <a
-    href={product.link}
-    target="_blank"
-    rel="noopener noreferrer"
-    className="inline-block px-8 py-3 rounded-full bg-primary text-white font-semibold hover:bg-primary/90 shadow-md hover:shadow-lg transition-all duration-300 text-lg"
-  >
-    Explore Equitel →
-  </a>
-</motion.div>
+
 
 {/* Animated Logo - Desktop version (unchanged) */}
 <motion.div
@@ -188,7 +175,7 @@ const Equitel = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h3 className="font-bold text-lg mb-2">NB: We conserve the environment in that:</h3>
+            <h3 className="font-bold text-m mb-2">NB: We conserve the environment in that:</h3>
             <ul className="space-y-2 text-xs leading-relaxed">
               <li>We are the only Telco in Kenya without scratch cards.</li>
               <li>Have now launched eSims – No more printing of plastic simcards.</li>
@@ -265,6 +252,44 @@ const Equitel = () => {
 
         </div>
       </motion.div>
+      <motion.div
+  className="flex justify-center mt-6 sm:mt-8"
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ delay: 1.5 }}
+>
+  <a
+    href={product.link}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="group inline-flex items-center justify-center
+               relative overflow-hidden
+               bg-gradient-to-r from-primary to-primary/90
+               hover:from-primary hover:to-primary/80
+               text-white px-6 py-3 rounded-xl
+               font-semibold text-sm
+               shadow-lg hover:shadow-[0_0_30px_rgba(235,34,64,0.4)]
+               transform hover:-translate-y-1
+               transition-all duration-500"
+  >
+    <span className="relative z-10">Explore Equitel</span>
+
+    <ArrowRight
+      className="ml-2 w-4 h-4 relative z-10
+                 transform transition-transform duration-300
+                 group-hover:translate-x-1"
+    />
+
+    {/* Hover shine effect */}
+    <div
+      className="absolute inset-0 bg-gradient-to-r
+                 from-transparent via-white/20 to-transparent
+                 translate-x-[-100%] group-hover:translate-x-[100%]
+                 transition-transform duration-1000"
+    />
+  </a>
+</motion.div>
+
     </section>
   );
 };

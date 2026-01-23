@@ -1,5 +1,8 @@
 import JengaPGWI from "@/assets/JengaPGWI.png";
 import Picturer from "@/assets/Picturer.png";
+import { ArrowRight,} from "lucide-react";
+import { Button } from "@/components/ui/button";
+
 
 const JengaPayment = () => {
   const services = [
@@ -168,7 +171,7 @@ const JengaPayment = () => {
     }}
   >
     {/* LEFT - Paragraph content */}
-    <div className="mobile-order-1 ">
+    <div className="mobile-order-1">
       {/* Logo Section with styled text */}
       <div style={{ marginBottom: 40 }} className="mobile-center">
         <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16, justifyContent: { xs: "center", md: "flex-start" } }}>
@@ -327,6 +330,22 @@ const JengaPayment = () => {
           </div>
         </div>
       </div>
+      <div className="flex justify-center mt-10">
+  <Button
+    onClick={() => window.open("https://jengapgw.io/", "_blank")}
+    className="relative bg-gradient-to-r from-primary to-primary/90 hover:from-primary hover:to-primary/80 
+               text-white px-8 py-6 rounded-xl font-semibold text-base shadow-xl 
+               hover:shadow-[0_0_40px_rgba(235,34,64,0.4)] 
+               transform hover:-translate-y-1 transition-all duration-500 
+               min-w-[200px] overflow-hidden animate-cta-pulse group"
+  >
+    <span className="relative z-10">Explore JengaPGW</span>
+    <ArrowRight className="ml-3 w-5 h-5 relative z-10 transform group-hover:translate-x-2 transition-transform" />
+    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent 
+                    translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
+  </Button>
+</div>
+
     </section>
   );
 };

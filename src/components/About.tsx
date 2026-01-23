@@ -2,6 +2,8 @@ import React, { useEffect, useState, useRef } from "react";
 import { ChevronRight } from "lucide-react";
 import Picture3 from "@/assets/Picture3.png";
 import Picture from "@/assets/Picture.jpg";
+import { Button } from "@/components/ui/button";
+import { ArrowRight} from "lucide-react";
 
 interface FloatingObject {
   id: number;
@@ -368,48 +370,25 @@ export const About = () => {
 
             {/* Animated CTA Button */}
             <div 
-              className={`
-                transition-all duration-700
-                ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}
-              `}
-              style={{ transitionDelay: '1.1s' }}
+            
             >
               <a
                 href="/who-we-are"
                 className="
                   group
                   inline-flex items-center justify-center
-                  px-8 py-4
-                  border border-white/30
-                  text-white font-medium
-                  rounded-full
+                  
+    text-white font-medium
+                  
                   relative overflow-hidden
-                  bg-gradient-to-r from-[#474747] to-[#3a3a3a]
-                  hover:border-[#EB2442]
+                  
+                  
                   transition-all duration-300
                   active:scale-95
                 "
                 onMouseEnter={() => setHoveredButton(true)}
                 onMouseLeave={() => setHoveredButton(false)}
               >
-                {/* Gradient fill animation */}
-                <div 
-                  className={`
-                    absolute inset-0 bg-gradient-to-r from-[#EB2442] to-[#d6203a]
-                    transition-all duration-300
-                    ${hoveredButton ? 'opacity-100' : 'opacity-0'}
-                  `}
-                />
-                
-                {/* Pulse ring effect */}
-                <div 
-                  className={`
-                    absolute inset-0 rounded-full border-2 border-[#EB2442]/30
-                    transition-all duration-700
-                    ${hoveredButton ? 'scale-125 opacity-0' : 'scale-100 opacity-0'}
-                  `}
-                />
-                
                 {/* Shimmer effect */}
                 <div 
                   className="
@@ -422,12 +401,12 @@ export const About = () => {
                   }}
                 />
                 
-                <span className="relative z-10 transition-colors duration-300 group-hover:text-white">
-                  Learn More About Us
-                </span>
-                <ChevronRight 
-                  className="w-5 h-5 ml-3 relative z-10 transition-all duration-300 group-hover:translate-x-2" 
-                />
+                   <Button className="relative bg-gradient-to-r from-primary to-primary/90 hover:from-primary hover:to-primary/80 text-white px-8 py-6 rounded-xl font-semibold text-base shadow-xl hover:shadow-[0_0_40px_rgba(235,34,64,0.4)] transform hover:-translate-y-1 transition-all duration-500 min-w-[200px] overflow-hidden animate-cta-pulse">
+                  <span className="relative z-10">Learn More About Us</span>
+                  <ArrowRight className="ml-3 w-5 h-5 relative z-10 transform group-hover:translate-x-2 transition-transform" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
+                </Button>
+                
               </a>
             </div>
           </div>

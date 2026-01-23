@@ -2,6 +2,9 @@ import { Card, CardContent } from "@/components/ui/card";
 import JengaAPii from "@/assets/JengaA.png"; // robot/computer illustration
 import jengaLogo from "@/assets/jenga-apii.png"; // Jenga Logo (header)
 import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
+import { ArrowRight,} from "lucide-react";
 import { Send, Smartphone, Wallet, UserCheck, Receipt } from "lucide-react";
 
 const services = [
@@ -355,11 +358,28 @@ const JengaAPI = () => {
     <li key={i}>– {b}</li>
   ))}
 </ul>
-  </motion.div>
+ </motion.div>
                 ))}
               </div>
             </div>
+            
           </div>
+           <div className="flex justify-center mt-10 relative -top-2">
+  <Button
+    onClick={() => window.open("https://www.jengaapi.io/", "_blank")}
+    className="relative bg-gradient-to-r from-primary to-primary/90 hover:from-primary hover:to-primary/80 
+               text-white px-8 py-6 rounded-xl font-semibold text-base shadow-xl 
+               hover:shadow-[0_0_40px_rgba(235,34,64,0.4)] 
+               transform hover:-translate-y-1 transition-all duration-500 
+               min-w-[200px] overflow-hidden animate-cta-pulse group"
+  >
+    <span className="relative z-10">Explore JengaAPI</span>
+    <ArrowRight className="ml-3 w-5 h-5 relative z-10 transform group-hover:translate-x-2 transition-transform" />
+    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent 
+                    translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
+  </Button>
+</div>
+
         </CardContent>
       </Card>
     </motion.div>

@@ -2,6 +2,7 @@ import { Users, Shield, Lightbulb, Eye, Target, Globe, ChevronDown, ChevronUp } 
 import whoB from "@/assets/imageC.png";
 import { motion, type Variants } from "framer-motion";
 import { useState } from "react";
+import Picturer from "@/assets/Picturer.png"
 
 // Animation variants
 const fadeInUp: Variants = {
@@ -151,7 +152,7 @@ const WHO = () => {
       </section>
 
       {/* Why Us Section - Red Background */}
-      <section className="bg-[#EB2240] py-16 lg:py-24 overflow-hidden">
+      <section className="bg-[#EB2240] py-16 lg:py-24 overflow-hidden" >
         <div className="container mx-auto px-4 sm:px-6 lg:px-12">
           {/* Header */}
           <motion.div 
@@ -262,8 +263,13 @@ const WHO = () => {
 
       {/* Our Philosophies Section - White Background */}
       <section className="bg-white py-16 lg:py-24 overflow-hidden">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-12">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-12" 
+        style={{
+      backgroundImage: `url(${Picturer})`,
+      backgroundSize: "600px",
+    }}>
           {/* Header */}
+          
           <motion.div 
             className="mb-16 text-center"
             initial="hidden"
@@ -400,7 +406,10 @@ const WHO = () => {
         </motion.div>
 
         {/* Values Grid - Gray Background */}
-        <div className="bg-[#474747] py-16 lg:py-24">
+        <div className="bg-[#474747] py-16 lg:py-24" style={{
+      backgroundImage: `url(${Picturer})`,
+      backgroundSize: "600px",
+    }}>
           <div className="container mx-auto px-4 sm:px-6 lg:px-12">
             <motion.div 
               className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 lg:gap-6"

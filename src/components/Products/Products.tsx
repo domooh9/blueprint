@@ -3,7 +3,7 @@ import Equitel from "./Equitel/Equitel";
 import JengaAPI from "./Jenga/JengaAPI";
 import JengaPGW from "./Jenga/JengaPGW";
 import FinserveMobile from "./FinserveMobile/FinserveMobile";
-import Andreas from "@/assets/Picture22.jpg";
+import Andreas from "@/assets/Picture2.jpg";
 import { ArrowRight, Zap, Shield, Globe, Users } from "lucide-react";
 import { useState, useEffect } from "react";
 
@@ -96,7 +96,7 @@ export const Products = () => {
   transition={{ duration: 0.8, delay: 0.6 }}
 >
   <Zap className="w-5 h-5 text-primary" />
-  <span className="text-white font-semibold text-lg">
+  <span className="text-white font-small text-sm">
     Innovating Finance. Empowering Growth.
   </span>
 </motion.div>
