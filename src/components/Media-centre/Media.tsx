@@ -1,16 +1,13 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import YouTubeEmbed from "@/components/ui/youtube-embed";
 import { ExternalLink, FileText, Presentation, Newspaper, Award, Shield, Lock, MessageSquare, Download, Eye, ChevronRight, Play } from "lucide-react";
 import { useState } from "react";
 import Picturer from "@/assets/Andreas.jpg";
 
-// Livestream Component - Now only shows in Media tab
+// Livestream Component - Now shows embedded YouTube video
 const Livestream = () => {
-  const youtubeLink = "https://www.youtube.com/watch?v=FhRCxCFzN3g";
-
-  const redirectToYoutube = () => {
-    window.open(youtubeLink, "_blank");
-  };
+  const videoId = "FhRCxCFzN3g"; // Extracted from https://www.youtube.com/watch?v=FhRCxCFzN3g
 
   return (
     <div className="relative py-16 md:py-24 bg-gradient-to-br from-primary/5 via-background to-primary/5 rounded-3xl overflow-hidden">
@@ -21,40 +18,48 @@ const Livestream = () => {
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="max-w-3xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
-            <Play className="w-4 h-4 text-primary" />
-            <span className="text-primary font-semibold text-sm tracking-wider">
-              YouTube Channel
-            </span>
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-8">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
+              <Play className="w-4 h-4 text-primary" />
+              <span className="text-primary font-semibold text-sm tracking-wider">
+                Featured Video
+              </span>
+            </div>
+            
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Finserve Official Launch
+            </h2>
+            
+            <div className="flex justify-center items-center mb-6">
+              <span className="w-16 h-1 bg-primary rounded-full"></span>
+              <span className="w-3 h-3 bg-primary rounded-full mx-4"></span>
+              <span className="w-16 h-1 bg-primary rounded-full"></span>
+            </div>
+            
+            <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
+              Watch our official launch event and learn about Finserve's innovative fintech solutions.
+            </p>
           </div>
           
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Finserve on YouTube
-          </h1>
-          
-          <div className="flex justify-center items-center mb-6">
-            <span className="w-16 h-1 bg-primary rounded-full"></span>
-            <span className="w-3 h-3 bg-primary rounded-full mx-4"></span>
-            <span className="w-16 h-1 bg-primary rounded-full"></span>
+          {/* YouTube Video Embed */}
+          <div className="max-w-4xl mx-auto">
+            <YouTubeEmbed
+              videoId={videoId}
+              title="Finserve Official Launch"
+              className="shadow-2xl"
+              showControls={true}
+              showInfo={false}
+              enablePrivacyMode={true}
+              lazyLoad={true}
+            />
           </div>
           
-          <p className="text-lg md:text-xl text-gray-600 mb-8 max-w-xl mx-auto">
-            Watch our official launch and other media content on our YouTube channel. Click the button below to open in a new tab.
-          </p>
-          
-          <Button
-            onClick={redirectToYoutube}
-            className="bg-gradient-to-r from-primary to-primary/90 hover:from-primary hover:to-primary/80 text-white py-6 px-8 rounded-xl font-bold text-lg shadow-lg hover:shadow-xl transition-all duration-300 flex items-center gap-3 mx-auto group"
-          >
-            <Play className="w-6 h-6" />
-            Watch Our Launch on YouTube
-            <ExternalLink className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-          </Button>
-          
-          <p className="text-sm text-gray-500 mt-6">
-            Opens in a new tab
-          </p>
+          <div className="text-center mt-6">
+            <p className="text-sm text-gray-500">
+              Privacy-enhanced mode • No tracking cookies • Minimal branding
+            </p>
+          </div>
         </div>
       </div>
     </div>
