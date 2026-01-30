@@ -290,7 +290,7 @@ const Media = () => {
                 </div>
 
                 {/* Quick Download Section for Media */}
-                <div className="bg-gradient-to-r from-primary to-primary/90 rounded-3xl p-8 md:p-12 text-white mb-12">
+                <div className="bg-[#474747] rounded-3xl p-8 md:p-12 text-primary mb-12">
                   <div className="max-w-4xl mx-auto">
                     <div className="flex flex-col md:flex-row items-center justify-between gap-8">
                       <div className="flex-1">
@@ -397,7 +397,7 @@ const Media = () => {
                 </div>
 
                 {/* Quick Download Section for Policies */}
-                <div className="bg-gradient-to-r from-primary to-primary/90 rounded-3xl p-8 md:p-12 text-white mb-12">
+                <div className="bg-[#474747] rounded-3xl p-8 md:p-12 text-primary mb-12">
                   <div className="max-w-4xl mx-auto">
                     <div className="flex flex-col md:flex-row items-center justify-between gap-8">
                       <div className="flex-1">

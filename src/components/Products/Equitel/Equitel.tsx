@@ -175,7 +175,7 @@ const Equitel = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h3 className="font-bold text-m mb-2">NB: We conserve the environment in that:</h3>
+            <h3 className="font-bold text-lg mb-2">NB: We conserve the environment in that:</h3>
             <ul className="space-y-2 text-xs leading-relaxed">
               <li>We are the only Telco in Kenya without scratch cards.</li>
               <li>Have now launched eSims – No more printing of plastic simcards.</li>

@@ -2,13 +2,14 @@ import { Facebook, Instagram, Linkedin, Youtube } from "lucide-react";
 import finserveLogo from "@/assets/finserve-logo.png";
 import cert2 from "@/assets/cert2.png"
 import cert1 from "@/assets/cert1.png"
+import Picturer from "@/assets/Picturer.png"
 
 const socialLinks = [
-  { icon: Facebook, href: "#", label: "Facebook" },
+  { icon: Facebook, href: "https://www.facebook.com/FinserveAfricaofficial/", label: "Facebook" },
   { icon: Instagram, href: "#", label: "Instagram" },
-  { icon: "X", href: "#", label: "X" },
-  { icon: Linkedin, href: "#", label: "LinkedIn" },
-  { icon: Youtube, href: "#", label: "YouTube" },
+  { icon: "X", href: "https://x.com/Finserve_Africa", label: "X" },
+  { icon: Linkedin, href: "https://www.linkedin.com/company/finserveafrica/", label: "LinkedIn" },
+  { icon: Youtube, href: "https://www.youtube.com/@finserveafrica2390", label: "YouTube" },
 ];
 
 const quickLinks = [
@@ -33,13 +34,17 @@ const XIcon = () => (
     <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
   </svg>
 );
-
 export const Footer = () => {
   return (
-    <footer className="bg-primary relative overflow-hidden">
-      {/* Add Inter font import at the top of your main CSS file or layout component */}
-      {/* Example: <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" /> */}
-      
+    <footer 
+      className="bg-primary relative overflow-hidden"
+      style={{ 
+        backgroundImage: `url(${Picturer})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        minHeight: '35vh' // Further reduced
+      }}
+    >
       {/* Corporate font-family applied throughout */}
       <div className="font-sans" style={{ fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" }}>
         
@@ -57,29 +62,25 @@ export const Footer = () => {
         </div>
 
         <div className="relative z-10">
-          {/* Compliance Certifications Section */}
-          <div className="py-12 text-center">
-            <h2 className="text-2xl md:text-3xl font-light italic text-white mb-8 tracking-tight">
+          {/* Compliance Certifications Section - REDUCED */}
+          <div className="pt-4 pb-2 text-center"> {/* Reduced vertical padding */}
+            <h2 className="text-lg md:text-xl font-light italic text-white mb-1 tracking-tight"> {/* Smaller font and margin */}
               Compliance Certifications
             </h2>
             
-            {/* Certification badges placeholders */}
-            <div className="flex justify-center gap-8 mb-8">
+            {/* Smaller certification badges */}
+            <div className="flex justify-center gap-3 mb-1"> {/* Reduced gap and margin */}
               <img 
                 src={cert1} 
                 alt="Certification 1" 
-                className="w-32 h-16 md:w-40 md:h-20 object-contain rounded-lg"
+                className="w-20 h-10 md:w-24 md:h-12 object-contain" // Smaller images
               />
               <img 
                 src={cert2} 
                 alt="Certification 2" 
-                className="w-32 h-16 md:w-40 md:h-20 object-contain rounded-lg"
+                className="w-20 h-10 md:w-24 md:h-12 object-contain" // Smaller images
               />
             </div>
-            
-            <p className="text-white/90 text-sm font-normal tracking-normal">
-              Finserve is regulated by CBK
-            </p>
           </div>
 
           {/* Divider */}
@@ -87,22 +88,23 @@ export const Footer = () => {
             <div className="border-t border-white/30" />
           </div>
 
-          {/* Main Footer Content */}
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+          {/* Main Footer Content - Compact */}
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-3"> {/* Reduced padding */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-3"> {/* Reduced gap */}
+              
               {/* Left Column - Brand */}
               <div>
                 <img 
                   src={finserveLogo} 
                   alt="Finserve" 
-                  className="h-10 mb-4 brightness-0 invert"
+                  className="h-7 mb-1 brightness-0 invert" // Smaller logo with reduced margin
                 />
-                <p className="text-white/80 text-sm mb-6 max-w-xs font-normal leading-relaxed tracking-normal">
+                <p className="text-white/80 text-xs mb-2 max-w-xs font-normal leading-snug tracking-normal"> {/* Smaller text with tighter line height */}
                   The innovative fintech platform connecting potential with prosperity across borders.
                 </p>
                 
-                {/* Social Icons */}
-                <div className="flex gap-3">
+                {/* Social Icons - smaller */}
+                <div className="flex gap-1.5">
                   {socialLinks.map((social) => {
                     if (social.icon === "X") {
                       return (
@@ -112,7 +114,9 @@ export const Footer = () => {
                           className="text-white hover:text-white/70 transition-colors"
                           aria-label={social.label}
                         >
-                          <XIcon />
+                          <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 fill-current"> {/* Smaller */}
+                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                          </svg>
                         </a>
                       );
                     }
@@ -124,7 +128,7 @@ export const Footer = () => {
                         className="text-white hover:text-white/70 transition-colors"
                         aria-label={social.label}
                       >
-                        <Icon size={18} />
+                        <Icon size={14} /> {/* Smaller */}
                       </a>
                     );
                   })}
@@ -133,15 +137,15 @@ export const Footer = () => {
 
               {/* Middle Column - Quick Links */}
               <div>
-                <h4 className="text-lg font-semibold text-white mb-4 tracking-tight">
+                <h4 className="text-sm font-semibold text-white mb-1.5 tracking-tight"> {/* Smaller */}
                   Quick Links
                 </h4>
-                <ul className="space-y-2">
+                <ul className="space-y-0.5"> {/* Very tight spacing */}
                   {quickLinks.map((link) => (
                     <li key={link.label}>
                       <a
                         href={link.href}
-                        className="text-white/80 text-sm hover:text-white transition-colors font-normal tracking-normal"
+                        className="text-white/80 text-xs hover:text-white transition-colors font-normal tracking-normal"
                         target={link.href.startsWith("http") ? "_blank" : "_self"}
                         rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
                       >
@@ -154,15 +158,15 @@ export const Footer = () => {
 
               {/* Right Column - Compliance */}
               <div>
-                <h4 className="text-lg font-semibold text-white mb-4 tracking-tight">
+                <h4 className="text-sm font-semibold text-white mb-1.5 tracking-tight">
                   Compliance
                 </h4>
-                <ul className="space-y-2">
+                <ul className="space-y-0.5">
                   {complianceLinks.map((link) => (
                     <li key={link.label}>
                       <a
                         href={link.href}
-                        className="text-white/80 text-sm hover:text-white transition-colors font-normal tracking-normal"
+                        className="text-white/80 text-xs hover:text-white transition-colors font-normal tracking-normal"
                       >
                         {link.label}
                       </a>
@@ -173,32 +177,32 @@ export const Footer = () => {
             </div>
           </div>
 
-          {/* Bottom Bar with #595A5C background */}
-          <div className="bg-[#595A5C] py-4">
+          {/* Bottom Bar - Compact */}
+          <div className="bg-[#595A5C] py-1.5"> {/* Very small padding */}
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-xs">
+              <div className="flex flex-col md:flex-row justify-between items-center gap-1.5 text-xs">
                 {/* Copyright */}
-                <p className="text-white/70 font-normal tracking-normal">
+                <p className="text-white/70 font-normal tracking-normal text-xs">
                   © {new Date().getFullYear()} Finserve Africa Limited. All rights reserved.
                 </p>
                 
-                {/* Links */}
-                <div className="flex gap-6">
+                {/* Links - compact */}
+                <div className="flex gap-3">
                   <a 
                     href="#" 
-                    className="text-white/70 hover:text-white transition-colors font-normal tracking-normal"
+                    className="text-white/70 hover:text-white transition-colors font-normal tracking-normal text-xs"
                   >
                     Privacy Policy
                   </a>
                   <a 
                     href="#" 
-                    className="text-white/70 hover:text-white transition-colors font-normal tracking-normal"
+                    className="text-white/70 hover:text-white transition-colors font-normal tracking-normal text-xs"
                   >
                     Cookie Policy
                   </a>
                   <a 
                     href="#" 
-                    className="text-white/70 hover:text-white transition-colors font-normal tracking-normal"
+                    className="text-white/70 hover:text-white transition-colors font-normal tracking-normal text-xs"
                   >
                     Terms and Conditions
                   </a>

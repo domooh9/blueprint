@@ -426,7 +426,7 @@ export const Hero = () => {
             <p className={`text-lg md:text-xl leading-relaxed max-w-lg transition-all duration-1000 delay-300 ${
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}>
-              <span className="text-gray-800">
+              <span className="text-black">
                 Secure, scalable, and innovative financial technologies{" "}
               </span>
               <span className={`inline-block text-primary font-semibold transition-all duration-700 delay-500 ${
@@ -434,7 +434,7 @@ export const Hero = () => {
               }`}>
                 empowering businesses{" "}
               </span>
-              <span className={`inline-block text-gray-800 transition-all duration-700 delay-700 ${
+              <span className={`inline-block text-black transition-all duration-700 delay-700 ${
                 isVisible ? 'opacity-100' : 'opacity-0'
               }`}>
                 across the continent's digital transformation.
@@ -443,7 +443,7 @@ export const Hero = () => {
           </div>
 
           {/* Animated Feature Cards - Carousel Effect */}
-          <div className="mb-12 max-w-md overflow-hidden">
+          {/* <div className="mb-12 max-w-md overflow-hidden">
             <div className={`grid grid-cols-2 gap-3 transition-all duration-1000 delay-500 ${
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}>
@@ -468,7 +468,7 @@ export const Hero = () => {
                 </div>
               ))}
             </div>
-          </div>
+          </div> */}
 
           {/* CTA Buttons with Staggered Animation */}
           <div className="mb-8">

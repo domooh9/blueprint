@@ -243,33 +243,7 @@ export const Products = () => {
       </section>
 
       {/* ================= CALL TO ACTION SECTION ================= */}
-      <section className="bg-gradient-to-r from-primary to-primary/90 py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
-              Ready to Transform Your Business?
-            </h2>
-            <p className="text-lg md:text-xl text-white/90 mb-10 max-w-3xl mx-auto leading-relaxed">
-              Join thousands of businesses already using Finserve products to 
-              streamline their financial operations and drive growth.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="inline-flex items-center gap-2 px-8 py-4 bg-white text-primary font-semibold rounded-full hover:bg-gray-50 transition-all duration-300 hover:scale-105">
-                Get Started Today
-                <ArrowRight className="w-5 h-5" />
-              </button>
-              <button className="inline-flex items-center gap-2 px-8 py-4 border-2 border-white text-white font-semibold rounded-full hover:bg-white hover:text-primary transition-all duration-300">
-                Contact Sales
-              </button>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+      
     </main>
   );
 };
