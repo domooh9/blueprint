@@ -2,8 +2,9 @@ import { motion } from "framer-motion";
 import EquitelM from "@/assets/Equitt.png";
 import equitelGateway from "@/assets/equitel-gatewaay.png";
 import EquitelHand from "@/assets/EquitelHand.png";
-import { ArrowRight,} from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { productStyles } from "../productStyles";
 
 
 
@@ -82,7 +83,7 @@ const Equitel = () => {
             transition={{ type: "spring", stiffness: 120, damping: 15 }}
           >
             <motion.h3
-              className="text-3xl sm:text-4xl md:text-5xl mb-4"
+              className={productStyles.typography.mainHeader}
               style={{ color: "#9a3820" }}
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -92,7 +93,7 @@ const Equitel = () => {
             </motion.h3>
 
             <motion.p
-              className="text-base sm:text-lg md:text-xl mb-6 leading-relaxed"
+              className={productStyles.typography.sectionHeader}
               style={{ color: "#9a3820" }}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -114,7 +115,7 @@ const Equitel = () => {
                     transition={{ delay: 0.5 + idx * 0.2 }}
                     whileHover={{ scale: 1.02 }}
                   >
-                    <p className="text-black text-base sm:text-lg md:text-xl leading-relaxed">
+                    <p className={`text-black ${productStyles.typography.bodyLarge}`}>
                       {parts.map((part, i) =>
                         part === "FREEDOM, CHOICE and CONTROL" ? (
                           <strong key={i}>{part}</strong>
@@ -184,7 +185,7 @@ const Equitel = () => {
 
           {/* LEFT FEATURE LIST */}
           <motion.div
-            className="text-[#F7931E] font-medium space-y-4 text-sm leading-relaxed"
+            className={`text-[#F7931E] font-medium space-y-4 ${productStyles.typography.bodyRegular}`}
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -199,7 +200,7 @@ const Equitel = () => {
                 transition={{ delay: idx * 0.2 }}
                 whileHover={{ scale: 1.02 }}
               >
-                <p className="font-bold">{title}</p>
+                <p className={`font-bold ${productStyles.typography.subsectionTitle}`}>{title}</p>
                 <p className="text-black">{desc}</p>
               </motion.div>
             ))}
@@ -229,7 +230,7 @@ const Equitel = () => {
 
           {/* RIGHT FEATURE LIST */}
           <motion.div
-            className="text-[#F7931E] font-medium space-y-4 text-sm leading-relaxed"
+            className={`text-[#F7931E] font-medium space-y-4 ${productStyles.typography.bodyRegular}`}
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -244,7 +245,7 @@ const Equitel = () => {
                 transition={{ delay: idx * 0.2 }}
                 whileHover={{ scale: 1.02 }}
               >
-                <p className="font-bold">{title}</p>
+                <p className={`font-bold ${productStyles.typography.subsectionTitle}`}>{title}</p>
                 <p className="text-black">{desc}</p>
               </motion.div>
             ))}
@@ -258,36 +259,14 @@ const Equitel = () => {
   animate={{ opacity: 1, y: 0 }}
   transition={{ delay: 1.5 }}
 >
-  <a
-    href={product.link}
-    target="_blank"
-    rel="noopener noreferrer"
-    className="group inline-flex items-center justify-center
-               relative overflow-hidden
-               bg-gradient-to-r from-primary to-primary/90
-               hover:from-primary hover:to-primary/80
-               text-white px-6 py-3 rounded-xl
-               font-semibold text-sm
-               shadow-lg hover:shadow-[0_0_30px_rgba(235,34,64,0.4)]
-               transform hover:-translate-y-1
-               transition-all duration-500"
+  <Button
+    onClick={() => window.open(product.link, "_blank")}
+    className={productStyles.button.base}
   >
     <span className="relative z-10">Explore Equitel</span>
-
-    <ArrowRight
-      className="ml-2 w-4 h-4 relative z-10
-                 transform transition-transform duration-300
-                 group-hover:translate-x-1"
-    />
-
-    {/* Hover shine effect */}
-    <div
-      className="absolute inset-0 bg-gradient-to-r
-                 from-transparent via-white/20 to-transparent
-                 translate-x-[-100%] group-hover:translate-x-[100%]
-                 transition-transform duration-1000"
-    />
-  </a>
+    <ArrowRight className={productStyles.button.icon} />
+    <div className={productStyles.button.shine} />
+  </Button>
 </motion.div>
 
     </section>

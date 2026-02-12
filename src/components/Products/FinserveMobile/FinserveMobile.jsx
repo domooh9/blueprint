@@ -3,6 +3,8 @@ import FinserveM from "@/assets/FinserveM.png";
 import FinserveLogo from "@/assets/FinserveMoney.png";
 import FinserveMn from "@/assets/FinserveMn.png";
 import { ArrowRight, CheckCircle, Smartphone, Wifi, CreditCard, Shield, Zap, Users, Globe, Award } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { productStyles } from "../productStyles";
 
 const FinserveMobile = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -222,12 +224,12 @@ const FinserveMobile = () => {
 
               {/* Title */}
               <div className="space-y-2">
-                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight">
+                <h1 className={`${productStyles.typography.mainHeader} tracking-tight`}>
                   <span className="text-gray-900">Finserve</span>
                   <br />
                   <span className="text-primary">Money</span>
                 </h1>
-                <p className="text-xl text-gray-600">
+                <p className={productStyles.typography.sectionHeader}>
                   {product.subtitle}
                 </p>
               </div>
@@ -239,7 +241,7 @@ const FinserveMobile = () => {
                   className="p-6 rounded-xl mb-4"
                   style={{ backgroundColor: '#eb2442' }}
                 >
-                  <p className="text-white text-lg leading-relaxed">
+                  <p className={`text-white ${productStyles.typography.bodyLarge}`}>
                     {product.description}
                   </p>
                 </div>
@@ -252,7 +254,7 @@ const FinserveMobile = () => {
                       className="flex items-center gap-2"
                     >
                       <CheckCircle className="w-5 h-5 text-primary flex-shrink-0" />
-                      <span className="text-gray-700 text-sm font-medium">{benefit}</span>
+                      <span className={`text-gray-700 font-medium ${productStyles.typography.bodyRegular}`}>{benefit}</span>
                     </div>
                   ))}
                 </div>
@@ -260,19 +262,21 @@ const FinserveMobile = () => {
 
               {/* CTA */}
               <div className={`pt-4 transition-all duration-700 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-                <div 
-                  className="inline-flex items-center gap-4 px-6 py-4 bg-gradient-to-r from-primary to-primary/90 text-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 group cursor-not-allowed" 
+                <Button 
+                  className={`${productStyles.button.base} cursor-not-allowed`}
+                  disabled
                   title="Coming Soon"
                 >
-                  <div className="flex items-center gap-3">
+                  <span className="relative z-10 flex items-center gap-3">
                     <Award className="w-6 h-6" />
                     <div>
                       <div className="font-bold text-lg">{product.cta}</div>
                       <div className="text-sm text-white/80">Be the first to know</div>
                     </div>
-                  </div>
-                  <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-2" />
-                </div>
+                  </span>
+                  <ArrowRight className={productStyles.button.icon} />
+                  <div className={productStyles.button.shine} />
+                </Button>
               </div>
              
             </div>
@@ -301,8 +305,8 @@ const FinserveMobile = () => {
         <section className="relative">
           {/* Section Header */}
           <div className={`text-center mb-12 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900">Complete Financial Suite</h2>
-            <p className="text-xl text-gray-600 mt-2">Everything you need in one app</p>
+            <h2 className={productStyles.typography.mainHeader}>Complete Financial Suite</h2>
+            <p className={`${productStyles.typography.sectionHeader} text-gray-600 mt-2`}>Everything you need in one app</p>
           </div>
 
           <div className="relative min-h-[500px] mobile-features-stack">
@@ -329,7 +333,7 @@ const FinserveMobile = () => {
             <div className="absolute left-0 lg:left-10 top-1/2 -translate-y-1/2 z-10 mobile-features-left">
               <div className="bg-white p-6 rounded-2xl shadow-2xl border border-primary/10 max-w-xs">
                 <div className="space-y-4">
-                  <h3 className="text-lg font-bold text-gray-900 flex items-center gap-2">
+                  <h3 className={`${productStyles.typography.subsectionTitle} text-gray-900 flex items-center gap-2`}>
                     <span className="w-2 h-6 bg-primary rounded-full" />
                     Everyday Transactions
                   </h3>
@@ -337,7 +341,7 @@ const FinserveMobile = () => {
                     {leftFeatures.map((item, i) => (
                       <li key={i} className="flex items-center gap-3">
                         <div className="w-2 h-2 bg-primary rounded-full flex-shrink-0" />
-                        <span className="text-gray-700 font-medium">{item}</span>
+                        <span className={`text-gray-700 font-medium ${productStyles.typography.bodyRegular}`}>{item}</span>
                       </li>
                     ))}
                   </ul>
@@ -349,7 +353,7 @@ const FinserveMobile = () => {
             <div className="absolute right-0 lg:right-10 top-1/2 -translate-y-1/2 z-10 mobile-features-right">
               <div className="bg-white p-6 rounded-2xl shadow-2xl border border-primary/10 max-w-xs">
                 <div className="space-y-4">
-                  <h3 className="text-lg font-bold text-gray-900 flex items-center gap-2">
+                  <h3 className={`${productStyles.typography.subsectionTitle} text-gray-900 flex items-center gap-2`}>
                     <span className="w-2 h-6 bg-primary rounded-full" />
                     Advanced Services
                   </h3>
@@ -357,7 +361,7 @@ const FinserveMobile = () => {
                     {rightFeatures.map((item, i) => (
                       <li key={i} className="flex items-center gap-3">
                         <div className="w-2 h-2 bg-primary rounded-full flex-shrink-0" />
-                        <span className="text-gray-700 font-medium">{item}</span>
+                        <span className={`text-gray-700 font-medium ${productStyles.typography.bodyRegular}`}>{item}</span>
                       </li>
                     ))}
                   </ul>

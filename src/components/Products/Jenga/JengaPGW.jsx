@@ -1,7 +1,8 @@
 import JengaPGWI from "@/assets/JengaPGWI.png";
 import Picturer from "@/assets/Picturer.png";
-import { ArrowRight,} from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { productStyles } from "../productStyles";
 
 
 const JengaPayment = () => {
@@ -175,10 +176,10 @@ const JengaPayment = () => {
       {/* Logo Section with styled text */}
       <div style={{ marginBottom: 40 }} className="mobile-center">
         <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16, justifyContent: { xs: "center", md: "flex-start" } }}>
-          <h1 className="mobile-logo" style={{ fontSize: 48, fontWeight: 700, color: "#999", margin: 0 }}>Jenga</h1>
+          <h1 className={`mobile-logo ${productStyles.typography.mainHeader}`} style={{ color: "#999", margin: 0 }}>Jenga</h1>
           <div>
-            <p style={{ fontSize: 14, fontWeight: 600, color: "#E91E8C", margin: 0 }}>Payment</p>
-            <p style={{ fontSize: 14, fontWeight: 600, color: "#E91E8C", margin: 0 }}>Gateway</p>
+            <p className={productStyles.typography.bodyRegular} style={{ fontWeight: 600, color: "#E91E8C", margin: 0 }}>Payment</p>
+            <p className={productStyles.typography.bodyRegular} style={{ fontWeight: 600, color: "#E91E8C", margin: 0 }}>Gateway</p>
           </div>
         </div>
       </div>
@@ -197,7 +198,7 @@ const JengaPayment = () => {
           boxSizing: "border-box",
         }}
       >
-        <p className="mobile-text text-body-large" style={{ color: "#fff", fontSize: 16, lineHeight: 1.7, margin: 0 }}>
+        <p className={`mobile-text text-white ${productStyles.typography.bodyLarge}`} style={{ margin: 0 }}>
           Jenga Payment Gateway is a business-to-business financial solution that allows merchants to provide their customers the ability to pay via various payments channels in multi-currencies across 180+ currencies.
         </p>
       </div>
@@ -217,10 +218,10 @@ const JengaPayment = () => {
       {/* SERVICE OFFERING */}
       <div style={{ padding: "64px 16px" }} className="mobile-padding">
         <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-          <h2 style={{ fontSize: 30, fontWeight: 700, color: "#C30078", marginBottom: 8, textAlign: { xs: "center", md: "left" } }}>
+          <h2 className={productStyles.typography.mainHeader} style={{ color: "#C30078", marginBottom: 8, textAlign: { xs: "center", md: "left" } }}>
             Jenga PGW
           </h2>
-          <p style={{ fontSize: 20, marginBottom: 48, textAlign: { xs: "center", md: "left" } }}>Service Offering.</p>
+          <p className={productStyles.typography.sectionHeader} style={{ marginBottom: 48, textAlign: { xs: "center", md: "left" } }}>Service Offering.</p>
 
           {/* CONNECTING LINES */}
           <div style={{ position: "relative", marginBottom: 80 }}>
@@ -324,7 +325,7 @@ const JengaPayment = () => {
                   />
                 </div>
 
-                <p style={{ fontSize: 14, lineHeight: 1.4 }}>{service.title}</p>
+                <p className={productStyles.typography.bodyRegular} style={{ lineHeight: 1.4 }}>{service.title}</p>
               </div>
             ))}
           </div>
@@ -333,16 +334,11 @@ const JengaPayment = () => {
       <div className="flex justify-center mt-10">
   <Button
     onClick={() => window.open("https://jengapgw.io/", "_blank")}
-    className="relative bg-gradient-to-r from-primary to-primary/90 hover:from-primary hover:to-primary/80 
-               text-white px-8 py-6 rounded-xl font-semibold text-base shadow-xl 
-               hover:shadow-[0_0_40px_rgba(235,34,64,0.4)] 
-               transform hover:-translate-y-1 transition-all duration-500 
-               min-w-[200px] overflow-hidden animate-cta-pulse group"
+    className={productStyles.button.base}
   >
     <span className="relative z-10">Explore JengaPGW</span>
-    <ArrowRight className="ml-3 w-5 h-5 relative z-10 transform group-hover:translate-x-2 transition-transform" />
-    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent 
-                    translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
+    <ArrowRight className={productStyles.button.icon} />
+    <div className={productStyles.button.shine} />
   </Button>
 </div>
 

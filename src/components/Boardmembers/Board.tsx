@@ -2,7 +2,7 @@ import { Users } from "lucide-react";
 import { useState, useEffect } from "react";
 import Picturer from "@/assets/Kevin.jpg";
 import Andreas from "@/assets/Andreas.jpg";
-import Imageb from "@/assets/gpt.png";
+import Imageb from "@/assets/Sean.jpg";
 
 const boardMembersData = [
       {
