@@ -54,13 +54,7 @@ const Livestream = () => {
               lazyLoad={true}
             />
           </div>
-          
-          <div className="text-center mt-6">
-            <p className="text-sm text-gray-500">
-              Privacy-enhanced mode • No tracking cookies • Minimal branding
-            </p>
           </div>
-        </div>
       </div>
     </div>
   );

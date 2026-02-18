@@ -476,11 +476,11 @@ export const Hero = () => {
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}>
               <Link to="/products" className="group relative">
-                <Button className="relative bg-gradient-to-r from-primary to-primary/90 hover:from-primary hover:to-primary/80 text-white px-8 py-6 rounded-xl font-semibold text-base shadow-xl hover:shadow-[0_0_40px_rgba(235,34,64,0.4)] transform hover:-translate-y-1 transition-all duration-500 min-w-[200px] overflow-hidden animate-cta-pulse">
-                  <span className="relative z-10">Explore Solutions</span>
-                  <ArrowRight className="ml-3 w-5 h-5 relative z-10 transform group-hover:translate-x-2 transition-transform" />
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
-                </Button>
+           <Button className="relative bg-gradient-to-r from-primary to-primary/90 hover:from-primary hover:to-primary/80 text-white px-4 py-3 sm:px-8 sm:py-6 rounded-xl font-semibold text-sm sm:text-base shadow-xl hover:shadow-[0_0_40px_rgba(235,34,64,0.4)] transform hover:-translate-y-1 transition-all duration-500 w-full sm:flex-1 overflow-hidden animate-cta-pulse">
+    <span className="relative z-10">Explore Solutions</span>
+    <ArrowRight className="ml-2 sm:ml-3 w-3.5 h-3.5 sm:w-5 sm:h-5 relative z-10 transform group-hover:translate-x-2 transition-transform" />
+    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
+  </Button>
               </Link>
               <a 
                 href="https://finserve.custhelp.com/app/home" 
@@ -489,10 +489,12 @@ export const Hero = () => {
                 className="group relative"
                 style={{ animationDelay: '0.8s' }}
               >
-                <Button className="relative border-2 border-gray-800 text-gray-800 bg-white/40 hover:bg-white/60 px-8 py-6 rounded-xl font-semibold text-base backdrop-blur-lg hover:border-primary transition-all duration-500 min-w-[200px] overflow-hidden">
-                  <span className="relative z-10">Contact Team</span>
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/5 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
-                </Button>
+                 <Button className="relative border border-gray-800 text-gray-800 bg-white/40 hover:bg-white/60 px-6 py-4 sm:px-8 sm:py-6 rounded-xl font-semibold text-sm sm:text-base shadow-xl transform hover:-translate-y-1 transition-all duration-500 w-full sm:flex-1 overflow-hidden animate-cta-pulse">
+    <span className="relative z-10">Contact Team</span>
+    <ArrowRight className="ml-3 w-4 h-4 sm:w-5 sm:h-5 relative z-10 transform group-hover:translate-x-2 transition-transform" />
+    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
+  </Button>
+               
               </a>
             </div>
           </div>

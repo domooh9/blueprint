@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useRef } from "react";
-import { ChevronRight } from "lucide-react";
 import Picture3 from "@/assets/Picture3.png";
 import Picture from "@/assets/Picture.jpg";
 import { Button } from "@/components/ui/button";
@@ -283,21 +282,18 @@ export const About = () => {
                 hoveredLeft ? 'opacity-100' : 'opacity-0'
               }`} />
               
-              <img
-                src={Picture3}
-                alt="Finserve"
-                className={`
-                  w-full max-w-md
-                  object-cover
-                  rounded-xl
-                  shadow-xl
-                  transition-all duration-500
-                  ${isVisible ? 'translate-x-0 opacity-100' : '-translate-x-8 opacity-0'}
-                  ${hoveredLeft ? 'scale-[1.02] shadow-2xl' : 'scale-100'}
-                `}
-                onMouseEnter={() => setHoveredLeft(true)}
-                onMouseLeave={() => setHoveredLeft(false)}
-              />
+           <img
+  src={Picture3}
+  alt="Finserve"
+  className={`
+    w-full max-w-md object-cover rounded-xl shadow-xl mt-16
+    transition-all duration-500
+    ${isVisible ? 'translate-x-0 opacity-100' : '-translate-x-8 opacity-0'}
+    ${hoveredLeft ? 'scale-[1.02] shadow-2xl' : 'scale-100'}
+  `}
+  onMouseEnter={() => setHoveredLeft(true)}
+  onMouseLeave={() => setHoveredLeft(false)}
+/>
               
               {/* Decorative corners */}
               <div className="absolute top-3 left-3 w-4 h-4 border-t border-l border-white/50 rounded-tl" />

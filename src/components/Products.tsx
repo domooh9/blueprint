@@ -223,23 +223,23 @@ export const Products = () => {
 
                 {/* Enhanced Hover Bubble Button */}
                 {product.link !== "#" && (
-                  <div className="
-                      absolute -top-3 -right-3
-                      w-14 h-14 rounded-full
-                      bg-gradient-to-br from-primary to-primary/80 text-white
-                      flex items-center justify-center
-                      opacity-0 group-hover:opacity-100
-                      translate-x-6 group-hover:translate-x-0
-                      scale-50 group-hover:scale-100
-                      shadow-lg shadow-primary/30
-                      transition-all duration-500
-                      cursor-pointer
-                      border-2 border-white/20
-                      animate-pulse-glow
-                    "
-                  >
-                    <ArrowRight className="w-6 h-6 transition-transform duration-300 group-hover:translate-x-1" />
-                  </div>
+               <div className="
+      absolute -top-2 md:-top-3 -right-9 md:-right-3
+      w-10 h-10 md:w-14 md:h-14 rounded-full
+      bg-gradient-to-br from-primary to-primary/80 text-white
+      flex items-center justify-center
+      opacity-100 md:opacity-0 md:group-hover:opacity-100
+      translate-x-0 scale-100 md:translate-x-6 md:scale-50
+      md:group-hover:translate-x-0 md:group-hover:scale-100
+      shadow-lg shadow-primary/30
+      transition-all duration-500
+      cursor-pointer
+      border-2 border-white/20
+      animate-pulse-glow
+    "
+  >
+    <ArrowRight className="w-4 h-4 md:w-6 md:h-6 transition-transform duration-300 group-hover:translate-x-1" />
+  </div>
                 )}
 
                 {/* Badge for coming soon */}

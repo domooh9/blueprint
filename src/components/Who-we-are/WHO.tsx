@@ -1,4 +1,5 @@
 import { Users, Shield, Lightbulb, Eye, Target, Globe, ChevronDown, ChevronUp } from "lucide-react";
+import { UserGroupIcon, ShieldCheckIcon, LightBulbIcon } from '@heroicons/react/24/outline'
 import whoB from "@/assets/imageC.png";
 import { motion, type Variants } from "framer-motion";
 import { useState } from "react";
@@ -162,19 +163,19 @@ const WHO = () => {
             viewport={{ once: true, amount: 0.3 }}
           >
             <motion.h2 
-              className="text-white text-4xl lg:text-5xl font-bold mb-2"
-              variants={fadeInUp}
-              transition={{ duration: 0.6 }}
-            >
-              Why Us
-              <motion.span 
-                className="block w-20 h-1 bg-white mt-3 mx-auto"
-                initial={{ width: 0 }}
-                whileInView={{ width: 80 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: 0.3 }}
-              />
-            </motion.h2>
+  className="text-white text-4xl lg:text-5xl font-bold mb-2 text-left"
+  variants={fadeInUp}
+  transition={{ duration: 0.6 }}
+>
+  Why Us
+  <motion.span 
+    className="block w-20 h-1 bg-white mt-3"
+    initial={{ width: 0 }}
+    whileInView={{ width: 80 }}
+    viewport={{ once: true }}
+    transition={{ duration: 0.8, delay: 0.3 }}
+  />
+</motion.h2>
             <motion.p 
               className="text-white/90 mt-6 max-w-3xl mx-auto leading-relaxed text-lg"
               variants={fadeInUp}
@@ -215,26 +216,42 @@ const WHO = () => {
             </motion.div>
 
             {/* Security */}
-            <motion.div 
-              className="text-white"
-              variants={staggerItem}
-              whileHover={{ y: -8, transition: { type: "spring", stiffness: 300 } }}
-            >
-              <div className="flex items-center gap-3 mb-4">
-                <motion.div 
-                  className="w-16 h-16 rounded-full border-2 border-white/50 flex items-center justify-center"
-                  whileHover={{ scale: 1.1, rotate: 5, transition: { type: "spring", stiffness: 300 } }}
-                >
-                  <Shield className="w-8 h-8" />
-                </motion.div>
-              </div>
-              <h3 className="text-2xl font-semibold mb-4">
-                Security<span className="text-white">.</span>
-              </h3>
-              <p className="text-white/85 leading-relaxed">
-                As financial technology pushes the world into the future, security becomes an even greater concern and we have greater measures in order to assure our clientele of the highest global standards of security.
-              </p>
-            </motion.div>
+          <motion.div 
+  className="text-white"
+  variants={staggerItem}
+  whileHover={{ y: -8, transition: { type: "spring", stiffness: 300 } }}
+>
+  <div className="flex items-center gap-3 mb-4">
+    <motion.div 
+      className="w-16 h-16 rounded-full border-2 border-white/50 flex items-center justify-center"
+      whileHover={{ scale: 1.1, rotate: 5, transition: { type: "spring", stiffness: 300 } }}
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        strokeWidth={1.5}
+        stroke="currentColor"
+        className="w-8 h-8"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z"
+        />
+      </svg>
+    </motion.div>
+  </div>
+
+  <h3 className="text-2xl font-semibold mb-4">
+    Security<span className="text-white">.</span>
+  </h3>
+
+  <p className="text-white/85 leading-relaxed">
+    As financial technology pushes the world into the future, security becomes an even greater concern and we have greater measures in order to assure our clientele of the highest global standards of security.
+  </p>
+</motion.div>
+
 
             {/* Innovation */}
             <motion.div 

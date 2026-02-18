@@ -11,11 +11,10 @@ import WHO from "./components/Who-we-are/WHO";
 import Products from "./components/Products/Products";
 import NotFound from "./pages/NotFound";
 import BoardMembers from "./components/Boardmembers/Board";
-import Privacy from "./components/Privacy/Privacy"
+import Privacy from "./components/Privacy/Privacy";
 import Faq from "./components/FAQ/Faq";
 import Livestream from "./components/Livestream/Livestream";
-import Media from "./components/Media-centre/Media"
-import Container from "./components/Container";
+import Media from "./components/Media-centre/Media";
 
 const queryClient = new QueryClient();
 
