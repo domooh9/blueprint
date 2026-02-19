@@ -1,5 +1,4 @@
-import { Users, Shield, Lightbulb, Eye, Target, Globe, ChevronDown, ChevronUp } from "lucide-react";
-import { UserGroupIcon, ShieldCheckIcon, LightBulbIcon } from '@heroicons/react/24/outline'
+import {  ChevronDown, ChevronUp } from "lucide-react";
 import whoB from "@/assets/imageC.png";
 import { motion, type Variants } from "framer-motion";
 import { useState } from "react";
