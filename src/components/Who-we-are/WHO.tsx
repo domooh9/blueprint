@@ -4,6 +4,17 @@ import whoB from "@/assets/imageC.png";
 import { motion, type Variants } from "framer-motion";
 import { useState } from "react";
 import Picturer from "@/assets/Picturer.png"
+import gestures from "@/assets/icons/gestures.png"
+import jobseeker from "@/assets/icons/job-seeker.png"
+import puzzle from "@/assets/icons/puzzle.png"
+import investment from "@/assets/icons/investment.png"
+import startup from "@/assets/icons/startup.png"
+import key from "@/assets/icons/key.png"
+import hands from "@/assets/icons/hands.png"
+import light from "@/assets/icons/light.png"
+import eye from "@/assets/icons/eye.png"
+import dats from "@/assets/icons/dats.png"
+import col from "@/assets/icons/col.png"
 
 // Animation variants
 const fadeInUp: Variants = {
@@ -194,26 +205,31 @@ const WHO = () => {
             variants={staggerContainer}
           >
             {/* Collaboration */}
-            <motion.div 
-              className="text-white"
-              variants={staggerItem}
-              whileHover={{ y: -8, transition: { type: "spring", stiffness: 300 } }}
-            >
-              <div className="flex items-center gap-3 mb-4">
-                <motion.div 
-                  className="w-16 h-16 rounded-full border-2 border-white/50 flex items-center justify-center"
-                  whileHover={{ scale: 1.1, rotate: 5, transition: { type: "spring", stiffness: 300 } }}
-                >
-                  <Users className="w-8 h-8" />
-                </motion.div>
-              </div>
-              <h3 className="text-2xl font-semibold mb-4">
-                Collaboration<span className="text-white">.</span>
-              </h3>
-              <p className="text-white/85 leading-relaxed">
-                We believe in collective genius and embrace the potential of collaboration across technology firms, businesses and organizations, not just as a measure of speeding up our own growth, but that of the industry.
-              </p>
-            </motion.div>
+           <motion.div 
+  className="text-white"
+  variants={staggerItem}
+  whileHover={{ y: -8, transition: { type: "spring", stiffness: 300 } }}
+>
+  <div className="flex items-center gap-3 mb-4">
+   <motion.div 
+  className="w-16 h-16 rounded-full border-2 border-white/50 flex items-center justify-center"
+  whileHover={{ scale: 1.1, rotate: 5, transition: { type: "spring", stiffness: 300 } }}
+>
+  {/* Image fitted without overlap */}
+  <img 
+    src={hands} 
+    alt="Job Seeker" 
+    className="w-10 h-10 object-contain"
+  />
+</motion.div>
+  </div>
+  <h3 className="text-2xl font-semibold mb-4">
+    Collaboration<span className="text-white">.</span>
+  </h3>
+  <p className="text-white/85 leading-relaxed">
+    We believe in collective genius and embrace the potential of collaboration across technology firms, businesses and organizations, not just as a measure of speeding up our own growth, but that of the industry.
+  </p>
+</motion.div>
 
             {/* Security */}
           <motion.div 
@@ -223,24 +239,16 @@ const WHO = () => {
 >
   <div className="flex items-center gap-3 mb-4">
     <motion.div 
-      className="w-16 h-16 rounded-full border-2 border-white/50 flex items-center justify-center"
-      whileHover={{ scale: 1.1, rotate: 5, transition: { type: "spring", stiffness: 300 } }}
-    >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        strokeWidth={1.5}
-        stroke="currentColor"
-        className="w-8 h-8"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z"
-        />
-      </svg>
-    </motion.div>
+  className="w-16 h-16 rounded-full border-2 border-white/50 flex items-center justify-center"
+  whileHover={{ scale: 1.1, rotate: 5, transition: { type: "spring", stiffness: 300 } }}
+>
+  {/* Image fitted without overlap */}
+  <img 
+    src={key} 
+    alt="Job Seeker" 
+    className="w-10 h-10 object-contain"
+  />
+</motion.div>
   </div>
 
   <h3 className="text-2xl font-semibold mb-4">
@@ -260,12 +268,17 @@ const WHO = () => {
               whileHover={{ y: -8, transition: { type: "spring", stiffness: 300 } }}
             >
               <div className="flex items-center gap-3 mb-4">
-                <motion.div 
-                  className="w-16 h-16 rounded-full border-2 border-white/50 flex items-center justify-center"
-                  whileHover={{ scale: 1.1, rotate: 5, transition: { type: "spring", stiffness: 300 } }}
-                >
-                  <Lightbulb className="w-8 h-8" />
-                </motion.div>
+               <motion.div 
+  className="w-16 h-16 rounded-full border-2 border-white/50 flex items-center justify-center"
+  whileHover={{ scale: 1.1, rotate: 5, transition: { type: "spring", stiffness: 300 } }}
+>
+  {/* Image fitted without overlap */}
+  <img 
+    src={light} 
+    alt="Job Seeker" 
+    className="w-10 h-10 object-contain"
+  />
+</motion.div>
               </div>
               <h3 className="text-2xl font-semibold mb-4">
                 Innovation<span className="text-white">.</span>
@@ -322,46 +335,54 @@ const WHO = () => {
             variants={staggerContainer}
           >
             {/* Vision */}
-            <motion.div 
-              className="text-center"
-              variants={staggerItem}
-              whileHover={{ y: -8, transition: { type: "spring", stiffness: 300 } }}
-            >
-              <motion.div 
-                className="w-20 h-20 mx-auto mb-6 rounded-full bg-[#EB2240] flex items-center justify-center shadow-lg"
-                whileHover={{ scale: 1.15, rotate: 360 }}
-                transition={{ type: "spring", stiffness: 200, duration: 0.6 }}
-              >
-                <Eye className="w-10 h-10 text-white" />
-              </motion.div>
-              <h3 className="text-[#EB2240] text-xl font-semibold mb-4">
-                Vision<span className="text-[#EB2240]">.</span>
-              </h3>
-              <p className="text-gray-600 leading-relaxed">
-                To provide innovative solutions that inspire growth.
-              </p>
-            </motion.div>
+       <motion.div 
+  className="text-center"
+  variants={staggerItem}
+  whileHover={{ y: -8, transition: { type: "spring", stiffness: 300 } }}
+>
+  <motion.div 
+  className="w-20 h-20 mx-auto mb-6 rounded-full bg-white border-2 border-[#EB2240] flex items-center justify-center shadow-lg"
+  whileHover={{ scale: 1.15, rotate: 360 }}
+  transition={{ type: "spring", stiffness: 200, duration: 0.6 }}
+>
+  <img 
+    src={eye} 
+    alt="Eye" 
+    className="w-12 h-12 object-contain"
+  />
+</motion.div>
+  <h3 className="text-[#EB2240] text-xl font-semibold mb-4">
+    Vision<span className="text-[#EB2240]">.</span>
+  </h3>
+  <p className="text-gray-600 leading-relaxed">
+    To provide innovative solutions that inspire growth.
+  </p>
+</motion.div>
 
             {/* Mission */}
-            <motion.div 
-              className="text-center"
-              variants={staggerItem}
-              whileHover={{ y: -8, transition: { type: "spring", stiffness: 300 } }}
-            >
-              <motion.div 
-                className="w-20 h-20 mx-auto mb-6 rounded-full bg-[#EB2240] flex items-center justify-center shadow-lg"
-                whileHover={{ scale: 1.15, rotate: 360 }}
-                transition={{ type: "spring", stiffness: 200, duration: 0.6 }}
-              >
-                <Target className="w-10 h-10 text-white" />
-              </motion.div>
-              <h3 className="text-[#EB2240] text-xl font-semibold mb-4">
-                Mission<span className="text-[#EB2240]">.</span>
-              </h3>
-              <p className="text-gray-600 leading-relaxed">
-                To offer cutting-edge solutions that enrich lives and businesses, through collaboration and innovation.
-              </p>
-            </motion.div>
+   <motion.div 
+  className="text-center"
+  variants={staggerItem}
+  whileHover={{ y: -8, transition: { type: "spring", stiffness: 300 } }}
+>
+ <motion.div 
+  className="w-20 h-20 mx-auto mb-6 rounded-full bg-white border-2 border-[#EB2240] flex items-center justify-center shadow-lg"
+  whileHover={{ scale: 1.15, rotate: 360 }}
+  transition={{ type: "spring", stiffness: 200, duration: 0.6 }}
+>
+  <img 
+    src={dats} 
+    alt="Eye" 
+    className="w-12 h-12 object-contain"
+  />
+</motion.div>
+  <h3 className="text-[#EB2240] text-xl font-semibold mb-4">
+    Mission<span className="text-[#EB2240]">.</span>
+  </h3>
+  <p className="text-gray-600 leading-relaxed">
+    To offer cutting-edge solutions that enrich lives and businesses, through collaboration and innovation.
+  </p>
+</motion.div>
 
             {/* Corporate Mission */}
             <motion.div 
@@ -370,12 +391,16 @@ const WHO = () => {
               whileHover={{ y: -8, transition: { type: "spring", stiffness: 300 } }}
             >
               <motion.div 
-                className="w-20 h-20 mx-auto mb-6 rounded-full bg-[#EB2240] flex items-center justify-center shadow-lg"
-                whileHover={{ scale: 1.15, rotate: 360 }}
-                transition={{ type: "spring", stiffness: 200, duration: 0.6 }}
-              >
-                <Globe className="w-10 h-10 text-white" />
-              </motion.div>
+  className="w-20 h-20 mx-auto mb-6 rounded-full bg-white border-2 border-[#EB2240] flex items-center justify-center shadow-lg"
+  whileHover={{ scale: 1.15, rotate: 360 }}
+  transition={{ type: "spring", stiffness: 200, duration: 0.6 }}
+>
+  <img 
+    src={col} 
+    alt="Eye" 
+    className="w-12 h-12 object-contain"
+  />
+</motion.div>
               <h3 className="text-[#EB2240] text-xl font-semibold mb-4">
                 Corporate Mission<span className="text-[#EB2240]">.</span>
               </h3>
@@ -462,14 +487,11 @@ const WHO = () => {
                   transition={{ type: "spring", stiffness: 300 }}
                 >
                   <div className="w-24 h-24 lg:w-32 lg:h-32 rounded-full bg-gradient-to-br from-teal-100 to-teal-200 flex items-center justify-center">
-                    <svg viewBox="0 0 64 64" className="w-20 h-20 lg:w-28 lg:h-28">
-                      <circle cx="32" cy="24" r="10" fill="#4A5568"/>
-                      <path d="M22 40 Q32 50 42 40 L42 56 L22 56 Z" fill="#319795"/>
-                      <circle cx="26" cy="16" r="2" fill="#F6E05E"/>
-                      <circle cx="38" cy="16" r="2" fill="#ED64A6"/>
-                      <circle cx="32" cy="10" r="2" fill="#48BB78"/>
-                      <path d="M28 14 L24 8 M36 14 L40 8 M32 12 L32 4" stroke="#9F7AEA" strokeWidth="1"/>
-                    </svg>
+                     <img 
+      src={jobseeker} 
+      alt="Job Seeker" 
+      className="w-full h-full object-cover"
+    />
                   </div>
                 </motion.div>
                 <p className="text-white leading-relaxed px-2">
@@ -503,14 +525,11 @@ const WHO = () => {
                   transition={{ type: "spring", stiffness: 300 }}
                 >
                   <div className="w-24 h-24 lg:w-32 lg:h-32 rounded-full bg-white flex items-center justify-center">
-                    <svg viewBox="0 0 64 64" className="w-20 h-20 lg:w-28 lg:h-28">
-                      <circle cx="32" cy="20" r="6" fill="#3B82F6"/>
-                      <circle cx="20" cy="36" r="6" fill="#10B981"/>
-                      <circle cx="44" cy="36" r="6" fill="#F59E0B"/>
-                      <circle cx="26" cy="50" r="6" fill="#EF4444"/>
-                      <circle cx="38" cy="50" r="6" fill="#8B5CF6"/>
-                      <path d="M32 26 L20 30 M32 26 L44 30 M20 42 L26 44 M44 42 L38 44 M26 44 L38 44" stroke="#374151" strokeWidth="2"/>
-                    </svg>
+                  <img 
+      src={puzzle} 
+      alt="Job Seeker" 
+      className="w-full h-full object-cover"
+    />
                   </div>
                 </motion.div>
                 <p className="text-white leading-relaxed px-2">
@@ -544,15 +563,11 @@ const WHO = () => {
                   transition={{ type: "spring", stiffness: 300 }}
                 >
                   <div className="w-24 h-24 lg:w-32 lg:h-32 rounded-full bg-white flex items-center justify-center">
-                    <svg viewBox="0 0 64 64" className="w-20 h-20 lg:w-28 lg:h-28">
-                      <rect x="26" y="44" width="12" height="8" fill="#4A5568"/>
-                      <rect x="18" y="52" width="28" height="4" fill="#4A5568"/>
-                      <circle cx="32" cy="30" r="8" fill="#F5D0C5"/>
-                      <path d="M24 38 Q20 42 18 52" stroke="#319795" strokeWidth="3" fill="none"/>
-                      <path d="M40 38 Q50 30 52 24" stroke="#319795" strokeWidth="3" fill="none"/>
-                      <path d="M28 46 Q26 50 24 52" stroke="#F5D0C5" strokeWidth="2"/>
-                      <path d="M36 46 Q38 50 40 52" stroke="#F5D0C5" strokeWidth="2"/>
-                    </svg>
+                    <img 
+      src={startup} 
+      alt="Job Seeker" 
+      className="w-full h-full object-cover"
+    />
                   </div>
                 </motion.div>
                 <p className="text-white leading-relaxed px-2">
@@ -586,20 +601,11 @@ const WHO = () => {
                   transition={{ type: "spring", stiffness: 300 }}
                 >
                   <div className="w-24 h-24 lg:w-32 lg:h-32 rounded-full bg-white flex items-center justify-center">
-                    <svg viewBox="0 0 64 64" className="w-20 h-20 lg:w-28 lg:h-28">
-                      <circle cx="32" cy="32" r="20" fill="url(#lionGradient)"/>
-                      <defs>
-                        <radialGradient id="lionGradient">
-                          <stop offset="0%" stopColor="#F59E0B"/>
-                          <stop offset="60%" stopColor="#D97706"/>
-                          <stop offset="100%" stopColor="#92400E"/>
-                        </radialGradient>
-                      </defs>
-                      <circle cx="26" cy="28" r="3" fill="#1F2937"/>
-                      <circle cx="38" cy="28" r="3" fill="#1F2937"/>
-                      <path d="M28 36 Q32 40 36 36" stroke="#1F2937" strokeWidth="2" fill="none"/>
-                      <path d="M20 20 Q16 12 12 16 M44 20 Q48 12 52 16" stroke="#F59E0B" strokeWidth="3"/>
-                    </svg>
+                     <img 
+      src={investment} 
+      alt="Job Seeker" 
+      className="w-full h-full object-cover"
+    />
                   </div>
                 </motion.div>
                 <p className="text-white leading-relaxed px-2">
@@ -633,13 +639,11 @@ const WHO = () => {
                   transition={{ type: "spring", stiffness: 300 }}
                 >
                   <div className="w-24 h-24 lg:w-32 lg:h-32 rounded-full bg-white flex items-center justify-center">
-                    <svg viewBox="0 0 64 64" className="w-20 h-20 lg:w-28 lg:h-28">
-                      <path d="M16 32 Q16 20 32 16 Q48 20 48 32 Q48 48 32 56 Q16 48 16 32" fill="#EF4444"/>
-                      <path d="M8 36 Q4 32 8 28 L16 32 L8 36" fill="#D2691E"/>
-                      <path d="M56 36 Q60 32 56 28 L48 32 L56 36" fill="#D2691E"/>
-                      <path d="M12 40 L8 52 Q10 54 12 52 L16 44" fill="#D2691E"/>
-                      <path d="M52 40 L56 52 Q54 54 52 52 L48 44" fill="#D2691E"/>
-                    </svg>
+                  <img 
+      src={gestures} 
+      alt="Job Seeker" 
+      className="w-full h-full object-cover"
+    />
                   </div>
                 </motion.div>
                 <p className="text-white leading-relaxed px-2">

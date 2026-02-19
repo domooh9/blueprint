@@ -24,7 +24,7 @@ const quickLinks = [
 const complianceLinks = [
   { label: "Legal", href: "#" },
   { label: "Whistleblowing", href: "#" },
-  { label: "Privacy Policy", href: "#" },
+  { label: "Privacy Policy", href: "https://www.finserve.africa/media/EGHL_INFORMATION_SECURITY_POLICY.pdf" },
   { label: "Cookie Policy", href: "#" },
   { label: "Terms and Conditions", href: "#" },
 ];
