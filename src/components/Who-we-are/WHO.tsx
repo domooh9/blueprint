@@ -3,10 +3,10 @@ import whoB from "@/assets/imageC.png";
 import { motion, type Variants } from "framer-motion";
 import { useState } from "react";
 import Picturer from "@/assets/Picturer.png"
-import gestures from "@/assets/icons/gestures.png"
-import jobseeker from "@/assets/icons/job-seeker.png"
+import gestures from "@/assets/icons/startupp.png"
+import jobseeker from "@/assets/icons/job--seeker.png"
 import puzzle from "@/assets/icons/puzzle.png"
-import investment from "@/assets/icons/investment.png"
+import investment from "@/assets/icons/llion.png"
 import startup from "@/assets/icons/startup.png"
 import key from "@/assets/icons/key.png"
 import hands from "@/assets/icons/hands.png"
@@ -211,7 +211,7 @@ const WHO = () => {
 >
   <div className="flex items-center gap-3 mb-4">
    <motion.div 
-  className="w-16 h-16 rounded-full border-2 border-white/50 flex items-center justify-center"
+  className="w-20 h-20 mx-auto mb-6 rounded-full border-2 border-white/50 flex items-center justify-center"
   whileHover={{ scale: 1.1, rotate: 5, transition: { type: "spring", stiffness: 300 } }}
 >
   {/* Image fitted without overlap */}
@@ -238,7 +238,7 @@ const WHO = () => {
 >
   <div className="flex items-center gap-3 mb-4">
     <motion.div 
-  className="w-16 h-16 rounded-full border-2 border-white/50 flex items-center justify-center"
+  className="w-20 h-20 mx-auto mb-6 rounded-full border-2 border-white/50 flex items-center justify-center"
   whileHover={{ scale: 1.1, rotate: 5, transition: { type: "spring", stiffness: 300 } }}
 >
   {/* Image fitted without overlap */}
@@ -268,7 +268,7 @@ const WHO = () => {
             >
               <div className="flex items-center gap-3 mb-4">
                <motion.div 
-  className="w-16 h-16 rounded-full border-2 border-white/50 flex items-center justify-center"
+  className="w-20 h-20 mx-auto mb-6 rounded-full border-2 border-white/50 flex items-center justify-center"
   whileHover={{ scale: 1.1, rotate: 5, transition: { type: "spring", stiffness: 300 } }}
 >
   {/* Image fitted without overlap */}
