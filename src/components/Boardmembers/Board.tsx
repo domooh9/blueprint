@@ -1,4 +1,5 @@
-import Picturer from "@/assets/Kevin.jpg";
+
+
 
 const boardMembersData = [
   {
@@ -52,7 +53,7 @@ export default function BoardMembers() {
         {/* Hero Section - Single Background Image */}
         <section
           className="relative py-16 md:py-28 overflow-hidden bg-cover bg-center bg-no-repeat flex flex-col justify-end min-h-[70vh] md:min-h-[80vh]"
-          style={{ backgroundImage: `url(${Picturer})` }}
+          style={{ backgroundImage: `url()` }}
         >
           {/* Gradient Overlay */}
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/30 to-black/70" />

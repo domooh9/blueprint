@@ -3,11 +3,12 @@ import { Button } from "@/components/ui/button";
 import YouTubeEmbed from "@/components/ui/youtube-embed";
 import { ExternalLink, FileText, Presentation, Newspaper, Award, Shield, Lock, MessageSquare, Download, Eye, ChevronRight, Play } from "lucide-react";
 import { useState } from "react";
+import Testimonials from "./Testemonials"; // ensure correct import path
 import Picturer from "@/assets/Andreas.jpg";
 
-// Livestream Component - Now shows embedded YouTube video
+// Livestream Component - Shows embedded YouTube video
 const Livestream = () => {
-  const videoId = "FhRCxCFzN3g"; // Extracted from https://www.youtube.com/watch?v=FhRCxCFzN3g
+  const videoId = "FhRCxCFzN3g";
 
   return (
     <div className="relative py-16 md:py-24 bg-gradient-to-br from-primary/5 via-background to-primary/5 rounded-3xl overflow-hidden">
@@ -54,7 +55,7 @@ const Livestream = () => {
               lazyLoad={true}
             />
           </div>
-          </div>
+        </div>
       </div>
     </div>
   );
@@ -144,100 +145,102 @@ const policies = [
 ];
 
 const Media = () => {
-  const [activeTab, setActiveTab] = useState<'media' | 'policies'>('media');
+  const [activeTab, setActiveTab] = useState<'media' | 'policies' | 'testimonials'>('media');
 
   return (
     <div className="min-h-screen flex flex-col">
-      
       <main className="flex-1">
         {/* Hero Section */}
-      
-<section 
-  className="
-    relative
-    py-16
-    md:py-24
-    lg:py-32
-    overflow-hidden
-    lg:min-h-[600px]
-  "
-  style={{
-    backgroundImage: `url(${Picturer})`,
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-    backgroundRepeat: 'no-repeat',
-  }}
->
-  {/* Dark overlay for better text readability */}
-  <div className="absolute inset-0 bg-black/50" />
+        <section 
+          className="relative py-16 md:py-24 lg:py-32 overflow-hidden lg:min-h-[600px]"
+          style={{
+            backgroundImage: `url(${Picturer})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+          }}
+        >
+          {/* Dark overlay for better text readability */}
+          <div className="absolute inset-0 bg-black/50" />
 
-  {/* Background Pattern - Adjusted for better visibility on dark background */}
-  <div className="absolute inset-0 opacity-10">
-    <div className="absolute top-20 left-10 w-32 h-32 border-2 border-white/40 rounded-full"></div>
-    <div className="absolute top-40 right-20 w-24 h-24 border-2 border-white/40 rounded-full"></div>
-    <div className="absolute bottom-20 left-1/4 w-40 h-40 border-2 border-white/40 rounded-full"></div>
-    <div className="absolute top-1/2 right-1/3 w-20 h-20 border-2 border-white/40 rounded-full"></div>
-  </div>
+          {/* Background Pattern */}
+          <div className="absolute inset-0 opacity-10">
+            <div className="absolute top-20 left-10 w-32 h-32 border-2 border-white/40 rounded-full"></div>
+            <div className="absolute top-40 right-20 w-24 h-24 border-2 border-white/40 rounded-full"></div>
+            <div className="absolute bottom-20 left-1/4 w-40 h-40 border-2 border-white/40 rounded-full"></div>
+            <div className="absolute top-1/2 right-1/3 w-20 h-20 border-2 border-white/40 rounded-full"></div>
+          </div>
 
-  <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-    <div className="text-center mb-12">
-      <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/20 border border-white/30 backdrop-blur-sm mb-6">
-        <span className="text-primary font-semibold text-sm tracking-wider">
-          Resources & Compliance
-        </span>
-      </div>
-      
-      <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary mb-4">
-        Media Centre  <span className="text-white/90"> & Privacy </span>
-      </h1>
-      
-      <div className="flex justify-center items-center mb-6">
-        <span className="w-24 h-1 bg-white rounded-full"></span>
-        <span className="w-3 h-3 bg-white rounded-full mx-4"></span>
-        <span className="w-24 h-1 bg-white rounded-full"></span>
-      </div>
-      
-      <p className="text-lg md:text-xl text-white/80 max-w-3xl mx-auto mb-8">
-        Stay updated with the latest news and explore our commitment to transparency, security, and compliance
-      </p>
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div className="text-center mb-12">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/20 border border-white/30 backdrop-blur-sm mb-6">
+                <span className="text-primary font-semibold text-sm tracking-wider">
+                  Resources & Compliance
+                </span>
+              </div>
+              
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary mb-4">
+                Media Centre  <span className="text-white/90"> & Privacy </span>
+              </h1>
+              
+              <div className="flex justify-center items-center mb-6">
+                <span className="w-24 h-1 bg-white rounded-full"></span>
+                <span className="w-3 h-3 bg-white rounded-full mx-4"></span>
+                <span className="w-24 h-1 bg-white rounded-full"></span>
+              </div>
+              
+              <p className="text-lg md:text-xl text-white/80 max-w-3xl mx-auto mb-8">
+                Stay updated with the latest news, explore our commitment to transparency, and hear from our customers.
+              </p>
 
-      {/* Tab Navigation */}
-      <div className="flex justify-center mb-12">
-        <div className="inline-flex rounded-xl bg-white/20 backdrop-blur-sm p-1">
-          <button
-            onClick={() => setActiveTab('media')}
-            className={`px-6 py-3 rounded-lg font-semibold transition-all duration-300 flex items-center gap-2 ${
-              activeTab === 'media'
-                ? 'bg-white text-primary shadow-md'
-                : 'text-white hover:text-white/90'
-            }`}
-          >
-            <Newspaper className="w-4 h-4" />
-            Media Centre
-          </button>
-          <button
-            onClick={() => setActiveTab('policies')}
-            className={`px-6 py-3 rounded-lg font-semibold transition-all duration-300 flex items-center gap-2 ${
-              activeTab === 'policies'
-                ? 'bg-white text-primary shadow-md'
-                : 'text-white hover:text-white/90'
-            }`}
-          >
-            <Shield className="w-4 h-4" />
-            Click to View Legal & Privacy
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+              {/* Tab Navigation - Updated with fintech design */}
+              <div className="flex justify-center mb-12">
+                <div className="inline-flex rounded-2xl bg-white/10 backdrop-blur-xl border border-white/20 p-1.5 shadow-2xl shadow-black/10">
+                  <button
+                    onClick={() => setActiveTab('media')}
+                    className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 flex items-center gap-2 ${
+                      activeTab === 'media'
+                        ? 'bg-gradient-to-br from-white to-white/95 text-primary shadow-xl scale-105'
+                        : 'text-white/90 hover:text-white hover:bg-white/20 hover:scale-105'
+                    }`}
+                  >
+                    <Newspaper className="w-4 h-4" />
+                    Media Centre
+                  </button>
+                  <button
+                    onClick={() => setActiveTab('policies')}
+                    className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 flex items-center gap-2 ${
+                      activeTab === 'policies'
+                        ? 'bg-gradient-to-br from-white to-white/95 text-primary shadow-xl scale-105'
+                        : 'text-white/90 hover:text-white hover:bg-white/20 hover:scale-105'
+                    }`}
+                  >
+                    <Shield className="w-4 h-4" />
+                    Click to View Legal & Privacy
+                  </button>
+                  <button
+                    onClick={() => setActiveTab('testimonials')}
+                    className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 flex items-center gap-2 ${
+                      activeTab === 'testimonials'
+                        ? 'bg-gradient-to-br from-white to-white/95 text-primary shadow-xl scale-105'
+                        : 'text-white/90 hover:text-white hover:bg-white/20 hover:scale-105'
+                    }`}
+                  >
+                    <MessageSquare className="w-4 h-4" />
+                    Testimonials
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
 
         {/* Main Content Section */}
         <section className="py-16 md:py-20 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            {activeTab === 'media' ? (
+            {activeTab === 'media' && (
               <>
-                {/* YouTube Livestream Component - ONLY IN MEDIA TAB */}
+                {/* YouTube Livestream Component */}
                 <div className="mb-16">
                   <Livestream />
                 </div>
@@ -284,7 +287,7 @@ const Media = () => {
                 </div>
 
                 {/* Quick Download Section for Media */}
-                <div className="bg-[#474747] rounded-3xl p-8 md:p-12 text-primary mb-12">
+                <div className="bg-[#474747] rounded-3xl p-8 md:p-12 text-white mb-12">
                   <div className="max-w-4xl mx-auto">
                     <div className="flex flex-col md:flex-row items-center justify-between gap-8">
                       <div className="flex-1">
@@ -305,9 +308,11 @@ const Media = () => {
                   </div>
                 </div>
               </>
-            ) : (
+            )}
+
+            {activeTab === 'policies' && (
               <>
-                {/* Policies Introduction - NO YOUTUBE HERE */}
+                {/* Policies Introduction */}
                 <div className="max-w-3xl mx-auto text-center mb-12">
                   <h2 className="text-3xl font-bold text-gray-900 mb-4">
                     Protecting Your Trust, Defining Our Standards
@@ -323,10 +328,7 @@ const Media = () => {
                   {policies.map((policy, index) => {
                     const IconComponent = policy.icon;
                     return (
-                      <div
-                        key={index}
-                        className="group relative"
-                      >
+                      <div key={index} className="group relative">
                         <div className="absolute -inset-4 bg-gradient-to-r from-primary/5 to-transparent rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                         
                         <div className="relative p-8 rounded-2xl bg-white border border-gray-200 shadow-lg hover:shadow-2xl transition-all duration-500 h-full flex flex-col group-hover:-translate-y-2">
@@ -347,12 +349,7 @@ const Media = () => {
                             {policy.description}
                           </p>
                           
-                          <a
-                            href={policy.link}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="mt-auto"
-                          >
+                          <a href={policy.link} target="_blank" rel="noopener noreferrer" className="mt-auto">
                             <Button className="w-full bg-gradient-to-r from-primary to-primary/90 hover:from-primary hover:to-primary/80 text-white py-6 rounded-xl font-semibold shadow-md hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 group/btn">
                               <Eye className="w-5 h-5" />
                               View Policy
@@ -391,7 +388,7 @@ const Media = () => {
                 </div>
 
                 {/* Quick Download Section for Policies */}
-                <div className="bg-[#474747] rounded-3xl p-8 md:p-12 text-primary mb-12">
+                <div className="bg-[#474747] rounded-3xl p-8 md:p-12 text-white mb-12">
                   <div className="max-w-4xl mx-auto">
                     <div className="flex flex-col md:flex-row items-center justify-between gap-8">
                       <div className="flex-1">
@@ -413,10 +410,14 @@ const Media = () => {
                 </div>
               </>
             )}
+
+            {activeTab === 'testimonials' && (
+              <div className="max-w-7xl mx-auto">
+                <Testimonials />
+              </div>
+            )}
           </div>
         </section>
-
-       
       </main>
     </div>
   );

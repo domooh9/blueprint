@@ -5,32 +5,12 @@ import { Sheet, SheetContent } from "@/components/ui/sheet";
 import logo from "@/assets/finserve-logo.png";
 
 const menuItems = [
-  { 
-    label: "Home", 
-    href: "/", 
-   },
-  { 
-    label: "Who we are", 
-    href: "/who-we-are", 
-},
-  { 
-    label: "Our products", 
-    href: "/products", 
-    },
-  { 
-    label: "Meet the Board", 
-    href: "/boardmembers", 
-  },
- 
-  { 
-    label: "Media Centre", 
-    href: "/media-centre", 
-    // Dropdown removed
-  },
-   { 
-    label: "FAQ's", 
-    href: "/faq", 
-  },
+  { label: "Home", href: "/" },
+  { label: "Who we are", href: "/who-we-are" },
+  { label: "Our products", href: "/products" },
+  { label: "Company", href: "/boardmembers" },
+  { label: "Resources", href: "/media-centre" },
+  { label: "FAQ's", href: "/faq" },
 ];
 
 export const Header = () => {
@@ -60,11 +40,13 @@ export const Header = () => {
   return (
     <>
       {/* ===== DESKTOP HEADER ===== */}
-      <header className={`hidden lg:block fixed top-0 w-full z-50 transition-all duration-300 ${
-        scrolled 
-          ? "bg-white/95 backdrop-blur-md shadow-md py-0" 
-          : "bg-white py-2"
-      }`}>
+      <header
+        className={`hidden lg:block fixed top-0 w-full z-50 transition-all duration-300 ${
+          scrolled
+            ? "bg-white/95 backdrop-blur-md shadow-md py-0"
+            : "bg-white py-2"
+        }`}
+      >
         <div className="w-full max-w-[100vw] overflow-x-hidden">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             {/* Main Navigation */}
@@ -74,21 +56,83 @@ export const Header = () => {
                 <img src={logo} alt="Finserve Africa" className="h-12 w-auto" />
               </Link>
 
-              {/* Desktop Navigation - No dropdowns */}
+              {/* Desktop Navigation */}
               <nav className="flex items-center flex-wrap gap-1">
                 {menuItems.map((item) => {
                   const active = isActive(item.href);
+
+                  // PRODUCTS DROPDOWN
+                  if (item.label === "Our products") {
+                    return (
+                      <div key={item.label} className="relative group">
+                        {/* Main menu item */}
+                        <Link
+                          to={item.href}
+                          className={`relative px-4 py-2.5 rounded-lg transition-all duration-200 whitespace-nowrap ${
+                            active
+                              ? "text-primary font-semibold border-b-2 border-primary pb-1.5"
+                              : "text-gray-700 hover:text-primary hover:bg-gray-50"
+                          }`}
+                        >
+                          Our products
+                        </Link>
+
+                        {/* ===== DROPDOWN (no gap, attaches directly below) ===== */}
+                        <div className="absolute left-0 top-full w-56 bg-white shadow-xl rounded-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 border border-gray-100">
+                          {/* Finserve Money */}
+                          <Link
+                            to="/products/finserve-money"
+                            className="block px-5 py-3 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary"
+                          >
+                            Finserve Money
+                          </Link>
+
+                          {/* Equitel */}
+                          <Link
+                            to="/products/equitel"
+                            className="block px-5 py-3 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary"
+                          >
+                            Equitel
+                          </Link>
+
+                          {/* ===== JENGA SUBMENU ===== */}
+                          <div className="relative group/jenga">
+                            <div className="flex items-center justify-between px-5 py-3 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary cursor-pointer">
+                              Jenga
+                              <ChevronRight className="w-4 h-4" />
+                            </div>
+
+                            {/* Sub dropdown */}
+                            <div className="absolute left-full top-0 ml-1 w-48 bg-white shadow-xl rounded-xl opacity-0 invisible group-hover/jenga:opacity-100 group-hover/jenga:visible transition-all duration-200 border border-gray-100">
+                              <Link
+                                to="/products/jenga-api"
+                                className="block px-5 py-3 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary"
+                              >
+                                Jenga API
+                              </Link>
+                              <Link
+                                to="/products/jenga-pgw"
+                                className="block px-5 py-3 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary"
+                              >
+                                Jenga PGW
+                              </Link>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  }
+
+                  // NORMAL MENU ITEMS
                   return (
                     <Link
                       key={item.label}
                       to={item.href}
-                      className={`
-                        relative px-4 py-2.5 rounded-lg transition-all duration-200 whitespace-nowrap
-                        ${active 
-                          ? "text-primary font-semibold border-b-2 border-primary pb-1.5" 
+                      className={`relative px-4 py-2.5 rounded-lg transition-all duration-200 whitespace-nowrap ${
+                        active
+                          ? "text-primary font-semibold border-b-2 border-primary pb-1.5"
                           : "text-gray-700 hover:text-primary hover:bg-gray-50"
-                        }
-                      `}
+                      }`}
                     >
                       <span className="text-body-small font-medium tracking-wide">
                         {item.label}
@@ -100,9 +144,9 @@ export const Header = () => {
 
               {/* Desktop CTA Button */}
               <div className="flex items-center">
-                <a 
-                  href="https://finserve.custhelp.com/app/home" 
-                  target="_blank" 
+                <a
+                  href="https://finserve.custhelp.com/app/home"
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="px-4 py-2 bg-primary text-white rounded-lg font-semibold text-sm hover:bg-primary/90 transition-colors duration-200 whitespace-nowrap"
                 >
@@ -133,8 +177,8 @@ export const Header = () => {
 
       {/* ===== MOBILE SLIDE-IN MENU (SHEET) ===== */}
       <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
-        <SheetContent 
-          side="right" 
+        <SheetContent
+          side="right"
           className="w-full sm:max-w-sm bg-white border-l border-gray-100 p-0 overflow-hidden"
         >
           {/* Top Section with Logo and Close */}
@@ -143,7 +187,7 @@ export const Header = () => {
               <div className="flex items-center gap-3">
                 <img src={logo} alt="Finserve" className="h-8" />
               </div>
-              
+
               <button
                 onClick={() => setMobileMenuOpen(false)}
                 className="p-2 rounded-lg hover:bg-gray-100 transition-colors"
@@ -154,7 +198,7 @@ export const Header = () => {
             </div>
           </div>
 
-          {/* Mobile Navigation - No dropdowns */}
+          {/* Mobile Navigation */}
           <div className="px-3 py-4 overflow-y-auto h-[calc(100vh-80px)] w-full">
             <nav className="space-y-1 w-full">
               {menuItems.map((item) => {
@@ -166,18 +210,16 @@ export const Header = () => {
                     onClick={() => setMobileMenuOpen(false)}
                     className={`
                       flex items-center justify-between px-4 py-3.5 rounded-lg transition-all duration-200 w-full
-                      ${active 
-                        ? "bg-primary/10 text-primary border-l-4 border-primary" 
-                        : "text-gray-700 hover:bg-gray-50 hover:text-primary"
+                      ${
+                        active
+                          ? "bg-primary/10 text-primary border-l-4 border-primary"
+                          : "text-gray-700 hover:bg-gray-50 hover:text-primary"
                       }
                     `}
                   >
                     <div className="flex items-center gap-3">
                       <div className="text-left">
-                        <div className="font-medium text-sm">
-                          {item.label}
-                        </div>
-                        
+                        <div className="font-medium text-sm">{item.label}</div>
                       </div>
                     </div>
                     <ChevronRight className="w-4 h-4 text-gray-400" />
@@ -188,16 +230,14 @@ export const Header = () => {
 
             {/* Mobile CTA Section */}
             <div className="mt-8 px-4 w-full">
-              <div>
-              <a 
-                  href="https://finserve.custhelp.com/app/home" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center px-4 py-2.5 bg-primary text-white rounded-lg font-medium text-sm hover:bg-primary/90 transition-colors duration-200 w-full"
-                >
-                  Support Portal
-                </a>
-              </div>
+              <a
+                href="https://finserve.custhelp.com/app/home"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center px-4 py-2.5 bg-primary text-white rounded-lg font-medium text-sm hover:bg-primary/90 transition-colors duration-200 w-full"
+              >
+                Support Portal
+              </a>
             </div>
 
             {/* Footer in Mobile Menu */}
@@ -205,9 +245,13 @@ export const Header = () => {
               <div className="text-center text-xs text-gray-500 space-y-2">
                 <p>© {new Date().getFullYear()} Finserve Africa</p>
                 <div className="flex items-center justify-center gap-4">
-                  <a href="/privacy" className="hover:text-primary transition-colors">Privacy</a>
+                  <a href="/privacy" className="hover:text-primary transition-colors">
+                    Privacy
+                  </a>
                   <div className="w-px h-3 bg-gray-300"></div>
-                  <a href="/terms" className="hover:text-primary transition-colors">Terms</a>
+                  <a href="/terms" className="hover:text-primary transition-colors">
+                    Terms
+                  </a>
                 </div>
               </div>
             </div>

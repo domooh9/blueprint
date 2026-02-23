@@ -10,11 +10,13 @@ import HOME from "./components/HOME";
 import WHO from "./components/Who-we-are/WHO";
 import Products from "./components/Products/Products";
 import NotFound from "./pages/NotFound";
-import BoardMembers from "./components/Boardmembers/Board";
+import BoardMembers from "./components/Company/Board";
 import Privacy from "./components/Privacy/Privacy";
 import Faq from "./components/FAQ/Faq";
 import Livestream from "./components/Livestream/Livestream";
 import Media from "./components/Media-centre/Media";
+import Careers from "./components/Company/Careers";
+import { Car } from "lucide-react";
 
 const queryClient = new QueryClient();
 
@@ -36,6 +38,7 @@ const App = () => (
              <Route path="/faq" element={<Faq />} />
              <Route path="/media-centre" element={<Media />} />
              <Route path="/livestream" element={<Livestream />} />
+         <Route path="/careers" element={<Careers />} />
              
           </Route>
 
