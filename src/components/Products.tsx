@@ -238,7 +238,7 @@ export const Products = () => {
       animate-pulse-glow
     "
   >
-    <ArrowRight className="w-4 h-4 md:w-6 md:h-6 transition-transform duration-300 group-hover:translate-x-1" />
+    <ArrowRight className="w-4 h-4 md:w-6 md:h-6 transition-transform background-primary duration-300 group-hover:translate-x-1" />
   </div>
                 )}
 

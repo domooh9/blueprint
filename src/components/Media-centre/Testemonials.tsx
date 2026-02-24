@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Star, Quote, Users, Award, ThumbsUp } from "lucide-react";
 
 // Placeholder image – replace with actual team/client images
-import testimonialBg from "@/assets/Kevin.jpg"; // adjust path
+import testimonialBg from "@/assets/gettt.mp4"; // adjust path
 
 const Testimonials = () => {
   // Sample testimonials data
@@ -57,7 +57,7 @@ const Testimonials = () => {
     },
   ];
 
-  // Stats for the top section
+  // Stats for the top section (now above the hero)
   const stats = [
     { icon: <Users className="w-6 h-6" />, value: "10,000+", label: "Happy Clients" },
     { icon: <Award className="w-6 h-6" />, value: "98%", label: "Satisfaction Rate" },
@@ -66,40 +66,14 @@ const Testimonials = () => {
 
   return (
     <main className="pt-16 md:pt-20 min-h-screen bg-white">
-      {/* Hero Section */}
-      <section
-        className="relative py-20 md:py-28 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${testimonialBg})` }}
-      >
-        <div className="absolute inset-0 bg-gradient-to-r from-primary/90 to-primary/70" />
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight"
-          >
-            What Our <span className="text-yellow-300">Customers</span> Say
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="mt-4 text-xl text-white/90 max-w-2xl mx-auto"
-          >
-            Real stories from real businesses – see how Finserve is helping them succeed.
-          </motion.p>
-        </div>
-      </section>
-
-      {/* Stats Section */}
-      <section className="py-16 bg-white">
+      {/* Stats Section - Now above the video hero */}
+      <section className="py-12 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {stats.map((stat, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
@@ -113,6 +87,45 @@ const Testimonials = () => {
               </motion.div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Hero Section with Video Background */}
+      <section className="relative min-h-[70vh] md:min-h-[400px] lg:min-h-[500px] flex items-center overflow-hidden">
+        {/* Video Background */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+          poster="/path/to/poster.jpg"
+        >
+          <source src={testimonialBg} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+
+        {/* Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-primary/30 to-primary/70" />
+
+        {/* Content */}
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight"
+          >
+            What Our <span className="text-[#484747]">Customers</span> Say
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="mt-4 text-xl text-white/90 max-w-2xl mx-auto"
+          >
+            Real stories from real businesses, see how Finserve is helping them succeed.
+          </motion.p>
         </div>
       </section>
 
@@ -183,7 +196,7 @@ const Testimonials = () => {
           </div>
         </div>
       </section>
- </main>
+    </main>
   );
 };
 

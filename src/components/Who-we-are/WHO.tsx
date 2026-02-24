@@ -163,132 +163,148 @@ const WHO = () => {
       </section>
 
       {/* Why Us Section - Red Background */}
-      <section className="bg-[#EB2240] py-16 lg:py-24 overflow-hidden" >
-        <div className="container mx-auto px-4 sm:px-6 lg:px-12">
-          {/* Header */}
-          <motion.div 
-            className="mb-12 text-center"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-          >
-            <motion.h2 
-  className="text-white text-4xl lg:text-5xl font-bold mb-2 text-left"
-  variants={fadeInUp}
-  transition={{ duration: 0.6 }}
->
-  Why Us
-  <motion.span 
-    className="block w-20 h-1 bg-white mt-3"
-    initial={{ width: 0 }}
-    whileInView={{ width: 80 }}
-    viewport={{ once: true }}
-    transition={{ duration: 0.8, delay: 0.3 }}
-  />
-</motion.h2>
-            <motion.p 
-              className="text-white/90 mt-6 max-w-3xl mx-auto leading-relaxed text-lg"
-              variants={fadeInUp}
-              transition={{ duration: 0.6, delay: 0.2 }}
-            >
-              We inspire growth by connecting today's potential with tomorrow's innovative opportunities. We do this by offering cutting-edge solutions that enrich lives and businesses, through:
-            </motion.p>
-          </motion.div>
-
-          {/* Three Pillars */}
-          <motion.div 
-            className="grid md:grid-cols-3 gap-8 lg:gap-12"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-            variants={staggerContainer}
-          >
-            {/* Collaboration */}
-           <motion.div 
-  className="text-white"
-  variants={staggerItem}
-  whileHover={{ y: -8, transition: { type: "spring", stiffness: 300 } }}
->
-  <div className="flex items-center gap-3 mb-4">
-   <motion.div 
-  className="w-20 h-20 mx-auto mb-6 rounded-full border-2 border-white/50 flex items-center justify-center"
-  whileHover={{ scale: 1.1, rotate: 5, transition: { type: "spring", stiffness: 300 } }}
->
-  {/* Image fitted without overlap */}
-  <img 
-    src={hands} 
-    alt="Job Seeker" 
-    className="w-10 h-10 object-contain"
-  />
-</motion.div>
-  </div>
-  <h3 className="text-2xl font-semibold mb-4">
-    Collaboration<span className="text-white">.</span>
-  </h3>
-  <p className="text-white/85 leading-relaxed">
-    We believe in collective genius and embrace the potential of collaboration across technology firms, businesses and organizations, not just as a measure of speeding up our own growth, but that of the industry.
-  </p>
-</motion.div>
-
-            {/* Security */}
-          <motion.div 
-  className="text-white"
-  variants={staggerItem}
-  whileHover={{ y: -8, transition: { type: "spring", stiffness: 300 } }}
->
-  <div className="flex items-center gap-3 mb-4">
-    <motion.div 
-  className="w-20 h-20 mx-auto mb-6 rounded-full border-2 border-white/50 flex items-center justify-center"
-  whileHover={{ scale: 1.1, rotate: 5, transition: { type: "spring", stiffness: 300 } }}
->
-  {/* Image fitted without overlap */}
-  <img 
-    src={key} 
-    alt="Job Seeker" 
-    className="w-10 h-10 object-contain"
-  />
-</motion.div>
-  </div>
-
-  <h3 className="text-2xl font-semibold mb-4">
-    Security<span className="text-white">.</span>
-  </h3>
-
-  <p className="text-white/85 leading-relaxed">
-    As financial technology pushes the world into the future, security becomes an even greater concern and we have greater measures in order to assure our clientele of the highest global standards of security.
-  </p>
-</motion.div>
-
-
-            {/* Innovation */}
-            <motion.div 
-              className="text-white"
-              variants={staggerItem}
-              whileHover={{ y: -8, transition: { type: "spring", stiffness: 300 } }}
-            >
-              <div className="flex items-center gap-3 mb-4">
-               <motion.div 
-  className="w-20 h-20 mx-auto mb-6 rounded-full border-2 border-white/50 flex items-center justify-center"
-  whileHover={{ scale: 1.1, rotate: 5, transition: { type: "spring", stiffness: 300 } }}
->
-  {/* Image fitted without overlap */}
-  <img 
-    src={light} 
-    alt="Job Seeker" 
-    className="w-10 h-10 object-contain"
-  />
-</motion.div>
-              </div>
-              <h3 className="text-2xl font-semibold mb-4">
-                Innovation<span className="text-white">.</span>
-              </h3>
-              <p className="text-white/85 leading-relaxed">
-                We provide innovations that inspire growth by combining our deep knowledge of financial systems and wide-ranging technology experience to deliver quality solutions for businesses and organizations.
-              </p>
-            </motion.div>
-          </motion.div>
+ <section className="relative bg-[#EB2240] py-16 lg:py-24 overflow-hidden">
+      {/* Subtle background pattern */}
+      <div className="absolute inset-0 opacity-5 pointer-events-none">
+        <div className="absolute top-0 left-0 w-full h-full bg-repeat" 
+             style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.15'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")` }}>
         </div>
-      </section>
+      </div>
+
+      {/* Soft radial gradient for depth */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent pointer-events-none"></div>
+
+      <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-12">
+        {/* Header */}
+        <motion.div
+          className="mb-12 text-center"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+        >
+          <motion.h2
+            className="text-white text-4xl lg:text-5xl font-bold mb-2 text-left"
+            variants={fadeInUp}
+            transition={{ duration: 0.6 }}
+          >
+            Why Us
+            <motion.span
+              className="block w-20 h-1 bg-[#484747] mt-3"
+              initial={{ width: 0 }}
+              whileInView={{ width: 80 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
+            />
+          </motion.h2>
+          <motion.p
+            className="text-white/90 mt-6 max-w-3xl mx-auto leading-relaxed text-lg"
+            variants={fadeInUp}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            We inspire growth by connecting today's potential with tomorrow's innovative opportunities. We do this by offering cutting-edge solutions that enrich lives and businesses, through:
+          </motion.p>
+        </motion.div>
+
+        {/* Three Pillars */}
+        <motion.div
+          className="grid md:grid-cols-3 gap-8 lg:gap-12"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={staggerContainer}
+        >
+          {/* Collaboration */}
+          <motion.div
+            className="text-white bg-white/5 backdrop-blur-sm rounded-2xl p-6 h-full flex flex-col items-center text-center"
+            variants={staggerItem}
+            whileHover={{
+              y: -10,
+              transition: { type: "spring", stiffness: 300 },
+              boxShadow: "0 20px 30px -10px rgba(0,0,0,0.3)",
+            }}
+          >
+            <motion.div
+              className="w-24 h-24 mb-6 rounded-full border-2 border-[#484747] flex items-center justify-center bg-primary"
+              whileHover={{
+                scale: 1.15,
+                rotate: 8,
+                borderColor: "rgba(255,255,255,0.8)",
+                boxShadow: "0 0 20px rgba(255,255,255,0.3)",
+              }}
+              transition={{ type: "spring", stiffness: 300 }}
+            >
+              <img src={hands} alt="Collaboration" className="w-12 h-12 object-contain" />
+            </motion.div>
+            <h3 className="text-2xl font-semibold mb-4 text-[#484747]">
+              Collaboration<span className="text-[#484747]">.</span>
+            </h3>
+            <p className="text-white/85 leading-relaxed">
+              We believe in collective genius and embrace the potential of collaboration across technology firms, businesses and organizations, not just as a measure of speeding up our own growth, but that of the industry.
+            </p>
+          </motion.div>
+
+          {/* Security */}
+          <motion.div
+            className="text-white bg-primary backdrop-blur-sm rounded-2xl p-6 h-full flex flex-col items-center text-center"
+            variants={staggerItem}
+            whileHover={{
+              y: -10,
+              transition: { type: "spring", stiffness: 300 },
+              boxShadow: "0 20px 30px -10px rgba(0,0,0,0.3)",
+            }}
+          >
+            <motion.div
+              className="w-24 h-24 mb-6 rounded-full border-2 border-[#484747] flex items-center justify-center bg-primary"
+              whileHover={{
+                scale: 1.15,
+                rotate: 8,
+                borderColor: "rgba(255,255,255,0.8)",
+                boxShadow: "0 0 20px rgba(255,255,255,0.3)",
+              }}
+              transition={{ type: "spring", stiffness: 300 }}
+            >
+              <img src={key} alt="Security" className="w-12 h-12 object-contain" />
+            </motion.div>
+            <h3 className="text-2xl font-semibold mb-4 text-[#484747]">
+              Security<span className="text-[#484747]">.</span>
+            </h3>
+            <p className="text-white/85 leading-relaxed">
+              As financial technology pushes the world into the future, security becomes an even greater concern and we have greater measures in order to assure our clientele of the highest global standards of security.
+            </p>
+          </motion.div>
+
+          {/* Innovation */}
+          <motion.div
+            className="text-white bg-primary backdrop-blur-sm rounded-2xl p-6 h-full flex flex-col items-center text-center"
+            variants={staggerItem}
+            whileHover={{
+              y: -10,
+              transition: { type: "spring", stiffness: 300 },
+              boxShadow: "0 20px 30px -10px rgba(0,0,0,0.3)",
+            }}
+          >
+            <motion.div
+              className="w-24 h-24 mb-6 rounded-full border-2 border-[#484747] flex items-center justify-center bg-primary"
+              whileHover={{
+                scale: 1.15,
+                rotate: 8,
+                borderColor: "rgba(255,255,255,0.8)",
+                boxShadow: "0 0 20px rgba(255,255,255,0.3)",
+              }}
+              transition={{ type: "spring", stiffness: 300 }}
+            >
+              <img src={light} alt="Innovation" className="w-12 h-12 object-contain" />
+            </motion.div>
+            <h3 className="text-2xl font-semibold mb-4 text-[#484747]">
+              Innovation<span className="text-[#484747]">.</span>
+            </h3>
+            <p className="text-white/85 leading-relaxed">
+              We provide innovations that inspire growth by combining our deep knowledge of financial systems and wide-ranging technology experience to deliver quality solutions for businesses and organizations.
+            </p>
+          </motion.div>
+        </motion.div>
+      </div>
+    </section>
 
       {/* Our Philosophies Section - White Background */}
       <section className="bg-white py-16 lg:py-24 overflow-hidden">

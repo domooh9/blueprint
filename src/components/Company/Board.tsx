@@ -1,12 +1,12 @@
 import { useRef, useState } from "react";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
-import Picturer from "@/assets/Kevin.jpg";
+import Picturer from "@/assets/imagee.png";
 
 const boardMembersData = [
   {
     name: "DR. JAMES MWANGI, CBS",
     title: "Non-Executive Director",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/James_Mwangi.jpg/500px-James_Mwangi.jpg",
+    image: "https://s7d1.scene7.com/is/image/wbcollab/Screen-Shot-2020-09-17-at-1_26_30-PM:twld?qlt=90",
     bio: [
       "Dr. James Mwangi holds five honorary doctorate degrees in recognition of his positive impact on Kenyan society. He is a Bachelor of Commerce graduate and a Certified Public Accountant, honored thrice with National Presidential Awards: CBS, MBS, and HSC.",
       "Globally, he has received multiple awards, including the G8 Global Vision Award (2007), Forbes Africa Person of the Year (2012), and the Oslo Business for Peace Award (2020), described as the 'Nobel Prize for Business'.",
@@ -78,24 +78,27 @@ export default function BoardMembers() {
     <div className="min-h-screen bg-background">
       <main className="pt-20">
         {/* Hero Section - Single Background Image */}
-        <section
-          className="relative py-16 md:py-28 overflow-hidden bg-cover bg-center bg-no-repeat flex flex-col justify-end min-h-[70vh] md:min-h-[80vh]"
-          style={{ backgroundImage: `url(${Picturer})` }}
-        >
-          {/* Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/30 to-black/70" />
+       <section className="relative py-16 md:py-28 overflow-hidden group flex flex-col justify-end min-h-[70vh] md:min-h-[80vh]">
+  {/* Background image with hover zoom */}
+  <div 
+    className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-700 ease-out group-hover:scale-110"
+    style={{ backgroundImage: `url(${Picturer})` }}
+  />
+  
+  {/* Gradient Overlay */}
+  <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/30 to-black/70" />
 
-          {/* Content */}
-          <div className="container mx-auto px-6 lg:px-12 relative z-10 text-center pb-8 md:pb-12">
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-4">
-              <span className="text-white drop-shadow-lg">Finserve</span>{" "}
-              <span className="text-primary drop-shadow-lg">Board Members</span>
-            </h1>
-            <p className="text-base md:text-lg text-white/90 max-w-3xl mx-auto">
-              Meet the visionary leaders guiding Finserve Africa towards innovation and excellence.
-            </p>
-          </div>
-        </section>
+  {/* Content */}
+  <div className="container mx-auto px-6 lg:px-12 relative z-10 text-center pb-8 md:pb-12">
+    <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-4">
+      <span className="text-white drop-shadow-lg">Finserve</span>{" "}
+      <span className="text-primary drop-shadow-lg">Board Members</span>
+    </h1>
+    <p className="text-base md:text-lg text-white/90 max-w-3xl mx-auto">
+      Meet the visionary leaders guiding Finserve Africa towards innovation and excellence.
+    </p>
+  </div>
+</section>
 
         {/* Board Members Carousel */}
         <section className="py-16 md:py-20">

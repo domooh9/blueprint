@@ -6,7 +6,9 @@ import FinserveMobile from "./FinserveMobile/FinserveMobile";
 import Andreas from "@/assets/Picture2.jpg";
 import { Zap } from "lucide-react";
 import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { MessageSquare, Code, CreditCard, Smartphone, ChevronRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 // Product logos for the animated carousel
 import equitelLogo from "@/assets/equitel-gatewaay.png";
@@ -14,13 +16,42 @@ import jengaLogo from "@/assets/jenga-apii.png";
 import finserveLogo from "@/assets/FinserveMoney.png";
 import JengaPayment from "@/assets/JengaPaymentii.png";
 
+const PRODUCT_HASH_MAP: Record<string, string> = {
+  "#finserve-money": "bulkSms",
+  "#equitel": "equitel",
+  "#jenga-api": "jengaApi",
+  "#jenga-pgw": "jengaPgw",
+};
+
 export const Products = () => {
+  const location = useLocation();
+
   // Product logos carousel
   const productLogos = [
-    { src: equitelLogo, alt: "Equitel", name: "Equitel" },
-    { src: jengaLogo, alt: "Jenga API", name: "Jenga API" },
-    { src: finserveLogo, alt: "Finserve Money", name: "Finserve Money" },
-    { src: JengaPayment, alt: "Jenga Payment", name: "Jenga Payment" },
+    {
+      src: equitelLogo,
+      alt: "Equitel",
+      name: "Equitel",
+      tintClass: "bg-gradient-to-r from-[#0d5ba8]/60 via-black/55 to-[#2f8dd8]/45",
+    },
+    {
+      src: jengaLogo,
+      alt: "Jenga API",
+      name: "Jenga API",
+      tintClass: "bg-gradient-to-r from-[#1f4aa8]/65 via-black/55 to-[#3e74dc]/50",
+    },
+    {
+      src: finserveLogo,
+      alt: "Finserve Money",
+      name: "Finserve Money",
+      tintClass: "bg-gradient-to-r from-primary/70 via-black/55 to-primary/45",
+    },
+    {
+      src: JengaPayment,
+      alt: "Jenga Payment",
+      name: "Jenga Payment",
+      tintClass: "bg-gradient-to-r from-[#6b2aa8]/65 via-black/55 to-[#8a4de0]/45",
+    },
   ];
 
   const [currentLogoIndex, setCurrentLogoIndex] = useState(0);
@@ -36,40 +67,55 @@ export const Products = () => {
   // Tab state for product selection
   const [activeProduct, setActiveProduct] = useState("equitel");
 
+  useEffect(() => {
+    const productFromHash = PRODUCT_HASH_MAP[location.hash.toLowerCase()];
+
+    if (!productFromHash) return;
+
+    setActiveProduct(productFromHash);
+
+    const section = document.getElementById("products-section");
+    if (section) {
+      requestAnimationFrame(() => {
+        section.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    }
+  }, [location.hash]);
+
   // Define the products that can be selected
   // Map display names from your screenshot to the actual components
   const productTabs = [
-  { 
-    id: "bulkSms", 
-    label: "Finserve Mobile", 
-    icon: <MessageSquare className="w-4 h-4 md:w-5 md:h-5" />,
-    component: <FinserveMobile />
-  },
-    { 
-    id: "equitel", 
-    label: "Equitel", 
-    icon: <Smartphone className="w-4 h-4 md:w-5 md:h-5" />,
-    component: <Equitel />
-  },
-  { 
-    id: "jengaApi", 
-    label: "Jenga API", 
-    icon: <Code className="w-4 h-4 md:w-5 md:h-5" />,
-    component: <JengaAPI />
-  },
-  { 
-    id: "jengaPgw", 
-    label: "Jenga Payment Gateway", 
-    icon: <CreditCard className="w-4 h-4 md:w-5 md:h-5" />,
-    component: <JengaPGW />
-  },
-  { 
-    id: "BulkSms", 
-    label: "Bulk Sms", 
-    icon: <Smartphone className="w-4 h-4 md:w-5 md:h-5" />,
-    component: <Equitel />
-  },
-];
+    {
+      id: "bulkSms",
+      label: "Finserve Mobile",
+      icon: <MessageSquare className="w-4 h-4 md:w-5 md:h-5" />,
+      component: <FinserveMobile />,
+    },
+    {
+      id: "equitel",
+      label: "Equitel",
+      icon: <Smartphone className="w-4 h-4 md:w-5 md:h-5" />,
+      component: <Equitel />,
+    },
+    {
+      id: "jengaApi",
+      label: "Jenga API",
+      icon: <Code className="w-4 h-4 md:w-5 md:h-5" />,
+      component: <JengaAPI />,
+    },
+    {
+      id: "jengaPgw",
+      label: "Jenga PGW",
+      icon: <CreditCard className="w-4 h-4 md:w-5 md:h-5" />,
+      component: <JengaPGW />,
+    },
+    {
+      id: "BulkSms",
+      label: "Bulk Sms",
+      icon: <Smartphone className="w-4 h-4 md:w-5 md:h-5" />,
+      component: <Equitel />,
+    },
+  ];
 
   return (
     <main className="pt-16 md:pt-20 min-h-screen">
@@ -85,7 +131,14 @@ export const Products = () => {
             backgroundAttachment: "fixed",
           }}
         >
-          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/60" />
+          {productLogos.map((logo, index) => (
+            <div
+              key={logo.name}
+              className={`absolute inset-0 transition-opacity duration-1000 ${logo.tintClass} ${
+                currentLogoIndex === index ? "opacity-100" : "opacity-0"
+              }`}
+            />
+          ))}
           <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
         </div>
 
@@ -134,17 +187,6 @@ export const Products = () => {
           </div>
         </div>
 
-        {/* Animated scroll indicator */}
-        <motion.div
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-        >
-          <div className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center">
-            <div className="w-1 h-3 bg-white/70 rounded-full mt-2"></div>
-          </div>
-        </motion.div>
-
         {/* Animated Product Logos Carousel - Bottom Right */}
         <motion.div
           className="absolute bottom-8 right-8 z-20"
@@ -174,23 +216,12 @@ export const Products = () => {
                 </motion.div>
               ))}
             </div>
-            {/* Progress indicators */}
-            <div className="absolute -bottom-16 left-1/2 transform -translate-x-1/2 flex gap-1">
-              {productLogos.map((_, index) => (
-                <div
-                  key={index}
-                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                    currentLogoIndex === index ? "bg-white" : "bg-white/30"
-                  }`}
-                />
-              ))}
-            </div>
           </div>
         </motion.div>
       </section>
 
       {/* ================= TABBED PRODUCT SECTION ================= */}
-      <section className="bg-gray-50 py-20">
+      <section id="products-section" className="bg-gray-50 py-20 scroll-mt-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Section header */}
           <motion.div
@@ -207,57 +238,23 @@ export const Products = () => {
           </motion.div>
 
           {/* Tab navigation */}
-         <div className="flex flex-wrap justify-center gap-3 md:gap-4 mb-12">
-  {productTabs.map((tab) => (
-    <button
-      key={tab.id}
-      onClick={() => setActiveProduct(tab.id)}
-      className={`
-        group relative flex items-center gap-2 px-5 py-2.5 md:px-6 md:py-3 rounded-xl font-medium text-sm md:text-base
-        transition-all duration-300 cursor-pointer overflow-hidden
-        ${
-          activeProduct === tab.id
-            ? "bg-gradient-to-r from-primary to-primary/80 text-white shadow-xl scale-105 border border-primary/30"
-            : "bg-white/10 backdrop-blur-sm border border-white/20 text-gray-700 hover:text-gray-900 hover:bg-white/20 hover:border-white/30 hover:shadow-lg"
-        }
-      `}
-      style={{
-        boxShadow: activeProduct === tab.id 
-          ? '0 10px 25px -5px rgba(0,0,0,0.2)' 
-          : '0 4px 6px -1px rgba(0,0,0,0.05)'
-      }}
-    >
-      {/* Icon with animated glow on hover */}
-      <span className={`
-        transition-all duration-300
-        ${activeProduct === tab.id 
-          ? "text-white" 
-          : "text-gray-500 group-hover:text-primary group-hover:scale-110"
-        }
-      `}>
-        {tab.icon}
-      </span>
-      
-      <span>{tab.label}</span>
-      
-      {/* Animated arrow */}
-      <ChevronRight 
-        className={`
-          w-4 h-4 transition-all duration-300
-          ${activeProduct === tab.id 
-            ? "text-white opacity-100 translate-x-0" 
-            : "text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0"
-          }
-        `}
-      />
-      
-      {/* Subtle shine effect on hover for inactive tabs */}
-      {activeProduct !== tab.id && (
-        <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent" />
-      )}
-    </button>
-  ))}
-</div>
+          <div className="flex flex-wrap gap-3 mb-12 justify-center">
+            {productTabs.map((tab) => {
+              const isActive = activeProduct === tab.id;
+              return (
+                <Button
+                  key={tab.id}
+                  variant={isActive ? "default" : "outline"}
+                  onClick={() => setActiveProduct(tab.id)}
+                  className="rounded-full px-6 py-2 transition-all duration-300 flex items-center gap-2"
+                >
+                  {tab.icon}
+                  <span>{tab.label}</span>
+                  <ChevronRight className={`w-4 h-4 ${isActive ? "text-white" : "text-muted-foreground"}`} />
+                </Button>
+              );
+            })}
+          </div>
           {/* Active product display with animation */}
           <motion.div
             key={activeProduct}

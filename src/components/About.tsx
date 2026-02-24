@@ -61,8 +61,8 @@ export const About = () => {
       lastUpdateTimeRef.current = timestamp;
       
       setFloatingObjects(prev => prev.map(obj => {
-        let newX = obj.x + obj.speedX * (deltaTime / 16);
-        let newY = obj.y + obj.speedY * (deltaTime / 16);
+        const newX = obj.x + obj.speedX * (deltaTime / 16);
+        const newY = obj.y + obj.speedY * (deltaTime / 16);
         
         // Bounce off boundaries
         if (newX > 100 || newX < 0) {

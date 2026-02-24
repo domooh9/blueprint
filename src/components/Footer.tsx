@@ -15,6 +15,7 @@ const socialLinks = [
 const quickLinks = [
   { label: "Who we are", href: "#about" },
   { label: "The Board", href: "/board" },
+  { label: "Careers", href: "/careers" },
   { label: "Equitel", href: "#" },
   { label: "Jenga PGW", href: "https://jengapgw.io" },
   { label: "Jenga API", href: "https://jengahq.io" },
