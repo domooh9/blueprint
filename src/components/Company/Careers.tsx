@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { ArrowRight, Briefcase, Send, X } from "lucide-react";
-import careerHero from "@/assets/Kevin.jpg";
+import { ArrowRight, Briefcase, X } from "lucide-react";
+import careerHero from "@/assets/imag.png";
 
 type Job = {
   id: number;
@@ -73,6 +73,7 @@ const jobs: Job[] = [
 
 const Careers = () => {
   const [selectedJob, setSelectedJob] = useState<Job | null>(null);
+  const [heroImageStyle, setHeroImageStyle] = useState("scale(1.02) translate3d(0px, 0px, 0px)");
 
   const openModal = (job: Job) => {
     setSelectedJob(job);
@@ -84,11 +85,26 @@ const Careers = () => {
     document.body.style.overflow = "auto";
   };
 
+  const handleHeroMouseMove = (event: React.MouseEvent<HTMLDivElement>) => {
+    const rect = event.currentTarget.getBoundingClientRect();
+    const x = (event.clientX - rect.left) / rect.width;
+    const y = (event.clientY - rect.top) / rect.height;
+
+    // Subtle pan + zoom for a "video-like" hover feel
+    const moveX = (x - 0.5) * 18;
+    const moveY = (y - 0.5) * 18;
+    setHeroImageStyle(`scale(1.1) translate3d(${moveX}px, ${moveY}px, 0px)`);
+  };
+
+  const handleHeroMouseLeave = () => {
+    setHeroImageStyle("scale(1.02) translate3d(0px, 0px, 0px)");
+  };
+
   return (
     <main className="pt-16 md:pt-20 min-h-screen bg-white">
       <section className="relative overflow-hidden bg-gradient-to-br from-primary/5 via-white to-primary/10">
         <div className="absolute inset-0 bg-black/20" />
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
           <div className="grid md:grid-cols-2 gap-10 items-center">
             <div>
               <span className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-6">
@@ -109,11 +125,16 @@ const Careers = () => {
               </a>
             </div>
 
-            <div>
+            <div
+              className="rounded-2xl shadow-2xl overflow-hidden group"
+              onMouseMove={handleHeroMouseMove}
+              onMouseLeave={handleHeroMouseLeave}
+            >
               <img
                 src={careerHero}
                 alt="Careers at Finserve"
-                className="rounded-2xl shadow-2xl object-cover w-full h-[360px] md:h-[460px]"
+                className="object-cover w-full h-[260px] md:h-[320px] transition-transform duration-500 ease-out"
+                style={{ transform: heroImageStyle }}
               />
             </div>
           </div>
@@ -170,17 +191,6 @@ const Careers = () => {
                 </div>
               </div>
             ))}
-          </div>
-
-          <div className="mt-14 bg-gradient-to-r from-primary to-primary/80 rounded-3xl p-8 md:p-10 text-center text-white">
-            <h3 className="text-2xl md:text-3xl font-bold">Don't see a matching role?</h3>
-            <p className="mt-3 text-white/90 max-w-2xl mx-auto">
-              Send us your CV and we will reach out when a suitable opportunity opens.
-            </p>
-            <button className="mt-6 inline-flex items-center gap-2 px-6 py-3 bg-white text-primary rounded-full font-medium hover:bg-gray-100 transition shadow-lg">
-              <Send className="w-4 h-4" />
-              Send your CV
-            </button>
           </div>
         </div>
       </section>

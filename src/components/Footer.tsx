@@ -46,8 +46,7 @@ export const Footer = () => {
         minHeight: '35vh' // Further reduced
       }}
     >
-      {/* Corporate font-family applied throughout */}
-      <div className="font-sans" style={{ fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" }}>
+      <div className="font-sans">
         
         {/* Diagonal stripe pattern overlay */}
         <div className="absolute inset-0 opacity-10">
