@@ -104,7 +104,7 @@ const Careers = () => {
     <main className="pt-16 md:pt-20 min-h-screen bg-white">
       <section className="relative overflow-hidden bg-gradient-to-br from-primary/5 via-white to-primary/10">
         <div className="absolute inset-0 bg-black/20" />
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28">
           <div className="grid md:grid-cols-2 gap-10 items-center">
             <div>
               <span className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-6">
@@ -133,7 +133,7 @@ const Careers = () => {
               <img
                 src={careerHero}
                 alt="Careers at Finserve"
-                className="object-cover w-full h-[260px] md:h-[320px] transition-transform duration-500 ease-out"
+                className="object-cover w-full h-[360px] md:h-[460px] transition-transform duration-500 ease-out"
                 style={{ transform: heroImageStyle }}
               />
             </div>

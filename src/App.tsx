@@ -16,7 +16,7 @@ import Faq from "./components/FAQ/Faq";
 import Livestream from "./components/Livestream/Livestream";
 import Media from "./components/Media-centre/Media";
 import Careers from "./components/Company/Careers";
-import { Car } from "lucide-react";
+import FinAdmin from "./components/Admin/FinAdmin";
 
 const queryClient = new QueryClient();
 
@@ -38,6 +38,7 @@ const App = () => (
              <Route path="/faq" element={<Faq />} />
              <Route path="/media-centre" element={<Media />} />
              <Route path="/livestream" element={<Livestream />} />
+             <Route path="/FinAdmin" element={<FinAdmin />} />
          <Route path="/careers" element={<Careers />} />
              
           </Route>

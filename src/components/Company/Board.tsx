@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import Picturer from "@/assets/imagee.png";
 
@@ -73,6 +73,25 @@ export default function BoardMembers() {
     setSelectedMember(null);
     document.body.style.overflow = "auto";
   };
+
+  useEffect(() => {
+    const intervalId = window.setInterval(() => {
+      if (!scrollRef.current) return;
+
+      const container = scrollRef.current;
+      const maxScrollLeft = container.scrollWidth - container.clientWidth;
+      const atEnd = container.scrollLeft >= maxScrollLeft - 5;
+
+      if (atEnd) {
+        container.scrollTo({ left: 0, behavior: "smooth" });
+        return;
+      }
+
+      container.scrollBy({ left: 320, behavior: "smooth" });
+    }, 4000);
+
+    return () => window.clearInterval(intervalId);
+  }, []);
 
   return (
     <div className="min-h-screen bg-background">

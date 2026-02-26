@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, ChevronRight, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import { Sheet, SheetContent } from "@/components/ui/sheet";
 import logo from "@/assets/finserve-logo.png";
 
@@ -15,7 +15,6 @@ const menuItems = [
 
 export const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [mobileProductsOpen, setMobileProductsOpen] = useState(false);
   const [mobileCompanyOpen, setMobileCompanyOpen] = useState(false);
   const [mobileResourcesOpen, setMobileResourcesOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -33,7 +32,6 @@ export const Header = () => {
   // Close mobile menu on route change
   useEffect(() => {
     setMobileMenuOpen(false);
-    setMobileProductsOpen(false);
     setMobileCompanyOpen(false);
     setMobileResourcesOpen(false);
   }, [location.pathname]);
@@ -67,102 +65,41 @@ export const Header = () => {
                 {menuItems.map((item) => {
                   const active = isActive(item.href);
 
-                  // PRODUCTS DROPDOWN
-                  if (item.label === "Our products") {
-                    return (
-                      <div key={item.label} className="relative group">
-                        {/* Main menu item */}
-                        <Link
-                          to={item.href}
-                          className={`relative px-4 py-2.5 rounded-lg transition-all duration-200 whitespace-nowrap ${
-                            active
-                              ? "text-primary font-semibold border-b-2 border-primary pb-1.5"
-                              : "text-gray-700 hover:text-primary hover:bg-gray-50"
-                          }`}
-                        >
-                          <span className="inline-flex items-center gap-1.5">
-                            Our products
-                            <ChevronDown className="w-4 h-4 transition-transform duration-200 group-hover:rotate-180" />
-                          </span>
-                        </Link>
-
-                        {/* ===== DROPDOWN (no gap, attaches directly below) ===== */}
-                        <div className="absolute left-0 top-full hidden w-56 rounded-xl border border-gray-100 bg-white shadow-xl group-hover:block z-[60]">
-                          {/* Finserve Money */}
-                          <Link
-                            to="/products#finserve-money"
-                            className="block px-5 py-3 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary"
-                          >
-                            Finserve Money
-                          </Link>
-
-                          {/* Equitel */}
-                          <Link
-                            to="/products#equitel"
-                            className="block px-5 py-3 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary"
-                          >
-                            Equitel
-                          </Link>
-
-                          {/* ===== JENGA SUBMENU ===== */}
-                          <div className="relative group/jenga">
-                            <div className="flex items-center justify-between px-5 py-3 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary cursor-pointer">
-                              Jenga
-                              <ChevronRight className="w-4 h-4" />
-                            </div>
-
-                            {/* Sub dropdown */}
-                            <div className="absolute left-full top-0 ml-1 hidden w-48 rounded-xl border border-gray-100 bg-white shadow-xl group-hover/jenga:block z-[70]">
-                              <Link
-                                to="/products#jenga-api"
-                                className="block px-5 py-3 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary"
-                              >
-                                Jenga API
-                              </Link>
-                              <Link
-                                to="/products#jenga-pgw"
-                                className="block px-5 py-3 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary"
-                              >
-                                Jenga PGW
-                              </Link>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    );
-                  }
-
-                  // RESOURCES DROPDOWN
+                  // COMPANY DROPDOWN
                   if (item.label === "Company") {
                     return (
                       <div key={item.label} className="relative group">
                         <Link
                           to={item.href}
-                          className={`relative px-4 py-2.5 rounded-lg transition-all duration-200 whitespace-nowrap ${
+                          className={`relative px-4 py-2.5 rounded-lg transition-all duration-200 whitespace-nowrap flex items-center gap-1.5 text-[15px] font-medium tracking-wide hover:text-primary ${
                             active
-                              ? "text-primary font-semibold border-b-2 border-primary pb-1.5"
-                              : "text-gray-700 hover:text-primary hover:bg-gray-50"
+                              ? "text-primary"
+                              : "text-gray-700"
                           }`}
                         >
-                          <span className="inline-flex items-center gap-1.5">
+                          <span className="relative">
                             Company
-                            <ChevronDown className="w-4 h-4 transition-transform duration-200 group-hover:rotate-180" />
+                            {/* Animated border on hover */}
+                            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
                           </span>
+                          <ChevronDown className="w-4 h-4 transition-transform duration-200 group-hover:rotate-180" />
                         </Link>
 
-                        <div className="absolute left-0 top-full hidden w-48 rounded-xl border border-gray-100 bg-white shadow-xl group-hover:block z-[60]">
-                          <Link
-                            to="/boardmembers"
-                            className="block px-5 py-3 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary"
-                          >
-                            Board
-                          </Link>
-                          <Link
-                            to="/careers"
-                            className="block px-5 py-3 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary"
-                          >
-                            Careers
-                          </Link>
+                        <div className="absolute left-0 top-full mt-1 hidden w-48 group-hover:block z-[60]">
+                          <div className="bg-white rounded-xl shadow-lg border border-gray-100 py-2">
+                            <Link
+                              to="/boardmembers"
+                              className="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary transition-colors"
+                            >
+                              Board
+                            </Link>
+                            <Link
+                              to="/careers"
+                              className="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary transition-colors"
+                            >
+                              Careers
+                            </Link>
+                          </div>
                         </div>
                       </div>
                     );
@@ -174,63 +111,70 @@ export const Header = () => {
                       <div key={item.label} className="relative group">
                         <Link
                           to={item.href}
-                          className={`relative px-4 py-2.5 rounded-lg transition-all duration-200 whitespace-nowrap ${
+                          className={`relative px-4 py-2.5 rounded-lg transition-all duration-200 whitespace-nowrap flex items-center gap-1.5 text-[15px] font-medium tracking-wide hover:text-primary ${
                             active
-                              ? "text-primary font-semibold border-b-2 border-primary pb-1.5"
-                              : "text-gray-700 hover:text-primary hover:bg-gray-50"
+                              ? "text-primary"
+                              : "text-gray-700"
                           }`}
                         >
-                          <span className="inline-flex items-center gap-1.5">
+                          <span className="relative">
                             Resources
-                            <ChevronDown className="w-4 h-4 transition-transform duration-200 group-hover:rotate-180" />
+                            {/* Animated border on hover */}
+                            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
                           </span>
+                          <ChevronDown className="w-4 h-4 transition-transform duration-200 group-hover:rotate-180" />
                         </Link>
 
-                        <div className="absolute left-0 top-full hidden w-56 rounded-xl border border-gray-100 bg-white shadow-xl group-hover:block z-[60]">
-                          <Link
-                            to="/media-centre#media"
-                            className="block px-5 py-3 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary"
-                          >
-                            Media Centre
-                          </Link>
-                          <Link
-                            to="/media-centre#policies"
-                            className="block px-5 py-3 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary"
-                          >
-                            Legal & Privacy
-                          </Link>
-                          <Link
-                            to="/media-centre#testimonials"
-                            className="block px-5 py-3 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary"
-                          >
-                            Testimonials
-                          </Link>
-                          <Link
-                            to="/media-centre#blogs"
-                            className="block px-5 py-3 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary"
-                          >
-                            Blogs
-                          </Link>
+                        <div className="absolute left-0 top-full mt-1 hidden w-56 group-hover:block z-[60]">
+                          <div className="bg-white rounded-xl shadow-lg border border-gray-100 py-2">
+                            <Link
+                              to="/media-centre#media"
+                              className="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary transition-colors"
+                            >
+                              Media Centre
+                            </Link>
+                            <Link
+                              to="/media-centre#policies"
+                              className="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary transition-colors"
+                            >
+                              Legal & Privacy
+                            </Link>
+                            <Link
+                              to="/media-centre#testimonials"
+                              className="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary transition-colors"
+                            >
+                              Testimonials
+                            </Link>
+                            <Link
+                              to="/media-centre#blogs"
+                              className="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary transition-colors"
+                            >
+                              Blogs
+                            </Link>
+                          </div>
                         </div>
                       </div>
                     );
                   }
 
-                  // NORMAL MENU ITEMS
+                  // NORMAL MENU ITEMS - FIXED: Added group class to parent
                   return (
-                    <Link
-                      key={item.label}
-                      to={item.href}
-                      className={`relative px-4 py-2.5 rounded-lg transition-all duration-200 whitespace-nowrap ${
-                        active
-                          ? "text-primary font-semibold border-b-2 border-primary pb-1.5"
-                          : "text-gray-700 hover:text-primary hover:bg-gray-50"
-                      }`}
-                    >
-                      <span className="text-body-small font-medium tracking-wide">
-                        {item.label}
-                      </span>
-                    </Link>
+                    <div key={item.label} className="relative group">
+                      <Link
+                        to={item.href}
+                        className={`relative px-4 py-2.5 rounded-lg transition-all duration-200 whitespace-nowrap text-[15px] font-medium tracking-wide hover:text-primary ${
+                          active
+                            ? "text-primary"
+                            : "text-gray-700"
+                        }`}
+                      >
+                        <span className="relative">
+                          {item.label}
+                          {/* Animated border on hover */}
+                          <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+                        </span>
+                      </Link>
+                    </div>
                   );
                 })}
               </nav>
@@ -297,87 +241,20 @@ export const Header = () => {
               {menuItems.map((item) => {
                 const active = isActive(item.href);
 
-                if (item.label === "Our products") {
-                  return (
-                    <div key={item.label} className="rounded-lg">
-                      <div
-                        className={`flex items-center justify-between px-4 py-3.5 rounded-lg transition-all duration-200 w-full ${
-                          active
-                            ? "bg-primary/10 text-primary border-l-4 border-primary"
-                            : "text-gray-700 hover:bg-gray-50 hover:text-primary"
-                        }`}
-                      >
-                        <Link
-                          to={item.href}
-                          onClick={() => setMobileMenuOpen(false)}
-                          className="font-medium text-sm"
-                        >
-                          {item.label}
-                        </Link>
-                        <button
-                          type="button"
-                          aria-label="Toggle products menu"
-                          className="p-1 rounded-md hover:bg-gray-100"
-                          onClick={() => setMobileProductsOpen((prev) => !prev)}
-                        >
-                          <ChevronDown
-                            className={`w-4 h-4 text-gray-500 transition-transform duration-200 ${
-                              mobileProductsOpen ? "rotate-180" : ""
-                            }`}
-                          />
-                        </button>
-                      </div>
-
-                      {mobileProductsOpen && (
-                        <div className="ml-4 mt-1 space-y-1 border-l border-gray-200 pl-4">
-                          <Link
-                            to="/products#finserve-money"
-                            onClick={() => setMobileMenuOpen(false)}
-                            className="block px-3 py-2 text-sm text-gray-600 hover:text-primary hover:bg-gray-50 rounded-md"
-                          >
-                            Finserve Money
-                          </Link>
-                          <Link
-                            to="/products#equitel"
-                            onClick={() => setMobileMenuOpen(false)}
-                            className="block px-3 py-2 text-sm text-gray-600 hover:text-primary hover:bg-gray-50 rounded-md"
-                          >
-                            Equitel
-                          </Link>
-                          <Link
-                            to="/products#jenga-api"
-                            onClick={() => setMobileMenuOpen(false)}
-                            className="block px-3 py-2 text-sm text-gray-600 hover:text-primary hover:bg-gray-50 rounded-md"
-                          >
-                            Jenga API
-                          </Link>
-                          <Link
-                            to="/products#jenga-pgw"
-                            onClick={() => setMobileMenuOpen(false)}
-                            className="block px-3 py-2 text-sm text-gray-600 hover:text-primary hover:bg-gray-50 rounded-md"
-                          >
-                            Jenga PGW
-                          </Link>
-                        </div>
-                      )}
-                    </div>
-                  );
-                }
-
                 if (item.label === "Resources") {
                   return (
-                    <div key={item.label} className="rounded-lg">
+                    <div key={item.label} className="border-b border-gray-100 last:border-0">
                       <div
-                        className={`flex items-center justify-between px-4 py-3.5 rounded-lg transition-all duration-200 w-full ${
+                        className={`flex items-center justify-between px-4 py-3.5 w-full ${
                           active
-                            ? "bg-primary/10 text-primary border-l-4 border-primary"
-                            : "text-gray-700 hover:bg-gray-50 hover:text-primary"
+                            ? "text-primary"
+                            : "text-gray-700"
                         }`}
                       >
                         <Link
                           to={item.href}
                           onClick={() => setMobileMenuOpen(false)}
-                          className="font-medium text-sm"
+                          className="font-medium text-[15px]"
                         >
                           {item.label}
                         </Link>
@@ -396,32 +273,32 @@ export const Header = () => {
                       </div>
 
                       {mobileResourcesOpen && (
-                        <div className="ml-4 mt-1 space-y-1 border-l border-gray-200 pl-4">
+                        <div className="ml-4 mb-2 space-y-1">
                           <Link
                             to="/media-centre#media"
                             onClick={() => setMobileMenuOpen(false)}
-                            className="block px-3 py-2 text-sm text-gray-600 hover:text-primary hover:bg-gray-50 rounded-md"
+                            className="block px-4 py-2.5 text-sm text-gray-600 hover:text-primary hover:bg-gray-50 rounded-lg"
                           >
                             Media Centre
                           </Link>
                           <Link
                             to="/media-centre#policies"
                             onClick={() => setMobileMenuOpen(false)}
-                            className="block px-3 py-2 text-sm text-gray-600 hover:text-primary hover:bg-gray-50 rounded-md"
+                            className="block px-4 py-2.5 text-sm text-gray-600 hover:text-primary hover:bg-gray-50 rounded-lg"
                           >
                             Legal & Privacy
                           </Link>
                           <Link
                             to="/media-centre#testimonials"
                             onClick={() => setMobileMenuOpen(false)}
-                            className="block px-3 py-2 text-sm text-gray-600 hover:text-primary hover:bg-gray-50 rounded-md"
+                            className="block px-4 py-2.5 text-sm text-gray-600 hover:text-primary hover:bg-gray-50 rounded-lg"
                           >
                             Testimonials
                           </Link>
                           <Link
                             to="/media-centre#blogs"
                             onClick={() => setMobileMenuOpen(false)}
-                            className="block px-3 py-2 text-sm text-gray-600 hover:text-primary hover:bg-gray-50 rounded-md"
+                            className="block px-4 py-2.5 text-sm text-gray-600 hover:text-primary hover:bg-gray-50 rounded-lg"
                           >
                             Blogs
                           </Link>
@@ -433,18 +310,18 @@ export const Header = () => {
 
                 if (item.label === "Company") {
                   return (
-                    <div key={item.label} className="rounded-lg">
+                    <div key={item.label} className="border-b border-gray-100 last:border-0">
                       <div
-                        className={`flex items-center justify-between px-4 py-3.5 rounded-lg transition-all duration-200 w-full ${
+                        className={`flex items-center justify-between px-4 py-3.5 w-full ${
                           active
-                            ? "bg-primary/10 text-primary border-l-4 border-primary"
-                            : "text-gray-700 hover:bg-gray-50 hover:text-primary"
+                            ? "text-primary"
+                            : "text-gray-700"
                         }`}
                       >
                         <Link
                           to={item.href}
                           onClick={() => setMobileMenuOpen(false)}
-                          className="font-medium text-sm"
+                          className="font-medium text-[15px]"
                         >
                           {item.label}
                         </Link>
@@ -463,18 +340,18 @@ export const Header = () => {
                       </div>
 
                       {mobileCompanyOpen && (
-                        <div className="ml-4 mt-1 space-y-1 border-l border-gray-200 pl-4">
+                        <div className="ml-4 mb-2 space-y-1">
                           <Link
                             to="/boardmembers"
                             onClick={() => setMobileMenuOpen(false)}
-                            className="block px-3 py-2 text-sm text-gray-600 hover:text-primary hover:bg-gray-50 rounded-md"
+                            className="block px-4 py-2.5 text-sm text-gray-600 hover:text-primary hover:bg-gray-50 rounded-lg"
                           >
                             Board
                           </Link>
                           <Link
                             to="/careers"
                             onClick={() => setMobileMenuOpen(false)}
-                            className="block px-3 py-2 text-sm text-gray-600 hover:text-primary hover:bg-gray-50 rounded-md"
+                            className="block px-4 py-2.5 text-sm text-gray-600 hover:text-primary hover:bg-gray-50 rounded-lg"
                           >
                             Careers
                           </Link>
@@ -490,15 +367,15 @@ export const Header = () => {
                     to={item.href}
                     onClick={() => setMobileMenuOpen(false)}
                     className={`
-                      flex items-center px-4 py-3.5 rounded-lg transition-all duration-200 w-full
+                      block px-4 py-3.5 border-b border-gray-100 last:border-0 w-full rounded-lg transition-colors duration-200
                       ${
                         active
-                          ? "bg-primary/10 text-primary border-l-4 border-primary"
-                          : "text-gray-700 hover:bg-gray-50 hover:text-primary"
+                          ? "text-primary bg-gray-50/70"
+                          : "text-gray-700 hover:text-primary hover:bg-gray-50"
                       }
                     `}
                   >
-                    <span className="font-medium text-sm">{item.label}</span>
+                    <span className="text-[15px] font-medium tracking-wide">{item.label}</span>
                   </Link>
                 );
               })}

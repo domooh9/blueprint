@@ -17,7 +17,7 @@ import finserveLogo from "@/assets/FinserveMoney.png";
 import JengaPayment from "@/assets/JengaPaymentii.png";
 
 const PRODUCT_HASH_MAP: Record<string, string> = {
-  "#finserve-money": "bulkSms",
+  "#finserve-money": "Finserve Money",
   "#equitel": "equitel",
   "#jenga-api": "jengaApi",
   "#jenga-pgw": "jengaPgw",
@@ -87,7 +87,7 @@ export const Products = () => {
   const productTabs = [
     {
       id: "bulkSms",
-      label: "Finserve Mobile",
+      label: "Finserve Money",
       icon: <MessageSquare className="w-4 h-4 md:w-5 md:h-5" />,
       component: <FinserveMobile />,
     },
