@@ -5,7 +5,7 @@ import hands from "@/assets/icons/hands.png";
 import key from "@/assets/icons/key.png";
 import light from "@/assets/icons/light.png";
 import Picturer from "@/assets/Picturer.png";
-import Whyus from "@/assets/Picturet.png";
+import Whyus from "@/assets/Us.png";
 
 const WhyUs = () => {
   const [heroImageStyle, setHeroImageStyle] = useState(
