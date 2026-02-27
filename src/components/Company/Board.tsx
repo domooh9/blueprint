@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
-import Picturer from "@/assets/imagee.png";
+import Picturer from "@/assets/video2.mp4";
 
 const boardMembersData = [
   {
@@ -99,10 +99,18 @@ export default function BoardMembers() {
         {/* Hero Section - Single Background Image */}
        <section className="relative py-16 md:py-28 overflow-hidden group flex flex-col justify-end min-h-[70vh] md:min-h-[80vh]">
   {/* Background image with hover zoom */}
-  <div 
-    className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-700 ease-out group-hover:scale-110"
-    style={{ backgroundImage: `url(${Picturer})` }}
-  />
+  <div className="absolute inset-0 overflow-hidden">
+  <video
+    autoPlay
+    loop
+    muted
+    playsInline
+    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+  >
+    <source src={Picturer} type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+</div>
   
   {/* Gradient Overlay */}
   <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/30 to-black/70" />

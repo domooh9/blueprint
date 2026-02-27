@@ -3,7 +3,7 @@ import Equitel from "./Equitel/Equitel";
 import JengaAPI from "./Jenga/JengaAPI";
 import JengaPGW from "./Jenga/JengaPGW";
 import FinserveMobile from "./FinserveMobile/FinserveMobile";
-import Andreas from "@/assets/Picture2.jpg";
+import Andreas from "@/assets/Cet.png";
 import { Zap } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
@@ -120,7 +120,7 @@ export const Products = () => {
   return (
     <main className="pt-16 md:pt-20 min-h-screen">
       {/* ================= ENHANCED HERO SECTION ================= */}
-      <section className="relative overflow-hidden">
+      <section className="relative overflow-hidden min-h-[70vh] md:min-h-[76vh] lg:min-h-[82vh]">
         {/* Background Image with improved overlay */}
         <div
           className="absolute inset-0 z-0"
@@ -143,7 +143,7 @@ export const Products = () => {
         </div>
 
         {/* Hero Content */}
-        <div className="relative z-10 py-20 md:py-28 lg:py-32">
+        <div className="relative z-10 min-h-[70vh] md:min-h-[76vh] lg:min-h-[82vh] flex items-center">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -221,11 +221,11 @@ export const Products = () => {
       </section>
 
       {/* ================= TABBED PRODUCT SECTION ================= */}
-      <section id="products-section" className="bg-gray-50 py-20 scroll-mt-24">
+      <section id="products-section" className="bg-gray-50 pt-10 pb-20 md:pt-12 scroll-mt-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Section header */}
-          <motion.div
-            className="text-center mb-12"
+            <motion.div
+            className="text-center mb-8 md:mb-10"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}

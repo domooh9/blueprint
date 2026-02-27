@@ -251,17 +251,6 @@ export const Contact = () => {
                 We believe in transparent, accessible communication that empowers your business decisions.
               </p>
               
-              {/* Animated Connector SVG */}
-              <svg className="absolute top-full left-1/2 -translate-x-1/2 w-32 h-8 opacity-30" viewBox="0 0 100 20">
-                <path
-                  d="M10,10 Q50,0 90,10"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  fill="none"
-                  className="animate-connector"
-                  style={{ color: primaryColor, animationDelay: '1.2s' }}
-                />
-              </svg>
             </div>
 
             {/* Main Content */}
@@ -353,18 +342,6 @@ export const Contact = () => {
                   </div>
                 </div>
                 
-                {/* Connected Line Animation */}
-                <svg className="absolute -right-6 top-1/2 -translate-y-1/2 w-12 h-32 hidden lg:block">
-                  <path
-                    d="M0,16 Q20,16 30,0 Q40,-16 60,-16"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    fill="none"
-                    strokeDasharray="5,5"
-                    className="animate-connector"
-                    style={{ color: primaryColor, animationDelay: '1.5s' }}
-                  />
-                </svg>
               </div>
 
               {/* Right Content */}

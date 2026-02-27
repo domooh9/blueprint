@@ -9,10 +9,10 @@ import Blogs from "./Blogs";
 import Picturer from "@/assets/Andreas.jpg";
 import mediaPhoto1 from "@/assets/Picture.jpg";
 import mediaPhoto2 from "@/assets/Picture2.jpg";
-import mediaPhoto3 from "@/assets/Picture22.jpg";
+import mediaPhoto3 from "@/assets/Picture3.png";
 import mediaPhoto4 from "@/assets/imageC.png";
 import legalPhoto1 from "@/assets/backgroundI.png";
-import legalPhoto2 from "@/assets/gem.png";
+import legalPhoto2 from "@/assets/imagee.png";
 import legalPhoto3 from "@/assets/Cha.png";
 
 // Livestream Component - Shows embedded YouTube video
