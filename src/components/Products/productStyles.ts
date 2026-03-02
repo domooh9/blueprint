@@ -1,6 +1,27 @@
 // Standardized Product Component Styles
 // Based on JengaAPI as reference
 
+// Enhanced button styles for consistency across all components
+export const enhancedButtonStyles = {
+  // Primary CTA button - main action
+  primary: "relative bg-gradient-to-r from-primary via-primary/95 to-primary/90 hover:from-primary hover:to-primary/80 text-white px-8 py-6 rounded-2xl font-bold text-base shadow-2xl hover:shadow-[0_20px_40px_rgba(235,34,64,0.4)] transform hover:-translate-y-2 hover:scale-105 transition-all duration-500 min-w-[200px] overflow-hidden group border-2 border-transparent hover:border-primary/20",
+  
+  // Secondary button - alternative action
+  secondary: "relative border-2 border-primary/80 text-primary bg-white/90 hover:bg-primary hover:text-white px-8 py-6 rounded-2xl font-bold text-base backdrop-blur-lg hover:border-primary transition-all duration-500 min-w-[200px] overflow-hidden group shadow-lg hover:shadow-2xl transform hover:-translate-y-2 hover:scale-105",
+  
+  // Download/Action button - for downloads and external links
+  action: "relative bg-gradient-to-r from-gray-800 via-gray-700 to-gray-800 hover:from-gray-900 hover:to-gray-700 text-white px-8 py-6 rounded-2xl font-bold text-base shadow-2xl hover:shadow-[0_20px_40px_rgba(0,0,0,0.3)] transform hover:-translate-y-2 hover:scale-105 transition-all duration-500 min-w-[200px] overflow-hidden group border-2 border-transparent hover:border-gray-600",
+  
+  // Icon styles for buttons
+  icon: "ml-3 w-5 h-5 relative z-10 transform group-hover:translate-x-2 group-hover:scale-110 transition-all duration-300",
+  
+  // Shine effect for all buttons
+  shine: "absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000",
+  
+  // Glow effect overlay
+  glow: "absolute -inset-1 bg-gradient-to-r from-primary/50 via-primary/30 to-primary/50 rounded-2xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10"
+};
+
 export const productStyles = {
   // Button styles - consistent across all products
   button: {

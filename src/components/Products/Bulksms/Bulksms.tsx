@@ -85,17 +85,23 @@ const BulkSMS = () => {
               Reach your customers instantly with reliable, cost-effective bulk messaging
             </p>
             <div className="flex flex-wrap gap-4">
-              <Button 
-                size="lg" 
-                className="bg-white text-[#9a3820] hover:bg-gray-100 text-lg px-8"
-              >
-                Get Started
-                <ChevronRight className="ml-2 w-5 h-5" />
-              </Button>
+         <a
+  href="https://jenga-docs-bulksms.azurewebsites.net/"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  <Button 
+    size="lg" 
+    className="bg-white text-[#9a3820] hover:bg-gray-100 text-lg px-8"
+  >
+    Get Started
+    <ChevronRight className="ml-2 w-5 h-5" />
+  </Button>
+</a>
               <Button 
                 size="lg" 
                 variant="outline" 
-                className="border-white text-black hover:bg-white/10 text-lg px-8"
+                className="border-white text-white hover:bg-white/10 text-lg px-8"
               >
                 View Pricing
               </Button>

@@ -225,74 +225,76 @@ export const Products = () => {
 
       {/* ================= TABBED PRODUCT SECTION ================= */}
       <section id="products-section" className="bg-gray-50 pt-10 pb-20 md:pt-12 scroll-mt-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Section header */}
-            <motion.div
-            className="text-center mb-8 md:mb-10"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <p className="text-lg md:text-xl text-primary max-w-3xl mx-auto leading-relaxed">
-              Comprehensive financial technology solutions designed to transform
-              how <span className="text-black">businesses and individuals interact with money.</span>
-            </p>
-          </motion.div>
+       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-          {/* Tab navigation */}
-          <div className="relative mb-7">
-           
-<div className="-mt-4 bg-[#f1f2f4] rounded-bl-[1.25rem] rounded-tr-[1.25rem] shadow-xl overflow-hidden border border-[#484747]">
-              {/* Mobile: horizontal scroll to reduce vertical scrolling; Desktop: fixed 5-column rail */}
-              <div className="flex lg:grid lg:grid-cols-5 overflow-x-auto lg:overflow-visible">
-                {productTabs.map((tab, index) => {
-                  const isActive = activeProduct === tab.id;
-                  return (
-                   <button
-  key={tab.id}
-  type="button"
-  onClick={() => handleTabClick(tab.id)}
-  className={`group relative min-w-[155px] lg:min-w-0 px-3 py-3 md:py-3.5 text-center transition-colors duration-300 bg-transparent`}
->
-  {/* Tab label */}
-  <p
-    className={`mt-1.5 text-sm md:text-base font-medium transition-colors ${
-      isActive ? "text-primary" : "text-[#484747]"
-    }`}
-  >
-    {tab.label}
-  </p>
+  {/* ===== HERO GLASS CONTAINER ===== */}
+  <div className="relative rounded-3xl bg-gradient-to-br from-[#f7f8fa] to-[#eef1f5] border border-gray-200 shadow-xl p-6 md:p-10 overflow-hidden">
 
-  {/* Bottom border underline */}
-  <span
-    className={`absolute bottom-0 left-0 h-[3px] bg-primary transition-all duration-300 ${
-      isActive ? "w-full" : "w-0 group-hover:w-full"
-    }`}
-  />
+    {/* subtle decorative glow */}
+    <div className="absolute -top-24 -right-24 w-72 h-72 bg-primary/10 rounded-full blur-3xl" />
 
-  {/* Divider between tabs */}
-  {index < productTabs.length - 1 && (
-    <span className="hidden lg:block absolute right-0 top-1/2 -translate-y-1/2 w-[2px] h-10 bg-primary rotate-[12deg]" />
-  )}
-</button>
-                  );
-                })}
-              </div>
-            </div>
-          </div>
-          {/* Active product display with animation */}
-          <motion.div
-            key={activeProduct}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.5 }}
-            className="transform hover:scale-[1.02] transition-transform duration-500"
-          >
-            {productTabs.find((tab) => tab.id === activeProduct)?.component}
-          </motion.div>
-        </div>
+    {/* ===== Section Header ===== */}
+    <motion.div
+      className="text-center mb-10 md:mb-12"
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.7 }}
+      viewport={{ once: true }}
+    >
+      <h2 className="text-3xl md:text-4xl font-bold text-[#2f2f2f] mb-3">
+        Financial Technology Solutions
+      </h2>
+
+      <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+        Powerful tools transforming how{" "}
+        <span className="text-primary font-semibold">
+          businesses and individuals interact with money
+        </span>
+      </p>
+    </motion.div>
+
+    {/* ===== Floating Pill Tabs ===== */}
+    <div className="flex justify-center mb-10">
+      <div className="flex gap-3 bg-white/70 backdrop-blur-md border border-gray-200 rounded-full p-2 shadow-md overflow-x-auto">
+
+        {productTabs.map((tab) => {
+          const isActive = activeProduct === tab.id;
+
+          return (
+            <button
+              key={tab.id}
+              onClick={() => handleTabClick(tab.id)}
+              className={`relative whitespace-nowrap px-6 py-2.5 rounded-full text-sm md:text-base font-medium transition-all duration-300 ${
+                isActive
+                  ? "bg-primary text-white shadow-lg"
+                  : "text-gray-600 hover:text-primary hover:bg-gray-100"
+              }`}
+            >
+              {tab.label}
+
+              {/* Active glow ring */}
+              {isActive && (
+                <span className="absolute inset-0 rounded-full ring-2 ring-primary/30 animate-pulse" />
+              )}
+            </button>
+          );
+        })}
+      </div>
+    </div>
+
+    {/* ===== Active Product Content ===== */}
+    <motion.div
+      key={activeProduct}
+      initial={{ opacity: 0, y: 25 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      className="relative"
+    >
+      {productTabs.find((tab) => tab.id === activeProduct)?.component}
+    </motion.div>
+
+  </div>
+</div>
       </section>
 
       {/* ================= CALL TO ACTION SECTION ================= */}

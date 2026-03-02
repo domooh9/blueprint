@@ -1,6 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, CalendarDays, Clock3 } from "lucide-react";
+import { enhancedButtonStyles } from "../Products/productStyles";
 import blogPhoto1 from "@/assets/Picture4.png";
 import blogPhoto2 from "@/assets/Picture3.png";
 import blogPhoto3 from "@/assets/Kevin.jpg";
@@ -95,10 +96,14 @@ const Blogs = () => {
                 </div>
               </div>
 
-              <Button className="mt-5 rounded-full px-6 py-2 inline-flex items-center gap-2">
-                Read More
-                <ArrowRight className="w-4 h-4" />
-              </Button>
+              <button className={`${enhancedButtonStyles.secondary} mt-5 group`}>
+                <div className={enhancedButtonStyles.glow}></div>
+                <span className="relative z-10 flex items-center">
+                  Read More
+                  <ArrowRight className={enhancedButtonStyles.icon} />
+                </span>
+                <div className={enhancedButtonStyles.shine}></div>
+              </button>
             </CardContent>
           </Card>
         ))}

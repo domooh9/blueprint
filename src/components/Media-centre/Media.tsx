@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import Testimonials from "./Testemonials";
 import Blogs from "./Blogs";
+import { enhancedButtonStyles } from "../Products/productStyles";
 import Picturer from "@/assets/Andreas.jpg";
 import mediaPhoto1 from "@/assets/Picture.jpg";
 import mediaPhoto2 from "@/assets/Picture2.jpg";
@@ -246,45 +247,38 @@ const Media = () => {
         {/* Main Content Section */}
         <section className="py-16 md:py-20 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 -mt-8 relative z-20">
-            {/* Tab navigation  */}
-            <div className="relative mb-7">
-              <div className="-mt-4 bg-[#f1f2f4] rounded-bl-[1.25rem] rounded-tr-[1.25rem] shadow-xl overflow-hidden border border-[#484747]"> {/* Mobile: horizontal scroll to reduce vertical scrolling; Desktop: 4-column rail */}
-                <div className="flex lg:grid lg:grid-cols-4 overflow-x-auto lg:overflow-visible">
-                  {[
-                    { id: "media", label: "Media Centre" },
-                    { id: "policies", label: "Legal & Privacy" },
-                    { id: "testimonials", label: "Testimonials" },
-                    { id: "blogs", label: "Blogs" },
-                  ].map((tab, index, arr) => {
-                    const isActive = activeTab === tab.id;
-                    return (
-                      <button
-                        key={tab.id}
-                        type="button"
-                        onClick={() =>
-                          handleTabChange(
-                            tab.id as "media" | "policies" | "blogs" | "testimonials"
-                          )
-                        }
-                        className={`group relative min-w-[155px] lg:min-w-0 px-3 py-3 md:py-3.5 text-center transition-colors duration-300 ${
-                          isActive ? "bg-white/70" : "hover:bg-[#484747]"
-                        }`}
-                      >
-                        <p
-                          className={`mt-1.5 text-sm md:text-base leading-tight font-medium transition-colors ${
-                            isActive ? "text-primary" : "text-[#484747] group-hover:text-[#484747]"
-                          }`}
-                        >
-                          {tab.label}
-                        </p>
-
-                        {index < arr.length - 1 && (
-                          <span className="hidden lg:block absolute right-0 top-1/2 -translate-y-1/2 w-[2px] h-10 bg-primary rotate-[12deg]" />
-                        )}
-                      </button>
-                    );
-                  })}
-                </div>
+            {/* Tab navigation - matched to Products floating pill tabs */}
+            <div className="flex justify-center mb-10">
+              <div className="flex gap-3 bg-white/70 backdrop-blur-md border border-gray-200 rounded-full p-2 shadow-md overflow-x-auto">
+                {[
+                  { id: "media", label: "Media Centre" },
+                  { id: "policies", label: "Legal & Privacy" },
+                  { id: "testimonials", label: "Testimonials" },
+                  { id: "blogs", label: "Blogs" },
+                ].map((tab) => {
+                  const isActive = activeTab === tab.id;
+                  return (
+                    <button
+                      key={tab.id}
+                      type="button"
+                      onClick={() =>
+                        handleTabChange(
+                          tab.id as "media" | "policies" | "blogs" | "testimonials"
+                        )
+                      }
+                      className={`relative whitespace-nowrap px-6 py-2.5 rounded-full text-sm md:text-base font-medium transition-all duration-300 ${
+                        isActive
+                          ? "bg-primary text-white shadow-lg"
+                          : "text-gray-600 hover:text-primary hover:bg-gray-100"
+                      }`}
+                    >
+                      {tab.label}
+                      {isActive && (
+                        <span className="absolute inset-0 rounded-full ring-2 ring-primary/30 animate-pulse" />
+                      )}
+                    </button>
+                  );
+                })}
               </div>
             </div>
           </div>
@@ -356,10 +350,14 @@ const Media = () => {
                         </p>
                       </div>
                       <div className="flex-shrink-0">
-                        <Button className="bg-white text-primary hover:bg-gray-100 px-8 py-6 rounded-xl font-bold text-lg shadow-lg hover:shadow-xl transition-all duration-300 flex items-center gap-3">
-                          <Download className="w-5 h-5" />
-                          Download Package
-                        </Button>
+                        <button className={`${enhancedButtonStyles.action} group`}>
+                          <div className={enhancedButtonStyles.glow}></div>
+                          <span className="relative z-10 flex items-center">
+                            <Download className={enhancedButtonStyles.icon.replace('ml-3', 'mr-3')} />
+                            Download Package
+                          </span>
+                          <div className={enhancedButtonStyles.shine}></div>
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -413,11 +411,15 @@ const Media = () => {
                           </p>
                           
                           <a href={policy.link} target="_blank" rel="noopener noreferrer" className="mt-auto">
-                            <Button className="w-full bg-gradient-to-r from-primary to-primary/90 hover:from-primary hover:to-primary/80 text-white py-6 rounded-xl font-semibold shadow-md hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 group/btn">
-                              <Eye className="w-5 h-5" />
-                              View Policy
-                              <ChevronRight className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
-                            </Button>
+                            <button className={`${enhancedButtonStyles.primary} w-full group`}>
+                              <div className={enhancedButtonStyles.glow}></div>
+                              <span className="relative z-10 flex items-center justify-center gap-2">
+                                <Eye className="w-5 h-5" />
+                                View Policy
+                                <ChevronRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+                              </span>
+                              <div className={enhancedButtonStyles.shine}></div>
+                            </button>
                           </a>
                         </div>
                       </div>
@@ -461,10 +463,14 @@ const Media = () => {
                         </p>
                       </div>
                       <div className="flex-shrink-0">
-                        <Button className="bg-white text-primary hover:bg-gray-100 px-8 py-6 rounded-xl font-bold text-lg shadow-lg hover:shadow-xl transition-all duration-300 flex items-center gap-3">
-                          <Download className="w-5 h-5" />
-                          Download Package
-                        </Button>
+                        <button className={`${enhancedButtonStyles.action} group`}>
+                          <div className={enhancedButtonStyles.glow}></div>
+                          <span className="relative z-10 flex items-center">
+                            <Download className={enhancedButtonStyles.icon.replace('ml-3', 'mr-3')} />
+                            Download Package
+                          </span>
+                          <div className={enhancedButtonStyles.shine}></div>
+                        </button>
                       </div>
                     </div>
                   </div>

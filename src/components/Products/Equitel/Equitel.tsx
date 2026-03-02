@@ -1,9 +1,9 @@
-import { MessageSquareText, Repeat2, ReceiptText, HandCoins, PiggyBank, ArrowRight } from "lucide-react";
+import { MessageSquareText, Repeat2, ReceiptText, HandCoins, PiggyBank, ExternalLink } from "lucide-react";
 import placeholderWoman from "@/assets/Untit.png";
 import BlurdImage from "@/assets/edite.png"
 import Equitellogo from "@/assets/equitel-gatewaay.png"
 import { Button } from "@/components/ui/button";
-import { productStyles } from "../productStyles";
+import { enhancedButtonStyles } from "../productStyles";
 
 const bubbles = [
   {
@@ -159,11 +159,14 @@ const Equitel = () => {
       <div className="flex justify-center mt-6 sm:mt-8 pb-10">
         <Button
           onClick={() => window.open(productLink, "_blank")}
-          className={productStyles.button.base}
+          className={enhancedButtonStyles.primary}
         >
-          <span className="relative z-10">Explore Equitel</span>
-          <ArrowRight className={productStyles.button.icon} />
-          <div className={productStyles.button.shine} />
+          <div className={enhancedButtonStyles.glow}></div>
+          <span className="relative z-10 flex items-center">
+            Explore Equitel
+            <ExternalLink className={enhancedButtonStyles.icon} />
+          </span>
+          <div className={enhancedButtonStyles.shine}></div>
         </Button>
       </div>
     </section>

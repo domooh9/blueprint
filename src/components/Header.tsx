@@ -7,7 +7,7 @@ import logo from "@/assets/finserve-logo.png";
 const menuItems = [
   { label: "Home", href: "/" },
   { label: "Who we are", href: "/who-we-are" },
-  { label: "Our products", href: "/products" },
+  { label: "Our Products", href: "/products" },
   { label: "Company", href: "/boardmembers" },
   { label: "Resources", href: "/media-centre" },
   { label: "FAQ's", href: "/faq" },
