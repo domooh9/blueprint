@@ -1,231 +1,171 @@
-import { motion } from "framer-motion";
-import EquitelM from "@/assets/Equitt.png";
-import equitelGateway from "@/assets/equitel-gatewaay.png";
-import {
-  ArrowRight,
-  HandCoins,
-  PiggyBank,
-  ReceiptText,
-  Repeat2,
-  Smartphone,
-} from "lucide-react";
+import { MessageSquareText, Repeat2, ReceiptText, HandCoins, PiggyBank, ArrowRight } from "lucide-react";
+import placeholderWoman from "@/assets/Untit.png";
+import BlurdImage from "@/assets/edite.png"
+import Equitellogo from "@/assets/equitel-gatewaay.png"
 import { Button } from "@/components/ui/button";
 import { productStyles } from "../productStyles";
 
-const Equitel = () => {
-  const product = {
-    name: "Equitel",
-    tagline: "Equitel",
-    description: "Freedom Choice & control.",
-    image: EquitelM,
-    link: "https://equitel.com/",
-    features: [
-      "Equitel is the fulfilment of the promise Equity Group has made to its members... \"We will make Life Easier\"",
-      "It is a mobile phone platform that brings Equity Group's members and Kenyans FREEDOM, CHOICE and CONTROL by combining the best of telephony and banking services.",
-    ],
-  };
+const bubbles = [
+  {
+    text: "Access your bank account anytime, anywhere",
+    desktop: "top-[8%] right-[25%]",
+    mobile: "top-[8%] right-[25%]", // same as desktop
+    width: "w-[120px]",
+    height: "h-[120px]",
+  },
+  {
+    text: "Free Equitel to Equitel Money Transfers",
+    desktop: "top-[48%] right-[-6%]",
+    mobile: "top-[48%] right-[-6%]", // same as desktop
+    width: "w-[120px]",
+    height: "h-[120px]",
+  },
+  {
+    text: "Free Equitel to Equitel Money Transfers",
+    desktop: "top-[18%] right-[-5%]",
+    mobile: "top-[18%] right-[-5%]", // same as desktop
+    width: "w-[120px]",
+    height: "h-[120px]",
+  },
+  {
+    text: "Call, Browse and Text",
+    desktop: "top-[70%] right-[12%]",
+    mobile: "top-[70%] right-[12%]", // same as desktop
+    width: "w-[120px]",
+    height: "h-[120px]",
+  },
+  {
+    text: "Pay through the one Equity Till number at zero charge",
+    desktop: "bottom-[5%] right-[45%]",
+    mobile: "bottom-[2%] right-[45%]", // same as desktop
+    width: "w-[120px]",
+    height: "h-[120px]",
+  },
+];
 
-  const serviceCards = [
-    {
-      title: "Call, Text and Browse.",
-      description: "With Equitel, you can make calls, access internet and SMS.",
-      icon: Smartphone,
-    },
-    {
-      title: "Send and receive cash.",
-      description: "Free money transfer to other Equitel members.",
-      icon: Repeat2,
-    },
-    {
-      title: "Pay Bills and buy goods.",
-      description: "You can pay for bills and buy goods directly from your phone.",
-      icon: ReceiptText,
-    },
-    {
-      title: "Manage your savings.",
-      description: "With Equitel, you can save wisely using MY GOALS.",
-      icon: HandCoins,
-    },
-    {
-      title: "Apply and get a loan.",
-      description: "Ask for an Eazzy loan on your phone. No need of filling a form.",
-      icon: PiggyBank,
-    },
-  ];
+const Equitel = () => {
+  const productLink = "https://equitel.com/";
 
   return (
-    <section className="relative w-full bg-[#f6f7f9] overflow-hidden py-16">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 w-full gap-6">
-          <motion.div
-            className="lg:col-span-4 relative flex items-end justify-center w-full"
-            style={{ backgroundColor: "#F7931E", minHeight: "300px" }}
-            whileHover={{ scale: 1.03 }}
-            transition={{ type: "spring", stiffness: 100 }}
-          >
-            <motion.img
-              src={product.image}
-              alt={product.name}
-              className="absolute object-contain 
-                w-[100%] max-h-[85%]
-                sm:w-[105%] sm:max-h-[85%]
-                md:w-[110%] md:max-h-[85%]
-                lg:w-[115%] lg:max-h-[85%]
-                xl:w-[125%] xl:max-h-none"
-              style={{
-                bottom: "0",
-                right: "0",
-                transform: "translate(5%, 5%)",
-              }}
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              whileHover={{ scale: 1.05 }}
-              transition={{ duration: 0.5 }}
+    <section className="w-full bg-[#f4f3f4] overflow-hidden">
+      {/* Top Hero Section with Background */}
+      <div className="relative max-w-[1400px] mx-auto pt-8 md:pt-10 lg:pt-12">
+        {/* Blurred Background - covers entire hero (left + right) */}
+        <div className="absolute inset-0 z-0">
+          <img
+            src={BlurdImage}
+            alt="Blurred background"
+            className="w-full h-full object-cover blur-md scale-110"
+          />
+          <div className="absolute inset-0 bg-black/20" /> {/* optional overlay for contrast */}
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 items-stretch relative z-10">
+          {/* Left visual block */}
+          <div className="relative lg:col-span-5 min-h-[360px] md:min-h-[420px] lg:min-h-[500px]">
+            {/* Main Image (sharp) */}
+            <img
+              src={placeholderWoman}
+              alt="Equitel placeholder"
+              className="absolute inset-0 w-full h-full object-cover z-10"
             />
-          </motion.div>
 
-          <motion.div
-            className="lg:col-span-8 p-6 sm:p-10 md:p-12 lg:p-16 flex flex-col justify-center w-full relative rounded-tr-2xl rounded-br-2xl"
-            style={{ backgroundColor: "#f6f7f9" }}
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            whileHover={{ y: -5 }}
-            transition={{ type: "spring", stiffness: 120, damping: 15 }}
-          >
-            <motion.h3
-              className={productStyles.typography.mainHeader}
-              style={{ color: "#9a3820" }}
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-            >
-              {product.tagline}
-            </motion.h3>
-
-            <motion.p
-              className={productStyles.typography.sectionHeader}
-              style={{ color: "#9a3820" }}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.4 }}
-            >
-              {product.description}
-            </motion.p>
-
-            <div className="space-y-4 mb-6">
-              {product.features.map((feature, idx) => {
-                const parts = feature.split(/(FREEDOM, CHOICE and CONTROL)/g);
-                return (
-                  <motion.div
-                    key={idx}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.5 + idx * 0.2 }}
-                    whileHover={{ scale: 1.02 }}
-                  >
-                    <p className={`text-black ${productStyles.typography.bodyLarge}`}>
-                      {parts.map((part, i) =>
-                        part === "FREEDOM, CHOICE and CONTROL" ? (
-                          <strong key={i}>{part}</strong>
-                        ) : (
-                          <span key={i}>{part}</span>
-                        )
-                      )}
+            {/* Bubbles */}
+            <div className="absolute inset-0 z-20">
+              {bubbles.map((bubble) => (
+                <div
+                  key={bubble.text}
+                  className={`absolute ${bubble.desktop} hidden md:block`}
+                >
+                  <div className={`${bubble.width} ${bubble.height} rounded-full bg-white/95 backdrop-blur-sm shadow-lg border border-white/80 flex items-center justify-center px-4`}>
+                    <p className="text-[#b2571a] text-[15px] leading-tight font-bold text-center">
+                      {bubble.text}
                     </p>
-                  </motion.div>
-                );
-              })}
+                  </div>
+                </div>
+              ))}
+
+              {bubbles.map((bubble) => (
+                <div
+                  key={`mobile-${bubble.text}`}
+                  className={`absolute ${bubble.mobile} block md:hidden`}
+                >
+                  <div className={`${bubble.width} ${bubble.height} rounded-full bg-white/95 backdrop-blur-sm shadow-md border border-white/80 flex items-center justify-center px-3`}>
+                    <p className="text-[#b2571a] text-[12px] leading-tight font-medium text-center">
+                      {bubble.text.length > 40
+                        ? bubble.text.substring(0, 40) + "..."
+                        : bubble.text}
+                    </p>
+                  </div>
+                </div>
+              ))}
             </div>
+          </div>
 
-            <motion.div
-              className="absolute bottom-4 right-4 z-30 hidden lg:block"
-              animate={{ y: [0, -10, 0] }}
-              transition={{ duration: 2, repeat: Infinity, repeatType: "loop" }}
-            >
-              <img src={equitelGateway} alt="Equitel Logo" className="h-16 w-auto sm:h-20 md:h-24" />
-            </motion.div>
+          {/* Right hero text block */}
+          <div className="lg:col-span-7 flex items-center px-6 md:px-10 lg:px-12 py-10 md:py-12">
+            <div>
+              <h1
+                className="inline-block bg-[#b2571a] text-white text-4xl md:text-5xl font-bold leading-none drop-shadow-lg px-10 py-5"
+                style={{
+                  clipPath: "polygon(8% 0, 100% 0, 92% 100%, 0 100%)",
+                }}
+              >
+                Enjoy Benefits Mob
+              </h1>
+              <p className="mt-3 text-white text-4xl md:text-5xl font-normal leading-none drop-shadow-md">
+                na Line ya Nguvu
+              </p>
+              <p className="mt-5 text-white text-xl md:text-2xl font-normal leading-none drop-shadow-md">
+                To get your Equitel line, visit <p>your nearest Equity Branch</p>
+              </p>
+            </div>
+          </div>
+        </div>
 
-            <motion.div
-              className="flex justify-center mt-8 lg:hidden"
-              animate={{ y: [0, -5, 0] }}
-              transition={{ duration: 2, repeat: Infinity, repeatType: "loop" }}
-            >
-              <img src={equitelGateway} alt="Equitel Logo" className="h-16 w-auto sm:h-20" />
-            </motion.div>
-          </motion.div>
+        {/* Curved transition border between Hero and Description - matched to reference */}
+        <div className="absolute -bottom-[1px] left-0 w-full overflow-hidden leading-[0] z-10">
+          <svg className="relative block w-full h-14" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M0,120 C320,45 880,45 1200,120 L1200,120 L0,120 Z" className="fill-white" />
+            <path d="M0,120 C320,45 880,45 1200,120" fill="none" stroke="#e6e6e6" strokeWidth="2" />
+          </svg>
         </div>
       </div>
 
-      <motion.div
-        className="w-full py-14 md:py-16 px-4"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
-      >
-        <div className="w-full max-w-7xl mx-auto">
-          <div className="mb-10">
-            <h3 className={`${productStyles.typography.mainHeader} text-[#b15516] leading-tight mb-4`}>Equitel</h3>
-            <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-3">
-              <p className={`${productStyles.typography.sectionHeader} leading-tight text-[#2d2d2d]`}>
-                Service Offering.
-              </p>
-              <p className={`${productStyles.typography.sectionHeader} leading-tight font-semibold text-[#b15516]`}>
-                Bank in your hands24-7-Banking.
-              </p>
-            </div>
-          </div>
-
-          <div className="relative hidden lg:block h-[46px] mb-4">
-            <div className="absolute left-0 right-0 top-1/2 h-px bg-[#d18a52]/45" />
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-y-10 sm:gap-y-12">
-            {serviceCards.map((card, idx) => {
-              const Icon = card.icon;
-              return (
-                <motion.div
-                  key={card.title}
-                  initial={{ opacity: 0, y: 16 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: idx * 0.08 }}
-                  className={`px-6 sm:px-8 lg:px-6 ${
-                    idx !== serviceCards.length - 1 ? "lg:border-r lg:border-[#d18a52]/80" : ""
-                  }`}
-                >
-                  <div className="flex justify-center lg:justify-start">
-                    <div className="relative w-[108px] h-[108px] bg-[#b15516] flex items-center justify-center">
-                      <Icon className="w-11 h-11 text-white stroke-[1.8]" />
-                      <div className="absolute -bottom-[14px] left-1/2 -translate-x-1/2 w-0 h-0 border-l-[12px] border-r-[12px] border-t-[14px] border-l-transparent border-r-transparent border-t-[#b15516]" />
-                    </div>
-                  </div>
-
-                  <h4 className={`mt-10 ${productStyles.typography.subsectionTitle} leading-snug text-[#b15516]`}>
-                    {card.title}
-                  </h4>
-                  <p className={`mt-3 ${productStyles.typography.bodyRegular} text-[#202020]`}>
-                    {card.description}
-                  </p>
-                </motion.div>
-              );
-            })}
-          </div>
+      {/* Description Section - white area below curved border with logo */}
+      <div className="relative z-20 bg-white">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 pt-12 md:pt-16 pb-12 md:pb-16">
+          <h2 className="text-4xl md:text-5xl font-bold text-[#b2571a] mb-4">Equitel</h2>
+          <h3 className="text-2xl md:text-2xl text-[#9a3820] mb-4">Freedom Choice & control.</h3>
+          <p className="text-lg md:text-xl text-[#2f2f2f] leading-relaxed mb-4">
+            Equitel is the fulfilment of the promise Equity Group has made to its members... "We will make Life Easier"
+          </p>
+          <p className="text-lg md:text-xl text-[#2f2f2f] leading-relaxed">
+            It is a mobile phone platform that brings Equity Group's members and Kenyans <span className="font-bold">FREEDOM, CHOICE and CONTROL</span> by combining the best of telephony and banking services.
+          </p>
         </div>
-      </motion.div>
+        
+        {/* Equitel Logo at Bottom Right */}
+        <div className="absolute bottom-4 right-4 md:bottom-8 md:right-8">
+          <img 
+            src={Equitellogo} 
+            alt="Equitel Logo" 
+            className="h-12 w-auto md:h-16 opacity-80 hover:opacity-100 transition-opacity duration-300"
+          />
+        </div>
+      </div>
 
-      <motion.div
-        className="flex justify-center mt-6 sm:mt-8"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1.5 }}
-      >
-        <Button onClick={() => window.open(product.link, "_blank")} className={productStyles.button.base}>
+      {/* CTA button - consistent style and centered position like other product pages */}
+      <div className="flex justify-center mt-6 sm:mt-8 pb-10">
+        <Button
+          onClick={() => window.open(productLink, "_blank")}
+          className={productStyles.button.base}
+        >
           <span className="relative z-10">Explore Equitel</span>
           <ArrowRight className={productStyles.button.icon} />
           <div className={productStyles.button.shine} />
         </Button>
-      </motion.div>
+      </div>
     </section>
   );
 };

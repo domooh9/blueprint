@@ -17,6 +17,7 @@ import Livestream from "./components/Livestream/Livestream";
 import Media from "./components/Media-centre/Media";
 import Careers from "./components/Company/Careers";
 import FinAdmin from "./components/Admin/FinAdmin";
+import Bulksms from "./components/Products/Bulksms/Bulksms";
 
 const queryClient = new QueryClient();
 
@@ -39,7 +40,8 @@ const App = () => (
              <Route path="/media-centre" element={<Media />} />
              <Route path="/livestream" element={<Livestream />} />
              <Route path="/FinAdmin" element={<FinAdmin />} />
-         <Route path="/careers" element={<Careers />} />
+             <Route path="/careers" element={<Careers />} />
+             <Route path="/products/bulksms" element={<Bulksms />} />
              
           </Route>
 

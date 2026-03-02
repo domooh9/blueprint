@@ -3,12 +3,11 @@ import Equitel from "./Equitel/Equitel";
 import JengaAPI from "./Jenga/JengaAPI";
 import JengaPGW from "./Jenga/JengaPGW";
 import FinserveMobile from "./FinserveMobile/FinserveMobile";
+import Bulksms from "./Bulksms/Bulksms";
 import Andreas from "@/assets/Cet.png";
 import { Zap } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import { MessageSquare, Code, CreditCard, Smartphone, ChevronRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
 
 // Product logos for the animated carousel
 import equitelLogo from "@/assets/equitel-gatewaay.png";
@@ -17,10 +16,11 @@ import finserveLogo from "@/assets/FinserveMoney.png";
 import JengaPayment from "@/assets/JengaPaymentii.png";
 
 const PRODUCT_HASH_MAP: Record<string, string> = {
-  "#finserve-money": "Finserve Money",
+  "#finserve-money": "finserveMoney",
   "#equitel": "equitel",
   "#jenga-api": "jengaApi",
   "#jenga-pgw": "jengaPgw",
+  "#bulk-sms": "bulkSms",
 };
 
 export const Products = () => {
@@ -65,7 +65,7 @@ export const Products = () => {
   }, [productLogos.length]);
 
   // Tab state for product selection
-  const [activeProduct, setActiveProduct] = useState("equitel");
+  const [activeProduct, setActiveProduct] = useState("finserveMoney");
 
   useEffect(() => {
     const productFromHash = PRODUCT_HASH_MAP[location.hash.toLowerCase()];
@@ -83,39 +83,42 @@ export const Products = () => {
   }, [location.hash]);
 
   // Define the products that can be selected
-  // Map display names from your screenshot to the actual components
   const productTabs = [
     {
-      id: "bulkSms",
+      id: "finserveMoney",
       label: "Finserve Money",
-      icon: <MessageSquare className="w-4 h-4 md:w-5 md:h-5" />,
+      logo: finserveLogo,
       component: <FinserveMobile />,
-    },
-    {
-      id: "equitel",
-      label: "Equitel",
-      icon: <Smartphone className="w-4 h-4 md:w-5 md:h-5" />,
-      component: <Equitel />,
     },
     {
       id: "jengaApi",
       label: "Jenga API",
-      icon: <Code className="w-4 h-4 md:w-5 md:h-5" />,
+      logo: jengaLogo,
       component: <JengaAPI />,
     },
     {
       id: "jengaPgw",
       label: "Jenga PGW",
-      icon: <CreditCard className="w-4 h-4 md:w-5 md:h-5" />,
+      logo: JengaPayment,
       component: <JengaPGW />,
     },
     {
-      id: "BulkSms",
-      label: "Bulk Sms",
-      icon: <Smartphone className="w-4 h-4 md:w-5 md:h-5" />,
+      id: "equitel",
+      label: "Equitel",
+      logo: equitelLogo,
       component: <Equitel />,
     },
+    {
+      id: "bulkSms",
+      label: "Bulk Sms",
+      logo: finserveLogo,
+      component: <Bulksms />,
+    },
   ];
+
+  const handleTabClick = (tabId: string) => {
+    setActiveProduct(tabId);
+  };
 
   return (
     <main className="pt-16 md:pt-20 min-h-screen">
@@ -238,22 +241,45 @@ export const Products = () => {
           </motion.div>
 
           {/* Tab navigation */}
-          <div className="flex flex-wrap gap-3 mb-12 justify-center">
-            {productTabs.map((tab) => {
-              const isActive = activeProduct === tab.id;
-              return (
-                <Button
-                  key={tab.id}
-                  variant={isActive ? "default" : "outline"}
-                  onClick={() => setActiveProduct(tab.id)}
-                  className="rounded-full px-6 py-2 transition-all duration-300 flex items-center gap-2"
-                >
-                  {tab.icon}
-                  <span>{tab.label}</span>
-                  <ChevronRight className={`w-4 h-4 ${isActive ? "text-white" : "text-muted-foreground"}`} />
-                </Button>
-              );
-            })}
+          <div className="relative mb-7">
+           
+<div className="-mt-4 bg-[#f1f2f4] rounded-bl-[1.25rem] rounded-tr-[1.25rem] shadow-xl overflow-hidden border border-[#484747]">
+              {/* Mobile: horizontal scroll to reduce vertical scrolling; Desktop: fixed 5-column rail */}
+              <div className="flex lg:grid lg:grid-cols-5 overflow-x-auto lg:overflow-visible">
+                {productTabs.map((tab, index) => {
+                  const isActive = activeProduct === tab.id;
+                  return (
+                   <button
+  key={tab.id}
+  type="button"
+  onClick={() => handleTabClick(tab.id)}
+  className={`group relative min-w-[155px] lg:min-w-0 px-3 py-3 md:py-3.5 text-center transition-colors duration-300 bg-transparent`}
+>
+  {/* Tab label */}
+  <p
+    className={`mt-1.5 text-sm md:text-base font-medium transition-colors ${
+      isActive ? "text-primary" : "text-[#484747]"
+    }`}
+  >
+    {tab.label}
+  </p>
+
+  {/* Bottom border underline */}
+  <span
+    className={`absolute bottom-0 left-0 h-[3px] bg-primary transition-all duration-300 ${
+      isActive ? "w-full" : "w-0 group-hover:w-full"
+    }`}
+  />
+
+  {/* Divider between tabs */}
+  {index < productTabs.length - 1 && (
+    <span className="hidden lg:block absolute right-0 top-1/2 -translate-y-1/2 w-[2px] h-10 bg-primary rotate-[12deg]" />
+  )}
+</button>
+                  );
+                })}
+              </div>
+            </div>
           </div>
           {/* Active product display with animation */}
           <motion.div

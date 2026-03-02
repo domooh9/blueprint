@@ -1,7 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import YouTubeEmbed from "@/components/ui/youtube-embed";
-import { FileText, Presentation, Newspaper, Award, Shield, Lock, MessageSquare, Download, Eye, ChevronRight, Play, BookOpen } from "lucide-react";
+import { FileText, Presentation, Newspaper, Award, Shield, Lock, MessageSquare, Download, Eye, ChevronRight, Play } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import Testimonials from "./Testemonials";
@@ -246,46 +246,46 @@ const Media = () => {
         {/* Main Content Section */}
         <section className="py-16 md:py-20 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 -mt-8 relative z-20">
-            <div className="flex flex-wrap gap-3 mb-10 justify-center">
-              <Button
-                variant={activeTab === "media" ? "default" : "outline"}
-                onClick={() => handleTabChange("media")}
-                className="rounded-full px-6 py-2 transition-all duration-300 flex items-center gap-2"
-              >
-                <Newspaper className="w-4 h-4" />
-                <span>Media Centre</span>
-                <ChevronRight className={`w-4 h-4 ${activeTab === "media" ? "text-white" : "text-muted-foreground"}`} />
-              </Button>
+            {/* Tab navigation  */}
+            <div className="relative mb-7">
+              <div className="-mt-4 bg-[#f1f2f4] rounded-bl-[1.25rem] rounded-tr-[1.25rem] shadow-xl overflow-hidden border border-[#484747]"> {/* Mobile: horizontal scroll to reduce vertical scrolling; Desktop: 4-column rail */}
+                <div className="flex lg:grid lg:grid-cols-4 overflow-x-auto lg:overflow-visible">
+                  {[
+                    { id: "media", label: "Media Centre" },
+                    { id: "policies", label: "Legal & Privacy" },
+                    { id: "testimonials", label: "Testimonials" },
+                    { id: "blogs", label: "Blogs" },
+                  ].map((tab, index, arr) => {
+                    const isActive = activeTab === tab.id;
+                    return (
+                      <button
+                        key={tab.id}
+                        type="button"
+                        onClick={() =>
+                          handleTabChange(
+                            tab.id as "media" | "policies" | "blogs" | "testimonials"
+                          )
+                        }
+                        className={`group relative min-w-[155px] lg:min-w-0 px-3 py-3 md:py-3.5 text-center transition-colors duration-300 ${
+                          isActive ? "bg-white/70" : "hover:bg-[#484747]"
+                        }`}
+                      >
+                        <p
+                          className={`mt-1.5 text-sm md:text-base leading-tight font-medium transition-colors ${
+                            isActive ? "text-primary" : "text-[#484747] group-hover:text-[#484747]"
+                          }`}
+                        >
+                          {tab.label}
+                        </p>
 
-              <Button
-                variant={activeTab === "policies" ? "default" : "outline"}
-                onClick={() => handleTabChange("policies")}
-                className="rounded-full px-6 py-2 transition-all duration-300 flex items-center gap-2"
-              >
-                <Shield className="w-4 h-4" />
-                <span>Legal & Privacy</span>
-                <ChevronRight className={`w-4 h-4 ${activeTab === "policies" ? "text-white" : "text-muted-foreground"}`} />
-              </Button>
-
-              <Button
-                variant={activeTab === "testimonials" ? "default" : "outline"}
-                onClick={() => handleTabChange("testimonials")}
-                className="rounded-full px-6 py-2 transition-all duration-300 flex items-center gap-2"
-              >
-                <MessageSquare className="w-4 h-4" />
-                <span>Testimonials</span>
-                <ChevronRight className={`w-4 h-4 ${activeTab === "testimonials" ? "text-white" : "text-muted-foreground"}`} />
-              </Button>
-
-              <Button
-                variant={activeTab === "blogs" ? "default" : "outline"}
-                onClick={() => handleTabChange("blogs")}
-                className="rounded-full px-6 py-2 transition-all duration-300 flex items-center gap-2"
-              >
-                <BookOpen className="w-4 h-4" />
-                <span>Blogs</span>
-                <ChevronRight className={`w-4 h-4 ${activeTab === "blogs" ? "text-white" : "text-muted-foreground"}`} />
-              </Button>
+                        {index < arr.length - 1 && (
+                          <span className="hidden lg:block absolute right-0 top-1/2 -translate-y-1/2 w-[2px] h-10 bg-primary rotate-[12deg]" />
+                        )}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
             </div>
           </div>
 

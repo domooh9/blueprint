@@ -1,5 +1,11 @@
 import JengaPGWI from "@/assets/JengaPGWI.png";
 import Picturer from "@/assets/Picturer.png";
+import jicon1 from "@/assets/icons/jicon1.png";
+import jicon2 from "@/assets/icons/jicon2.png";
+import jicon3 from "@/assets/icons/jicon3.png";
+import jicon4 from "@/assets/icons/Jicon4.png";
+import jicon5 from "@/assets/icons/jicon5.png";
+import jicon6 from "@/assets/icons/jicon6.png";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { productStyles } from "../productStyles";
@@ -8,56 +14,23 @@ import { productStyles } from "../productStyles";
 const JengaPayment = () => {
   const services = [
     {
-      icon: (
-        <svg viewBox="0 0 48 48" fill="none" style={{ width: 40, height: 40 }}>
-          <rect x="8" y="12" width="32" height="24" rx="2" stroke="currentColor" strokeWidth="2" />
-          <path d="M8 20h32" stroke="currentColor" strokeWidth="2" />
-          <rect x="12" y="28" width="8" height="4" rx="1" fill="currentColor" />
-          <circle cx="36" cy="30" r="2" fill="currentColor" />
-        </svg>
-      ),
+      icon: jicon1,
       title: "Checkout integration to your website and mobile app.",
     },
     {
-      icon: (
-        <svg viewBox="0 0 48 48" fill="none" style={{ width: 40, height: 40 }}>
-          <circle cx="24" cy="24" r="16" stroke="currentColor" strokeWidth="2" />
-          <path d="M24 8v32M8 24h32" stroke="currentColor" strokeWidth="2" />
-          <circle cx="24" cy="24" r="6" stroke="currentColor" strokeWidth="2" />
-        </svg>
-      ),
+      icon: jicon2,
       title: "Direct Integration.",
     },
     {
-      icon: (
-        <svg viewBox="0 0 48 48" fill="none" style={{ width: 40, height: 40 }}>
-          <rect x="10" y="8" width="28" height="32" rx="2" stroke="currentColor" strokeWidth="2" />
-          <path d="M16 16h16M16 22h16M16 28h10" stroke="currentColor" strokeWidth="2" />
-          <circle cx="34" cy="34" r="6" stroke="currentColor" strokeWidth="2" />
-          <path d="M32 34l2 2 4-4" stroke="currentColor" strokeWidth="2" />
-        </svg>
-      ),
+      icon: jicon3,
       title: "Settlements from any Bank account.",
     },
     {
-      icon: (
-        <svg viewBox="0 0 48 48" fill="none" style={{ width: 40, height: 40 }}>
-          <rect x="8" y="12" width="20" height="24" rx="2" stroke="currentColor" strokeWidth="2" />
-          <path d="M12 20h12M12 26h8" stroke="currentColor" strokeWidth="2" />
-          <path d="M32 18l8 6-8 6" stroke="currentColor" strokeWidth="2" />
-        </svg>
-      ),
+      icon: jicon4,
       title: "Payment links to be shared in cases where a website is non-existent.",
     },
     {
-      icon: (
-        <svg viewBox="0 0 48 48" fill="none" style={{ width: 40, height: 40 }}>
-          <circle cx="24" cy="24" r="14" stroke="currentColor" strokeWidth="2" />
-          <text x="24" y="28" textAnchor="middle" fontSize="12" fill="currentColor" fontWeight="bold">
-            Woo
-          </text>
-        </svg>
-      ),
+      icon: jicon5,
       title: "Checkout integration using WooCommerce plugin.",
     },
   ];
@@ -306,11 +279,30 @@ const JengaPayment = () => {
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
-                      color: "#fff",
                       margin: "0 auto",
+                      position: "relative",
                     }}
                   >
-                    {service.icon}
+                    <img
+                      src={service.icon}
+                      alt={service.title}
+                      style={{ width: 40, height: 40, objectFit: "contain" }}
+                    />
+                    {index === 4 && (
+                      <img
+                        src={jicon6}
+                        alt="overlay icon"
+                        style={{
+                          position: "absolute",
+                          top: "50%",
+                          left: "50%",
+                          transform: "translate(-50%, -50%)",
+                          width: 18,
+                          height: 18,
+                          objectFit: "contain",
+                        }}
+                      />
+                    )}
                   </div>
 
                   <div
