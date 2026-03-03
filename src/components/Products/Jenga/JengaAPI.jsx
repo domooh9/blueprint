@@ -194,13 +194,15 @@ const JengaAPI = () => {
                         transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                       />
                       
-                      <motion.img
-                        src={product.image}
-                        alt={product.name}
-                        className="w-full max-w-md object-contain relative z-10"
-                        animate={{ y: [-10, 10, -10] }}
-                        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                      />
+                      <div className="relative z-10 inline-flex p-5 sm:p-6 rounded-2xl bg-[#e4f3fe] border-[2px] border-white shadow-xl">
+                        <motion.img
+                          src={product.image}
+                          alt={product.name}
+                          className="w-full max-w-md object-contain rounded-xl"
+                          animate={{ y: [-10, 10, -10] }}
+                          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                        />
+                      </div>
                       
                       <div className="absolute top-1/4 left-1/4 opacity-30">
                         <motion.div
