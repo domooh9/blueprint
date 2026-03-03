@@ -1,5 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card";
-import JengaAPii from "@/assets/JengaA.png";
+import JengaAPii from "@/assets/Screens.png";
 import jengaLogo from "@/assets/jenga-apii.png";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
@@ -175,36 +175,44 @@ const JengaAPI = () => {
                     animate={{ x: 0, opacity: 1 }}
                     transition={{ duration: 0.8, delay: 0.4 }}
                   >
-                    <div className="absolute inset-0 bg-gradient-radial from-white/10 to-transparent rounded-full blur-2xl"></div>
-                    
-                    <div className="relative">
-                      <motion.div
-                        className="absolute -top-4 -left-4 w-8 h-8 bg-white/20 rounded-lg"
-                        animate={{ y: [-5, 5, -5] }}
-                        transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                      />
-                      <motion.div
-                        className="absolute -bottom-2 -right-2 w-6 h-6 bg-white/15 rounded-full"
-                        animate={{ y: [5, -5, 5] }}
-                        transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
-                      />
-                      <motion.div
-                        className="absolute top-1/2 -right-6 w-4 h-4 border-2 border-white/25 rotate-45"
-                        animate={{ rotate: [45, 135, 45] }}
-                        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                      />
-                      
-                      <div className="relative z-10 inline-flex p-5 sm:p-6 rounded-2xl bg-[#e4f3fe] border-[2px] border-white shadow-xl">
-                        <motion.img
-                          src={product.image}
-                          alt={product.name}
-                          className="w-full max-w-md object-contain rounded-xl"
-                          animate={{ y: [-10, 10, -10] }}
-                          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                        />
-                      </div>
-                      
-                      <div className="absolute top-1/4 left-1/4 opacity-30">
+                   <div className="relative bg-white rounded-3xl p-10 shadow-2xl overflow-hidden">
+  
+  {/* Soft background glow */}
+  <div className="absolute inset-0 bg-white rounded-3xl"></div>
+
+  <div className="relative">
+    
+    {/* Floating decorative elements */}
+    <motion.div
+      className="absolute -top-4 -left-4 w-8 h-8 bg-gray-100 rounded-lg"
+      animate={{ y: [-5, 5, -5] }}
+      transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+    />
+    
+    <motion.div
+      className="absolute -bottom-2 -right-2 w-6 h-6 bg-gray-200 rounded-full"
+      animate={{ y: [5, -5, 5] }}
+      transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+    />
+    
+    <motion.div
+      className="absolute top-1/2 -right-6 w-4 h-4 border-2 border-gray-300 rotate-45"
+      animate={{ rotate: [45, 135, 45] }}
+      transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+    />
+
+    {/* Main Image Container */}
+    <div className="relative z-10 inline-flex p-6 rounded-2xl bg-white border border-gray-100 shadow-xl">
+      <motion.img
+        src={product.image}
+        alt={product.name}
+        className="w-full max-w-md object-contain rounded-xl"
+        animate={{ y: [-10, 10, -10] }}
+        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+      />
+    </div>
+</div>
+ <div className="absolute top-1/4 left-1/4 opacity-30">
                         <motion.div
                           className="text-white/40 text-xs font-mono"
                           animate={{ opacity: [0.3, 0.7, 0.3] }}
@@ -220,7 +228,7 @@ const JengaAPI = () => {
             </Card>
           </motion.div>
 
-          {/* Redesigned Compact Services Section */}
+          {/* Services Section */}
           <div className="w-full py-12 px-6 md:px-12 lg:px-20">
             {/* Section Header */}
             <div className="text-center mb-12">
@@ -254,7 +262,7 @@ const JengaAPI = () => {
                   whileHover={{ y: -8 }}
                   className="group h-full"
                 >
-                  <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden h-full flex flex-col">
+                  <div className="bg- rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden h-full flex flex-col">
                     {/* Colored Top Bar */}
                     <div className="h-2" style={{ backgroundColor: item.color }}></div>
                     

@@ -253,26 +253,50 @@ export const Products = () => {
       </p>
     </motion.div>
 
-    {/* ===== Floating Pill Tabs ===== */}
-    <div className="flex justify-center mb-10">
-      <div className="flex gap-3 bg-white/70 backdrop-blur-md border border-gray-200 rounded-full p-2 shadow-md overflow-x-auto">
+    {/* ===== Mobile Tabs (keep latest style) ===== */}
+    <div className="flex justify-center mb-8 lg:hidden">
+      <div className="w-full max-w-3xl">
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 bg-white/70 backdrop-blur-md border border-gray-200 rounded-2xl p-3 shadow-md">
+          {productTabs.map((tab) => {
+            const isActive = activeProduct === tab.id;
+            return (
+              <button
+                key={tab.id}
+                onClick={() => handleTabClick(tab.id)}
+                className={`relative px-3 py-2.5 rounded-xl text-xs sm:text-sm font-medium transition-all duration-300 ${
+                  isActive
+                    ? "bg-primary text-white shadow-lg"
+                    : "text-gray-600 hover:text-primary hover:bg-gray-100"
+                }`}
+              >
+                {tab.label}
+                {isActive && (
+                  <span className="absolute inset-0 rounded-xl ring-2 ring-primary/30 animate-pulse" />
+                )}
+              </button>
+            );
+          })}
+        </div>
+      </div>
+    </div>
 
+    {/* ===== Desktop Tabs (match Resources desktop design) ===== */}
+    <div className="hidden lg:flex justify-center mb-10">
+      <div className="flex gap-3 bg-white/70 backdrop-blur-md border border-gray-200 rounded-full p-2 shadow-md overflow-x-auto">
         {productTabs.map((tab) => {
           const isActive = activeProduct === tab.id;
-
           return (
             <button
               key={tab.id}
+              type="button"
               onClick={() => handleTabClick(tab.id)}
-              className={`relative whitespace-nowrap px-6 py-2.5 rounded-full text-sm md:text-base font-medium transition-all duration-300 ${
+              className={`relative whitespace-nowrap px-6 py-2.5 rounded-full text-base font-medium transition-all duration-300 ${
                 isActive
                   ? "bg-primary text-white shadow-lg"
                   : "text-gray-600 hover:text-primary hover:bg-gray-100"
               }`}
             >
               {tab.label}
-
-              {/* Active glow ring */}
               {isActive && (
                 <span className="absolute inset-0 rounded-full ring-2 ring-primary/30 animate-pulse" />
               )}
@@ -281,7 +305,6 @@ export const Products = () => {
         })}
       </div>
     </div>
-
     {/* ===== Active Product Content ===== */}
     <motion.div
       key={activeProduct}

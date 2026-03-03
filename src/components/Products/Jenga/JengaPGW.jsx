@@ -47,6 +47,7 @@ const JengaPayment = () => {
       <div className="bg-[#f6f7f9]">
         <div className="max-w-[1200px] mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2">
+            {/* Left Image - Now visible on both mobile and desktop */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
@@ -63,17 +64,15 @@ const JengaPayment = () => {
                 className="absolute inset-0 h-full w-full object-cover object-center"
               />
 
-              <div className="absolute z-10 bottom-4 left-4 sm:bottom-6 sm:left-6 lg:bottom-10 lg:left-10">
-                <img
-                  src={JengaPGW}
-                  alt="Jenga Payment Gateway"
-                  className="w-[150px] sm:w-[220px] lg:w-[200px] h-auto rounded-lg shadow-[0_8px_20px_rgba(0,0,0,0.25)]"
-                />
+              <div className="absolute z-10 bottom-4 left-4 sm:bottom-6 sm:left-6 lg:bottom-10 lg:left-10 
+                text-white text-xl sm:text-2xl lg:text-2xl font-bold tracking-wide">
+                Jenga Payment Gateway
               </div>
 
               <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/25 to-black/60" />
             </motion.div>
 
+            {/* Right Pink Card */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
@@ -100,16 +99,34 @@ const JengaPayment = () => {
                 </p>
               </div>
             </motion.div>
-
-            {/* Mobile-only product image below the pink container */}
-            <div className="lg:hidden bg-[#f6f7f9] px-5 pb-6 flex justify-center">
-              <img
-                src={JengaPGW}
-                alt="Jenga Payment Gateway"
-                className="w-[180px] h-auto rounded-lg shadow-[0_8px_20px_rgba(0,0,0,0.25)]"
-              />
-            </div>
           </div>
+
+          {/* Mobile-only product image BELOW both images */}
+          <motion.div 
+            className="lg:hidden flex justify-center py-6 px-5 bg-[#f6f7f9]"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+          >
+            <div className="relative">
+              {/* Decorative elements */}
+              <div className="absolute -inset-1 bg-gradient-to-r from-[#E91E8C] to-[#C30078] rounded-2xl blur-lg opacity-30"></div>
+              
+              {/* Image container with shadow */}
+              <div className="relative bg-white rounded-xl shadow-2xl p-3">
+                <img
+                  src={JengaPGW}
+                  alt="Jenga Payment Gateway"
+                  className="w-[220px] h-auto rounded-lg"
+                />
+              </div>
+              
+              {/* Floating badge */}
+              <div className="absolute -top-2 -right-2 bg-[#E91E8C] text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">
+                New
+              </div>
+            </div>
+          </motion.div>
         </div>
       </div>
 

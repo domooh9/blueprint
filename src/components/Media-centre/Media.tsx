@@ -247,8 +247,45 @@ const Media = () => {
         {/* Main Content Section */}
         <section className="py-16 md:py-20 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 -mt-8 relative z-20">
-            {/* Tab navigation - matched to Products floating pill tabs */}
-            <div className="flex justify-center mb-10">
+            {/* Mobile tabs - match Products mobile design */}
+            <div className="flex justify-center mb-8 lg:hidden">
+              <div className="w-full max-w-3xl">
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 bg-white/70 backdrop-blur-md border border-gray-200 rounded-2xl p-3 shadow-md">
+                  {[
+                    { id: "media", label: "Media Centre" },
+                    { id: "policies", label: "Legal & Privacy" },
+                    { id: "testimonials", label: "Testimonials" },
+                    { id: "blogs", label: "Blogs" },
+                  ].map((tab) => {
+                    const isActive = activeTab === tab.id;
+                    return (
+                      <button
+                        key={tab.id}
+                        type="button"
+                        onClick={() =>
+                          handleTabChange(
+                            tab.id as "media" | "policies" | "blogs" | "testimonials"
+                          )
+                        }
+                        className={`relative px-3 py-2.5 rounded-xl text-xs sm:text-sm font-medium transition-all duration-300 ${
+                          isActive
+                            ? "bg-primary text-white shadow-lg"
+                            : "text-gray-600 hover:text-primary hover:bg-gray-100"
+                        }`}
+                      >
+                        {tab.label}
+                        {isActive && (
+                          <span className="absolute inset-0 rounded-xl ring-2 ring-primary/30 animate-pulse" />
+                        )}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+
+            {/* Desktop tabs - keep Resources desktop design */}
+            <div className="hidden lg:flex justify-center mb-10">
               <div className="flex gap-3 bg-white/70 backdrop-blur-md border border-gray-200 rounded-full p-2 shadow-md overflow-x-auto">
                 {[
                   { id: "media", label: "Media Centre" },
@@ -266,7 +303,7 @@ const Media = () => {
                           tab.id as "media" | "policies" | "blogs" | "testimonials"
                         )
                       }
-                      className={`relative whitespace-nowrap px-6 py-2.5 rounded-full text-sm md:text-base font-medium transition-all duration-300 ${
+                      className={`relative whitespace-nowrap px-6 py-2.5 rounded-full text-base font-medium transition-all duration-300 ${
                         isActive
                           ? "bg-primary text-white shadow-lg"
                           : "text-gray-600 hover:text-primary hover:bg-gray-100"

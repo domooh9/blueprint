@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import Copilo from "@/assets/Copilotp.png";
 import { 
   Send, 
   MessageCircle, 
@@ -13,24 +14,28 @@ import {
 } from "lucide-react";
 
 const BulkSMS = () => {
+  const themePrimary = "#eb2240";
+  const themeBlue = "#196ab6";
+  const themeDark = "#484747";
+
   const features = [
     {
-      icon: <Send className="w-6 h-6 text-[#F7931E]" />,
+      icon: <Send className="w-6 h-6" style={{ color: themeBlue }} />,
       title: "Bulk Messaging",
       description: "Send thousands of SMS instantly to your customers"
     },
     {
-      icon: <MessageCircle className="w-6 h-6 text-[#F7931E]" />,
+      icon: <MessageCircle className="w-6 h-6" style={{ color: themeBlue }} />,
       title: "Two-Way SMS",
       description: "Enable conversations with automated responses"
     },
     {
-      icon: <Users className="w-6 h-6 text-[#F7931E]" />,
+      icon: <Users className="w-6 h-6" style={{ color: themeBlue }} />,
       title: "Contact Management",
       description: "Organize contacts into groups for targeted campaigns"
     },
     {
-      icon: <BarChart3 className="w-6 h-6 text-[#F7931E]" />,
+      icon: <BarChart3 className="w-6 h-6" style={{ color: themeBlue }} />,
       title: "Analytics",
       description: "Track delivery rates and campaign performance"
     }
@@ -69,8 +74,14 @@ const BulkSMS = () => {
   return (
     <div className="min-h-screen bg-white pt-16 md:pt-20">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-[#9a3820] to-[#F7931E] text-white overflow-hidden">
-        <div className="absolute inset-0 bg-black/20"></div>
+      <section
+        className="relative text-white overflow-hidden bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: `url(${Copilo})` }}
+      >
+        <div
+          className="absolute inset-0"
+          style={{ background: `linear-gradient(135deg, ${themeDark}CC 0%, ${themePrimary}A6 55%, ${themeBlue}99 100%)` }}
+        />
         <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -92,7 +103,8 @@ const BulkSMS = () => {
 >
   <Button 
     size="lg" 
-    className="bg-white text-[#9a3820] hover:bg-gray-100 text-lg px-8"
+    className="bg-white hover:bg-gray-100 text-lg px-8"
+    style={{ color: themeDark }}
   >
     Get Started
     <ChevronRight className="ml-2 w-5 h-5" />
@@ -128,7 +140,7 @@ const BulkSMS = () => {
                 transition={{ delay: index * 0.1 }}
                 className="text-center"
               >
-                <div className="text-3xl md:text-4xl font-bold text-[#9a3820] mb-2">
+                <div className="text-3xl md:text-4xl font-bold mb-2" style={{ color: themePrimary }}>
                   {stat.number}
                 </div>
                 <div className="text-gray-600">{stat.label}</div>
@@ -147,7 +159,7 @@ const BulkSMS = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-[#9a3820] mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: themeDark }}>
               Why Choose Our Bulk SMS?
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
@@ -166,7 +178,7 @@ const BulkSMS = () => {
                 whileHover={{ y: -5 }}
                 className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all"
               >
-                <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-4">
+                <div className="w-12 h-12 rounded-lg flex items-center justify-center mb-4" style={{ backgroundColor: `${themeBlue}1A` }}>
                   {feature.icon}
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">
@@ -190,7 +202,7 @@ const BulkSMS = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
-              <h2 className="text-3xl md:text-4xl font-bold text-[#9a3820] mb-6">
+              <h2 className="text-3xl md:text-4xl font-bold mb-6" style={{ color: themeDark }}>
                 Why SMS Marketing Works
               </h2>
               <div className="space-y-4">
@@ -203,7 +215,7 @@ const BulkSMS = () => {
                     transition={{ delay: index * 0.1 }}
                     className="flex items-start gap-3"
                   >
-                    <CheckCircle className="w-6 h-6 text-[#F7931E] flex-shrink-0 mt-0.5" />
+                    <CheckCircle className="w-6 h-6 flex-shrink-0 mt-0.5" style={{ color: themeBlue }} />
                     <span className="text-gray-700 text-lg">{benefit}</span>
                   </motion.div>
                 ))}
@@ -217,21 +229,21 @@ const BulkSMS = () => {
               className="bg-white p-8 rounded-2xl shadow-xl"
             >
               <div className="flex items-center gap-4 mb-6">
-                <Globe className="w-8 h-8 text-[#F7931E]" />
+                <Globe className="w-8 h-8" style={{ color: themeBlue }} />
                 <div>
                   <h3 className="text-xl font-bold text-gray-900">Global Reach</h3>
                   <p className="text-gray-600">Send SMS to 200+ countries</p>
                 </div>
               </div>
               <div className="flex items-center gap-4 mb-6">
-                <Clock className="w-8 h-8 text-[#F7931E]" />
+                <Clock className="w-8 h-8" style={{ color: themeBlue }} />
                 <div>
                   <h3 className="text-xl font-bold text-gray-900">Schedule Messages</h3>
                   <p className="text-gray-600">Plan your campaigns in advance</p>
                 </div>
               </div>
               <div className="flex items-center gap-4">
-                <Shield className="w-8 h-8 text-[#F7931E]" />
+                <Shield className="w-8 h-8" style={{ color: themeBlue }} />
                 <div>
                   <h3 className="text-xl font-bold text-gray-900">Secure & Reliable</h3>
                   <p className="text-gray-600">Enterprise-grade security</p>
@@ -251,7 +263,7 @@ const BulkSMS = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-[#9a3820] mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: themeDark }}>
               Simple, Transparent Pricing
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
@@ -269,25 +281,26 @@ const BulkSMS = () => {
                 transition={{ delay: index * 0.1 }}
                 whileHover={{ y: -5 }}
                 className={`bg-white rounded-2xl shadow-lg overflow-hidden ${
-                  index === 1 ? 'ring-2 ring-[#F7931E] scale-105' : ''
+                  index === 1 ? 'ring-2 scale-105' : ''
                 }`}
+                style={index === 1 ? { boxShadow: `0 0 0 2px ${themePrimary}` } : undefined}
               >
                 {index === 1 && (
-                  <div className="bg-[#F7931E] text-white text-center py-2 text-sm font-semibold">
+                  <div className="text-white text-center py-2 text-sm font-semibold" style={{ backgroundColor: themePrimary }}>
                     MOST POPULAR
                   </div>
                 )}
                 <div className="p-8">
                   <h3 className="text-2xl font-bold text-gray-900 mb-2">{plan.name}</h3>
                   <div className="mb-4">
-                    <span className="text-4xl font-bold text-[#9a3820]">{plan.price}</span>
+                    <span className="text-4xl font-bold" style={{ color: themeDark }}>{plan.price}</span>
                     <span className="text-gray-600 ml-2">/month</span>
                   </div>
-                  <p className="text-[#F7931E] font-semibold mb-6">{plan.sms} included</p>
+                  <p className="font-semibold mb-6" style={{ color: themeBlue }}>{plan.sms} included</p>
                   <ul className="space-y-3 mb-8">
                     {plan.features.map((feature, i) => (
                       <li key={i} className="flex items-start gap-2">
-                        <CheckCircle className="w-5 h-5 text-[#F7931E] flex-shrink-0 mt-0.5" />
+                        <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: themeBlue }} />
                         <span className="text-gray-600">{feature}</span>
                       </li>
                     ))}
@@ -295,9 +308,12 @@ const BulkSMS = () => {
                   <Button 
                     className={`w-full ${
                       index === 1 
-                        ? 'bg-[#F7931E] hover:bg-[#e07d0e]' 
-                        : 'bg-gray-900 hover:bg-gray-800'
+                        ? 'text-white' 
+                        : 'text-white'
                     } text-white`}
+                    style={{
+                      backgroundColor: index === 1 ? themePrimary : themeDark,
+                    }}
                   >
                     Get Started
                   </Button>
@@ -309,7 +325,10 @@ const BulkSMS = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-[#9a3820] to-[#F7931E] text-white">
+      <section
+        className="py-20 text-white"
+        style={{ background: `linear-gradient(90deg, ${themeDark} 0%, ${themePrimary} 50%, ${themeBlue} 100%)` }}
+      >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -326,7 +345,8 @@ const BulkSMS = () => {
             <div className="flex flex-wrap justify-center gap-4">
               <Button 
                 size="lg" 
-                className="bg-white text-[#9a3820] hover:bg-gray-100 text-lg px-8"
+                className="bg-white hover:bg-gray-100 text-lg px-8"
+                style={{ color: themeDark }}
               >
                 Create Free Account
               </Button>
