@@ -5,6 +5,7 @@ import {
   Users, 
   Briefcase, 
   FileText, 
+  LayoutTemplate,
   Plus,
   Edit,
   Trash2,
@@ -75,7 +76,19 @@ interface BlogPost {
   status: "published" | "draft" | "archived";
 }
 
-type TabType = "board" | "careers" | "blogs";
+type TabType = "board" | "careers" | "blogs" | "content";
+type ContentStatus = "active" | "draft" | "archived";
+
+interface ManagedSection {
+  id: string;
+  name: string;
+  page: string;
+  sectionKey: string;
+  contentType: "hero" | "list" | "cards" | "faq" | "policy" | "contacts" | "navigation" | "footer";
+  status: ContentStatus;
+  fields: string[];
+  updatedAt: string;
+}
 
 // Mock Data
 const mockBoardMembers: BoardMember[] = [
@@ -170,6 +183,24 @@ const mockBlogs: BlogPost[] = [
   }
 ];
 
+const recommendedSections: ManagedSection[] = [
+  { id: "sc-1", name: "Header Navigation", page: "Global", sectionKey: "header.nav", contentType: "navigation", status: "active", fields: ["labels", "links", "order", "dropdownItems"], updatedAt: "2026-03-03" },
+  { id: "sc-2", name: "Footer Links & Company Info", page: "Global", sectionKey: "footer.main", contentType: "footer", status: "active", fields: ["quickLinks", "contactInfo", "socialLinks", "copyright"], updatedAt: "2026-03-03" },
+  { id: "sc-3", name: "Homepage Hero", page: "Home", sectionKey: "home.hero", contentType: "hero", status: "active", fields: ["title", "subtitle", "ctaText", "ctaLink", "backgroundImage"], updatedAt: "2026-03-02" },
+  { id: "sc-4", name: "Homepage Highlights", page: "Home", sectionKey: "home.highlights", contentType: "cards", status: "active", fields: ["cards", "icons", "links"], updatedAt: "2026-03-02" },
+  { id: "sc-5", name: "Products Landing Tabs", page: "Products", sectionKey: "products.tabs", contentType: "list", status: "active", fields: ["tabLabel", "slug", "icon", "order"], updatedAt: "2026-03-03" },
+  { id: "sc-6", name: "Product Page Hero Content", page: "Products", sectionKey: "products.hero", contentType: "hero", status: "active", fields: ["headline", "description", "heroImage", "cta"], updatedAt: "2026-03-01" },
+  { id: "sc-7", name: "Who We Are Sections", page: "Who We Are", sectionKey: "who.sections", contentType: "cards", status: "active", fields: ["title", "description", "image", "order"], updatedAt: "2026-03-01" },
+  { id: "sc-8", name: "Careers Job Openings", page: "Company", sectionKey: "careers.jobs", contentType: "list", status: "active", fields: ["jobTitle", "department", "description", "requirements", "status"], updatedAt: "2026-03-03" },
+  { id: "sc-9", name: "Board Members", page: "Company", sectionKey: "board.members", contentType: "cards", status: "active", fields: ["name", "title", "bio", "image", "socialLinks"], updatedAt: "2026-03-03" },
+  { id: "sc-10", name: "Media Centre Resources", page: "Resources", sectionKey: "media.items", contentType: "cards", status: "active", fields: ["title", "category", "date", "link", "coverImage"], updatedAt: "2026-03-02" },
+  { id: "sc-11", name: "Legal & Privacy Policies", page: "Resources", sectionKey: "media.policies", contentType: "policy", status: "active", fields: ["policyName", "summary", "link", "category"], updatedAt: "2026-03-02" },
+  { id: "sc-12", name: "Testimonials", page: "Resources", sectionKey: "testimonials.items", contentType: "cards", status: "active", fields: ["quote", "author", "role", "photo"], updatedAt: "2026-03-01" },
+  { id: "sc-13", name: "Blogs", page: "Resources", sectionKey: "blogs.posts", contentType: "cards", status: "active", fields: ["title", "slug", "excerpt", "coverImage", "author", "status"], updatedAt: "2026-03-03" },
+  { id: "sc-14", name: "FAQ Categories & Q/A", page: "FAQ", sectionKey: "faq.categories", contentType: "faq", status: "active", fields: ["category", "question", "answer", "order"], updatedAt: "2026-03-02" },
+  { id: "sc-15", name: "Contact Details", page: "Contact", sectionKey: "contact.details", contentType: "contacts", status: "active", fields: ["email", "phone", "address", "supportLink"], updatedAt: "2026-03-03" },
+];
+
 // Modal Components
 interface ModalProps {
   isOpen: boolean;
@@ -219,6 +250,133 @@ interface BoardMemberFormProps {
   onSubmit: (data: Partial<BoardMember>) => void;
   onCancel: () => void;
 }
+
+interface SiteContentFormProps {
+  item?: ManagedSection;
+  onSubmit: (data: Partial<ManagedSection>) => void;
+  onCancel: () => void;
+}
+
+const SiteContentForm = ({ item, onSubmit, onCancel }: SiteContentFormProps) => {
+  const [formData, setFormData] = useState({
+    name: item?.name || "",
+    page: item?.page || "",
+    sectionKey: item?.sectionKey || "",
+    contentType: item?.contentType || "cards",
+    status: item?.status || "active",
+    fields: item?.fields?.join(", ") || "",
+  });
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    onSubmit({
+      ...formData,
+      fields: formData.fields.split(",").map((f) => f.trim()).filter(Boolean),
+      updatedAt: new Date().toISOString().split("T")[0],
+    });
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Section Name *</label>
+          <input
+            type="text"
+            required
+            value={formData.name}
+            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+            className="w-full px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800"
+            placeholder="Homepage Hero"
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Page *</label>
+          <input
+            type="text"
+            required
+            value={formData.page}
+            onChange={(e) => setFormData({ ...formData, page: e.target.value })}
+            className="w-full px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800"
+            placeholder="Products"
+          />
+        </div>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Section Key *</label>
+          <input
+            type="text"
+            required
+            value={formData.sectionKey}
+            onChange={(e) => setFormData({ ...formData, sectionKey: e.target.value })}
+            className="w-full px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800"
+            placeholder="products.hero"
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Content Type</label>
+          <select
+            value={formData.contentType}
+            onChange={(e) => setFormData({ ...formData, contentType: e.target.value as ManagedSection["contentType"] })}
+            className="w-full px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800"
+          >
+            <option value="hero">hero</option>
+            <option value="list">list</option>
+            <option value="cards">cards</option>
+            <option value="faq">faq</option>
+            <option value="policy">policy</option>
+            <option value="contacts">contacts</option>
+            <option value="navigation">navigation</option>
+            <option value="footer">footer</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Managed Fields (comma separated)</label>
+        <input
+          type="text"
+          value={formData.fields}
+          onChange={(e) => setFormData({ ...formData, fields: e.target.value })}
+          className="w-full px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800"
+          placeholder="title, subtitle, image, ctaText"
+        />
+      </div>
+
+      <div>
+        <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Status</label>
+        <select
+          value={formData.status}
+          onChange={(e) => setFormData({ ...formData, status: e.target.value as ContentStatus })}
+          className="w-full px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800"
+        >
+          <option value="active">active</option>
+          <option value="draft">draft</option>
+          <option value="archived">archived</option>
+        </select>
+      </div>
+
+      <div className="flex justify-end gap-3 pt-4">
+        <button
+          type="button"
+          onClick={onCancel}
+          className="px-4 py-2 border border-slate-200 dark:border-slate-700 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
+        >
+          Cancel
+        </button>
+        <button
+          type="submit"
+          className="px-4 py-2 bg-indigo-600 text-white rounded-xl hover:bg-indigo-700 transition-colors flex items-center gap-2"
+        >
+          <Save className="w-4 h-4" />
+          {item ? "Update Section" : "Add Section"}
+        </button>
+      </div>
+    </form>
+  );
+};
 
 const BoardMemberForm = ({ member, onSubmit, onCancel }: BoardMemberFormProps) => {
   const [formData, setFormData] = useState({
@@ -368,6 +526,7 @@ const FinAdmin = () => {
   const [boardMembers, setBoardMembers] = useState<BoardMember[]>(mockBoardMembers);
   const [careers, setCareers] = useState<Career[]>(mockCareers);
   const [blogs, setBlogs] = useState<BlogPost[]>(mockBlogs);
+  const [siteContent, setSiteContent] = useState<ManagedSection[]>(recommendedSections);
   
   const [modalOpen, setModalOpen] = useState(false);
   const [editingItem, setEditingItem] = useState<any>(null);
@@ -419,6 +578,38 @@ const FinAdmin = () => {
     setBoardMembers(boardMembers.filter(m => m.id !== id));
     setShowDeleteConfirm(null);
     showNotification("success", "Board member deleted successfully");
+  };
+
+  const handleAddSiteContent = (data: Partial<ManagedSection>) => {
+    const newSection: ManagedSection = {
+      id: Date.now().toString(),
+      name: data.name || "",
+      page: data.page || "",
+      sectionKey: data.sectionKey || "",
+      contentType: (data.contentType as ManagedSection["contentType"]) || "cards",
+      status: (data.status as ContentStatus) || "draft",
+      fields: data.fields || [],
+      updatedAt: new Date().toISOString().split("T")[0],
+    };
+    setSiteContent((prev) => [newSection, ...prev]);
+    setModalOpen(false);
+    showNotification("success", "Content section added successfully");
+  };
+
+  const handleEditSiteContent = (data: Partial<ManagedSection>) => {
+    if (!editingItem) return;
+    setSiteContent((prev) =>
+      prev.map((s) => (s.id === editingItem.id ? { ...s, ...data, updatedAt: new Date().toISOString().split("T")[0] } : s))
+    );
+    setModalOpen(false);
+    setEditingItem(null);
+    showNotification("success", "Content section updated successfully");
+  };
+
+  const handleDeleteSiteContent = (id: string) => {
+    setSiteContent((prev) => prev.filter((s) => s.id !== id));
+    setShowDeleteConfirm(null);
+    showNotification("success", "Content section deleted successfully");
   };
 
   // Tab content components
@@ -641,6 +832,107 @@ const FinAdmin = () => {
     </div>
   );
 
+  const renderContentTab = () => (
+    <div className="space-y-4">
+      {siteContent
+        .filter(
+          (s) =>
+            s.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            s.page.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            s.sectionKey.toLowerCase().includes(searchTerm.toLowerCase())
+        )
+        .map((section) => (
+          <motion.div
+            key={section.id}
+            layout
+            className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-6"
+          >
+            <div className="flex items-start justify-between gap-4">
+              <div className="min-w-0">
+                <div className="flex items-center gap-2 flex-wrap">
+                  <h3 className="text-lg font-semibold text-slate-900 dark:text-white">{section.name}</h3>
+                  <span className="px-2 py-1 text-xs rounded-lg bg-indigo-100 text-indigo-700 dark:bg-indigo-900/20 dark:text-indigo-300">
+                    {section.page}
+                  </span>
+                  <span className="px-2 py-1 text-xs rounded-lg bg-slate-100 text-slate-700 dark:bg-slate-700 dark:text-slate-300">
+                    {section.contentType}
+                  </span>
+                </div>
+                <p className="text-sm text-slate-500 mt-1">{section.sectionKey}</p>
+              </div>
+              <span
+                className={`px-3 py-1 rounded-full text-xs font-medium ${
+                  section.status === "active"
+                    ? "bg-green-100 text-green-700 dark:bg-green-900/20 dark:text-green-400"
+                    : section.status === "draft"
+                    ? "bg-yellow-100 text-yellow-700 dark:bg-yellow-900/20 dark:text-yellow-400"
+                    : "bg-slate-100 text-slate-700 dark:bg-slate-700 dark:text-slate-300"
+                }`}
+              >
+                {section.status}
+              </span>
+            </div>
+
+            <div className="mt-4">
+              <p className="text-xs text-slate-500 mb-2">Managed fields</p>
+              <div className="flex flex-wrap gap-2">
+                {section.fields.map((field) => (
+                  <span
+                    key={`${section.id}-${field}`}
+                    className="text-xs bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 px-2 py-1 rounded-lg"
+                  >
+                    {field}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <div className="flex items-center justify-between mt-4 pt-4 border-t border-slate-100 dark:border-slate-700">
+              <span className="text-xs text-slate-400">Updated: {section.updatedAt}</span>
+              <div className="flex gap-2">
+                <button
+                  onClick={() => {
+                    setEditingItem(section);
+                    setModalType("edit");
+                    setModalOpen(true);
+                  }}
+                  className="p-2 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg transition-colors"
+                >
+                  <Edit className="w-4 h-4 text-slate-500" />
+                </button>
+                <button
+                  onClick={() => setShowDeleteConfirm(section.id)}
+                  className="p-2 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-colors"
+                >
+                  <Trash2 className="w-4 h-4 text-red-500" />
+                </button>
+              </div>
+            </div>
+
+            {showDeleteConfirm === section.id && (
+              <div className="mt-4 p-3 rounded-xl bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-900/40 flex items-center justify-between">
+                <span className="text-sm text-red-700 dark:text-red-300">Delete this content section?</span>
+                <div className="flex gap-2">
+                  <button
+                    onClick={() => handleDeleteSiteContent(section.id)}
+                    className="px-3 py-1.5 bg-red-600 text-white text-sm rounded-lg hover:bg-red-700"
+                  >
+                    Delete
+                  </button>
+                  <button
+                    onClick={() => setShowDeleteConfirm(null)}
+                    className="px-3 py-1.5 bg-slate-200 dark:bg-slate-700 text-sm rounded-lg hover:bg-slate-300 dark:hover:bg-slate-600"
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </div>
+            )}
+          </motion.div>
+        ))}
+    </div>
+  );
+
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950">
       {/* Notification */}
@@ -724,6 +1016,18 @@ const FinAdmin = () => {
               <FileText className="w-5 h-5" />
               {sidebarOpen && <span>Blogs</span>}
             </button>
+
+            <button
+              onClick={() => setActiveTab("content")}
+              className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-colors ${
+                activeTab === "content"
+                  ? "bg-indigo-600 text-white"
+                  : "text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800"
+              }`}
+            >
+              <LayoutTemplate className="w-5 h-5" />
+              {sidebarOpen && <span>Site Content</span>}
+            </button>
           </nav>
         </div>
 
@@ -744,6 +1048,7 @@ const FinAdmin = () => {
               {activeTab === "board" && "Board Members"}
               {activeTab === "careers" && "Career Opportunities"}
               {activeTab === "blogs" && "Blog Posts"}
+              {activeTab === "content" && "Site Content Manager"}
             </h1>
 
             <div className="flex items-center gap-4">
@@ -760,17 +1065,19 @@ const FinAdmin = () => {
               </div>
 
               {/* Add Button */}
-              <button
-                onClick={() => {
-                  setEditingItem(null);
-                  setModalType("add");
-                  setModalOpen(true);
-                }}
-                className="flex items-center gap-2 px-4 py-2 bg-indigo-600 text-white rounded-xl hover:bg-indigo-700 transition-colors"
-              >
-                <Plus className="w-4 h-4" />
-                <span>Add New</span>
-              </button>
+              {(activeTab === "board" || activeTab === "content") && (
+                <button
+                  onClick={() => {
+                    setEditingItem(null);
+                    setModalType("add");
+                    setModalOpen(true);
+                  }}
+                  className="flex items-center gap-2 px-4 py-2 bg-indigo-600 text-white rounded-xl hover:bg-indigo-700 transition-colors"
+                >
+                  <Plus className="w-4 h-4" />
+                  <span>Add New</span>
+                </button>
+              )}
             </div>
           </div>
         </header>
@@ -780,6 +1087,7 @@ const FinAdmin = () => {
           {activeTab === "board" && renderBoardTab()}
           {activeTab === "careers" && renderCareersTab()}
           {activeTab === "blogs" && renderBlogsTab()}
+          {activeTab === "content" && renderContentTab()}
         </div>
       </main>
 
@@ -790,16 +1098,40 @@ const FinAdmin = () => {
           setModalOpen(false);
           setEditingItem(null);
         }}
-        title={modalType === "add" ? "Add Board Member" : "Edit Board Member"}
+        title={
+          activeTab === "board"
+            ? modalType === "add"
+              ? "Add Board Member"
+              : "Edit Board Member"
+            : activeTab === "content"
+            ? modalType === "add"
+              ? "Add Site Section"
+              : "Edit Site Section"
+            : modalType === "add"
+            ? "Add Item"
+            : "Edit Item"
+        }
       >
-        <BoardMemberForm
-          member={editingItem}
-          onSubmit={modalType === "add" ? handleAddBoardMember : handleEditBoardMember}
-          onCancel={() => {
-            setModalOpen(false);
-            setEditingItem(null);
-          }}
-        />
+        {activeTab === "board" && (
+          <BoardMemberForm
+            member={editingItem}
+            onSubmit={modalType === "add" ? handleAddBoardMember : handleEditBoardMember}
+            onCancel={() => {
+              setModalOpen(false);
+              setEditingItem(null);
+            }}
+          />
+        )}
+        {activeTab === "content" && (
+          <SiteContentForm
+            item={editingItem}
+            onSubmit={modalType === "add" ? handleAddSiteContent : handleEditSiteContent}
+            onCancel={() => {
+              setModalOpen(false);
+              setEditingItem(null);
+            }}
+          />
+        )}
       </Modal>
     </div>
   );

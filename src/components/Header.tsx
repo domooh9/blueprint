@@ -216,13 +216,13 @@ export const Header = () => {
       <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
         <SheetContent
           side="right"
-          className="w-full sm:max-w-sm bg-white border-l border-gray-100 p-0 overflow-hidden"
+          className="w-full sm:max-w-sm bg-gradient-to-b from-white to-slate-50 border-l border-gray-100 p-0 overflow-hidden"
         >
           {/* Top Section with Logo and Close */}
-          <div className="sticky top-0 z-10 bg-white border-b border-gray-100 shadow-sm w-full">
+          <div className="sticky top-0 z-10 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm w-full">
             <div className="flex items-center justify-between px-5 py-4">
               <div className="flex items-center gap-3">
-                <img src={logo} alt="Finserve" className="h-9" />
+                <img src={logo} alt="Finserve" className="h-10" />
               </div>
 
               <button
@@ -237,15 +237,22 @@ export const Header = () => {
 
           {/* Mobile Navigation */}
           <div className="px-3 py-4 overflow-y-auto h-[calc(100vh-80px)] w-full">
-            <nav className="space-y-1 w-full">
+            <nav className="space-y-2 w-full">
               {menuItems.map((item) => {
                 const active = isActive(item.href);
 
                 if (item.label === "Resources") {
                   return (
-                    <div key={item.label} className="border-b border-gray-100 last:border-0">
+                    <div
+                      key={item.label}
+                      className={`rounded-xl border transition-colors ${
+                        active
+                          ? "border-primary/30 bg-primary/5"
+                          : "border-gray-200 bg-white"
+                      }`}
+                    >
                       <div
-                        className={`flex items-center justify-between px-4 py-3.5 w-full ${
+                        className={`flex items-center justify-between px-4 py-3.5 w-full rounded-xl ${
                           active
                             ? "text-primary"
                             : "text-gray-700"
@@ -273,7 +280,7 @@ export const Header = () => {
                       </div>
 
                       {mobileResourcesOpen && (
-                        <div className="ml-4 mb-2 space-y-1">
+                        <div className="px-2 pb-2 space-y-1">
                           <Link
                             to="/media-centre#media"
                             onClick={() => setMobileMenuOpen(false)}
@@ -310,9 +317,16 @@ export const Header = () => {
 
                 if (item.label === "Company") {
                   return (
-                    <div key={item.label} className="border-b border-gray-100 last:border-0">
+                    <div
+                      key={item.label}
+                      className={`rounded-xl border transition-colors ${
+                        active
+                          ? "border-primary/30 bg-primary/5"
+                          : "border-gray-200 bg-white"
+                      }`}
+                    >
                       <div
-                        className={`flex items-center justify-between px-4 py-3.5 w-full ${
+                        className={`flex items-center justify-between px-4 py-3.5 w-full rounded-xl ${
                           active
                             ? "text-primary"
                             : "text-gray-700"
@@ -340,7 +354,7 @@ export const Header = () => {
                       </div>
 
                       {mobileCompanyOpen && (
-                        <div className="ml-4 mb-2 space-y-1">
+                        <div className="px-2 pb-2 space-y-1">
                           <Link
                             to="/boardmembers"
                             onClick={() => setMobileMenuOpen(false)}
@@ -367,10 +381,10 @@ export const Header = () => {
                     to={item.href}
                     onClick={() => setMobileMenuOpen(false)}
                     className={`
-                      block px-4 py-3.5 border-b border-gray-100 last:border-0 w-full rounded-lg transition-colors duration-200
+                      block px-4 py-3.5 border border-gray-200 w-full rounded-xl transition-colors duration-200 bg-white
                       ${
                         active
-                          ? "text-primary bg-gray-50/70"
+                          ? "text-primary border-primary/30 bg-primary/5"
                           : "text-gray-700 hover:text-primary hover:bg-gray-50"
                       }
                     `}
@@ -387,7 +401,7 @@ export const Header = () => {
                 href="https://finserve.custhelp.com/app/home"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center px-4 py-2.5 bg-primary text-white rounded-lg font-medium text-sm hover:bg-primary/90 transition-colors duration-200 w-full"
+                className="inline-flex items-center justify-center px-4 py-2.5 bg-primary text-white rounded-xl font-medium text-sm hover:bg-primary/90 transition-colors duration-200 w-full shadow-sm"
               >
                 Support Portal
               </a>
