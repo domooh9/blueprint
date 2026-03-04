@@ -1,19 +1,182 @@
 // src/components/Hero.tsx
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { ArrowRight, Shield, Zap, Sparkles, TrendingUp, Lock, Cpu, Award } from "lucide-react";
+import { ArrowRight, Sparkles, Palette, Check, ChevronDown } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import Particles from "react-tsparticles";
 import { loadFull } from "tsparticles";
 import imageddd from "@/assets/imageddd.mp4";
 
+// Theme Configuration
+const themeConfig = {
+  default: {
+    name: "Default",
+    background: "bg-gradient-to-br from-slate-50 via-white to-slate-100",
+    overlay: "bg-gradient-to-r from-white/20 via-white/10 to-white/15",
+    overlaySecondary: "bg-gradient-to-t from-white/10 via-transparent to-white/5",
+    overlayTertiary: "bg-gradient-to-br from-primary/5 via-transparent to-primary/2",
+    particleColor: "#eb2240",
+    linkColor: "#eb2240",
+    description: ""
+  },
+  daylight: {
+    name: "Daylight",
+    background: "bg-gradient-to-br from-blue-50 via-sky-50 to-indigo-100",
+    overlay: "bg-gradient-to-r from-blue-100/30 via-sky-100/20 to-indigo-100/25",
+    overlaySecondary: "bg-gradient-to-t from-blue-50/20 via-transparent to-sky-50/10",
+    overlayTertiary: "bg-gradient-to-br from-blue-400/10 via-transparent to-sky-400/5",
+    particleColor: "#3b82f6",
+    linkColor: "#2563eb",
+    description: ""
+  },
+  dusk: {
+    name: "Dusk",
+    background: "bg-gradient-to-br from-orange-100 via-pink-50 to-purple-100",
+    overlay: "bg-gradient-to-r from-orange-200/25 via-pink-100/15 to-purple-200/20",
+    overlaySecondary: "bg-gradient-to-t from-orange-100/15 via-transparent to-pink-50/8",
+    overlayTertiary: "bg-gradient-to-br from-orange-400/8 via-transparent to-purple-400/6",
+    particleColor: "#f97316",
+    linkColor: "#ea580c",
+    description: ""
+  },
+  night: {
+    name: "Night",
+    background: "bg-gradient-to-br from-slate-900 via-gray-900 to-black",
+    overlay: "bg-gradient-to-r from-slate-800/40 via-gray-800/25 to-black/35",
+    overlaySecondary: "bg-gradient-to-t from-slate-700/20 via-transparent to-gray-700/10",
+    overlayTertiary: "bg-gradient-to-br from-blue-600/15 via-transparent to-purple-600/8",
+    particleColor: "#60a5fa",
+    linkColor: "#3b82f6",
+    description: ""
+  },
+  predawn: {
+    name: "Predawn",
+    background: "bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900",
+    overlay: "bg-gradient-to-r from-indigo-800/35 via-purple-800/20 to-pink-800/30",
+    overlaySecondary: "bg-gradient-to-t from-indigo-700/18 via-transparent to-purple-700/12",
+    overlayTertiary: "bg-gradient-to-br from-pink-500/12 via-transparent to-indigo-500/8",
+    particleColor: "#a855f7",
+    linkColor: "#9333ea",
+    description: ""
+  }
+};
+
+// Environment Mode Switcher Component
+const EnvironmentSwitcher = ({ currentTheme, onThemeChange }: { 
+  currentTheme: keyof typeof themeConfig; 
+  onThemeChange: (theme: keyof typeof themeConfig) => void;
+}) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  const handleThemeSelect = (theme: keyof typeof themeConfig) => {
+    onThemeChange(theme);
+    setIsOpen(false);
+  };
+
+  return (
+    <div className="relative" ref={dropdownRef}>
+      {/* Trigger Button */}
+      <motion.button
+        onClick={() => setIsOpen(!isOpen)}
+        className="group relative flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/10 backdrop-blur-lg border border-white/20 hover:border-white/40 hover:bg-white/20 transition-all duration-300 shadow-lg hover:shadow-xl"
+        whileHover={{ scale: 1.02 }}
+        whileTap={{ scale: 0.98 }}
+      >
+        <div className="flex items-center gap-2">
+          <div className="w-2 h-2 rounded-full bg-gradient-to-r from-green-400 to-emerald-500 animate-pulse" />
+          <Palette className="w-4 h-4 text-gray-700 group-hover:text-gray-900 transition-colors" />
+          <span className="text-sm font-medium text-gray-700 group-hover:text-gray-900 transition-colors hidden sm:inline">
+            {themeConfig[currentTheme].name}
+          </span>
+          <ChevronDown 
+            className={`w-4 h-4 text-gray-600 transition-transform duration-200 ${
+              isOpen ? 'rotate-180' : ''
+            }`} 
+          />
+        </div>
+      </motion.button>
+
+      {/* Dropdown Menu */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -10, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -10, scale: 0.95 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
+            className="absolute top-full right-0 mt-2 w-64 bg-white/95 backdrop-blur-xl rounded-2xl border border-white/30 shadow-2xl overflow-hidden z-50"
+          >
+            <div className="p-2">
+              <div className="px-3 py-2 border-b border-gray-100/50">
+                <h3 className="text-sm font-semibold text-gray-900">Environment Mode</h3>
+                <p className="text-xs text-gray-600 mt-0.5">Choose your visual experience</p>
+              </div>
+              
+              <div className="py-2 space-y-1">
+                {Object.entries(themeConfig).map(([key, theme]) => (
+                  <motion.button
+                    key={key}
+                    onClick={() => handleThemeSelect(key as keyof typeof themeConfig)}
+                    className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-left transition-all duration-200 group ${
+                      currentTheme === key 
+                        ? 'bg-primary/10 text-primary border border-primary/20' 
+                        : 'hover:bg-gray-50/80 text-gray-700 hover:text-gray-900'
+                    }`}
+                    whileHover={{ x: 2 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    <div className="flex items-center gap-3">
+                      <div 
+                        className="w-3 h-3 rounded-full border border-white/50 shadow-sm"
+                        style={{ backgroundColor: theme.particleColor }}
+                      />
+                      <div>
+                        <div className="text-sm font-medium">{theme.name}</div>
+                        <div className="text-xs opacity-70">{theme.description}</div>
+                      </div>
+                    </div>
+                    {currentTheme === key && (
+                      <motion.div
+                        initial={{ scale: 0 }}
+                        animate={{ scale: 1 }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        <Check className="w-4 h-4 text-primary" />
+                      </motion.div>
+                    )}
+                  </motion.button>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+};
+
 export const Hero = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
+  const [currentTheme, setCurrentTheme] = useState<keyof typeof themeConfig>('default');
   const textRef = useRef(null);
-  const videoRef = useRef(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
   
-  const particlesInit = async (main) => {
+  const particlesInit = async (main: any) => {
     await loadFull(main);
   };
 
@@ -22,15 +185,6 @@ export const Hero = () => {
     "Telco Diversification",
     "Loans Growth",
     "Deposit Mobilization"
-  ];
-
-  const features = [
-    { icon: Shield, title: "Bank-Grade Security", desc: "Military-grade encryption" },
-    { icon: Zap, title: "Real-Time Processing", desc: "Instant transaction settlement" },
-    { icon: Cpu, title: "Scalable APIs", desc: "Enterprise-ready infrastructure" },
-    { icon: TrendingUp, title: "High Performance", desc: "99.99% uptime SLA" },
-    { icon: Lock, title: "PCI DSS Compliant", desc: "Industry certified" },
-    { icon: Award, title: "Award Winning", desc: "Best Fintech 2024" }
   ];
 
   // Typewriter effect for tagline
@@ -63,17 +217,17 @@ export const Hero = () => {
   useEffect(() => {
     const video = videoRef.current;
     if (video) {
-      video.play().catch(error => {
+      video.play().catch((error: any) => {
         console.log("Video autoplay failed:", error);
         // Fallback: mute and try again
         video.muted = true;
-        video.play().catch(e => console.log("Muted play also failed:", e));
+        video.play().catch((e: any) => console.log("Muted play also failed:", e));
       });
     }
   }, []);
 
-  const canvasRef = useRef(null);
-  const containerRef = useRef(null);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!canvasRef.current || !containerRef.current) return;
@@ -91,10 +245,15 @@ export const Hero = () => {
     updateCanvasSize();
     window.addEventListener('resize', updateCanvasSize);
 
+    // Get current theme colors
+    const theme = themeConfig[currentTheme];
+    const primaryColor = theme.particleColor;
+    const linkColor = theme.linkColor;
+
     // 3D Parallax layers
     const layers = [
       { speed: 0.2, scale: 1.1, opacity: 0.1, count: 15, color: '#ffffff', size: 1 },
-      { speed: 0.4, scale: 1.05, opacity: 0.15, count: 10, color: '#eb2240', size: 1.5 },
+      { speed: 0.4, scale: 1.05, opacity: 0.15, count: 10, color: primaryColor, size: 1.5 },
       { speed: 0.6, scale: 1.02, opacity: 0.2, count: 8, color: '#ffffff', size: 2 },
     ];
 
@@ -127,9 +286,9 @@ export const Hero = () => {
     let mouseX = 0;
     let mouseY = 0;
     let time = 0;
-    let animationId;
+    let animationId: number;
 
-    const handleMouseMove = (e) => {
+    const handleMouseMove = (e: MouseEvent) => {
       const rect = canvas.getBoundingClientRect();
       mouseX = e.clientX - rect.left;
       mouseY = e.clientY - rect.top;
@@ -161,7 +320,7 @@ export const Hero = () => {
       });
 
       // Draw animated grid connections
-      ctx.strokeStyle = '#eb2240';
+      ctx.strokeStyle = linkColor;
       ctx.lineWidth = 0.3;
       ctx.globalAlpha = 0.15;
 
@@ -208,7 +367,7 @@ export const Hero = () => {
         
         ctx.beginPath();
         ctx.arc(x, y, 1.5, 0, Math.PI * 2);
-        ctx.fillStyle = '#eb2240';
+        ctx.fillStyle = linkColor;
         ctx.globalAlpha = 0.6 + Math.sin(time * 3 + i) * 0.3;
         ctx.fill();
 
@@ -216,7 +375,7 @@ export const Hero = () => {
         ctx.beginPath();
         ctx.arc(x, y, 4, 0, Math.PI * 2);
         const gradient = ctx.createRadialGradient(x, y, 1.5, x, y, 4);
-        gradient.addColorStop(0, '#eb2240');
+        gradient.addColorStop(0, linkColor);
         gradient.addColorStop(1, 'transparent');
         ctx.fillStyle = gradient;
         ctx.globalAlpha = 0.3;
@@ -234,7 +393,7 @@ export const Hero = () => {
           ctx.lineTo(x, y);
         }
         
-        ctx.strokeStyle = '#eb2240';
+        ctx.strokeStyle = linkColor;
         ctx.lineWidth = 0.8;
         ctx.globalAlpha = 0.1;
         ctx.stroke();
@@ -250,10 +409,28 @@ export const Hero = () => {
       canvas.removeEventListener('mousemove', handleMouseMove);
       cancelAnimationFrame(animationId);
     };
-  }, []);
+  }, [currentTheme]); // Re-run when theme changes
+
+  // Get current theme configuration
+  const theme = themeConfig[currentTheme];
 
   return (
-    <section ref={containerRef} className="relative min-h-screen overflow-hidden">
+    <motion.section 
+      ref={containerRef} 
+      className="relative min-h-screen overflow-hidden transition-all duration-700 ease-out"
+      key={currentTheme}
+      initial={{ opacity: 0.8 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.6 }}
+    >
+      {/* Dynamic Background with Theme Transition */}
+      <motion.div 
+        className={`absolute inset-0 ${theme.background}`}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+      />
+
       {/* Full Background Video */}
       <div className="absolute inset-0 overflow-hidden">
         <video
@@ -272,10 +449,33 @@ export const Hero = () => {
           Your browser does not support the video tag.
         </video>
         
-        {/* Light whitish overlay for better text readability */}
-        <div className="absolute inset-0 bg-gradient-to-r from-white/20 via-white/10 to-white/15" />
-        <div className="absolute inset-0 bg-gradient-to-t from-white/10 via-transparent to-white/5" />
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/2" />
+        {/* Dynamic Theme Overlays with Smooth Transitions */}
+        <motion.div 
+          className={`absolute inset-0 ${theme.overlay}`}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        />
+        <motion.div 
+          className={`absolute inset-0 ${theme.overlaySecondary}`}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
+        />
+        <motion.div 
+          className={`absolute inset-0 ${theme.overlayTertiary}`}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+        />
+      </div>
+
+      {/* Environment Mode Switcher - inside hero, always below fixed header */}
+      <div className="absolute top-24 sm:top-24 md:top-28 lg:top-24 right-3 sm:right-6 z-[60]">
+        <EnvironmentSwitcher 
+          currentTheme={currentTheme} 
+          onThemeChange={setCurrentTheme}
+        />
       </div>
 
       {/* 3D Animated Canvas */}
@@ -284,7 +484,7 @@ export const Hero = () => {
         className="absolute inset-0 z-0"
       />
 
-      {/* Particle System */}
+      {/* Particle System with Dynamic Colors */}
       <Particles
         id="tsparticles"
         init={particlesInit}
@@ -307,11 +507,11 @@ export const Hero = () => {
             },
           },
           particles: {
-            color: { value: "#eb2240" },
+            color: { value: theme.particleColor },
             links: {
               enable: true,
               distance: 150,
-              color: "#eb2240",
+              color: theme.linkColor,
               opacity: 0.15,
               width: 1,
               triangles: { enable: true, opacity: 0.05 }
@@ -359,22 +559,32 @@ export const Hero = () => {
         className="absolute inset-0 z-1"
       />
 
-      {/* Floating 3D Elements - Lighter version */}
+      {/* Floating 3D Elements with Theme Colors */}
       <div className="absolute inset-0 z-2">
         {[...Array(6)].map((_, i) => (
-          <div
-            key={i}
+          <motion.div
+            key={`${currentTheme}-${i}`}
             className="absolute rounded-full"
             style={{
               width: `${Math.random() * 80 + 40}px`,
               height: `${Math.random() * 80 + 40}px`,
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
-              background: `radial-gradient(circle at 30% 30%, ${i % 2 === 0 ? '#eb2240' : '#ffffff'}15, transparent 70%)`,
-              animation: `float3d ${Math.random() * 20 + 10}s infinite ease-in-out`,
-              animationDelay: `${Math.random() * 5}s`,
+              background: `radial-gradient(circle at 30% 30%, ${theme.particleColor}15, transparent 70%)`,
               filter: 'blur(30px)',
+            }}
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ 
               opacity: 0.1,
+              scale: 1,
+              y: [0, -20, 0],
+              x: [0, 10, 0]
+            }}
+            transition={{
+              opacity: { duration: 0.8, delay: i * 0.1 },
+              scale: { duration: 0.8, delay: i * 0.1 },
+              y: { duration: Math.random() * 20 + 10, repeat: Infinity, ease: "easeInOut" },
+              x: { duration: Math.random() * 15 + 8, repeat: Infinity, ease: "easeInOut" }
             }}
           />
         ))}
@@ -565,7 +775,7 @@ export const Hero = () => {
           animation: ctaPulse 3s ease-in-out infinite;
         }
       `}</style>
-    </section>
+    </motion.section>
   );
 };
 
