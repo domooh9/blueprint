@@ -1,15 +1,22 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import Copilo from "@/assets/Copilotp.png";
+import bul from "@/assets/bul.png"
+import bull from "@/assets/bull.png"
+import bulk from "@/assets/bulk.png"
+import Kevin from "@/assets/Kevin.jpg"
 import { 
   Send, 
   MessageCircle, 
   Users, 
   BarChart3, 
   CheckCircle, 
+  CheckCheck,
   Globe, 
   Clock,
   Shield,
+  Smile,
+  ArrowRight,
   ChevronRight
 } from "lucide-react";
 
@@ -20,24 +27,24 @@ const BulkSMS = () => {
 
   const features = [
     {
-      icon: <Send className="w-6 h-6" style={{ color: themeBlue }} />,
+      icon: Send,
       title: "Bulk Messaging",
-      description: "Send thousands of SMS instantly to your customers"
+      description: "Send thousands of SMS instantly to your customers."
     },
     {
-      icon: <MessageCircle className="w-6 h-6" style={{ color: themeBlue }} />,
+      icon: MessageCircle,
       title: "Two-Way SMS",
-      description: "Enable conversations with automated responses"
+      description: "Enable conversations with automated responses."
     },
     {
-      icon: <Users className="w-6 h-6" style={{ color: themeBlue }} />,
+      icon: Users,
       title: "Contact Management",
-      description: "Organize contacts into groups for targeted campaigns"
+      description: "Organize contacts into groups for targeted campaigns."
     },
     {
-      icon: <BarChart3 className="w-6 h-6" style={{ color: themeBlue }} />,
+      icon: BarChart3,
       title: "Analytics",
-      description: "Track delivery rates and campaign performance"
+      description: "Track delivery rates and campaign performance."
     }
   ];
 
@@ -151,44 +158,132 @@ const BulkSMS = () => {
       </section>
 
       {/* Features Section */}
-      <section className="py-20">
+      <section className="py-16 md:py-20 bg-[#eef2f7]">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            className="text-center mb-10 md:mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: themeDark }}>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 tracking-tight" style={{ color: "#0b1f66" }}>
               Why Choose Our Bulk SMS?
             </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Powerful features to help you communicate effectively with your audience
-            </p>
+          
           </motion.div>
+{/* Contact Visual Section */}
+<motion.div
+  initial={{ opacity: 0, y: 30 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true }}
+  transition={{ duration: 0.7 }}
+  className="mt-12 md:mt-16 relative"
+>
+  {/* Desktop connectors: message flow from main image to recipients */}
+  <div className="pointer-events-none absolute inset-0 z-20 hidden lg:block">
+    <div className="absolute left-[62%] top-[26%] h-0 w-[13%] border-t-2 border-dashed border-[#0b1f66]/45" />
+    <ArrowRight className="absolute left-[74.5%] top-[calc(26%-10px)] h-5 w-5 text-[#0b1f66]/65" />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {features.map((feature, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                whileHover={{ y: -5 }}
-                className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all"
-              >
-                <div className="w-12 h-12 rounded-lg flex items-center justify-center mb-4" style={{ backgroundColor: `${themeBlue}1A` }}>
-                  {feature.icon}
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                  {feature.title}
-                </h3>
-                <p className="text-gray-600">
-                  {feature.description}
-                </p>
-              </motion.div>
-            ))}
+    <div className="absolute left-[62%] top-[68%] h-0 w-[13%] border-t-2 border-dashed border-[#0b1f66]/45" />
+    <ArrowRight className="absolute left-[74.5%] top-[calc(68%-10px)] h-5 w-5 text-[#0b1f66]/65" />
+  </div>
+
+  <div className="relative z-10 grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8 items-stretch lg:items-start">
+
+    {/* Large Left Image */}
+    <div className="lg:col-span-2 relative overflow-hidden border border-[#d9dde6]  rounded-tr-[45px] rounded-bl-[45px] lg:rounded-tr-[78px]">
+      <img
+        src={bulk}
+        alt="Bulk SMS communication"
+        className="w-full h-full object-cover"
+      />
+
+      {/* Soft overlay for depth */}
+      <div className="absolute inset-0 bg-gradient-to-tr from-[#0b1f66]/20 to-transparent" />
+    </div>
+
+    {/* Right Column (Stacked Images) */}
+    <div className="flex flex-col gap-6 md:gap-8 lg:pt-2">
+
+      <div className="relative overflow-hidden border border-[#d9dde6] lg:-translate-y-6">
+        <img
+          src={bull}
+          alt="Business SMS engagement"
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute left-3 top-3 inline-flex items-center gap-1.5 rounded-full border border-[#cfd7e6] bg-white/95 px-3 py-1 text-xs font-semibold text-[#0b1f66] shadow-sm">
+          <CheckCheck className="h-3.5 w-3.5 text-[#0b1f66]" />
+           Received and happy
+        </div>
+      </div>
+
+      <div className="relative overflow-hidden border border-[#d9dde6]  lg:translate-y-6">
+        <img
+          src={bul}
+          alt="Customer SMS interaction"
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute bottom-3 right-3 inline-flex items-center gap-1.5 rounded-full border border-[#cfe7d8] bg-white/95 px-3 py-1 text-xs font-semibold text-[#135b2e] shadow-sm">
+          <Smile className="h-3.5 w-3.5 text-[#1f7a3f]" />
+          SMS delivered  
+        </div>
+      </div>
+
+    </div>
+  </div>
+</motion.div>
+  <p className="mt-8 md:-mt-9 text-base md:text-lg text-[#1d2956] leading-relaxed text-center md:text-left max-w-3xl md:max-w-none mx-auto md:mx-0">
+  Powerful features to help you communicate effectively with your audience.
+  </p>
+          <div className="mt-10 md:mt-14 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+            
+            {features.map((feature, index) => {
+              const isInvertedCard = index === 1 || index === 2; // top-right and bottom-left
+
+              return (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.08 }}
+                  className={`rounded-[22px] shadow-[0_12px_30px_rgba(21,44,98,0.08)] px-7 md:px-8 py-10 md:py-11 text-center ${
+                    isInvertedCard
+                      ? "bg-[#0b1f66] border border-[#09184c]"
+                      : "bg-white border border-[#e8edf4]"
+                  }`}
+                >
+                  <div
+                    className={`w-20 h-20 mx-auto mb-6 rounded-full border flex items-center justify-center ${
+                      isInvertedCard
+                        ? "bg-white border-[#dbe5ff]"
+                        : "bg-[#0b1f66] border-[#09184c]"
+                    }`}
+                  >
+                    <feature.icon
+                      className={`w-9 h-9 stroke-[2.1] ${
+                        isInvertedCard ? "text-[#0b1f66]" : "text-white"
+                      }`}
+                    />
+                  </div>
+                  <h3
+                    className={`text-2xl md:text-3xl font-bold mb-3 tracking-tight ${
+                      isInvertedCard ? "text-white" : "text-[#0b1f66]"
+                    }`}
+                  >
+                    {feature.title}
+                  </h3>
+                  <p
+                    className={`text-base md:text-lg leading-relaxed max-w-xl mx-auto ${
+                      isInvertedCard ? "text-white/90" : "text-[#1f2d5a]"
+                    }`}
+                  >
+                    {feature.description}
+                  </p>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -226,28 +321,32 @@ const BulkSMS = () => {
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="bg-white p-8 rounded-2xl shadow-xl"
+              className="relative overflow-hidden p-8 rounded-2xl shadow-xl text-white"
+              style={{ backgroundImage: `url(${Kevin})`, backgroundSize: "cover", backgroundPosition: "center" }}
             >
+              <div className="absolute inset-0 bg-[#0b1f66]/65" />
+              <div className="relative z-10">
               <div className="flex items-center gap-4 mb-6">
                 <Globe className="w-8 h-8" style={{ color: themeBlue }} />
                 <div>
-                  <h3 className="text-xl font-bold text-gray-900">Global Reach</h3>
-                  <p className="text-gray-600">Send SMS to 200+ countries</p>
+                  <h3 className="text-xl font-bold text-white">Global Reach</h3>
+                  <p className="text-white/90">Send SMS to 200+ countries</p>
                 </div>
               </div>
               <div className="flex items-center gap-4 mb-6">
                 <Clock className="w-8 h-8" style={{ color: themeBlue }} />
                 <div>
-                  <h3 className="text-xl font-bold text-gray-900">Schedule Messages</h3>
-                  <p className="text-gray-600">Plan your campaigns in advance</p>
+                  <h3 className="text-xl font-bold text-white">Schedule Messages</h3>
+                  <p className="text-white/90">Plan your campaigns in advance</p>
                 </div>
               </div>
               <div className="flex items-center gap-4">
                 <Shield className="w-8 h-8" style={{ color: themeBlue }} />
                 <div>
-                  <h3 className="text-xl font-bold text-gray-900">Secure & Reliable</h3>
-                  <p className="text-gray-600">Enterprise-grade security</p>
+                  <h3 className="text-xl font-bold text-white">Secure & Reliable</h3>
+                  <p className="text-white/90">Enterprise-grade security</p>
                 </div>
+              </div>
               </div>
             </motion.div>
           </div>
