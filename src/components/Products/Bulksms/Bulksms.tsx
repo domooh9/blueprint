@@ -1,15 +1,16 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import Copilo from "@/assets/Copilotp.png";
+import Copilo from "@/assets/ChatPM.png";
 import bul from "@/assets/bul.png"
 import bull from "@/assets/bull.png"
-import bulk from "@/assets/bulk.png"
+import bulk from "@/assets/bulkl.png"
 import Kevin from "@/assets/Kevin.jpg"
+import BulkM from "@/assets/BulkM.png"
+import BulkTwo from "@/assets/BulkTwo.png"
+import BulkP from "@/assets/BulkP.png"
+import BulkA from "@/assets/BulkA.png"
+
 import { 
-  Send, 
-  MessageCircle, 
-  Users, 
-  BarChart3, 
   CheckCircle, 
   CheckCheck,
   Globe, 
@@ -21,28 +22,40 @@ import {
 } from "lucide-react";
 
 const BulkSMS = () => {
-  const themePrimary = "#eb2240";
+  const themePrimary = "#0b3a7e";
   const themeBlue = "#196ab6";
-  const themeDark = "#484747";
+  const themeDark = "#0b1f66";
 
   const features = [
     {
-      icon: Send,
+      coverImage: BulkM,
+      image: BulkM,
+      imageAlt: "Team sending marketing text messages",
+      category: "Communication",
       title: "Bulk Messaging",
       description: "Send thousands of SMS instantly to your customers."
     },
     {
-      icon: MessageCircle,
+      coverImage: BulkTwo,
+      image: "BulkTwo",
+      imageAlt: "Customer support text conversation",
+      category: "Engagement",
       title: "Two-Way SMS",
       description: "Enable conversations with automated responses."
     },
     {
-      icon: Users,
+      coverImage: BulkP,
+      image: "https://picsum.photos/seed/contact-groups-thumb/180/180",
+      imageAlt: "People grouped for contact management",
+      category: "Audience",
       title: "Contact Management",
       description: "Organize contacts into groups for targeted campaigns."
     },
     {
-      icon: BarChart3,
+      coverImage: BulkA,
+      image: "https://picsum.photos/seed/sms-analytics-thumb/180/180",
+      imageAlt: "Dashboard screen showing analytics",
+      category: "Insights",
       title: "Analytics",
       description: "Track delivery rates and campaign performance."
     }
@@ -78,6 +91,16 @@ const BulkSMS = () => {
     }
   ];
 
+  const hoverLift = {
+    rest: { y: 0, scale: 1, boxShadow: "0 12px 30px rgba(35,40,60,0.08)" },
+    hover: { y: -8, scale: 1.02, boxShadow: "0 26px 60px rgba(12,26,60,0.2)" }
+  };
+
+  const glowHover = {
+    rest: { opacity: 0, scale: 0.95 },
+    hover: { opacity: 1, scale: 1.05 }
+  };
+
   return (
     <div className="min-h-screen bg-white pt-16 md:pt-20">
       {/* Hero Section */}
@@ -87,7 +110,7 @@ const BulkSMS = () => {
       >
         <div
           className="absolute inset-0"
-          style={{ background: `linear-gradient(135deg, ${themeDark}CC 0%, ${themePrimary}A6 55%, ${themeBlue}99 100%)` }}
+          style={{ background: `linear-gradient(135deg, ${themeDark}E0 0%, ${themePrimary}B8 55%, ${themeBlue}A6 100%)` }}
         />
         <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28">
           <motion.div
@@ -108,22 +131,27 @@ const BulkSMS = () => {
   target="_blank"
   rel="noopener noreferrer"
 >
-  <Button 
-    size="lg" 
-    className="bg-white hover:bg-gray-100 text-lg px-8"
-    style={{ color: themeDark }}
-  >
-    Get Started
-    <ChevronRight className="ml-2 w-5 h-5" />
-  </Button>
+  <motion.div whileHover={{ y: -3, scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+    <Button 
+      size="lg" 
+      className="bg-white hover:bg-gray-100 text-lg px-8"
+      style={{ color: themeDark }}
+    >
+      Get Started
+      <ChevronRight className="ml-2 w-5 h-5" />
+    </Button>
+  </motion.div>
 </a>
-              <Button 
-                size="lg" 
-                variant="outline" 
-                className="border-white text-white hover:bg-white/10 text-lg px-8"
-              >
-                View Pricing
-              </Button>
+              <motion.div whileHover={{ y: -3, scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                <Button 
+                  size="lg" 
+                  variant="outline" 
+                   className="bg-white hover:bg-gray-100 text-lg px-8"
+      style={{ color: themeDark }}
+                >
+                  View Pricing
+                </Button>
+              </motion.div>
             </div>
           </motion.div>
         </div>
@@ -145,7 +173,8 @@ const BulkSMS = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="text-center"
+                whileHover={{ y: -6, scale: 1.03 }}
+                className="text-center rounded-2xl bg-white/70 px-4 py-6 shadow-sm border border-white/70"
               >
                 <div className="text-3xl md:text-4xl font-bold mb-2" style={{ color: themePrimary }}>
                   {stat.number}
@@ -192,43 +221,61 @@ const BulkSMS = () => {
   <div className="relative z-10 grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8 items-stretch lg:items-start">
 
     {/* Large Left Image */}
-    <div className="lg:col-span-2 relative overflow-hidden border border-[#d9dde6]  rounded-tr-[45px] rounded-bl-[45px] lg:rounded-tr-[78px]">
-      <img
+    <motion.div
+      whileHover={{ scale: 1.02 }}
+      transition={{ type: "spring", stiffness: 220, damping: 18 }}
+      className="lg:col-span-2 relative overflow-hidden border border-[#d9dde6] rounded-tr-[45px] rounded-bl-[45px] lg:rounded-tr-[78px] group"
+    >
+      <motion.img
         src={bulk}
         alt="Bulk SMS communication"
-        className="w-full h-full object-cover"
+        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.06]"
       />
 
       {/* Soft overlay for depth */}
+      <motion.div
+        variants={glowHover}
+        initial="rest"
+        whileHover="hover"
+        className="absolute -inset-6 bg-[radial-gradient(circle_at_top_left,rgba(235,34,64,0.25),transparent_45%)]"
+      />
       <div className="absolute inset-0 bg-gradient-to-tr from-[#0b1f66]/20 to-transparent" />
-    </div>
+    </motion.div>
 
     {/* Right Column (Stacked Images) */}
     <div className="flex flex-col gap-6 md:gap-8 lg:pt-2">
 
-      <div className="relative overflow-hidden border border-[#d9dde6] lg:-translate-y-6">
-        <img
+      <motion.div
+        whileHover={{ y: -6, scale: 1.02 }}
+        transition={{ type: "spring", stiffness: 220, damping: 18 }}
+        className="relative overflow-hidden border border-[#d9dde6] lg:-translate-y-6 group"
+      >
+        <motion.img
           src={bull}
           alt="Business SMS engagement"
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.06]"
         />
         <div className="absolute left-3 top-3 inline-flex items-center gap-1.5 rounded-full border border-[#cfd7e6] bg-white/95 px-3 py-1 text-xs font-semibold text-[#0b1f66] shadow-sm">
           <CheckCheck className="h-3.5 w-3.5 text-[#0b1f66]" />
            Received and happy
         </div>
-      </div>
+      </motion.div>
 
-      <div className="relative overflow-hidden border border-[#d9dde6]  lg:translate-y-6">
-        <img
+      <motion.div
+        whileHover={{ y: -6, scale: 1.02 }}
+        transition={{ type: "spring", stiffness: 220, damping: 18 }}
+        className="relative overflow-hidden border border-[#d9dde6] lg:translate-y-6 group"
+      >
+        <motion.img
           src={bul}
           alt="Customer SMS interaction"
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.06]"
         />
         <div className="absolute bottom-3 right-3 inline-flex items-center gap-1.5 rounded-full border border-[#cfe7d8] bg-white/95 px-3 py-1 text-xs font-semibold text-[#135b2e] shadow-sm">
           <Smile className="h-3.5 w-3.5 text-[#1f7a3f]" />
           SMS delivered  
         </div>
-      </div>
+      </motion.div>
 
     </div>
   </div>
@@ -239,8 +286,6 @@ const BulkSMS = () => {
           <div className="mt-10 md:mt-14 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
             
             {features.map((feature, index) => {
-              const isInvertedCard = index === 1 || index === 2; // top-right and bottom-left
-
               return (
                 <motion.div
                   key={index}
@@ -248,39 +293,33 @@ const BulkSMS = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.08 }}
-                  className={`rounded-[22px] shadow-[0_12px_30px_rgba(21,44,98,0.08)] px-7 md:px-8 py-10 md:py-11 text-center ${
-                    isInvertedCard
-                      ? "bg-[#0b1f66] border border-[#09184c]"
-                      : "bg-white border border-[#e8edf4]"
-                  }`}
+                  variants={hoverLift}
+                  whileHover="hover"
+                  className="relative overflow-hidden rounded-[24px] border border-[#e8d7dc] bg-[#f6f7f8] group"
                 >
-                  <div
-                    className={`w-20 h-20 mx-auto mb-6 rounded-full border flex items-center justify-center ${
-                      isInvertedCard
-                        ? "bg-white border-[#dbe5ff]"
-                        : "bg-[#0b1f66] border-[#09184c]"
-                    }`}
-                  >
-                    <feature.icon
-                      className={`w-9 h-9 stroke-[2.1] ${
-                        isInvertedCard ? "text-[#0b1f66]" : "text-white"
-                      }`}
-                    />
+                  <motion.div
+                    variants={glowHover}
+                    initial="rest"
+                    whileHover="hover"
+                    className="absolute -inset-8 bg-[radial-gradient(circle_at_top_left,rgba(25,106,182,0.25),transparent_45%)]"
+                  />
+                  <motion.img
+                    src={feature.coverImage}
+                    alt={feature.imageAlt}
+                    className="h-56 md:h-64 w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                    loading="lazy"
+                  />
+                  <div className="px-7 pb-9 pt-6 md:px-8 md:pb-10 md:pt-7 text-left">
+                    <span className="inline-flex rounded-full bg-[#f9dbe3] px-4 py-1 text-sm font-semibold text-[#eb2240]">
+                      {feature.category}
+                    </span>
+                    <h3 className="mt-5 text-2xl md:text-[2rem] font-semibold leading-tight text-[#eb2240]">
+                      {feature.title}
+                    </h3>
+                    <p className="mt-4 text-lg leading-relaxed text-[#243456]">
+                      {feature.description}
+                    </p>
                   </div>
-                  <h3
-                    className={`text-2xl md:text-3xl font-bold mb-3 tracking-tight ${
-                      isInvertedCard ? "text-white" : "text-[#0b1f66]"
-                    }`}
-                  >
-                    {feature.title}
-                  </h3>
-                  <p
-                    className={`text-base md:text-lg leading-relaxed max-w-xl mx-auto ${
-                      isInvertedCard ? "text-white/90" : "text-[#1f2d5a]"
-                    }`}
-                  >
-                    {feature.description}
-                  </p>
                 </motion.div>
               );
             })}
@@ -321,6 +360,7 @@ const BulkSMS = () => {
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
+              whileHover={{ scale: 1.02 }}
               className="relative overflow-hidden p-8 rounded-2xl shadow-xl text-white"
               style={{ backgroundImage: `url(${Kevin})`, backgroundSize: "cover", backgroundPosition: "center" }}
             >
@@ -378,7 +418,7 @@ const BulkSMS = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                whileHover={{ y: -5 }}
+                whileHover={{ y: -10, scale: 1.03 }}
                 className={`bg-white rounded-2xl shadow-lg overflow-hidden ${
                   index === 1 ? 'ring-2 scale-105' : ''
                 }`}
@@ -453,7 +493,7 @@ const BulkSMS = () => {
                 size="lg" 
                 variant="outline" 
                 className="border-white text-white hover:bg-white/10 text-lg px-8"
-              >
+             style={{ color: themeDark }} >
                 Contact Sales
               </Button>
             </div>
