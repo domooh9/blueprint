@@ -91,7 +91,7 @@ const JengaPayment = () => {
                 <h2 className="text-white font-bold text-2xl sm:text-3xl leading-tight mb-4">
                   Jenga PGW
                 </h2>
-                <p className="text-white/95 text-sm sm:text-base leading-relaxed">
+                <p className="text-white text-sm sm:text-base leading-relaxed">
                   Jenga Payment Gateway is a business-to-business financial
                   solution that allows merchants to provide their customers the
                   ability to pay via various payments channels in

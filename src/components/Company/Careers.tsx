@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { ArrowRight, Briefcase, X } from "lucide-react";
-import careerHero from "@/assets/imag.png";
+import careerHero from "@/assets/Chatll.png";
 
 type Job = {
   id: number;
@@ -125,18 +125,14 @@ const Careers = () => {
               </a>
             </div>
 
-            <div
-              className="rounded-2xl shadow-2xl overflow-hidden group"
+            <img
+              src={careerHero}
+              alt="Careers at Finserve"
+              className="w-full h-auto transition-transform duration-500 ease-out"
+              style={{ transform: heroImageStyle }}
               onMouseMove={handleHeroMouseMove}
               onMouseLeave={handleHeroMouseLeave}
-            >
-              <img
-                src={careerHero}
-                alt="Careers at Finserve"
-                className="object-cover w-full h-[360px] md:h-[460px] transition-transform duration-500 ease-out"
-                style={{ transform: heroImageStyle }}
-              />
-            </div>
+            />
           </div>
         </div>
       </section>

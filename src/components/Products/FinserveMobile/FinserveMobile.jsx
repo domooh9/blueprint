@@ -284,7 +284,7 @@ const FinserveMobile = () => {
             {/* Right Image - Fixed positioning and alignment */}
             <div className={`flex-1 relative transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} mobile-image-bottom`}>
               <div className="sticky top-20">
-                <div className="relative w-full max-w-[500px] mx-auto lg:mx-0 mobile-full-width">
+                <div className="relative w-full max-w-[520px] lg:max-w-[640px] mx-auto lg:mx-0 mobile-full-width">
                   {/* Rounded background with primary color */}
                   <div 
                     className="absolute inset-0 rounded-3xl bg-primary"
@@ -293,7 +293,7 @@ const FinserveMobile = () => {
                   <img
                     src={product.image}
                     alt="Finserve Money App Interface"
-                    className="relative w-full h-auto object-contain drop-shadow-2xl z-10"
+                    className="relative w-full h-auto object-contain drop-shadow-2xl z-10 lg:scale-110"
                   />
                 </div>
               </div>

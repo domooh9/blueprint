@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import Copilo from "@/assets/ChatPM.png";
 import bul from "@/assets/bul.png"
 import bull from "@/assets/bull.png"
-import bulk from "@/assets/bulkl.png"
+import bulk from "@/assets/bulkll.png"
 import Kevin from "@/assets/Kevin.jpg"
 import BulkM from "@/assets/BulkM.png"
 import BulkTwo from "@/assets/BulkTwo.png"
