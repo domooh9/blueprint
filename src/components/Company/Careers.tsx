@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { ArrowRight, Briefcase, X } from "lucide-react";
-import careerHero from "@/assets/Chatlll.png";
+import careerHero from "@/assets/Chatllll.png";
 
 type Job = {
   id: number;

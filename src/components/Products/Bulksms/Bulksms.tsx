@@ -112,6 +112,14 @@ const BulkSMS = () => {
           className="absolute inset-0"
           style={{ background: `linear-gradient(135deg, ${themeDark}E0 0%, ${themePrimary}B8 55%, ${themeBlue}A6 100%)` }}
         />
+        <div className="pointer-events-none absolute inset-0">
+          <img
+            src={BulkP}
+            alt=""
+            aria-hidden="true"
+            className="absolute -right-6 bottom-0 hidden h-[60%] w-auto opacity-40 mix-blend-screen md:block lg:h-[75%]"
+          />
+        </div>
         <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
