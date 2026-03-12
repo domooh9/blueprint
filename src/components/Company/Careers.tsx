@@ -12,64 +12,67 @@ type Job = {
   qualifications: string[];
 };
 
-const jobs: Job[] = [
-  {
-    id: 1,
-    title: "Senior Frontend Developer",
-    type: "Full-time",
-    department: "Engineering",
-    description: "Build responsive and accessible web applications using modern React patterns.",
-    tags: ["React", "TypeScript", "Tailwind"],
-    qualifications: [
-      "4+ years of frontend development experience in production systems.",
-      "Strong TypeScript and React architecture skills.",
-      "Experience building reusable UI components and design-system driven pages.",
-      "Comfortable collaborating with product, design, and QA teams.",
-    ],
-  },
-  {
-    id: 2,
-    title: "Product Manager - Payments",
-    type: "Full-time",
-    department: "Product",
-    description: "Lead roadmap delivery for payment experiences and partner integrations.",
-    tags: ["Payments", "Roadmap", "API"],
-    qualifications: [
-      "3+ years in product management within fintech or payments.",
-      "Ability to define clear product requirements and success metrics.",
-      "Strong stakeholder communication and execution discipline.",
-      "Experience shipping API-led products is an advantage.",
-    ],
-  },
-  {
-    id: 3,
-    title: "DevOps Engineer",
-    type: "Full-time",
-    department: "Infrastructure",
-    description: "Improve platform reliability, deployment workflows, and cloud operations.",
-    tags: ["AWS", "Kubernetes", "CI/CD"],
-    qualifications: [
-      "Hands-on experience with cloud infrastructure and observability tooling.",
-      "Strong understanding of containerized deployments and automation.",
-      "Experience with infrastructure-as-code workflows.",
-      "Security and reliability mindset for production environments.",
-    ],
-  },
-  {
-    id: 4,
-    title: "UX/UI Designer",
-    type: "Contract",
-    department: "Design",
-    description: "Design intuitive digital finance journeys for web and mobile platforms.",
-    tags: ["Figma", "UX Research", "Prototyping"],
-    qualifications: [
-      "Strong portfolio demonstrating end-to-end product design work.",
-      "Ability to translate requirements into practical UI flows.",
-      "Experience collaborating with developers in iterative delivery cycles.",
-      "Strong visual hierarchy and accessibility awareness.",
-    ],
-  },
-];
+const jobs: Job[] = [];
+
+// Available roles will be added here when vacancies open.
+// const jobs: Job[] = [
+//   {
+//     id: 1,
+//     title: "Senior Frontend Developer",
+//     type: "Full-time",
+//     department: "Engineering",
+//     description: "Build responsive and accessible web applications using modern React patterns.",
+//     tags: ["React", "TypeScript", "Tailwind"],
+//     qualifications: [
+//       "4+ years of frontend development experience in production systems.",
+//       "Strong TypeScript and React architecture skills.",
+//       "Experience building reusable UI components and design-system driven pages.",
+//       "Comfortable collaborating with product, design, and QA teams.",
+//     ],
+//   },
+//   {
+//     id: 2,
+//     title: "Product Manager - Payments",
+//     type: "Full-time",
+//     department: "Product",
+//     description: "Lead roadmap delivery for payment experiences and partner integrations.",
+//     tags: ["Payments", "Roadmap", "API"],
+//     qualifications: [
+//       "3+ years in product management within fintech or payments.",
+//       "Ability to define clear product requirements and success metrics.",
+//       "Strong stakeholder communication and execution discipline.",
+//       "Experience shipping API-led products is an advantage.",
+//     ],
+//   },
+//   {
+//     id: 3,
+//     title: "DevOps Engineer",
+//     type: "Full-time",
+//     department: "Infrastructure",
+//     description: "Improve platform reliability, deployment workflows, and cloud operations.",
+//     tags: ["AWS", "Kubernetes", "CI/CD"],
+//     qualifications: [
+//       "Hands-on experience with cloud infrastructure and observability tooling.",
+//       "Strong understanding of containerized deployments and automation.",
+//       "Experience with infrastructure-as-code workflows.",
+//       "Security and reliability mindset for production environments.",
+//     ],
+//   },
+//   {
+//     id: 4,
+//     title: "UX/UI Designer",
+//     type: "Contract",
+//     department: "Design",
+//     description: "Design intuitive digital finance journeys for web and mobile platforms.",
+//     tags: ["Figma", "UX Research", "Prototyping"],
+//     qualifications: [
+//       "Strong portfolio demonstrating end-to-end product design work.",
+//       "Ability to translate requirements into practical UI flows.",
+//       "Experience collaborating with developers in iterative delivery cycles.",
+//       "Strong visual hierarchy and accessibility awareness.",
+//     ],
+//   },
+// ];
 
 const Careers = () => {
   const [selectedJob, setSelectedJob] = useState<Job | null>(null);
@@ -147,47 +150,54 @@ const Careers = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6">
-            {jobs.map((job) => (
-              <div
-                key={job.id}
-                className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100"
-              >
-                <div className="flex items-start justify-between gap-4">
-                  <div>
-                    <h3 className="text-xl font-bold text-gray-900">{job.title}</h3>
-                    <p className="text-sm text-primary font-medium mt-1">{job.department}</p>
-                  </div>
-                  <span className="bg-primary/10 text-primary text-xs font-semibold px-3 py-1 rounded-full border border-primary/20">
-                    {job.type}
-                  </span>
-                </div>
-
-                <p className="mt-4 text-gray-600">{job.description}</p>
-
-                <div className="flex flex-wrap gap-2 mt-4">
-                  {job.tags.map((tag) => (
-                    <span key={tag} className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-md">
-                      {tag}
+          {jobs.length === 0 ? (
+            <div className="rounded-2xl border border-dashed border-gray-200 bg-white px-6 py-12 text-center shadow-sm">
+              <p className="text-lg font-semibold text-gray-900">No vacancies currently available.</p>
+              <p className="mt-2 text-gray-600">Please check back soon for new opportunities.</p>
+            </div>
+          ) : (
+            <div className="grid md:grid-cols-2 gap-6">
+              {jobs.map((job) => (
+                <div
+                  key={job.id}
+                  className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100"
+                >
+                  <div className="flex items-start justify-between gap-4">
+                    <div>
+                      <h3 className="text-xl font-bold text-gray-900">{job.title}</h3>
+                      <p className="text-sm text-primary font-medium mt-1">{job.department}</p>
+                    </div>
+                    <span className="bg-primary/10 text-primary text-xs font-semibold px-3 py-1 rounded-full border border-primary/20">
+                      {job.type}
                     </span>
-                  ))}
-                </div>
+                  </div>
 
-                <div className="mt-6 flex items-center gap-4">
-                  <button
-                    onClick={() => openModal(job)}
-                    className="text-primary font-medium hover:underline"
-                  >
-                    Read more
-                  </button>
-                  <button className="inline-flex items-center gap-1 text-primary font-medium hover:gap-2 transition-all">
-                    Apply Now
-                    <ArrowRight className="w-4 h-4" />
-                  </button>
+                  <p className="mt-4 text-gray-600">{job.description}</p>
+
+                  <div className="flex flex-wrap gap-2 mt-4">
+                    {job.tags.map((tag) => (
+                      <span key={tag} className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-md">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+
+                  <div className="mt-6 flex items-center gap-4">
+                    <button
+                      onClick={() => openModal(job)}
+                      className="text-primary font-medium hover:underline"
+                    >
+                      Read more
+                    </button>
+                    <button className="inline-flex items-center gap-1 text-primary font-medium hover:gap-2 transition-all">
+                      Apply Now
+                      <ArrowRight className="w-4 h-4" />
+                    </button>
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
