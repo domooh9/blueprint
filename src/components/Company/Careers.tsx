@@ -128,14 +128,18 @@ const Careers = () => {
               </a>
             </div>
 
-            <img
-              src={careerHero}
-              alt="Careers at Finserve"
-              className="w-full h-auto transition-transform duration-500 ease-out"
-              style={{ transform: heroImageStyle }}
-              onMouseMove={handleHeroMouseMove}
-              onMouseLeave={handleHeroMouseLeave}
-            />
+            <div className="relative">
+              <div className="absolute -inset-6 bg-[radial-gradient(circle_at_top_left,rgba(37,99,235,0.22),transparent_55%),radial-gradient(circle_at_bottom_right,rgba(16,185,129,0.18),transparent_55%),linear-gradient(135deg,rgba(15,23,42,0.08),rgba(255,255,255,0.6))] blur-[2px] rounded-[36px]" />
+              <div className="absolute -inset-1 rounded-[30px] border border-white/70 shadow-[0_30px_60px_rgba(15,23,42,0.18)]" />
+              <img
+                src={careerHero}
+                alt="Careers at Finserve"
+                className="relative w-full h-auto rounded-[24px] transition-transform duration-500 ease-out"
+                style={{ transform: heroImageStyle }}
+                onMouseMove={handleHeroMouseMove}
+                onMouseLeave={handleHeroMouseLeave}
+              />
+            </div>
           </div>
         </div>
       </section>
