@@ -1,5 +1,5 @@
 import { ChevronDown, ChevronUp } from "lucide-react";
-import whoB from "@/assets/imageC.png";
+import whoB from "@/assets/Gemioo.png";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { fadeInLeft, staggerContainer } from "@/components/animations/variants";
@@ -22,7 +22,7 @@ const WHO = () => {
         style={{ backgroundImage: `url(${whoB})` }}
       >
         {/* Overlay for readability */}
-        <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/85 to-white/60 lg:from-white/90 lg:via-white/75 lg:to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-white/60 via-white/35 to-white/10 lg:from-white/75 lg:via-white/45 lg:to-transparent"></div>
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
           <motion.div
@@ -34,7 +34,7 @@ const WHO = () => {
           >
             {/* Headline */}
             <motion.h1
-              className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6"
+              className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 leading-tight mb-6"
               variants={fadeInLeft}
             >
               Building Africa's Digital <br className="hidden sm:block" />
@@ -43,7 +43,7 @@ const WHO = () => {
 
             {/* Lead paragraph */}
             <motion.p
-              className="text-lg sm:text-base text-gray-800 leading-relaxed mb-6"
+              className="text-lg sm:text-base text-gray-900 leading-relaxed mb-6"
               variants={fadeInLeft}
             >
               <span className="text-[#EB2240] font-semibold">
@@ -56,7 +56,7 @@ const WHO = () => {
 
             {/* Supporting copy */}
             <motion.p
-              className="text-gray-700 leading-relaxed mb-4"
+              className="text-gray-900 leading-relaxed mb-4"
               variants={fadeInLeft}
               transition={{ delay: 0.15 }}
             >
@@ -75,7 +75,7 @@ const WHO = () => {
                 className="overflow-hidden"
               >
                 <motion.p
-                  className="text-gray-700 leading-relaxed mb-4"
+                  className="text-gray-900 leading-relaxed mb-4"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3 }}
