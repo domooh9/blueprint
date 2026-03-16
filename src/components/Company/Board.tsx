@@ -6,7 +6,7 @@ const boardMembersData = [
   {
     name: "DR. JAMES MWANGI, CBS",
     title: "Non-Executive Director",
-    image: "https://s7d1.scene7.com/is/image/wbcollab/Screen-Shot-2020-09-17-at-1_26_30-PM:twld?qlt=90",
+    image: "https://www.finserve.africa/images/Dr-James-Mwangi.jpg",
     bio: [
       "Dr. James Mwangi holds five honorary doctorate degrees in recognition of his positive impact on Kenyan society. He is a Bachelor of Commerce graduate and a Certified Public Accountant, honored thrice with National Presidential Awards: CBS, MBS, and HSC.",
       "Globally, he has received multiple awards, including the G8 Global Vision Award (2007), Forbes Africa Person of the Year (2012), and the Oslo Business for Peace Award (2020), described as the 'Nobel Prize for Business'.",
@@ -16,7 +16,7 @@ const boardMembersData = [
   {
     name: "DR. PATRICK UWIZEYE",
     title: "Non-Executive Chairman",
-    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRi0YTzHfwbn9Re74Wxx_S_EDzQ5Aw0bvyc2Q&s",
+    image: "https://www.finserve.africa/images/Dr_Patrick_Uwizeye.jpg",
     bio: [
       "Meet Dr. Uwizeye, our chairman who holds impressive academic and professional qualifications. He earned a Doctor of Business Administration (DBA) and an MSc in Strategic Planning from Edinburgh Business School, Heriot-Watt University, UK; an MBA in Financial Management from the University of Hull, UK; and a Masters in Communications Management (MCM) from Coventry University, UK.",
       "He is a Certified Public Accountant (CPA) and a member of both the Institute of CPA Kenya and Rwanda, a Certified Member of the Institute of Risk Management (CMIRM), UK, and an Associate Member of the Kenya Institute of Management.",
@@ -159,7 +159,7 @@ export default function BoardMembers() {
                     className="flex-none w-[280px] sm:w-[320px] md:w-[350px] bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 snap-start"
                   >
                     {/* Image */}
-                    <div className="relative h-64 sm:h-72 overflow-hidden">
+                    <div className="relative h-72 sm:h-80 md:h-[22rem] overflow-hidden">
                       <img
                         src={member.image}
                         alt={member.name}

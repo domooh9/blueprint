@@ -81,9 +81,9 @@ export default function BoardMembers() {
                   className="grid md:grid-cols-[300px_1fr] gap-8 md:gap-12 items-start border-b border-muted-foreground pb-8 last:border-b-0"
                 >
                   {/* Image */}
-                  <div className="relative group w-full max-w-[300px]">
+                  <div className="relative group w-full max-w-[340px]">
                     <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent rounded-lg transform translate-x-2 translate-y-2 group-hover:translate-x-3 group-hover:translate-y-3 transition-transform duration-300"></div>
-                    <div className="relative aspect-[3/4] bg-muted rounded-lg overflow-hidden shadow-lg">
+                    <div className="relative aspect-[4/5] bg-muted rounded-lg overflow-hidden shadow-lg">
                       <img 
                         src={member.image} 
                         alt={member.name}
