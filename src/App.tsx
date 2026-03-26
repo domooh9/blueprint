@@ -43,7 +43,7 @@ const App = () => (
              <Route path="/careers" element={<Careers />} />
           </Route>
 
-          {/* Independent landing page (no Header/Footer) */}
+          {/* Independent landing page  */}
           <Route path="/products/bulksms" element={<Bulksms />} />
 
           {/* 404 fallback */}

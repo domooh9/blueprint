@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import Copilo from "@/assets/ChatPM.png";
 import bul from "@/assets/bul.png"
 import bull from "@/assets/bull.png"
-import bulk from "@/assets/Bulkll.png"
+import GettyIm from "@/assets/GettyIm.mp4"
 import BulkM from "@/assets/happyW.png"
 import BulkTwo from "@/assets/BulkTwo.png"
 import BulkP from "@/assets/BulkP.png"
@@ -240,7 +240,7 @@ const BulkSMS = () => {
                 whileHover={{ y: -6, scale: 1.03 }}
                 className="text-center rounded-2xl bg-white/80 px-5 py-7 shadow-md border border-white/80 backdrop-blur-sm relative overflow-hidden"
               >
-                <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
+                <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-transparent via-[#5f9edb] to-transparent" />
                 <div className="text-3xl md:text-4xl font-bold mb-2" style={{ color: themePrimary }}>
                   {stat.number}
                 </div>
@@ -291,11 +291,61 @@ const BulkSMS = () => {
       transition={{ type: "spring", stiffness: 220, damping: 18 }}
       className="lg:col-span-2 relative overflow-hidden border border-[#d9dde6] rounded-tr-[45px] rounded-bl-[45px] lg:rounded-tr-[78px] group"
     >
-      <motion.img
-        src={bulk}
-        alt="Bulk SMS communication"
+      <motion.video
+        src={GettyIm}
+        autoPlay
+        muted
+        loop
+        playsInline
+        aria-label="Bulk SMS communication video"
         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.06]"
       />
+      {/* Decorative dashed lines */}
+      <div className="pointer-events-none absolute inset-0 opacity-90">
+        <div className="absolute left-4 top-6 h-20 w-48 rounded-full border border-dashed border-[#8ec6ff]/70" />
+        <div className="absolute right-6 top-10 h-16 w-36 rounded-full border border-dashed border-[#8ec6ff]/70" />
+        <div className="absolute left-10 bottom-6 h-16 w-56 rounded-full border border-dashed border-[#8ec6ff]/70" />
+      </div>
+      {/* Decorative chat/envelope icons */}
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute right-6 top-10 flex h-12 w-14 items-center justify-center rounded-2xl bg-[#6bb6ff]/80 text-white shadow-[0_14px_24px_rgba(12,26,60,0.25)]">
+          <span className="text-xl">•••</span>
+        </div>
+        <div className="absolute right-8 bottom-10 flex h-12 w-14 items-center justify-center rounded-2xl bg-[#6bb6ff]/80 text-white shadow-[0_14px_24px_rgba(12,26,60,0.25)]">
+          <span className="text-xl">✉</span>
+        </div>
+        <div className="absolute left-1/2 bottom-6 -translate-x-1/2 flex h-12 w-14 items-center justify-center rounded-2xl bg-[#6bb6ff]/80 text-white shadow-[0_14px_24px_rgba(12,26,60,0.25)]">
+          <span className="text-xl">•••</span>
+        </div>
+      </div>
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#0b1f66]/75 via-[#0b1f66]/35 to-transparent" />
+      <div className="absolute inset-0 flex items-center">
+        <div className="max-w-xl px-6 py-8 sm:px-10 sm:py-10 lg:px-12 lg:py-12 text-white">
+          <p className="text-2xl sm:text-3xl font-semibold tracking-tight">Send Bulk SMS</p>
+          <p className="text-4xl sm:text-5xl font-bold text-[#8ec6ff] drop-shadow-[0_6px_18px_rgba(0,0,0,0.35)]">
+            Effortlessly
+          </p>
+          <p className="mt-4 text-base sm:text-lg text-white/90">
+            Reach thousands of customers with a single click!
+          </p>
+          <ul className="mt-5 space-y-2 text-sm sm:text-base text-white/90">
+            {[
+              "Fast, reliable delivery",
+              "Customise your messages",
+              "Track campaign performance",
+              "Cost-effective communication",
+            ].map((item) => (
+              <li key={item} className="flex items-start gap-3">
+                <span className="mt-0.5 flex h-6 w-6 items-center justify-center rounded-full bg-[#8ec6ff] text-[#0b1f66] text-xs font-bold">
+                  ✓
+                </span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        
+        </div>
+      </div>
 
       {/* Soft overlay for depth */}
       <motion.div
@@ -375,10 +425,10 @@ const BulkSMS = () => {
                     loading="lazy"
                   />
                   <div className="px-7 pb-9 pt-6 md:px-8 md:pb-10 md:pt-7 text-left">
-                    <span className="inline-flex rounded-full bg-[#f9dbe3] px-4 py-1 text-sm font-semibold text-[#eb2240]">
+                    <span className="inline-flex rounded-full bg-[#f9dbe3] px-4 py-1 text-sm font-semibold text-[#5f9edb]">
                       {feature.category}
                     </span>
-                    <h3 className="mt-5 text-2xl md:text-[2rem] font-semibold leading-tight text-[#eb2240]">
+                    <h3 className="mt-5 text-2xl md:text-[2rem] font-semibold leading-tight text-[#0b1f66]">
                       {feature.title}
                     </h3>
                     <p className="mt-4 text-lg leading-relaxed text-[#243456]">
