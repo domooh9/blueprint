@@ -5,23 +5,94 @@ import bul from "@/assets/bul.png"
 import bull from "@/assets/bull.png"
 import GettyIm from "@/assets/GettyIm.mp4"
 import BulkM from "@/assets/happyW.png"
-import BulkTwo from "@/assets/BulkTwo.png"
 import BulkP from "@/assets/BulkP.png"
-import BulkA from "@/assets/BulkA.png"
 import Backl from "@/assets/Backl.png"
 
 import { 
   CheckCircle, 
   CheckCheck,
-  Globe, 
-  Clock,
-  Shield,
   Smile,
   ArrowRight,
-  ChevronRight,
   ExternalLink
 } from "lucide-react";
 import { enhancedButtonStyles } from "../productStyles";
+
+type PremiumIconProps = {
+  className?: string;
+};
+
+const PremiumChatDotsIcon = ({ className }: PremiumIconProps) => (
+  <svg
+    viewBox="0 0 16 16"
+    className={className}
+    xmlns="http://www.w3.org/2000/svg"
+    aria-hidden="true"
+    focusable="false"
+  >
+    <defs>
+      <linearGradient id="premium-chat-dots" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stopColor="#6aa6ff" />
+        <stop offset="100%" stopColor="#2f5bff" />
+      </linearGradient>
+    </defs>
+    <path d="M5 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0m3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2" fill="#e6edff" />
+    <path d="m2.165 15.803.02-.004c1.83-.363 2.948-.842 3.468-1.105A9 9 0 0 0 8 15c4.418 0 8-3.134 8-7s-3.582-7-8-7-8 3.134-8 7c0 1.76.743 3.37 1.97 4.6a10.4 10.4 0 0 1-.524 2.318l-.003.011a11 11 0 0 1-.244.637c-.079.186.074.394.273.362a22 22 0 0 0 .693-.125m.8-3.108a1 1 0 0 0-.287-.801C1.618 10.83 1 9.468 1 8c0-3.192 3.004-6 7-6s7 2.808 7 6-3.004 6-7 6a8 8 0 0 1-2.088-.272 1 1 0 0 0-.711.074c-.387.196-1.24.57-2.634.893a11 11 0 0 0 .398-2" fill="url(#premium-chat-dots)" />
+  </svg>
+);
+
+const PremiumChatLeftDotsIcon = ({ className }: PremiumIconProps) => (
+  <svg
+    viewBox="0 0 16 16"
+    className={className}
+    xmlns="http://www.w3.org/2000/svg"
+    aria-hidden="true"
+    focusable="false"
+  >
+    <defs>
+      <linearGradient id="premium-chat-left" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stopColor="#6aa6ff" />
+        <stop offset="100%" stopColor="#2f5bff" />
+      </linearGradient>
+    </defs>
+    <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4.414a1 1 0 0 0-.707.293L.854 15.146A.5.5 0 0 1 0 14.793zm5 4a1 1 0 1 0-2 0 1 1 0 0 0 2 0m4 0a1 1 0 1 0-2 0 1 1 0 0 0 2 0m3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2" fill="url(#premium-chat-left)" />
+  </svg>
+);
+
+const PremiumPeopleIcon = ({ className }: PremiumIconProps) => (
+  <svg
+    viewBox="0 0 16 16"
+    className={className}
+    xmlns="http://www.w3.org/2000/svg"
+    aria-hidden="true"
+    focusable="false"
+  >
+    <defs>
+      <linearGradient id="premium-people" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stopColor="#6aa6ff" />
+        <stop offset="100%" stopColor="#2f5bff" />
+      </linearGradient>
+    </defs>
+    <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5.784 6A2.24 2.24 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.3 6.3 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5" fill="url(#premium-people)" />
+  </svg>
+);
+
+const PremiumChartIcon = ({ className }: PremiumIconProps) => (
+  <svg
+    viewBox="0 0 16 16"
+    className={className}
+    xmlns="http://www.w3.org/2000/svg"
+    aria-hidden="true"
+    focusable="false"
+  >
+    <defs>
+      <linearGradient id="premium-chart" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stopColor="#6aa6ff" />
+        <stop offset="100%" stopColor="#2f5bff" />
+      </linearGradient>
+    </defs>
+    <path d="M4 11H2v3h2zm5-4H7v7h2zm5-5v12h-2V2zm-2-1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM6 7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1zm-5 4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1z" fill="url(#premium-chart)" />
+  </svg>
+);
 
 const BulkSMS = () => {
   const themePrimary = "#0b3a7e";
@@ -30,32 +101,28 @@ const BulkSMS = () => {
 
   const features = [
     {
-      coverImage: BulkP,
-      image: BulkM,
+      icon: PremiumChatDotsIcon,
       imageAlt: "Team sending marketing text messages",
       category: "Communication",
       title: "Bulk Messaging",
       description: "Send thousands of SMS instantly to your customers."
     },
     {
-      coverImage: BulkTwo,
-      image: "BulkTwo",
+      icon: PremiumChatLeftDotsIcon,
       imageAlt: "Customer support text conversation",
       category: "Engagement",
       title: "Two-Way SMS",
       description: "Enable conversations with automated responses."
     },
     {
-      coverImage: BulkP,
-      image: "https://picsum.photos/seed/contact-groups-thumb/180/180",
+      icon: PremiumPeopleIcon,
       imageAlt: "People grouped for contact management",
       category: "Audience",
       title: "Contact Management",
       description: "Organize contacts into groups for targeted campaigns."
     },
     {
-      coverImage: BulkA,
-      image: "https://picsum.photos/seed/sms-analytics-thumb/180/180",
+      icon: PremiumChartIcon,
       imageAlt: "Dashboard screen showing analytics",
       category: "Insights",
       title: "Analytics",
@@ -309,13 +376,13 @@ const BulkSMS = () => {
       {/* Decorative chat/envelope icons */}
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute right-6 top-10 flex h-12 w-14 items-center justify-center rounded-2xl bg-[#6bb6ff]/80 text-white shadow-[0_14px_24px_rgba(12,26,60,0.25)]">
-          <span className="text-xl">•••</span>
+          <PremiumChatDotsIcon className="h-6 w-6" />
         </div>
         <div className="absolute right-8 bottom-10 flex h-12 w-14 items-center justify-center rounded-2xl bg-[#6bb6ff]/80 text-white shadow-[0_14px_24px_rgba(12,26,60,0.25)]">
-          <span className="text-xl">✉</span>
+          <PremiumChatLeftDotsIcon className="h-6 w-6" />
         </div>
         <div className="absolute left-1/2 bottom-6 -translate-x-1/2 flex h-12 w-14 items-center justify-center rounded-2xl bg-[#6bb6ff]/80 text-white shadow-[0_14px_24px_rgba(12,26,60,0.25)]">
-          <span className="text-xl">•••</span>
+          <PremiumChatDotsIcon className="h-6 w-6" />
         </div>
       </div>
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#0b1f66]/75 via-[#0b1f66]/35 to-transparent" />
@@ -398,47 +465,57 @@ const BulkSMS = () => {
   <p className="mt-8 md:-mt-9 text-base md:text-lg text-[#1d2956] leading-relaxed text-center md:text-left max-w-3xl md:max-w-none mx-auto md:mx-0">
   Powerful features to help you communicate effectively with your audience.
   </p>
-          <div className="mt-10 md:mt-14 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-            
-            {features.map((feature, index) => {
-              return (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 24 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.08 }}
-                  variants={hoverLift}
-                  whileHover="hover"
-                  className="relative overflow-hidden rounded-[24px] border border-[#e8d7dc] bg-[#f6f7f8] group"
-                >
-                  <motion.div
-                    variants={glowHover}
-                    initial="rest"
-                    whileHover="hover"
-                    className="absolute -inset-8 bg-[radial-gradient(circle_at_top_left,rgba(25,106,182,0.25),transparent_45%)]"
-                  />
-                  <motion.img
-                    src={feature.coverImage}
-                    alt={feature.imageAlt}
-                    className="h-56 md:h-64 w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
-                    loading="lazy"
-                  />
-                  <div className="px-7 pb-9 pt-6 md:px-8 md:pb-10 md:pt-7 text-left">
-                    <span className="inline-flex rounded-full bg-[#f9dbe3] px-4 py-1 text-sm font-semibold text-[#5f9edb]">
-                      {feature.category}
-                    </span>
-                    <h3 className="mt-5 text-2xl md:text-[2rem] font-semibold leading-tight text-[#0b1f66]">
-                      {feature.title}
-                    </h3>
-                    <p className="mt-4 text-lg leading-relaxed text-[#243456]">
-                      {feature.description}
-                    </p>
-                  </div>
-                </motion.div>
-              );
-            })}
+  <div className="mt-9 md:mt-12 grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
+  {features.map((feature, index) => {
+    const Icon = feature.icon;
+    return (
+      <motion.div
+        key={index}
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay: index * 0.1, duration: 0.5 }}
+        whileHover={{ y: -8 }}
+        className="group relative rounded-3xl bg-[#0d1548] shadow-[0_22px_52px_rgba(6,8,30,0.45)] hover:shadow-[0_30px_70px_rgba(7,10,40,0.6)] transition-all duration-500 overflow-hidden border border-[#1f2c6c]"
+      >
+        <div className="relative z-10 p-5 md:p-6 text-center bg-[radial-gradient(circle_at_top,rgba(70,110,255,0.32),transparent_55%),linear-gradient(160deg,#111a55_0%,#0d1548_60%,#0a0f38_100%)] group-hover:bg-[radial-gradient(circle_at_top,rgba(90,130,255,0.36),transparent_55%),linear-gradient(160deg,#121c5a_0%,#0f184f_60%,#0b1240_100%)] transition-all duration-500">
+          <div className="absolute inset-0 rounded-3xl opacity-70 bg-[radial-gradient(circle_at_20%_10%,rgba(140,180,255,0.16),transparent_45%)] pointer-events-none" />
+          {/* Icon with floating effect */}
+          <div className="flex justify-center mb-6">
+            <div className="relative">
+              <div className="absolute inset-0 rounded-2xl bg-[#2f5bff]/40 blur-xl opacity-80 group-hover:opacity-100 transition-all duration-500" />
+              <div className="relative flex h-14 w-14 md:h-18 md:w-18 items-center justify-center rounded-2xl bg-gradient-to-br from-[#2b4ed2] to-[#1a2f9c] shadow-[0_14px_28px_rgba(17,30,92,0.55)] border border-[#2a3fa8] group-hover:shadow-[0_20px_40px_rgba(27,50,140,0.65)] transition-all duration-300 group-hover:scale-105">
+                <Icon className="h-7 w-7 md:h-9 md:w-9 text-white" aria-hidden="true" />
+              </div>
+            </div>
           </div>
+
+          {/* Category badge */}
+          <div className="mb-4">
+            <span className="inline-flex rounded-full bg-[#121a4f] px-4 py-1.5 text-xs font-semibold text-[#d6e0ff] border border-[#1e2a6a]">
+              {feature.category}
+            </span>
+          </div>
+
+          {/* Title */}
+          <h3 className="text-lg md:text-xl font-semibold tracking-tight text-white mb-2">
+            {feature.title}
+          </h3>
+
+          {/* Decorative dot */}
+          <div className="flex justify-center mb-4">
+            <div className="h-1 w-8 bg-[#6aa6ff] rounded-full group-hover:w-12 transition-all duration-500" />
+          </div>
+
+          {/* Description */}
+          <p className="text-sm md:text-[0.95rem] leading-relaxed text-[#d6e0ff]">
+            {feature.description}
+          </p>
+        </div>
+      </motion.div>
+    );
+  })}
+</div>
         </div>
       </section>
 
@@ -607,3 +684,4 @@ const BulkSMS = () => {
 };
 
 export default BulkSMS;
+
