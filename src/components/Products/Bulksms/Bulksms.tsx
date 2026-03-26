@@ -4,11 +4,11 @@ import Copilo from "@/assets/ChatPM.png";
 import bul from "@/assets/bul.png"
 import bull from "@/assets/bull.png"
 import bulk from "@/assets/Bulkll.png"
-import Kevin from "@/assets/Kevin.jpg"
 import BulkM from "@/assets/happyW.png"
 import BulkTwo from "@/assets/BulkTwo.png"
 import BulkP from "@/assets/BulkP.png"
 import BulkA from "@/assets/BulkA.png"
+import Backl from "@/assets/Backl.png"
 
 import { 
   CheckCircle, 
@@ -30,7 +30,7 @@ const BulkSMS = () => {
 
   const features = [
     {
-      coverImage: BulkM,
+      coverImage: BulkP,
       image: BulkM,
       imageAlt: "Team sending marketing text messages",
       category: "Communication",
@@ -224,7 +224,7 @@ const BulkSMS = () => {
       {/* Stats Section */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
             {[
               { number: "98%", label: "Open Rate" },
               { number: "10M+", label: "Messages Sent" },
@@ -238,12 +238,13 @@ const BulkSMS = () => {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
                 whileHover={{ y: -6, scale: 1.03 }}
-                className="text-center rounded-2xl bg-white/70 px-4 py-6 shadow-sm border border-white/70"
+                className="text-center rounded-2xl bg-white/80 px-5 py-7 shadow-md border border-white/80 backdrop-blur-sm relative overflow-hidden"
               >
+                <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
                 <div className="text-3xl md:text-4xl font-bold mb-2" style={{ color: themePrimary }}>
                   {stat.number}
                 </div>
-                <div className="text-gray-600">{stat.label}</div>
+                <div className="text-gray-600 font-medium">{stat.label}</div>
               </motion.div>
             ))}
           </div>
@@ -392,9 +393,10 @@ const BulkSMS = () => {
       </section>
 
       {/* Benefits Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+      <section className="relative overflow-hidden py-20 bg-[radial-gradient(circle_at_15%_20%,rgba(25,106,182,0.18),transparent_55%),radial-gradient(circle_at_80%_0%,rgba(11,31,102,0.25),transparent_45%),linear-gradient(135deg,#eef3fb_0%,#f5f8ff_40%,#e9f0fb_100%)]">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(255,255,255,0.7),transparent_60%)]" />
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
+          <div className="grid lg:grid-cols-2 gap-12 items-start">
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -410,11 +412,13 @@ const BulkSMS = () => {
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
-                    transition={{ delay: index * 0.1 }}
-                    className="flex items-start gap-3"
+                    transition={{ delay: index * 0.08 }}
+                    className="flex items-start gap-4"
                   >
-                    <CheckCircle className="w-6 h-6 flex-shrink-0 mt-0.5" style={{ color: themeBlue }} />
-                    <span className="text-gray-700 text-lg">{benefit}</span>
+                    <span className="mt-0.5 flex h-8 w-8 items-center justify-center rounded-full bg-white shadow-md border border-[#d7e3f8]">
+                      <CheckCircle className="w-5 h-5" style={{ color: themeBlue }} />
+                    </span>
+                    <span className="text-[#2b3a66] text-lg">{benefit}</span>
                   </motion.div>
                 ))}
               </div>
@@ -424,42 +428,29 @@ const BulkSMS = () => {
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              whileHover={{ scale: 1.02 }}
-              className="relative overflow-hidden p-8 rounded-2xl shadow-xl text-white"
-              style={{ backgroundImage: `url(${Kevin})`, backgroundSize: "cover", backgroundPosition: "center" }}
+              className="relative"
             >
-              <div className="absolute inset-0 bg-[#0b1f66]/65" />
-              <div className="relative z-10">
-              <div className="flex items-center gap-4 mb-6">
-                <Globe className="w-8 h-8" style={{ color: themeBlue }} />
-                <div>
-                  <h3 className="text-xl font-bold text-white">Global Reach</h3>
-                  <p className="text-white/90">Send SMS to 200+ countries</p>
+              <div className="relative rounded-3xl overflow-hidden border border-white/70 shadow-[0_30px_80px_rgba(11,31,102,0.25)] max-h-[200px] md:max-h-[220px]">
+                <img
+                  src={BulkP}
+                  alt="SMS engagement preview"
+                  className="h-[200px] md:h-[220px] w-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0b1f66]/70 via-[#0b1f66]/25 to-transparent" />
+                <div className="absolute top-4 left-4 rounded-full bg-white/90 px-4 py-1 text-xs font-semibold text-[#0b1f66] shadow">
+                  SMS
                 </div>
               </div>
-              <div className="flex items-center gap-4 mb-6">
-                <Clock className="w-8 h-8" style={{ color: themeBlue }} />
-                <div>
-                  <h3 className="text-xl font-bold text-white">Schedule Messages</h3>
-                  <p className="text-white/90">Plan your campaigns in advance</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-4">
-                <Shield className="w-8 h-8" style={{ color: themeBlue }} />
-                <div>
-                  <h3 className="text-xl font-bold text-white">Secure & Reliable</h3>
-                  <p className="text-white/90">Enterprise-grade security</p>
-                </div>
-              </div>
-              </div>
+
             </motion.div>
           </div>
         </div>
       </section>
 
       {/* Pricing Section */}
-      <section className="py-20">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative py-20 overflow-hidden bg-[#eef2f7]">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(25,106,182,0.12),transparent_55%),radial-gradient(circle_at_80%_10%,rgba(11,31,102,0.18),transparent_45%),radial-gradient(circle_at_60%_85%,rgba(11,58,126,0.12),transparent_55%)]" />
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -469,70 +460,62 @@ const BulkSMS = () => {
             <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: themeDark }}>
               Simple, Transparent Pricing
             </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            <p className="text-lg md:text-xl max-w-2xl mx-auto text-[#2b3a66]">
               Choose the plan that fits your business needs
             </p>
           </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            {pricingPlans.map((plan, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                whileHover={{ y: -10, scale: 1.03 }}
-                className={`bg-white rounded-2xl shadow-lg overflow-hidden ${
-                  index === 1 ? 'ring-2 scale-105' : ''
-                }`}
-                style={index === 1 ? { boxShadow: `0 0 0 2px ${themePrimary}` } : undefined}
-              >
-                {index === 1 && (
-                  <div className="text-white text-center py-2 text-sm font-semibold" style={{ backgroundColor: themePrimary }}>
-                    MOST POPULAR
+  
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+              {pricingPlans.map((plan, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  whileHover={{ y: -10, scale: 1.03 }}
+                  className={`relative rounded-3xl border border-[#d9e2f2] bg-white/90 shadow-[0_24px_60px_rgba(11,31,102,0.18)] overflow-hidden ${
+                    index === 1 ? 'scale-[1.06] border-2 border-[#196ab6]' : 'scale-[0.98]'
+                  }`}
+                >
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/70 via-white/30 to-transparent" />
+                  {index === 1 && (
+                    <div className="relative z-10 -mt-px rounded-t-3xl bg-[#196ab6] py-3 text-center text-xs font-semibold uppercase tracking-[0.25em] text-white">
+                      MOST POPULAR
+                    </div>
+                  )}
+                  <div className="relative z-10 p-8">
+                    <h3 className="text-2xl font-bold mb-2" style={{ color: themeDark }}>{plan.name}</h3>
+                    <div className="mb-4">
+                      <span className="text-4xl font-bold" style={{ color: themePrimary }}>{plan.price}</span>
+                      <span className="text-[#6b7aa7] ml-2">/month</span>
+                    </div>
+                    <p className="font-semibold mb-6" style={{ color: themeBlue }}>{plan.sms} included</p>
+                    <ul className="space-y-3 mb-8">
+                      {plan.features.map((feature, i) => (
+                        <li key={i} className="flex items-start gap-2">
+                          <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: themeBlue }} />
+                          <span className="text-[#2b3a66]">{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    <Button className="w-full bg-primary text-white hover:bg-primary/90">
+                      Get Started
+                    </Button>
                   </div>
-                )}
-                <div className="p-8">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-2">{plan.name}</h3>
-                  <div className="mb-4">
-                    <span className="text-4xl font-bold" style={{ color: themeDark }}>{plan.price}</span>
-                    <span className="text-gray-600 ml-2">/month</span>
-                  </div>
-                  <p className="font-semibold mb-6" style={{ color: themeBlue }}>{plan.sms} included</p>
-                  <ul className="space-y-3 mb-8">
-                    {plan.features.map((feature, i) => (
-                      <li key={i} className="flex items-start gap-2">
-                        <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: themeBlue }} />
-                        <span className="text-gray-600">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  <Button 
-                    className={`w-full ${
-                      index === 1 
-                        ? 'text-white' 
-                        : 'text-white'
-                    } text-white`}
-                    style={{
-                      backgroundColor: index === 1 ? themePrimary : themeDark,
-                    }}
-                  >
-                    Get Started
-                  </Button>
-                </div>
-              </motion.div>
-            ))}
+                </motion.div>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
       {/* CTA Section */}
       <section
-        className="py-20 text-white"
-        style={{ background: `linear-gradient(90deg, ${themeDark} 0%, ${themePrimary} 50%, ${themeBlue} 100%)` }}
+        className="relative overflow-hidden py-24 md:py-28 text-white"
+        style={{ backgroundImage: `url(${Backl})`, backgroundSize: "cover", backgroundPosition: "center" }}
       >
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0b1f66]/45 via-[#0b3a7e]/35 to-[#196ab6]/45" />
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
