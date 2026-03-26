@@ -13,21 +13,18 @@ const socialLinks = [
 ];
 
 const quickLinks = [
-  { label: "Who we are", href: "#about" },
-  { label: "The Board", href: "/board" },
+  { label: "Who we are", href: "/who-we-are" },
+  { label: "The Board", href: "/boardmembers" },
   { label: "Careers", href: "/careers" },
-  { label: "Equitel", href: "#" },
-  { label: "Jenga PGW", href: "https://jengapgw.io" },
-  { label: "Jenga API", href: "https://jengahq.io" },
-  { label: "Finserve Mobile", href: "https://developer.jengahq.io" },
+  { label: "Equitel", href: "https://equitel.com/" },
+  { label: "Jenga PGW", href: "https://jengapgw.io/" },
+  { label: "Jenga API", href: "https://jengahq.io/" },
+  { label: "Finserve Mobile", href: "https://finservemoney.com/" },
 ];
 
 const complianceLinks = [
-  { label: "Legal", href: "#" },
-  { label: "Whistleblowing", href: "#" },
-  { label: "Security Policy", href: "https://www.finserve.africa/media/EGHL_INFORMATION_SECURITY_POLICY.pdf" },
-  { label: "Cookie Policy", href: "#" },
-  { label: "Terms and Conditions", href: "#" },
+  { label: "Legal", href: "/media-centre#policies" },
+  { label: "Security Policy", href: "/media-centre#policies" },
 ];
 
 const XIcon = () => (
@@ -194,22 +191,10 @@ export const Footer = () => {
                 {/* Links - compact */}
                 <div className="flex gap-3">
                   <a 
-                    href="#" 
+                    href="/media-centre#policies" 
                     className="text-white/70 hover:text-white transition-colors font-normal tracking-normal text-xs"
                   >
                     Privacy Policy
-                  </a>
-                  <a 
-                    href="#" 
-                    className="text-white/70 hover:text-white transition-colors font-normal tracking-normal text-xs"
-                  >
-                    Cookie Policy
-                  </a>
-                  <a 
-                    href="#" 
-                    className="text-white/70 hover:text-white transition-colors font-normal tracking-normal text-xs"
-                  >
-                    Terms and Conditions
                   </a>
                 </div>
               </div>
