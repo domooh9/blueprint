@@ -3,17 +3,59 @@ import Equitel from "./Equitel/Equitel";
 import JengaAPI from "./Jenga/JengaAPI";
 import JengaPGW from "./Jenga/JengaPGW";
 import FinserveMobile from "./FinserveMobile/FinserveMobile";
-import Bulksms from "./Bulksms/Bulksms";
 import Andreas from "@/assets/Cet.png";
 import { Zap } from "lucide-react";
 import { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 // Product logos for the animated carousel
 import equitelLogo from "@/assets/equitel-gatewaay.png";
 import jengaLogo from "@/assets/jenga-apii.png";
 import finserveLogo from "@/assets/FinserveMoney.png";
 import JengaPayment from "@/assets/JengaPaymentii.png";
+import BulkM from "@/assets/BulkM.png";
+
+const BulkSmsPreview = () => (
+  <div className="relative overflow-hidden rounded-3xl border border-[#e3e7ef] bg-white shadow-lg">
+    <div className="absolute -right-24 -top-24 h-56 w-56 rounded-full bg-primary/10 blur-3xl" />
+    <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-8 items-center p-6 md:p-10">
+      <div>
+        <span className="inline-flex rounded-full bg-primary/10 px-4 py-1 text-xs font-semibold uppercase tracking-wide text-primary">
+          Bulk SMS
+        </span>
+        <h3 className="mt-4 text-2xl md:text-3xl font-bold text-[#1f2a44]">
+          Reach thousands in seconds with reliable messaging.
+        </h3>
+        <p className="mt-3 text-base md:text-lg text-gray-600 max-w-2xl">
+          Launch targeted campaigns, automate alerts, and keep customers engaged
+          with delivery reports and two-way messaging - all from a single platform.
+        </p>
+        <div className="mt-6 flex flex-wrap items-center gap-3">
+          <a
+            href="/products/bulksms"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center rounded-full bg-primary px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-primary/90"
+          >
+            Learn more
+          </a>
+          
+        </div>
+      </div>
+
+
+
+      <div className="relative overflow-hidden rounded-2xl border border-[#eef1f6] bg-[#f8fafc] p-4">
+        <img
+          src={BulkM}
+          alt="Bulk SMS dashboard preview"
+          className="h-full w-full rounded-xl object-cover shadow-md"
+          loading="lazy"
+        />
+      </div>
+    </div>
+  </div>
+);
 
 const PRODUCT_HASH_MAP: Record<string, string> = {
   "#finserve-money": "finserveMoney",
@@ -112,7 +154,7 @@ export const Products = () => {
       id: "bulkSms",
       label: "Bulk Sms",
       logo: finserveLogo,
-      component: <Bulksms />,
+      component: <BulkSmsPreview />,
     },
   ];
 

@@ -18,8 +18,10 @@ import {
   Shield,
   Smile,
   ArrowRight,
-  ChevronRight
+  ChevronRight,
+  ExternalLink
 } from "lucide-react";
+import { enhancedButtonStyles } from "../productStyles";
 
 const BulkSMS = () => {
   const themePrimary = "#0b3a7e";
@@ -102,7 +104,18 @@ const BulkSMS = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white pt-16 md:pt-20">
+    <div className="min-h-screen bg-white pt-2 md:pt-3">
+      {/* Logo-style brand */}
+      <div className="relative z-20">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-0.5 pb-0.5">
+          <div className="inline-flex items-center gap-2.5 rounded-full border border-white/20 bg-transparent px-4 py-1 shadow-none">
+            <span className="text-lg sm:text-xl font-bold tracking-[0.28em] uppercase text-[#0b1f66]">
+              BulkSms
+            </span>
+            <span className="h-2.5 w-2.5 rounded-full bg-[#eb2240]" />
+          </div>
+        </div>
+      </div>
       {/* Hero Section */}
       <section
         className="relative text-white overflow-hidden bg-cover bg-center bg-no-repeat"
@@ -134,30 +147,26 @@ const BulkSMS = () => {
               Reach your customers instantly with reliable, cost-effective bulk messaging
             </p>
             <div className="flex flex-wrap gap-4">
-         <a
-  href="https://jenga-docs-bulksms.azurewebsites.net/"
-  target="_blank"
-  rel="noopener noreferrer"
->
-  <motion.div whileHover={{ y: -3, scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-    <Button 
-      size="lg" 
-      className="bg-white hover:bg-gray-100 text-lg px-8"
-      style={{ color: themeDark }}
-    >
-      Get Started
-      <ChevronRight className="ml-2 w-5 h-5" />
-    </Button>
-  </motion.div>
-</a>
+              <a
+                href="https://jenga-docs-bulksms.azurewebsites.net/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <motion.div whileHover={{ y: -3, scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                  <Button size="lg" className={enhancedButtonStyles.primary}>
+                    <div className={enhancedButtonStyles.glow}></div>
+                    <span className="relative z-10 flex items-center">
+                      Get Started
+                      <ExternalLink className={enhancedButtonStyles.icon} />
+                    </span>
+                    <div className={enhancedButtonStyles.shine}></div>
+                  </Button>
+                </motion.div>
+              </a>
               <motion.div whileHover={{ y: -3, scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-                <Button 
-                  size="lg" 
-                  variant="outline" 
-                   className="bg-white hover:bg-gray-100 text-lg px-8"
-      style={{ color: themeDark }}
-                >
-                  View Pricing
+                <Button size="lg" variant="outline" className={enhancedButtonStyles.secondary}>
+                  <span className="relative z-10">View Pricing</span>
+                  <div className={enhancedButtonStyles.shine}></div>
                 </Button>
               </motion.div>
             </div>
@@ -492,17 +501,22 @@ const BulkSMS = () => {
             <div className="flex flex-wrap justify-center gap-4">
               <Button 
                 size="lg" 
-                className="bg-white hover:bg-gray-100 text-lg px-8"
-                style={{ color: themeDark }}
+                className={enhancedButtonStyles.primary}
               >
-                Create Free Account
+                <div className={enhancedButtonStyles.glow}></div>
+                <span className="relative z-10 flex items-center">
+                  Create Free Account
+                  <ExternalLink className={enhancedButtonStyles.icon} />
+                </span>
+                <div className={enhancedButtonStyles.shine}></div>
               </Button>
               <Button 
                 size="lg" 
                 variant="outline" 
-                className="border-white text-white hover:bg-white/10 text-lg px-8"
-             style={{ color: themeDark }} >
-                Contact Sales
+                className={enhancedButtonStyles.secondary}
+              >
+                <span className="relative z-10">Contact Sales</span>
+                <div className={enhancedButtonStyles.shine}></div>
               </Button>
             </div>
           </motion.div>

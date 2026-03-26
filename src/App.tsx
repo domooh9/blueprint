@@ -41,9 +41,10 @@ const App = () => (
              <Route path="/livestream" element={<Livestream />} />
              <Route path="/FinAdmin" element={<FinAdmin />} />
              <Route path="/careers" element={<Careers />} />
-             <Route path="/products/bulksms" element={<Bulksms />} />
-             
           </Route>
+
+          {/* Independent landing page (no Header/Footer) */}
+          <Route path="/products/bulksms" element={<Bulksms />} />
 
           {/* 404 fallback */}
           <Route path="*" element={<NotFound />} />
