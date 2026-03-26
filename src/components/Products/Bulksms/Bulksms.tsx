@@ -5,7 +5,7 @@ import bul from "@/assets/bul.png"
 import bull from "@/assets/bull.png"
 import bulk from "@/assets/Bulkll.png"
 import Kevin from "@/assets/Kevin.jpg"
-import BulkM from "@/assets/BulkM.png"
+import BulkM from "@/assets/happyW.png"
 import BulkTwo from "@/assets/BulkTwo.png"
 import BulkP from "@/assets/BulkP.png"
 import BulkA from "@/assets/BulkA.png"
@@ -110,7 +110,7 @@ const BulkSMS = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-0.5 pb-0.5">
           <div className="inline-flex items-center gap-2.5 rounded-full border border-white/20 bg-transparent px-4 py-1 shadow-none">
             <span className="text-lg sm:text-xl font-bold tracking-[0.28em] uppercase text-[#0b1f66]">
-              BulkSms
+              Bulk Sms
             </span>
             <span className="h-2.5 w-2.5 rounded-full bg-[#eb2240]" />
           </div>
@@ -118,59 +118,106 @@ const BulkSMS = () => {
       </div>
       {/* Hero Section */}
       <section
-        className="relative text-white overflow-hidden bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${Copilo})` }}
+        className="relative overflow-hidden text-white"
+        style={{
+          backgroundImage:
+            "radial-gradient(circle at 20% 20%, rgba(120,180,255,0.35), transparent 45%), radial-gradient(circle at 80% 10%, rgba(78,120,255,0.35), transparent 35%), radial-gradient(circle at 30% 80%, rgba(20,40,120,0.9), transparent 60%), linear-gradient(135deg, #0b1f66 0%, #122a7a 45%, #0a1a4f 100%)",
+        }}
       >
         <div
-          className="absolute inset-0"
-          style={{ background: `linear-gradient(135deg, ${themeDark}E0 0%, ${themePrimary}B8 55%, ${themeBlue}A6 100%)` }}
+          className="absolute inset-0 opacity-60"
+          style={{
+            backgroundImage:
+              "radial-gradient(rgba(255,255,255,0.35) 1px, transparent 1px)",
+            backgroundSize: "24px 24px",
+          }}
         />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(255,255,255,0.15),transparent_60%)]" />
         <div className="pointer-events-none absolute inset-0">
           <img
-            src={BulkP}
+            src={Copilo}
             alt=""
             aria-hidden="true"
-            className="absolute -right-6 bottom-0 hidden h-[60%] w-auto opacity-40 mix-blend-screen md:block lg:h-[75%]"
+            className="absolute inset-0 h-full w-full object-cover opacity-10 mix-blend-screen"
           />
         </div>
-        <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="max-w-3xl"
-          >
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
-              Bulk SMS Solutions for Your Business
-            </h1>
-            <p className="text-xl md:text-2xl mb-8 text-white/90">
-              Reach your customers instantly with reliable, cost-effective bulk messaging
-            </p>
-            <div className="flex flex-wrap gap-4">
-              <a
-                href="https://jenga-docs-bulksms.azurewebsites.net/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+        <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20">
+          <div className="grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] gap-10 items-center">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="max-w-2xl"
+            >
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight">
+                Bulk SMS That Powers
+                <span className="block">Your Business Growth</span>
+              </h1>
+              <p className="text-lg md:text-xl mb-8 text-white/85">
+                Reach customers instantly with fast, reliable messaging that keeps your
+                business connected.
+              </p>
+              <div className="flex flex-wrap gap-4">
+                <a
+                  href="https://jenga-docs-bulksms.azurewebsites.net/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <motion.div whileHover={{ y: -3, scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                    <Button size="lg" className={enhancedButtonStyles.primary}>
+                      <div className={enhancedButtonStyles.glow}></div>
+                      <span className="relative z-10 flex items-center">
+                        Get Started
+                        <ExternalLink className={enhancedButtonStyles.icon} />
+                      </span>
+                      <div className={enhancedButtonStyles.shine}></div>
+                    </Button>
+                  </motion.div>
+                </a>
                 <motion.div whileHover={{ y: -3, scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-                  <Button size="lg" className={enhancedButtonStyles.primary}>
-                    <div className={enhancedButtonStyles.glow}></div>
-                    <span className="relative z-10 flex items-center">
-                      Get Started
-                      <ExternalLink className={enhancedButtonStyles.icon} />
-                    </span>
+                  <Button size="lg" variant="outline" className={enhancedButtonStyles.secondary}>
+                    <span className="relative z-10">View Pricing</span>
                     <div className={enhancedButtonStyles.shine}></div>
                   </Button>
                 </motion.div>
-              </a>
-              <motion.div whileHover={{ y: -3, scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-                <Button size="lg" variant="outline" className={enhancedButtonStyles.secondary}>
-                  <span className="relative z-10">View Pricing</span>
-                  <div className={enhancedButtonStyles.shine}></div>
-                </Button>
-              </motion.div>
-            </div>
-          </motion.div>
+              </div>
+              <div className="mt-8 flex flex-wrap items-center gap-6 text-sm text-white/80">
+                {["Fast Delivery", "Secure API", "Global Reach"].map((item) => (
+                  <div key={item} className="flex items-center gap-2">
+                    <CheckCircle className="h-4 w-4 text-white/80" />
+                    <span className="font-medium">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.1 }}
+              className="relative"
+            >
+              <div className="absolute -inset-6 rounded-[32px] bg-white/10 blur-2xl" />
+              <div className="relative rounded-[32px] border border-white/20 bg-white/10 p-5 shadow-[0_30px_80px_rgba(11,31,102,0.45)] backdrop-blur-lg">
+                <div className="absolute -left-6 top-8 hidden sm:flex items-center gap-2 rounded-xl border border-white/20 bg-white/15 px-3 py-2 text-xs text-white/90">
+                  <span className="font-semibold">SMS</span>
+                </div>
+                <div className="absolute -right-6 top-24 hidden sm:flex items-center gap-2 rounded-xl border border-white/20 bg-white/15 px-3 py-2 text-xs text-white/90">
+                  <span className="font-semibold">Marketing</span>
+                </div>
+                <div className="absolute left-10 -bottom-6 hidden sm:flex items-center gap-2 rounded-xl border border-white/20 bg-white/15 px-3 py-2 text-xs text-white/90">
+                  <span className="font-semibold">Insights</span>
+                </div>
+                <div className="rounded-2xl bg-gradient-to-br from-white/10 to-white/5 p-4">
+                  <img
+                    src={BulkM}
+                    alt="Bulk SMS dashboard preview"
+                    className="w-full rounded-2xl object-cover shadow-xl"
+                  />
+                </div>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
