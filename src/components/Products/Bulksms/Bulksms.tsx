@@ -226,7 +226,7 @@ const BulkSMS = () => {
               </p>
               <div className="flex flex-wrap gap-4">
                 <a
-                  href="https://jenga-docs-bulksms.azurewebsites.net/"
+                  href="https://jenga-docs-bulksms.azurewebsites.net/login"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
