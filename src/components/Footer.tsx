@@ -1,4 +1,6 @@
 import { Facebook, Instagram, Linkedin, Youtube } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { initEloquaForm } from "@/lib/eloquaEmbed";
 import finserveLogo from "@/assets/finserve-logo.png";
 import cert2 from "@/assets/cert2.png"
 import cert1 from "@/assets/cert1.png"
@@ -33,6 +35,68 @@ const XIcon = () => (
   </svg>
 );
 export const Footer = () => {
+  const [showInquiry, setShowInquiry] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<"idle" | "sending" | "success">("idle");
+  const formRef = useRef<HTMLFormElement | null>(null);
+  const iframeRef = useRef<HTMLIFrameElement | null>(null);
+
+  useEffect(() => {
+    let timeout = 5;
+    let timerId: number | null = null;
+    const waitUntilCustomerGUIDIsRetrieved = () => {
+      if (timerId && timeout === 0) return;
+      const getGuid = (window as any).GetElqCustomerGUID as undefined | (() => string);
+      const fields = document.querySelectorAll<HTMLInputElement>(
+        'form[name="UntitledForm-1774961240561"] input[name="elqCustomerGUID"]'
+      );
+      if (typeof getGuid === "function" && fields.length > 0) {
+        const guid = getGuid();
+        fields.forEach((field) => {
+          field.value = guid;
+        });
+        return;
+      }
+      timeout -= 1;
+      timerId = window.setTimeout(waitUntilCustomerGUIDIsRetrieved, 500);
+    };
+    (window as any)._elqQ = (window as any)._elqQ || [];
+    (window as any)._elqQ.push(["elqGetCustomerGUID"]);
+    waitUntilCustomerGUIDIsRetrieved();
+    return () => {
+      if (timerId) window.clearTimeout(timerId);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!formRef.current) return;
+    initEloquaForm(formRef.current);
+  }, []);
+
+  const handleEloquaSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const handler = (window as any).handleFormSubmit as undefined | ((form: HTMLFormElement) => boolean);
+    if (typeof handler === "function") {
+      const result = handler(event.currentTarget);
+      if (result === false) {
+        setSubmitStatus("idle");
+        return;
+      }
+    }
+
+    const iframe = iframeRef.current;
+    if (iframe) {
+      const onLoad = () => {
+        setSubmitStatus("success");
+        iframe.removeEventListener("load", onLoad);
+      };
+      iframe.addEventListener("load", onLoad);
+    } else {
+      setSubmitStatus("success");
+    }
+
+    setSubmitStatus("sending");
+    event.currentTarget.submit();
+  };
   return (
     <footer 
       className="bg-primary relative overflow-hidden"
@@ -202,6 +266,111 @@ export const Footer = () => {
           </div>
         </div>
       </div>
+
+      {/* Floating Inquiry/Feedback Button */}
+      <button
+        type="button"
+        onClick={() => setShowInquiry((prev) => !prev)}
+        className="fixed bottom-6 right-6 z-40 rounded-full bg-[#ec2240] px-5 py-3 text-xs sm:text-sm font-semibold text-white shadow-[0_16px_40px_rgba(236,34,64,0.45)] transition-transform hover:-translate-y-1"
+        aria-expanded={showInquiry}
+        aria-controls="finserve-inquiry-panel"
+      >
+        {showInquiry ? "Close Inquiry/Feedback" : "Inquiry/Feedback"}
+      </button>
+
+      {/* Floating Inquiry/Feedback Panel */}
+      {showInquiry && (
+        <div
+          id="finserve-inquiry-panel"
+          className="fixed bottom-20 right-6 z-40 w-[92vw] max-w-md rounded-2xl border border-[#dfe6f4] bg-white p-5 shadow-[0_30px_80px_rgba(11,31,102,0.25)]"
+          role="dialog"
+          aria-label="Inquiry and feedback form"
+        >
+          <div className="mb-4">
+            <h4 className="text-lg font-semibold text-[#0b1f66]">Inquiry/Feedback</h4>
+            <p className="text-sm text-[#5b6a92]">Tell us what you need or share feedback.</p>
+          </div>
+          <form
+            ref={formRef}
+            className="elq-form space-y-3"
+            action="https://s793546030.t.eloqua.com/e/f2"
+            method="post"
+            name="UntitledForm-1774961240561"
+            id="form183-footer"
+            onSubmit={handleEloquaSubmit}
+            target="eloquaHiddenFrameFooter"
+          >
+            <input type="hidden" name="elqFormName" value="UntitledForm-1774961240561" />
+            <input type="hidden" name="elqSiteId" value="793546030" />
+            <input type="hidden" name="elqCampaignId" value="" />
+            <input type="hidden" name="elqCustomerGUID" value="" />
+            <input type="hidden" name="elqCookieWrite" value="0" />
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div>
+                <label className="text-xs font-semibold text-[#2b3a66]" htmlFor="fe2239-footer">Full Name</label>
+                <input
+                  type="text"
+                  name="fullName1"
+                  id="fe2239-footer"
+                  placeholder="Your full name"
+                  required
+                  className="elq-item-input mt-1 w-full rounded-lg border border-[#d9e2f2] bg-white px-3 py-2 text-sm text-[#1f2c55] outline-none focus:border-[#ec2240] focus:ring-2 focus:ring-[#ec2240]/20"
+                />
+              </div>
+              <div>
+                <label className="text-xs font-semibold text-[#2b3a66]" htmlFor="fe2241-footer">Email Address</label>
+                <input
+                  type="email"
+                  name="emailAddress"
+                  id="fe2241-footer"
+                  placeholder="you@company.com"
+                  required
+                  className="elq-item-input mt-1 w-full rounded-lg border border-[#d9e2f2] bg-white px-3 py-2 text-sm text-[#1f2c55] outline-none focus:border-[#ec2240] focus:ring-2 focus:ring-[#ec2240]/20"
+                />
+              </div>
+            </div>
+            <div>
+              <label className="text-xs font-semibold text-[#2b3a66]" htmlFor="fe2240-footer">Phone number</label>
+              <input
+                type="tel"
+                name="phoneNumber1"
+                id="fe2240-footer"
+                placeholder="+254 7xx xxx xxx"
+                required
+                className="elq-item-input mt-1 w-full rounded-lg border border-[#d9e2f2] bg-white px-3 py-2 text-sm text-[#1f2c55] outline-none focus:border-[#ec2240] focus:ring-2 focus:ring-[#ec2240]/20"
+              />
+            </div>
+            <div>
+              <label className="text-xs font-semibold text-[#2b3a66]" htmlFor="fe2242-footer">Paragraph Text</label>
+              <textarea
+                rows={4}
+                placeholder="Write your message..."
+                name="paragraphText"
+                id="fe2242-footer"
+                required
+                className="elq-item-textarea mt-1 w-full rounded-lg border border-[#d9e2f2] bg-white px-3 py-2 text-sm text-[#1f2c55] outline-none focus:border-[#ec2240] focus:ring-2 focus:ring-[#ec2240]/20"
+              />
+            </div>
+            <button
+              type="submit"
+              className="w-full rounded-lg bg-[#0b1f66] px-4 py-2 text-sm font-semibold text-white hover:bg-[#0a1a4f]"
+            >
+              Send Inquiry/Feedback
+            </button>
+            {submitStatus === "success" && (
+              <div className="rounded-lg border border-emerald-200 bg-emerald-50 px-3 py-2 text-xs text-emerald-700">
+                Thanks! Your inquiry has been sent.
+              </div>
+            )}
+          </form>
+          <iframe
+            ref={iframeRef}
+            title="eloqua-hidden-frame"
+            name="eloquaHiddenFrameFooter"
+            className="hidden"
+          />
+        </div>
+      )}
     </footer>
   );
 };

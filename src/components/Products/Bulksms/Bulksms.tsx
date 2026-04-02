@@ -1,4 +1,6 @@
 import { motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import { initEloquaForm } from "@/lib/eloquaEmbed";
 import { Button } from "@/components/ui/button";
 import Copilo from "@/assets/ChatPM.png";
 import bul from "@/assets/bul.png"
@@ -98,6 +100,68 @@ const BulkSMS = () => {
   const themePrimary = "#0b3a7e";
   const themeBlue = "#196ab6";
   const themeDark = "#0b1f66";
+  const [showInquiry, setShowInquiry] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<"idle" | "sending" | "success">("idle");
+  const formRef = useRef<HTMLFormElement | null>(null);
+  const iframeRef = useRef<HTMLIFrameElement | null>(null);
+
+  useEffect(() => {
+    let timeout = 5;
+    let timerId: number | null = null;
+    const waitUntilCustomerGUIDIsRetrieved = () => {
+      if (timerId && timeout === 0) return;
+      const getGuid = (window as any).GetElqCustomerGUID as undefined | (() => string);
+      const fields = document.querySelectorAll<HTMLInputElement>(
+        'form[name="UntitledForm-1774961240561"] input[name="elqCustomerGUID"]'
+      );
+      if (typeof getGuid === "function" && fields.length > 0) {
+        const guid = getGuid();
+        fields.forEach((field) => {
+          field.value = guid;
+        });
+        return;
+      }
+      timeout -= 1;
+      timerId = window.setTimeout(waitUntilCustomerGUIDIsRetrieved, 500);
+    };
+    (window as any)._elqQ = (window as any)._elqQ || [];
+    (window as any)._elqQ.push(["elqGetCustomerGUID"]);
+    waitUntilCustomerGUIDIsRetrieved();
+    return () => {
+      if (timerId) window.clearTimeout(timerId);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!formRef.current) return;
+    initEloquaForm(formRef.current);
+  }, []);
+
+  const handleEloquaSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const handler = (window as any).handleFormSubmit as undefined | ((form: HTMLFormElement) => boolean);
+    if (typeof handler === "function") {
+      const result = handler(event.currentTarget);
+      if (result === false) {
+        setSubmitStatus("idle");
+        return;
+      }
+    }
+
+    const iframe = iframeRef.current;
+    if (iframe) {
+      const onLoad = () => {
+        setSubmitStatus("success");
+        iframe.removeEventListener("load", onLoad);
+      };
+      iframe.addEventListener("load", onLoad);
+    } else {
+      setSubmitStatus("success");
+    }
+
+    setSubmitStatus("sending");
+    event.currentTarget.submit();
+  };
 
   const features = [
     {
@@ -679,6 +743,134 @@ const BulkSMS = () => {
           </motion.div>
         </div>
       </section>
+
+      {/* Footer Inquiry */}
+      <footer className="relative bg-[#0b1f66] text-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-14">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+            <div>
+              <p className="text-sm uppercase tracking-[0.3em] text-white/70">Have a question?</p>
+              <h3 className="text-2xl md:text-3xl font-semibold">Inquiry Desk</h3>
+              <p className="mt-2 text-white/80 max-w-md">
+                Ask about pricing, integrations, or onboarding. We will get back quickly.
+              </p>
+            </div>
+            <div className="flex items-center gap-3">
+              <Button
+                variant="outline"
+                className="border-white/40 text-white hover:bg-white/10"
+                onClick={() => setShowInquiry((prev) => !prev)}
+              >
+                {showInquiry ? "Close Inquiry" : "Open Inquiry"}
+              </Button>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+      {/* Floating Inquiry Button */}
+      <button
+        type="button"
+        onClick={() => setShowInquiry((prev) => !prev)}
+        className="fixed bottom-6 right-6 z-40 rounded-full bg-[#eb2240] px-5 py-3 text-sm font-semibold text-white shadow-[0_16px_40px_rgba(235,34,64,0.45)] transition-transform hover:-translate-y-1"
+        aria-expanded={showInquiry}
+        aria-controls="bulk-sms-inquiry-panel"
+      >
+        {showInquiry ? "Hide Inquiry" : "New Inquiry"}
+      </button>
+
+      {/* Floating Inquiry Panel */}
+      <motion.div
+        id="bulk-sms-inquiry-panel"
+        initial={false}
+        animate={showInquiry ? { opacity: 1, y: 0, pointerEvents: "auto" } : { opacity: 0, y: 20, pointerEvents: "none" }}
+        transition={{ duration: 0.25 }}
+        className="fixed bottom-20 right-6 z-40 w-[92vw] max-w-md rounded-2xl border border-[#dfe6f4] bg-white p-5 shadow-[0_30px_80px_rgba(11,31,102,0.25)]"
+      >
+        <div className="mb-4">
+          <h4 className="text-lg font-semibold text-[#0b1f66]">Send an Inquiry</h4>
+          <p className="text-sm text-[#5b6a92]">We reply within 1 business day.</p>
+        </div>
+        <form
+          ref={formRef}
+          className="elq-form space-y-3"
+          action="https://s793546030.t.eloqua.com/e/f2"
+          method="post"
+          name="UntitledForm-1774961240561"
+          id="form183-bulk"
+          onSubmit={handleEloquaSubmit}
+          target="eloquaHiddenFrameBulk"
+        >
+          <input type="hidden" name="elqFormName" value="UntitledForm-1774961240561" />
+          <input type="hidden" name="elqSiteId" value="793546030" />
+          <input type="hidden" name="elqCampaignId" value="" />
+          <input type="hidden" name="elqCustomerGUID" value="" />
+          <input type="hidden" name="elqCookieWrite" value="0" />
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div>
+              <label className="text-xs font-semibold text-[#2b3a66]" htmlFor="fe2239-bulk">Full Name</label>
+              <input
+                type="text"
+                name="fullName1"
+                id="fe2239-bulk"
+                placeholder="Your full name"
+                required
+                className="elq-item-input mt-1 w-full rounded-lg border border-[#d9e2f2] bg-white px-3 py-2 text-sm text-[#1f2c55] outline-none focus:border-[#196ab6] focus:ring-2 focus:ring-[#196ab6]/20"
+              />
+            </div>
+            <div>
+              <label className="text-xs font-semibold text-[#2b3a66]" htmlFor="fe2241-bulk">Email Address</label>
+              <input
+                type="email"
+                name="emailAddress"
+                id="fe2241-bulk"
+                placeholder="you@company.com"
+                required
+                className="elq-item-input mt-1 w-full rounded-lg border border-[#d9e2f2] bg-white px-3 py-2 text-sm text-[#1f2c55] outline-none focus:border-[#196ab6] focus:ring-2 focus:ring-[#196ab6]/20"
+              />
+            </div>
+          </div>
+          <div>
+            <label className="text-xs font-semibold text-[#2b3a66]" htmlFor="fe2240-bulk">Phone number</label>
+            <input
+              type="tel"
+              name="phoneNumber1"
+              id="fe2240-bulk"
+              placeholder="+254 7xx xxx xxx"
+              required
+              className="elq-item-input mt-1 w-full rounded-lg border border-[#d9e2f2] bg-white px-3 py-2 text-sm text-[#1f2c55] outline-none focus:border-[#196ab6] focus:ring-2 focus:ring-[#196ab6]/20"
+            />
+          </div>
+          <div>
+            <label className="text-xs font-semibold text-[#2b3a66]" htmlFor="fe2242-bulk">Paragraph Text</label>
+            <textarea
+              rows={4}
+              placeholder="Tell us what you need..."
+              name="paragraphText"
+              id="fe2242-bulk"
+              required
+              className="elq-item-textarea mt-1 w-full rounded-lg border border-[#d9e2f2] bg-white px-3 py-2 text-sm text-[#1f2c55] outline-none focus:border-[#196ab6] focus:ring-2 focus:ring-[#196ab6]/20"
+            />
+          </div>
+          <Button
+            type="submit"
+            className="w-full bg-[#0b1f66] text-white hover:bg-[#0a1a4f]"
+          >
+            Send Inquiry
+          </Button>
+          {submitStatus === "success" && (
+            <div className="rounded-lg border border-emerald-200 bg-emerald-50 px-3 py-2 text-xs text-emerald-700">
+              Thanks! Your inquiry has been sent.
+            </div>
+          )}
+        </form>
+        <iframe
+          ref={iframeRef}
+          title="eloqua-hidden-frame"
+          name="eloquaHiddenFrameBulk"
+          className="hidden"
+        />
+      </motion.div>
     </div>
   );
 };
