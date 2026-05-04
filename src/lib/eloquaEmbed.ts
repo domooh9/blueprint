@@ -56,17 +56,14 @@ export function initEloquaForm(form: HTMLFormElement) {
   }
 
   if (phone) {
-    // LiveValidation doesn't support type="tel", temporarily switch to "text"
-    const phoneInput = phone as HTMLInputElement;
-    const originalType = phoneInput.type;
-    phoneInput.type = "text";
+    // Keep the field as a text input in the UI layer because LiveValidation
+    // re-checks the element type after initialization and throws on "tel".
     const lv = new LiveValidation(phone, {
       validMessage: "",
       onlyOnBlur: false,
       wait: 300,
       isPhoneField: false,
     });
-    phoneInput.type = originalType;
     lv.add(Validate.Custom, {
       against: (value: string) => !value.match(urlPattern),
       failureMessage: "Value must not contain any URL's",

@@ -331,14 +331,16 @@ export const Footer = () => {
             </div>
             <div>
               <label className="text-xs font-semibold text-[#2b3a66]" htmlFor="fe2240-footer">Phone number</label>
-              <input
-                type="tel"
-                name="phoneNumber1"
-                id="fe2240-footer"
-                placeholder="+254 7xx xxx xxx"
-                required
-                className="elq-item-input mt-1 w-full rounded-lg border border-[#d9e2f2] bg-white px-3 py-2 text-sm text-[#1f2c55] outline-none focus:border-[#ec2240] focus:ring-2 focus:ring-[#ec2240]/20"
-              />
+                <input
+                  type="text"
+                  inputMode="tel"
+                  autoComplete="tel"
+                  name="phoneNumber1"
+                  id="fe2240-footer"
+                  placeholder="+254 7xx xxx xxx"
+                  required
+                  className="elq-item-input mt-1 w-full rounded-lg border border-[#d9e2f2] bg-white px-3 py-2 text-sm text-[#1f2c55] outline-none focus:border-[#ec2240] focus:ring-2 focus:ring-[#ec2240]/20"
+                />
             </div>
             <div>
               <label className="text-xs font-semibold text-[#2b3a66]" htmlFor="fe2242-footer">Paragraph Text</label>
