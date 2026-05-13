@@ -1,4 +1,4 @@
-import { MapPin, Mail, Phone, Clock, ArrowRight, Sparkles, MessageSquare, Globe, Zap } from "lucide-react";
+import { MapPin, Mail, Phone, Clock, Sparkles, MessageSquare, Globe, Zap } from "lucide-react";
 import Picture4 from "@/assets/Picture4.png";
 import { useEffect, useRef, useState } from "react";
 
@@ -40,22 +40,16 @@ export const Contact = () => {
           P.O. Box 104443-00101
         </>
       ),
-      actionText: "Get Directions",
-      actionLink: "#"
     },
     {
       icon: Mail,
       title: "Email Support",
       text: <>support@finserve.africa</>,
-      actionText: "Send Email",
-      actionLink: "mailto:support@finserve.africa"
     },
     {
       icon: Phone,
       title: "Phone Support",
       text: <>+254 766 000 200</>,
-      actionText: "Call Now",
-      actionLink: "tel:+254766000200"
     },
     {
       icon: Clock,
@@ -67,8 +61,6 @@ export const Contact = () => {
           Sunday: Closed
         </>
       ),
-      actionText: "Schedule Call",
-      actionLink: "#"
     }
   ];
 
@@ -291,18 +283,7 @@ export const Contact = () => {
                           <h4 className="font-bold text-sm mb-1" style={{ color: darkGray }}>
                             {item.title}
                           </h4>
-                          <p className="text-sm text-white/80 mb-2">{item.text}</p>
-                          <a
-                            href={item.actionLink}
-                            className="inline-flex items-center text-xs font-medium group-hover:translate-x-2 transition-transform duration-300 relative"
-                            style={{ color: primaryColor }}
-                          >
-                            <span className="relative overflow-hidden inline-block">
-                              <span className="relative z-10">{item.actionText}</span>
-                              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
-                            </span>
-                            <ArrowRight className="w-3 h-3 ml-1 group-hover:rotate-90 transition-transform duration-300" />
-                          </a>
+                          <p className="text-sm text-white/80">{item.text}</p>
                         </div>
                       </div>
                     ))}
@@ -379,18 +360,7 @@ export const Contact = () => {
                           <h4 className="font-bold text-sm mb-1" style={{ color: darkGray }}>
                             {item.title}
                           </h4>
-                          <p className="text-sm text-white mb-2">{item.text}</p>
-                          <a
-                            href={item.actionLink}
-                            className="inline-flex items-center text-xs font-medium group-hover:translate-x-2 transition-transform duration-300"
-                            style={{ color: primaryColor }}
-                          >
-                            <span className="relative overflow-hidden inline-block">
-                              <span className="relative z-10">{item.actionText}</span>
-                              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
-                            </span>
-                            <ArrowRight className="w-3 h-3 ml-1 group-hover:rotate-90 transition-transform duration-300" />
-                          </a>
+                          <p className="text-sm text-white">{item.text}</p>
                         </div>
                       </div>
                     ))}
@@ -407,14 +377,6 @@ export const Contact = () => {
               </div>
             </div>
 
-            {/* CTA Animation */}
-            <div className={`text-center mt-8 transition-all duration-1000 delay-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-              <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-primary/10 to-primary/5 border border-primary/20 group cursor-pointer hover:shadow-xl hover:shadow-primary/20 transition-all duration-500">
-                <div className="w-2 h-2 rounded-full bg-primary animate-ping" />
-                <span className="text-white font-medium">Ready to Transform Your Financial Journey?</span>
-                <ArrowRight className="w-5 h-5 text-primary group-hover:translate-x-2 transition-transform duration-300" />
-              </div>
-            </div>
           </div>
         </div>
         

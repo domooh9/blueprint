@@ -17,7 +17,7 @@ const products = [
     id: "jenga-payment",
     name: "Jenga Payment Gateway",
     logo: jengaPayment,
-    link: "https://payments.jengaapi.io/",
+    link: "https://jengapgw.io/",
     position: "top-right"
   },
   {

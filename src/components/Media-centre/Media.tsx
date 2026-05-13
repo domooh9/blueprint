@@ -1,11 +1,8 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import YouTubeEmbed from "@/components/ui/youtube-embed";
 import { FileText, Presentation, Newspaper, Award, Shield, Lock, MessageSquare, Download, Eye, ChevronRight, Play } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import Testimonials from "./Testemonials";
-import Blogs from "./Blogs";
 import { enhancedButtonStyles } from "../Products/productStyles";
 import Picturer from "@/assets/Andreas.jpg";
 import mediaPhoto1 from "@/assets/Picture.jpg";
@@ -156,28 +153,24 @@ const policies = [
 
 const Media = () => {
   const location = useLocation();
-  const [activeTab, setActiveTab] = useState<"media" | "policies" | "blogs" | "testimonials">("media");
+  const [activeTab, setActiveTab] = useState<"media" | "policies">("media");
   const [shouldScrollToSection, setShouldScrollToSection] = useState(false);
 
   const mediaCardImages = [mediaPhoto1, mediaPhoto2, mediaPhoto3, mediaPhoto4];
   const legalCardImages = [legalPhoto1, legalPhoto2, legalPhoto3];
 
-  const handleTabChange = (tab: "media" | "policies" | "blogs" | "testimonials") => {
+  const handleTabChange = (tab: "media" | "policies") => {
     setActiveTab(tab);
     setShouldScrollToSection(true);
   };
 
   useEffect(() => {
     const hash = location.hash.toLowerCase();
-    const hashToTabMap: Record<string, "media" | "policies" | "blogs" | "testimonials"> = {
+    const hashToTabMap: Record<string, "media" | "policies"> = {
       "#media": "media",
       "#media-section": "media",
       "#policies": "policies",
       "#policies-section": "policies",
-      "#testimonials": "testimonials",
-      "#testimonials-section": "testimonials",
-      "#blogs": "blogs",
-      "#blogs-section": "blogs",
     };
 
     const tabFromHash = hashToTabMap[hash];
@@ -238,7 +231,7 @@ const Media = () => {
               </div>
               
               <p className="text-lg md:text-xl text-white/80 max-w-3xl mx-auto">
-                Stay updated with the latest news, explore our commitment to transparency, and hear from our customers.
+                Stay updated with the latest news and explore our commitment to transparency.
               </p>
             </div>
           </div>
@@ -254,8 +247,6 @@ const Media = () => {
                   {[
                     { id: "media", label: "Media Centre" },
                     { id: "policies", label: "Legal & Privacy" },
-                    { id: "testimonials", label: "Testimonials" },
-                    { id: "blogs", label: "Blogs" },
                   ].map((tab) => {
                     const isActive = activeTab === tab.id;
                     return (
@@ -263,9 +254,7 @@ const Media = () => {
                         key={tab.id}
                         type="button"
                         onClick={() =>
-                          handleTabChange(
-                            tab.id as "media" | "policies" | "blogs" | "testimonials"
-                          )
+                          handleTabChange(tab.id as "media" | "policies")
                         }
                         className={`relative px-3 py-2.5 rounded-xl text-xs sm:text-sm font-medium transition-all duration-300 ${
                           isActive
@@ -290,8 +279,6 @@ const Media = () => {
                 {[
                   { id: "media", label: "Media Centre" },
                   { id: "policies", label: "Legal & Privacy" },
-                  { id: "testimonials", label: "Testimonials" },
-                  { id: "blogs", label: "Blogs" },
                 ].map((tab) => {
                   const isActive = activeTab === tab.id;
                   return (
@@ -299,9 +286,7 @@ const Media = () => {
                       key={tab.id}
                       type="button"
                       onClick={() =>
-                        handleTabChange(
-                          tab.id as "media" | "policies" | "blogs" | "testimonials"
-                        )
+                        handleTabChange(tab.id as "media" | "policies")
                       }
                       className={`relative whitespace-nowrap px-6 py-2.5 rounded-full text-base font-medium transition-all duration-300 ${
                         isActive
@@ -515,17 +500,6 @@ const Media = () => {
               </div>
             )}
 
-            {activeTab === 'testimonials' && (
-              <div id="testimonials-section" className="max-w-7xl mx-auto">
-                <Testimonials />
-              </div>
-            )}
-
-            {activeTab === "blogs" && (
-              <div id="blogs-section" className="max-w-7xl mx-auto">
-                <Blogs />
-              </div>
-            )}
           </div>
         </section>
       </main>

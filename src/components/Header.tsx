@@ -139,18 +139,6 @@ export const Header = () => {
                             >
                               Legal & Privacy
                             </Link>
-                            <Link
-                              to="/media-centre#testimonials"
-                              className="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary transition-colors"
-                            >
-                              Testimonials
-                            </Link>
-                            <Link
-                              to="/media-centre#blogs"
-                              className="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary transition-colors"
-                            >
-                              Blogs
-                            </Link>
                           </div>
                         </div>
                       </div>
@@ -294,20 +282,6 @@ export const Header = () => {
                             className="block px-4 py-2.5 text-sm text-gray-600 hover:text-primary hover:bg-gray-50 rounded-lg"
                           >
                             Legal & Privacy
-                          </Link>
-                          <Link
-                            to="/media-centre#testimonials"
-                            onClick={() => setMobileMenuOpen(false)}
-                            className="block px-4 py-2.5 text-sm text-gray-600 hover:text-primary hover:bg-gray-50 rounded-lg"
-                          >
-                            Testimonials
-                          </Link>
-                          <Link
-                            to="/media-centre#blogs"
-                            onClick={() => setMobileMenuOpen(false)}
-                            className="block px-4 py-2.5 text-sm text-gray-600 hover:text-primary hover:bg-gray-50 rounded-lg"
-                          >
-                            Blogs
                           </Link>
                         </div>
                       )}
