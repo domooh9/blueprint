@@ -98,6 +98,7 @@ const BulkSMS = () => {
   const themePrimary = "#0b3a7e";
   const themeBlue = "#196ab6";
   const themeDark = "#0b1f66";
+  const bulkSmsLoginUrl = "https://jenga-docs-bulksms.azurewebsites.net/login";
   
 
   const features = [
@@ -227,7 +228,7 @@ const BulkSMS = () => {
               </p>
               <div className="flex flex-wrap gap-4">
                 <a
-                  href="http://localhost:3000"
+                  href={bulkSmsLoginUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -242,12 +243,14 @@ const BulkSMS = () => {
                     </Button>
                   </motion.div>
                 </a>
-                <motion.div whileHover={{ y: -3, scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-                  <Button size="lg" variant="outline" className={enhancedButtonStyles.secondary}>
-                    <span className="relative z-10">View Pricing</span>
-                    <div className={enhancedButtonStyles.shine}></div>
-                  </Button>
-                </motion.div>
+                <a href="#bulk-sms-pricing">
+                  <motion.div whileHover={{ y: -3, scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                    <Button size="lg" variant="outline" className={enhancedButtonStyles.secondary}>
+                      <span className="relative z-10">View Pricing</span>
+                      <div className={enhancedButtonStyles.shine}></div>
+                    </Button>
+                  </motion.div>
+                </a>
               </div>
               <div className="mt-8 flex flex-wrap items-center gap-6 text-sm text-white/80">
                 {["Fast Delivery", "Secure API", "Global Reach"].map((item) => (
@@ -576,7 +579,7 @@ const BulkSMS = () => {
       </section>
 
       {/* Pricing Section */}
-      <section className="relative py-20 overflow-hidden bg-[#eef2f7]">
+      <section id="bulk-sms-pricing" className="relative py-20 overflow-hidden bg-[#eef2f7]">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(25,106,182,0.12),transparent_55%),radial-gradient(circle_at_80%_10%,rgba(11,31,102,0.18),transparent_45%),radial-gradient(circle_at_60%_85%,rgba(11,58,126,0.12),transparent_55%)]" />
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
           <motion.div
@@ -627,9 +630,16 @@ const BulkSMS = () => {
                         </li>
                       ))}
                     </ul>
-                    <Button className="w-full bg-primary text-white hover:bg-primary/90">
-                      Get Started
-                    </Button>
+                    <a
+                      href={bulkSmsLoginUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block"
+                    >
+                      <Button className="w-full bg-primary text-white hover:bg-primary/90">
+                        Get Started
+                      </Button>
+                    </a>
                   </div>
                 </motion.div>
               ))}
@@ -656,12 +666,12 @@ const BulkSMS = () => {
             <p className="text-xl mb-8 text-white/90">
               Join thousands of businesses already using our Bulk SMS service
             </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <a
-                href="http://localhost:3000"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <div className="flex flex-wrap justify-center gap-4">
+                <a
+                  href={bulkSmsLoginUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                 <Button 
                   size="lg" 
                   className={enhancedButtonStyles.primary}
@@ -671,20 +681,12 @@ const BulkSMS = () => {
                     Create Free Account
                     <ExternalLink className={enhancedButtonStyles.icon} />
                   </span>
-                  <div className={enhancedButtonStyles.shine}></div>
-                </Button>
-              </a>
-              <Button 
-                size="lg" 
-                variant="outline" 
-                className={enhancedButtonStyles.secondary}
-              >
-                <span className="relative z-10">Contact Sales</span>
-                <div className={enhancedButtonStyles.shine}></div>
-              </Button>
-            </div>
-          </motion.div>
-        </div>
+                    <div className={enhancedButtonStyles.shine}></div>
+                  </Button>
+                </a>
+              </div>
+            </motion.div>
+          </div>
       </section>
 
       

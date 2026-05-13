@@ -1,5 +1,4 @@
 import { Card, CardContent } from "@/components/ui/card";
-import YouTubeEmbed from "@/components/ui/youtube-embed";
 import { FileText, Presentation, Newspaper, Award, Shield, Lock, MessageSquare, Download, Eye, ChevronRight, Play } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
@@ -13,9 +12,9 @@ import legalPhoto1 from "@/assets/backgroundI.png";
 import legalPhoto2 from "@/assets/imagee.png";
 import legalPhoto3 from "@/assets/Cha.png";
 
-// Livestream Component - Shows embedded YouTube video
+// Livestream Component - Redirects to the YouTube video
 const Livestream = () => {
-  const videoId = "FhRCxCFzN3g";
+  const videoUrl = "https://www.youtube.com/watch?v=FhRCxCFzN3g";
 
   return (
     <div className="relative py-16 md:py-24 bg-gradient-to-br from-primary/5 via-background to-primary/5 rounded-3xl overflow-hidden">
@@ -50,17 +49,30 @@ const Livestream = () => {
             </p>
           </div>
           
-          {/* YouTube Video Embed */}
+          {/* YouTube Redirect Link */}
           <div className="max-w-4xl mx-auto">
-            <YouTubeEmbed
-              videoId={videoId}
-              title="Finserve Official Launch"
-              className="shadow-2xl"
-              showControls={true}
-              showInfo={false}
-              enablePrivacyMode={true}
-              lazyLoad={true}
-            />
+            <a
+              href={videoUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group block rounded-3xl border border-primary/15 bg-white/90 p-8 shadow-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
+            >
+              <div className="flex flex-col items-center text-center">
+                <div className="mb-5 flex h-20 w-20 items-center justify-center rounded-full bg-primary text-white shadow-lg shadow-primary/20 transition-transform duration-300 group-hover:scale-105">
+                  <Play className="h-8 w-8 fill-current" />
+                </div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-3">
+                  Watch on YouTube
+                </h3>
+                <p className="max-w-2xl text-base text-gray-600 mb-6">
+                  The launch video opens directly on YouTube for a smoother viewing experience.
+                </p>
+                <span className="inline-flex items-center rounded-full bg-primary px-5 py-3 text-sm font-semibold text-white transition-colors duration-300 group-hover:bg-primary/90">
+                  Open Video
+                  <ChevronRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                </span>
+              </div>
+            </a>
           </div>
         </div>
       </div>
