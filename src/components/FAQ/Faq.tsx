@@ -331,9 +331,15 @@ export default function FAQ() {
                 <Button
                   size="lg"
                   className="rounded-full px-8"
-                  onClick={() => window.location.href = "/#contact"}
+                  asChild
                 >
-                  Contact Us
+                  <a
+                    href="https://finserve.custhelp.com/app/ask"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Contact Us
+                  </a>
                 </Button>
               </div>
             </div>

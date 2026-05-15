@@ -1,5 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { FileText, Presentation, Newspaper, Award, Shield, Lock, MessageSquare, Download, Eye, ChevronRight, Play } from "lucide-react";
+import { FileText, Presentation, Newspaper, Award, Shield, Lock, MessageSquare, Eye, ChevronRight, Play } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { enhancedButtonStyles } from "../Products/productStyles";
@@ -149,14 +149,14 @@ const policies = [
   },
   {
     name: "EGHL Information Security Policy",
-    link: "https://www.finserve.africa/media/EGHL_INFORMATION_SECURITY_POLICY.pdf/",
+    link: "https://www.finserve.africa/media/EGHL_INFORMATION_SECURITY_POLICY.pdf",
     description: "Defines our approach to information security, ensuring robust protection for all clients and systems.",
     icon: Lock,
     category: "Security",
   },
   {
     name: "Finserve SMS Summary Policy",
-    link: "https://www.finserve.africa/media/FINSERVE_SMS_POLICY_SUMMARY.pdf/",
+    link: "https://www.finserve.africa/media/FINSERVE_SMS_POLICY_SUMMARY.pdf",
     description: "Summarizes our SMS communications policy, highlighting transparency and customer control.",
     icon: MessageSquare,
     category: "Communication",
@@ -374,25 +374,13 @@ const Media = () => {
 
                 <div className="bg-[#474747] rounded-3xl p-8 md:p-12 text-white mb-12">
                   <div className="max-w-4xl mx-auto">
-                    <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-                      <div className="flex-1">
+                    <div className="max-w-2xl">
                         <h3 className="text-2xl md:text-3xl font-bold mb-4">
-                          Need Press Kit or Media Assets?
+                          Media Resources
                         </h3>
                         <p className="text-white/90 mb-4">
-                          Get our complete media package including logos, brand guidelines, and executive bios.
+                          Explore our latest announcements, company updates, and background materials gathered here for easy reference.
                         </p>
-                      </div>
-                      <div className="flex-shrink-0">
-                        <button className={`${enhancedButtonStyles.action} group`}>
-                          <div className={enhancedButtonStyles.glow}></div>
-                          <span className="relative z-10 flex items-center">
-                            <Download className={enhancedButtonStyles.icon.replace('ml-3', 'mr-3')} />
-                            Download Package
-                          </span>
-                          <div className={enhancedButtonStyles.shine}></div>
-                        </button>
-                      </div>
                     </div>
                   </div>
                 </div>
@@ -487,25 +475,13 @@ const Media = () => {
 
                 <div className="bg-[#474747] rounded-3xl p-8 md:p-12 text-white mb-12">
                   <div className="max-w-4xl mx-auto">
-                    <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-                      <div className="flex-1">
+                    <div className="max-w-2xl">
                         <h3 className="text-2xl md:text-3xl font-bold mb-4">
-                          Download All Policies & Certificates
+                          Policies and Standards
                         </h3>
                         <p className="text-white/90 mb-4">
-                          Access our complete compliance documentation in one convenient package.
+                          This section brings together the policies and standards that shape how we handle privacy, security, and compliance.
                         </p>
-                      </div>
-                      <div className="flex-shrink-0">
-                        <button className={`${enhancedButtonStyles.action} group`}>
-                          <div className={enhancedButtonStyles.glow}></div>
-                          <span className="relative z-10 flex items-center">
-                            <Download className={enhancedButtonStyles.icon.replace('ml-3', 'mr-3')} />
-                            Download Package
-                          </span>
-                          <div className={enhancedButtonStyles.shine}></div>
-                        </button>
-                      </div>
                     </div>
                   </div>
                 </div>

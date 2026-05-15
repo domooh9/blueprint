@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import Picturer from "@/assets/video2.mp4";
+import BrentPhoto from "@/assets/Board/Brent.jpg";
 
 const boardMembersData = [
   {
@@ -26,7 +27,7 @@ const boardMembersData = [
   {
     name: "BRENT MALAHAY",
     title: "Non-Executive Director",
-    image: "https://scontent.fnbo1-1.fna.fbcdn.net/v/t1.6435-9/37331039_1478988452246776_127289370225934336_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=13d280&_nc_ohc=LvSC_PwUvEcQ7kNvwFsDBzo&_nc_oc=AdmoLyeclt6R3tNoYux8vst2xNFQ-w6jTDFThXUDVkxnwHG6dIo-fl8r_04gtSOrZMs&_nc_zt=23&_nc_ht=scontent.fnbo1-1.fna&_nc_gid=7UDI8IS-NfCHGYEDUm3bvw&oh=00_Aft08ZjJ9XLXNqAvQe3D5NzezuDb9hlfJMPRwbCQVww_WA&oe=69C390D2",
+    image: BrentPhoto,
     bio: [
       "Brent Malahay holds a Master’s in Economics and a Bachelor’s in Commerce from the University of KwaZulu-Natal, South Africa. He has over 16 years of experience across commercial banking, credit ratings, investment banking, and fund management.",
       "He previously worked at Standard Bank, Fitch Ratings, J.P. Morgan, and Investec Asset Management, gaining deep expertise in multiple financial sectors.",
