@@ -8,7 +8,7 @@ import Picturer from "@/assets/Picturer.png"
 
 const socialLinks = [
   { icon: Facebook, href: "https://www.facebook.com/FinserveAfricaofficial/", label: "Facebook" },
-  { icon: Instagram, href: "#", label: "Instagram" },
+  { icon: Instagram, href: "https://www.instagram.com/finserveafrica/", label: "Instagram" },
   { icon: "X", href: "https://x.com/Finserve_Africa", label: "X" },
   { icon: Linkedin, href: "https://www.linkedin.com/company/finserveafrica/", label: "LinkedIn" },
   { icon: Youtube, href: "https://www.youtube.com/@finserveafrica2390", label: "YouTube" },
@@ -20,8 +20,7 @@ const quickLinks = [
   { label: "Careers", href: "/careers" },
   { label: "Equitel", href: "https://equitel.com/" },
   { label: "Jenga PGW", href: "https://jengapgw.io/" },
-  { label: "Jenga API", href: "https://jengahq.io/" },
-  { label: "Finserve Mobile", href: "https://finservemoney.com/" },
+  { label: "Jenga API", href: "https://www.jengaapi.io/" },
 ];
 
 const complianceLinks = [
